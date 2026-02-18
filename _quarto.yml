@@ -9,7 +9,7 @@ website:
   navbar:
     pinned: true
     logo: assets/android-chrome-512x512.png
-    left:
+    right:
       - href: index.qmd
         icon: home
         text: Home
