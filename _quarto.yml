@@ -23,11 +23,14 @@ website:
         href: https://github.com/martinas-jucysbrady  
         target: _blank
       - icon: linkedin
-        href: https://www.linkedin.com/in/martinas-jucys-brady/
+        href: https://www.linkedin.com/in/martinasjucysbrady/
         target: _blank
       - icon: paperclip
         href: assets/mypdf.pdf
         target: _blank
+  page-footer: 
+    left: "© Martinas Jucys Brady, 2026"    
+    right: "Built with [Quarto](https://quarto.org/)"
 
 
 format:
