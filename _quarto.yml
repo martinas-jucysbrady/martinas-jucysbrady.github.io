@@ -43,7 +43,9 @@ format:
       - cosmo
       - brand
     css: styles.css
-    toc: true
+    mainfont: sans-serif
+    toc: false
+    page-layout: full
 
 
 
