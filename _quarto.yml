@@ -11,13 +11,13 @@ website:
     logo: assets/android-chrome-512x512.png
     right:
       - href: index.qmd
-        icon: home
+        icon: house
         text: Home
       - href: about.qmd
-        icon: user        
+        icon: person-circle        
         text: About Me
       - href: projects.qmd
-        icon: folder
+        icon: file-earmark-text
         text: Projects
       - icon: github
         href: https://github.com/martinas-jucysbrady  
@@ -25,7 +25,7 @@ website:
       - icon: linkedin
         href: https://www.linkedin.com/in/martinasjucysbrady/
         target: _blank
-      - icon: paperclip
+      - icon: person-rolodex
         href: assets/mypdf.pdf
         target: _blank
   page-footer: 
