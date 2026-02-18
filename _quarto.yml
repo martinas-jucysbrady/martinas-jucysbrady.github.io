@@ -5,14 +5,30 @@ project:
 website:
   title: "Martinas Jucys Brady"
   favicon: assets/android-chrome-512x512.png
+  back-to-top-navigation: true
   navbar:
+    pinned: true
+    logo: assets/android-chrome-512x512.png
     left:
       - href: index.qmd
+        icon: home
         text: Home
       - href: about.qmd
+        icon: user        
         text: About Me
       - href: projects.qmd
+        icon: folder
         text: Projects
+      - icon: github
+        href: https://github.com/martinas-jucysbrady  
+        target: _blank
+      - icon: linkedin
+        href: https://www.linkedin.com/in/martinas-jucys-brady/
+        target: _blank
+      - icon: paperclip
+        href: assets/mypdf.pdf
+        target: _blank
+
 
 format:
   html:
