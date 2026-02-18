@@ -7,12 +7,14 @@ website:
   favicon: assets/android-chrome-512x512.png
   back-to-top-navigation: true
   navbar:
+    title: false
     pinned: true
     logo: assets/android-chrome-512x512.png
-    right:
+    left:
       - href: index.qmd
         icon: house
         text: Home
+    right:
       - href: about.qmd
         icon: person-circle        
         text: About Me
