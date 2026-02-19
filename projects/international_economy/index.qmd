@@ -1,0 +1,19 @@
+---
+title: "International Economy: Trump’s policies through the Mundell-Fleming model"
+categories: [Economics, International Economy]
+image: "/projects/international_economy/international_economy.png"
+date: '2025-07-26'
+author: 
+    - "Martinas Jucys Brady"
+
+about:
+  template: solana
+  links:
+    - icon: file-earmark-pdf
+      text: Trump’s policies through the Mundell-Fleming model PDF
+      href: projects/international_economy/international_economy.pdf
+---
+
+::: {style="text-align: justify;"}
+This project is an analysis of Donald Trump's economic policies through the lens of the Mundell-Fleming model, which is a framework used to understand the interactions between exchange rates, interest rates, and output in an open economy. The report examines how Trump's policies, such as tax cuts, trade tariffs, and deregulation, impacted the U.S. economy in terms of exchange rates, interest rates, and overall economic output. The analysis also explores the implications of these policies for international trade and capital flows, providing insights into the broader effects on the global economy.
+:::
