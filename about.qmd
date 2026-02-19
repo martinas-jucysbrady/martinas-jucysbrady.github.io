@@ -1,5 +1,63 @@
 ---
 title: "About"
+subtitle: "My name is Martinas and I am a fourth year student in DCU doing BA in Business Studies - International. My choice of language is Japanese, and I am specialising in data analytics."
 ---
 
-About this site
+## Studies
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-2}
+[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+
+:::
+
+::: {.g-col-12 .g-col-md-10}
+
+[Year 1](https://martinas-jucysbrady.github.io/), &nbsp; [Year 2](https://martinas-jucysbrady.github.io/), &nbsp; [Year 3](https://martinas-jucysbrady.github.io/), &nbsp; [Year 4](https://martinas-jucysbrady.github.io/)
+
+This a breakdown of the modules I have taken during my time in DCU. I have taken a wide variety of modules, ranging from business and economics to languages and data analytics. I have enjoyed all of the modules I have taken and have learned a lot from them.
+
+:::
+
+:::
+
+
+## Travel
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-2}
+[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+
+:::
+
+::: {.g-col-12 .g-col-md-10}
+
+[Travel](https://martinas-jucysbrady.github.io/)&nbsp; [Plans](https://martinas-jucysbrady.github.io/)
+
+Travelling is one of my passions. I have been fortunate enough to travel to many different countries and experience different cultures. I have traveled to Europe, Asia, and Australia, and I hope to continue traveling in the future.
+
+:::
+
+:::
+
+
+## Books, Films, and TV Shows
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-2}
+[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+
+:::
+
+::: {.g-col-12 .g-col-md-10}
+
+[Books](https://martinas-jucysbrady.github.io/), &nbsp; [Films](https://martinas-jucysbrady.github.io/), &nbsp; [TV Shows](https://martinas-jucysbrady.github.io/)
+
+Here I will list some of my favourite books, films, and TV shows. I have a wide range of interests when it comes to books, films, and TV shows, and I am always looking for new recommendations.
+
+:::
+
+:::
