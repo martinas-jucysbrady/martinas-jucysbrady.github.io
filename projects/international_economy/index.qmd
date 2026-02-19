@@ -1,7 +1,7 @@
 ---
 title: "International Economy: Trump’s policies through the Mundell-Fleming model"
 categories: [Economics, International Economy]
-image: "/projects/international_economy/international_economy.png"
+image: "/projects/international_economy/international_economy.jpg"
 date: '2025-07-26'
 author: 
     - "Martinas Jucys Brady"
