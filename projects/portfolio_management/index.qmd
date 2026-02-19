@@ -1,0 +1,22 @@
+---
+title: "Advanced Portfolio Management: Investment Portfolio"
+categories: [Portfolio Management, Finance]
+image: "/projects/portfolio_management/investment_portfolio.jpg"
+date: '2025-07-04'
+author: 
+    - "Martinas Jucys Brady"
+
+about:
+  template: solana
+  links:
+    - icon: file-earmark-pdf
+      text: Investment Portfolio Excel File 
+      href: projects/portfolio_management/investment_portfolio.xlsx
+    - icon: file-earmark-pdf
+      text: Investment Portfolio Presentation 
+      href: projects/portfolio_management/investment_portfolio_presentation.html
+---
+
+::: {style="text-align: justify;"}
+In this project, I created an investment portfolio using the Markowitz Portfolio Optimization model. The goal was to maximize returns while minimizing risk by selecting a diversified mix of assets. I analyzed historical data, calculated expected returns and covariances, and used optimization techniques to determine the optimal asset allocation. The resulting portfolio was designed to achieve a balance between risk and return, providing a solid foundation for long-term investment success.
+:::
