@@ -81,9 +81,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -200,9 +200,10 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="QnVzaW5lc3MlMjBTdHJhdGVneQ==">Business Strategy <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RWNvbm9taWNz">Economics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SW50ZXJuYXRpb25hbCUyMEVjb25vbXk=">International Economy <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -216,7 +217,7 @@ window.Quarto = {
 </div>
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -232,33 +233,94 @@ window.Quarto = {
 
 
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-2">
-<div class="g-col-1" data-index="0" data-categories="RWNvbm9taWNzJTJDSW50ZXJuYXRpb25hbCUyMEVjb25vbXk=" data-listing-date-sort="1753484400000" data-listing-file-modified-sort="1771523934904" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="93">
-<a href="./projects/international_economy/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./projects/international_economy/international_economy.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-International Economy: Trump’s policies through the Mundell-Fleming model
-</h5>
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title" data-direction="asc">
+        Title
+      </option>
+      <option value="listing-date-sort" data-direction="asc">
+        Date - Oldest
+      </option>
+      <option value="listing-date-sort" data-direction="desc">
+        Date - Newest
+      </option>
+      <option value="listing-author" data-direction="asc">
+        Author
+      </option>
+    </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
 </div>
-</div></a>
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="QnVzaW5lc3MlMjBTdHJhdGVneQ==" data-listing-date-sort="1764892800000" data-listing-file-modified-sort="1771523950207" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="54">
+<div class="thumbnail"><a href="./projects/business_strategy/index.html" class="no-external">
+
+<img loading="lazy" src="./projects/business_strategy/business_strategy.jpg" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./projects/business_strategy/index.html" class="no-external">Strategic Consultancy Report: Siemens Healthineers</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('QnVzaW5lc3MlMjBTdHJhdGVneQ=='); return false;">Business Strategy</div>
+
 </div>
-<div class="g-col-1" data-index="1" data-categories="QnVzaW5lc3MlMjBTdHJhdGVneQ==" data-listing-date-sort="1764892800000" data-listing-file-modified-sort="1771523950207" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="54">
-<a href="./projects/business_strategy/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./projects/business_strategy/business_strategy.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Strategic Consultancy Report: Siemens Healthineers
-</h5>
+<div class="delink listing-description"><a href="./projects/business_strategy/index.html" class="no-external">
+This project is a strategic consultancy report for Siemens Healthineers, a leading global medical technology company. The report provides an in-depth analysis of the…
+</a></div>
 </div>
-</div></a>
+<div class="metadata">
+<a href="./projects/business_strategy/index.html" class="no-external">
+<div class="listing-date">
+Dec 5, 2025
+</div>
+<div class="listing-author">
+Cian O’Connor, Evie Whittaker, Jack Madden, Jacob Dean, Seán Coghlan, Martinas Jucys Brady, Robert Downey
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="RWNvbm9taWNzJTJDSW50ZXJuYXRpb25hbCUyMEVjb25vbXk=" data-listing-date-sort="1753484400000" data-listing-file-modified-sort="1771523934904" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="93">
+<div class="thumbnail"><a href="./projects/international_economy/index.html" class="no-external">
+
+<img loading="lazy" src="./projects/international_economy/international_economy.jpg" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./projects/international_economy/index.html" class="no-external">International Economy: Trump’s policies through the Mundell-Fleming model</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('RWNvbm9taWNz'); return false;">Economics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('SW50ZXJuYXRpb25hbCUyMEVjb25vbXk='); return false;">International Economy</div>
+
+</div>
+<div class="delink listing-description"><a href="./projects/international_economy/index.html" class="no-external">
+This project is an analysis of Donald Trump’s economic policies through the lens of the Mundell-Fleming model, which is a framework used to understand the interactions…
+</a></div>
+</div>
+<div class="metadata">
+<a href="./projects/international_economy/index.html" class="no-external">
+<div class="listing-date">
+Jul 26, 2025
+</div>
+<div class="listing-author">
+Martinas Jucys Brady
+</div>
+</a>
+</div>
 </div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>

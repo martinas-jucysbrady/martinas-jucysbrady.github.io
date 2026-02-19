@@ -6,7 +6,11 @@ description: |
   My projects are listed here. You can find more information about each project by clicking on the links below.
 listing: 
   contents: projects
-  type: grid
-  fields: [title, image]
-  grid-columns: 2
+  type: default
+  sort: "date desc"
+  categories: true
+  sort-ui: true
+  filter-ui: true
+  feed: true
+
 ---
