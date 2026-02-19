@@ -1,7 +1,61 @@
 ---
 title: "Martinas Jucys Brady"
+subtitle: |
+  Final Year Student \
+  Business Studies - International \
+  Dublin City University \
+  E-mail: martinas.jucysbrady2@mail.dcu.ie
+description-meta: "I am a fourth year student in DCU doing BA in Business Studies - International. My choice of language is Japanese, and I am specialising in data analytics."
+image: "assets/mjb_favicon.png"
+page-navigation: false
+toc: false
+sidebar: false
+page-layout: full
+
+about:
+  id: hero-heading
+  template: trestles
+  image-width: 80%
+  links:
+    - icon: github
+      text: GitHub
+      href: https://martinas-jucysbrady.github.io
+      target: _blank
+    - icon: envelope
+      text: E-mail
+      href: mailto:martinas.jucysbrady2@mail.dcu.ie
+    - icon: instagram
+      text: Instagram
+      href: https://www.instagram.com/martinas.jucysbrady/
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/martinas-jucysbrady
+      target: _blank
+
+listing:
+  - id: recent-posts
+    contents: 
+      - projects
+    type: grid
+    max-items: 3
+    page-size: 3 
+    fields: [image, date, title, subtitle]
+    max-description-length: 75
+    sort: 
+      - "date desc"
+      - "title asc"
 ---
 
-This is a Quarto website.
+:::{#hero-heading}
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+I am a fourth year student in DCU doing BA in Business Studies - International. My choice of language is Japanese, and I am specialising in data analytics.
+
+:::
+
+## Recent Posts
+Check out the latest &nbsp;[Projects](project.qmd)&nbsp;
+
+:::{#recent-posts}
+:::
+
+<p align="right">[All Projects »](/projects.qmd)</p>
