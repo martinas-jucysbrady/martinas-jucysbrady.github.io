@@ -11,12 +11,12 @@ website:
     pinned: true
     logo: assets/mjb_favicon.png
     right:
-      - href: about.qmd
-        icon: person-circle        
-        text: About Me
       - href: projects.qmd
         icon: file-earmark-text
         text: Projects
+      - href: about.qmd
+        icon: person-circle        
+        text: About Me
       - icon: github
         href: https://github.com/martinas-jucysbrady  
         target: _blank
