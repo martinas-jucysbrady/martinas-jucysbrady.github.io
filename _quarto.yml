@@ -16,7 +16,7 @@ website:
         text: Projects
       - href: about.qmd
         icon: person-circle        
-        text: About Me
+        text: About
       - icon: github
         href: https://github.com/martinas-jucysbrady  
         target: _blank
