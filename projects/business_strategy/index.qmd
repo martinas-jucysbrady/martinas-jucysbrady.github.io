@@ -17,10 +17,10 @@ about:
   links:
     - icon: file-earmark-pdf
       text: Strategic Consultancy Report PDF
-      href: business_strategy_consultancy_report.pdf
+      href: ./business_strategy_consultancy_report.pdf
     - icon: file-earmark-pdf
       text: Strategic Consultancy Report Presentation PDF
-      href: business_strategy_presentation.pdf
+      href: ./business_strategy_presentation.pdf
 ---
 
 ::: {style="text-align: justify;"}
