@@ -10,10 +10,6 @@ website:
     title: false
     pinned: true
     logo: assets/mjb_favicon.png
-    left:
-      - href: index.qmd
-        icon: house
-        text: Home
     right:
       - href: about.qmd
         icon: person-circle        
