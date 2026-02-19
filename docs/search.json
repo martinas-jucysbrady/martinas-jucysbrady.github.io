@@ -4,7 +4,14 @@
     "href": "projects.html",
     "title": "My Projects",
     "section": "",
-    "text": "No matching items\n Back to top"
+    "text": "Strategic Consultancy Report: Siemens Healthineers\n\n\n\n\n\nNo matching items\n Back to top"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Martinas Jucys Brady",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n\n\n Back to top"
   },
   {
     "objectID": "about.html",
@@ -14,10 +21,10 @@
     "text": "About this site\n\n\n\n Back to top"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Martinas Jucys Brady",
+    "objectID": "projects/business_strategy/index.html",
+    "href": "projects/business_strategy/index.html",
+    "title": "Strategic Consultancy Report: Siemens Healthineers",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n\n\n Back to top"
+    "text": "This project is a strategic consultancy report for Siemens Healthineers, a leading global medical technology company. The report provides an in-depth analysis of the company’s current market position, competitive landscape, and strategic challenges. It also offers actionable recommendations to enhance Siemens Healthineers’ market share and profitability in the rapidly evolving healthcare industry.\n\n\n\n Back to top"
   }
 ]

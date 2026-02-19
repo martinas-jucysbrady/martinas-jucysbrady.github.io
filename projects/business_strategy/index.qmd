@@ -1,0 +1,28 @@
+---
+title: "Strategic Consultancy Report: Siemens Healthineers"
+categories: [Business Strategy]
+image: "/projects/business_strategy/business_strategy.png"
+date: '2025-12-05'
+author: 
+    - "Cian O'Connor"
+    - "Evie Whittaker"
+    - "Jack Madden"
+    - "Jacob Dean"
+    - "Seán Coghlan" 
+    - "Martinas Jucys Brady"
+    - "Robert Downey"
+
+about:
+  template: solana
+  links:
+    - icon: file-earmark-pdf
+      text: Strategic Consultancy Report PDF
+      href: projects/business_strategy/business_strategy_consultancy_report.pdf
+    - icon: file-earmark-pdf
+      text: Strategic Consultancy Report Presentation PDF
+      href: projects/business_strategy/business_strategy_presentation.pdf
+---
+
+::: {style="text-align: justify;"}
+This project is a strategic consultancy report for Siemens Healthineers, a leading global medical technology company. The report provides an in-depth analysis of the company's current market position, competitive landscape, and strategic challenges. It also offers actionable recommendations to enhance Siemens Healthineers' market share and profitability in the rapidly evolving healthcare industry.
+:::
