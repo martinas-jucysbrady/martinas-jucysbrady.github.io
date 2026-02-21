@@ -34,7 +34,7 @@ This a breakdown of the modules I have taken during my time in DCU. I have taken
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Travel](https://martinas-jucysbrady.github.io/)&nbsp; [Plans](https://martinas-jucysbrady.github.io/)
+[Travel](https://martinas-jucysbrady.github.io/), &nbsp; [Plans](https://martinas-jucysbrady.github.io/)
 
 Travelling is one of my passions. I have been fortunate enough to travel to many different countries and experience different cultures. I have traveled to Europe, Asia, and Australia, and I hope to continue traveling in the future.
 
