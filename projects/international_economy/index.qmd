@@ -11,7 +11,7 @@ about:
   links:
     - icon: file-earmark-pdf
       text: Trump’s policies through the Mundell-Fleming model PDF
-      href: projects/international_economy/international_economy.pdf
+      href: assets/mypdf.pdf
 ---
 
 ::: {style="text-align: justify;"}
