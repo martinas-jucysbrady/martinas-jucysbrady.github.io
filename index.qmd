@@ -6,7 +6,7 @@ subtitle: |
   Dublin City University \
   E-mail: martinas.jucysbrady2@mail.dcu.ie
 description-meta: "I am a fourth year student in DCU doing BA in Business Studies - International. My choice of language is Japanese, and I am specialising in data analytics."
-image: "assets/mjb_favicon.png"
+image: "assets/myphoto.jpg"
 page-navigation: false
 toc: false
 sidebar: false
