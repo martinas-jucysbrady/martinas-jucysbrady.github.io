@@ -4,7 +4,7 @@ project:
 
 website:
   title: "Martinas Jucys Brady"
-  favicon: assets/mjb_favicon.png
+  favicon: assets/myphoto.png
   back-to-top-navigation: true
   navbar:
     title: false
