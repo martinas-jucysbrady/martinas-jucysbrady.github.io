@@ -14,7 +14,7 @@ subtitle: "My name is Martinas and I am a fourth year student in DCU doing BA in
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Year 1](https://martinas-jucysbrady.github.io/), &nbsp; [Year 2](https://martinas-jucysbrady.github.io/), &nbsp; [Year 3](https://martinas-jucysbrady.github.io/), &nbsp; [Year 4](https://martinas-jucysbrady.github.io/)
+[Year 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Year 2](https://martinas-jucysbrady.github.io/studies/yeartwo), &nbsp; [Year 3](https://martinas-jucysbrady.github.io/studies/yearthree), &nbsp; [Year 4](https://martinas-jucysbrady.github.io/studies/yearfour)
 
 This a breakdown of the modules I have taken during my time in DCU. I have taken a wide variety of modules, ranging from business and economics to languages and data analytics. I have enjoyed all of the modules I have taken and have learned a lot from them.
 
