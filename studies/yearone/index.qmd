@@ -1,0 +1,10 @@
+---
+title: "Year One"
+image: "/assets/mjb_favicon.png"
+date: 'September 2022 - August 2023'
+location: "Dublin City University, Ireland"
+---
+
+::: {style="text-align: justify;"}
+This page contains a summary of the work I have done during my first year in university. 
+:::
