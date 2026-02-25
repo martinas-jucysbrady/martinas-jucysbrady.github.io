@@ -1,9 +1,9 @@
 ---
-title: "Year Three"
+title: "Year Two"
 image: "/assets/mjb_favicon.png"
 location: "Dublin City University, Ireland"
 ---
 
 ::: {style="text-align: justify;"}
-This page contains a summary of the work I have done during my third year in university. 
+This page contains a summary of the work I have done during my second year in university. 
 :::
