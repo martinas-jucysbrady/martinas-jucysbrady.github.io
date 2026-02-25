@@ -23,9 +23,6 @@ website:
       - icon: linkedin
         href: https://www.linkedin.com/in/martinasjucysbrady/
         target: _blank
-      - icon: instagram
-        href: https://www.instagram.com/martinas.jb/
-        target: _blank
       - text: "**CV**"
         href: assets/CV.pdf
         target: _blank
