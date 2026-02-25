@@ -19,5 +19,17 @@
   },
   "404.qmd": {
     "404.html": "b9daa921"
+  },
+  "studies/yearfour/index.qmd": {
+    "index.html": "ac62feee"
+  },
+  "studies/yearone/index.qmd": {
+    "index.html": "d45f05b6"
+  },
+  "studies/yearthree/index.qmd": {
+    "index.html": "74af8186"
+  },
+  "studies/yeartwo/index.qmd": {
+    "index.html": "eac9bcd8"
   }
 }

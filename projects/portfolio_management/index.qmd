@@ -1,6 +1,6 @@
 ---
 title: "Advanced Portfolio Management: Investment Portfolio"
-categories: [Portfolio Management, Finance]
+categories: [Portfolio Management, Finance, Year 3]
 image: "/projects/portfolio_management/investment_portfolio.jpg"
 date: '2025-07-04'
 author: 

@@ -1,6 +1,6 @@
 ---
 title: "Strategic Consultancy Report: Siemens Healthineers"
-categories: [Business Strategy]
+categories: [Business Strategy, Year 4]
 image: "/projects/business_strategy/business_strategy.jpg"
 date: '2025-12-05'
 author: 
