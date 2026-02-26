@@ -11,10 +11,10 @@ about:
   links:
     - icon: file-earmark-pdf
       text: Investment Portfolio Excel File 
-      href: assets/mypdf.pdf
+      href: projects/portfolio_management/investment_portfolio.xlsx
     - icon: file-earmark-pdf
       text: Investment Portfolio Presentation 
-      href: assets/mypdf.pdf
+      href: projects/portfolio_management/investment_portfolio/investment_portfolio_presentation.html
 ---
 
 ::: {style="text-align: justify;"}

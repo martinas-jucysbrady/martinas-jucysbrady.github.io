@@ -20,7 +20,7 @@ about:
       href: projects/business_strategy/business_strategy_consultancy_report.pdf
     - icon: file-earmark-pdf
       text: Strategic Consultancy Report Presentation PDF
-      href: assets/mypdf.pdf
+      href: projects/business_strategy/business_strategy_presentation.pdf
 ---
 
 ::: {style="text-align: justify;"}

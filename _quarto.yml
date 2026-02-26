@@ -2,8 +2,11 @@ project:
   type: website
   output-dir: docs
   resources: 
-   - projects\business_strategy\business_strategy_consultancy_report.pdf
-   - projects\business_strategy\business_strategy_presentation.pdf
+   - projects/business_strategy/business_strategy_consultancy_report.pdf
+   - projects/business_strategy/business_strategy_presentation.pdf
+   - projects/international_economy/international_economy.pdf
+   - projects/portfolio_management/investment_portfolio.xlsx
+   - projects/portfolio_management/investment_portfolio/investment_portfolio_presentation.html
    
 
 website:
