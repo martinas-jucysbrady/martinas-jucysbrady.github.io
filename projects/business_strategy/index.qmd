@@ -31,7 +31,7 @@ about:
       href: projects/business_strategy/business_strategy_presentation.pdf
 ---
 
-![Siemens' Healthineers Logo](/projects/business_strategy/business_strategy.jpg){out-width="80%"}
+![Siemens' Healthineers Logo](/projects/business_strategy/business_strategy.jpg){out-width="100%"}
 
 ---
 title: "Siemens Healthineers Strategic Consultancy Report"
