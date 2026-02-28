@@ -165,7 +165,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](assets/japan_l3.png)](https://martinas-jucysbrady.github.io/)
+[![](https://martinas-jucysbrady.github.io/assets/japan_l3.png )](https://martinas-jucysbrady.github.io/)
 :::
 
 ::: {.g-col-12 .g-col-md-10}
