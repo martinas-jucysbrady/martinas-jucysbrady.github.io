@@ -3,7 +3,6 @@ title: "Strategic Consultancy Report: Siemens Healthineers"
 subtitle: "*Consultancy Analysis and Strategic Direction*"
 description: "This project is a strategic consultancy report for Siemens Healthineers, a leading global medical technology company. The report provides an in-depth analysis of the company's current market position, competitive landscape, and strategic challenges. It also offers actionable recommendations to enhance Siemens Healthineers' market share and profitability in the rapidly evolving healthcare industry."
 categories: [Business Strategy, Year 4]
-image: "/projects/business_strategy/business_strategy.jpg"
 date: '2025-12-05'
 author: 
     - "Cian O'Connor"
