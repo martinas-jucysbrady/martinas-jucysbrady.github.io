@@ -146,7 +146,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](assets/japan_l1.png)](https://martinas-jucysbrady.github.io/)
+[![](assets\japan_l1.png)](https://martinas-jucysbrady.github.io/)
 
 :::
 
@@ -165,7 +165,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](assets/japan_l2.png)](https://martinas-jucysbrady.github.io/)
+[![](assets\japan_l2.png)](https://martinas-jucysbrady.github.io/)
 
 :::
 
