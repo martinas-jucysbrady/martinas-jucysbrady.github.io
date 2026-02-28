@@ -3,12 +3,12 @@ title: "About"
 subtitle: "My name is Martinas and I am a fourth year student in DCU doing BA in Business Studies - International. My choice of language is Japanese, and I am specialising in data analytics."
 ---
 
-## Studies
+## Undergraduate Studies
 
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+[![](assets\DCU-logo.png)](https://www.dcu.ie/)
 
 :::
 
