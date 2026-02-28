@@ -13,7 +13,7 @@ This page contains a summary of the work I have done during my first year in uni
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+[![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Feducationleaves.com%2Fwp-content%2Fuploads%2F2024%2F08%2FMicroeconomics-1024x576.png&f=1&nofb=1&ipt=31a3d6024c05b4345071d5aa64e47f3d5f7bd57e412774157932b0469fdf95f5)](https://martinas-jucysbrady.github.io/)
 
 :::
 
@@ -32,7 +32,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+[![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fonline.york.ac.uk%2Fmedia%2Fmageplaza%2Fblog%2Fpost%2Fg%2Fl%2Fglobal-business-environment.jpg&f=1&nofb=1&ipt=f829e05b6887d66bf90673e0a216d643763fe113ead13c3f87cb9959ee6162a8)](https://martinas-jucysbrady.github.io/)
 
 :::
 
@@ -51,7 +51,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+[![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.prod.website-files.com%2F62ff26d72ea5e01571feb3d8%2F65681f597a81949d42a10f12_How-to-do-accounting-for-a-small-business.webp&f=1&nofb=1&ipt=f4eb87a4b1ca29b680f55d8e1ba23a3e7db26953977dfd0f935c131cc5598796)](https://martinas-jucysbrady.github.io/)
 
 :::
 
@@ -89,7 +89,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+[![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdataanalysis.co.zw%2Fwp-content%2Fuploads%2F2022%2F09%2FBusiness-Analytics-Using-Excel.jpg&f=1&nofb=1&ipt=3a70ffe1b789983a3c6a25dd74e81eddb4386b2fe90783514a0654c063ae5550)](https://martinas-jucysbrady.github.io/)
 
 :::
 
@@ -108,7 +108,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+[![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcommunity.thriveglobal.com%2Fwp-content%2Fuploads%2F2020%2F02%2FCritical-Thinking.png&f=1&nofb=1&ipt=340686750e4e01fb5e2f92faa0735cf6baf1a5f96cab090eb81957a005a1ef63)](https://martinas-jucysbrady.github.io/)
 
 :::
 
@@ -127,7 +127,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+[![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%2Fid%2FOIP.WEKMZBVS3dCZ3PT9NU9UKAHaE3%3Fpid%3DApi&f=1&ipt=1a8f5f6baf363b63fcdd6dcc54551421607779cc2a15c0ac6cc440f09fc19752&ipo=images)](https://martinas-jucysbrady.github.io/)
 
 :::
 
@@ -146,7 +146,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+[![](assets\japan_l1.png)](https://martinas-jucysbrady.github.io/)
 
 :::
 
@@ -165,7 +165,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+[![](assets\japan_l2.png)](https://martinas-jucysbrady.github.io/)
 
 :::
 
