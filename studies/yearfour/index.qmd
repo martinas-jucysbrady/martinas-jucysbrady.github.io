@@ -8,18 +8,18 @@ location: "Dublin City University, Ireland"
 This page contains a summary of the work I have done during my fourth and final year in university. 
 :::
 
-## Module 1
+## Business Strategy
 
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+[![](/assets/mjb_favicon.png)](projects/business_strategy/index.qmd)
 
 :::
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Strategic Consultancy Report](https://martinas-jucysbrady.github.io/projects/business_strategy/index.qmd), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
 In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
 
