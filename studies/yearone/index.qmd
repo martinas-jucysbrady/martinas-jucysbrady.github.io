@@ -70,7 +70,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+[![](https://loop.dcu.ie/pluginfile.php/4733854/course/overviewfiles/shopping-ga853e7271_1280.jpg)](https://martinas-jucysbrady.github.io/)
 
 :::
 

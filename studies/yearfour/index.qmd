@@ -13,7 +13,7 @@ This page contains a summary of the work I have done during my fourth and final 
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/bus_strat.jpg)](projects/business_strategy/)
+[![](https://loop.dcu.ie/pluginfile.php/6158797/course/overviewfiles/strategy-concept-with-wooden-blocks-with-words-it-side-view.jpg)](projects/business_strategy/)
 
 :::
 
@@ -51,7 +51,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+[![](https://loop.dcu.ie/pluginfile.php/6180733/course/overviewfiles/BAA1026_ChatGPT%20Image%20Sep%207%2C%202025%2C%2011_10_23%20AM.png)](https://martinas-jucysbrady.github.io/)
 
 :::
 
@@ -89,7 +89,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/workflow.jpg)](https://martinas-jucysbrady.github.io/)
+[![](https://loop.dcu.ie/pluginfile.php/6188126/course/overviewfiles/1673002078258.jpg)](https://martinas-jucysbrady.github.io/)
 
 :::
 
