@@ -13,7 +13,7 @@ This page contains a summary of the work I have done during my fourth and final 
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/mjb_favicon.png)](projects/business_strategy/)
+[![](/assets/bus_strat.jpg)](projects/business_strategy/)
 
 :::
 
@@ -89,7 +89,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+[![](/assets/workflow.jpg)](https://martinas-jucysbrady.github.io/)
 
 :::
 
