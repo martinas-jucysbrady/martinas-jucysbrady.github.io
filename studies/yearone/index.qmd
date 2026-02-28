@@ -8,7 +8,7 @@ location: "Dublin City University, Ireland"
 This page contains a summary of the work I have done during my first year in university. 
 :::
 
-## Module 1
+## Introduction to Microeconomics
 
 ::: {.grid}
 
@@ -27,7 +27,140 @@ In this module, I completed two assignments. The first assignment was a research
 
 :::
 
-## Module 2
+## The Global Business Environment
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-2}
+[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+
+:::
+
+::: {.g-col-12 .g-col-md-10}
+
+[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+
+In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+
+:::
+
+:::
+
+## Introductory Accounting for Business
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-2}
+[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+
+:::
+
+::: {.g-col-12 .g-col-md-10}
+
+[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+
+In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+
+:::
+
+:::
+
+## Introduction to Marketing
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-2}
+[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+
+:::
+
+::: {.g-col-12 .g-col-md-10}
+
+[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+
+In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+
+:::
+
+:::
+
+## Business Analytics 1
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-2}
+[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+
+:::
+
+::: {.g-col-12 .g-col-md-10}
+
+[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+
+In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+
+:::
+
+:::
+
+## Critical Thinking for Business
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-2}
+[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+
+:::
+
+::: {.g-col-12 .g-col-md-10}
+
+[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+
+In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+
+:::
+
+:::
+
+## LIFE 
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-2}
+[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+
+:::
+
+::: {.g-col-12 .g-col-md-10}
+
+[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+
+In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+
+:::
+
+:::
+
+## Japanese Language 1 
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-2}
+[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+
+:::
+
+::: {.g-col-12 .g-col-md-10}
+
+[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+
+In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+
+:::
+
+:::
+
+## Japanese Language 2
 
 ::: {.grid}
 

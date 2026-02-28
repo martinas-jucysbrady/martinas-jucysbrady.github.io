@@ -8,7 +8,7 @@ location: "Dublin City University, Ireland"
 This page contains a summary of the work I have done during my third year in university. 
 :::
 
-## Module 1
+## KIMAP Introduction to Management
 
 ::: {.grid}
 
@@ -27,7 +27,159 @@ In this module, I completed two assignments. The first assignment was a research
 
 :::
 
-## Module 2
+## Advanced European Economy
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-2}
+[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+
+:::
+
+::: {.g-col-12 .g-col-md-10}
+
+[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+
+In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+
+:::
+
+:::
+
+## Advanced Econometric Analysis
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-2}
+[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+
+:::
+
+::: {.g-col-12 .g-col-md-10}
+
+[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+
+In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+
+:::
+
+:::
+
+## Introduction to Chemistry
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-2}
+[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+
+:::
+
+::: {.g-col-12 .g-col-md-10}
+
+[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+
+In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+
+:::
+
+:::
+
+## International Economy and Finance
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-2}
+[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+
+:::
+
+::: {.g-col-12 .g-col-md-10}
+
+[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+
+In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+
+:::
+
+:::
+
+## Japanese Legal System
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-2}
+[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+
+:::
+
+::: {.g-col-12 .g-col-md-10}
+
+[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+
+In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+
+:::
+
+:::
+
+## Advertising and Marketing Communications
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-2}
+[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+
+:::
+
+::: {.g-col-12 .g-col-md-10}
+
+[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+
+In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+
+:::
+
+:::
+
+## Advanced Portfolio Management - Theory and Practice
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-2}
+[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+
+:::
+
+::: {.g-col-12 .g-col-md-10}
+
+[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+
+In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+
+:::
+
+:::
+
+## Intermediate Japanese Language
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-2}
+[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+
+:::
+
+::: {.g-col-12 .g-col-md-10}
+
+[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+
+In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+
+:::
+
+:::
+
+## Upper Intermediate Japanese Language
 
 ::: {.grid}
 
