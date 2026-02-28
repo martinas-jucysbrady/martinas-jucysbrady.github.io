@@ -32,7 +32,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+[![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpauloppong.com%2Fwp-content%2Fuploads%2F2023%2F12%2FAccelerate-Digital-Transformation.png&f=1&nofb=1&ipt=30b2b7a926d6540bf4cb24d73f35d1a41f4ae817be7bb60787ebce1faac7a359)](https://martinas-jucysbrady.github.io/)
 
 :::
 
@@ -70,7 +70,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+[![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fappwrite.io%2Fimages%2Fblog%2Fintroducing-python-machine-learning-runtime%2Fcover.png&f=1&nofb=1&ipt=de03b1f13e8c2f5ef1d0ea0a198e65a5f707c538d2d1114cf8694f63b215972b)](https://martinas-jucysbrady.github.io/)
 
 :::
 
@@ -108,7 +108,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+[![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F5minuteenglish.com%2Fwp-content%2Fuploads%2F2024%2F08%2FGlobal-Media.webp&f=1&nofb=1&ipt=7650a5d725402b8ca71ff2b8e0ee78d5bf3ec07f1bf8cb7aed7f96bde7f34c29)](https://martinas-jucysbrady.github.io/)
 
 :::
 
@@ -146,7 +146,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
+[![](../../assets/japan_l4.png)](https://martinas-jucysbrady.github.io/)
 
 :::
 
