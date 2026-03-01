@@ -216,3 +216,8 @@ To restore full macroeconomic equilibrium, policy measures such as reducing tari
 loosening monetary conditions, or allowing the U.S. dollar to appreciate may help 
 reduce the surplus and rebalance capital flows, aligning the U.S. back with its external 
 trading partners.
+
+## 5. Bibliography
+
+::: {#refs}
+:::
