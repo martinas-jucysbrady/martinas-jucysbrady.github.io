@@ -40,7 +40,7 @@ benefits and challenges.
 
 ## 2. Policies
 
-### *Trade Policies*
+### *2.1 Trade Policies*
 
 President Trump introduced tariffs to address trade deficits and stimulate 
 U.S. GDP through greater domestic production. A 10% tariff applies to most 
@@ -50,7 +50,7 @@ reducing imports. Plans to escalate tariffs on August 1st to 50% for
 countries without trade deals could further increase consumer prices, 
 potentially affecting economic dynamics. 
 
-### *One Big Beautiful Bill Act*
+### *2.2 One Big Beautiful Bill Act*
 
 The One Big Beautiful Bill Act implements significant tax cuts and 
 reallocates government expenditure, yielding mixed economic outcomes. It 
@@ -63,7 +63,7 @@ Medicaid, education, and clean energy has declined. Proposals to lower
 corporate taxes to 15% and replace income taxes with tariff revenue could 
 add more than $5 trillion to deficits, posing risks to fiscal stability. 
 
-### *Immigration Policies* 
+### *2.3 Immigration Policies* 
 
 Stricter immigration enforcement aims to enhance national security but 
 impacts labour markets. Mass deportations, projected at 500,000 annually, 
@@ -73,7 +73,7 @@ Plans to escalate deportations to 1 million per year and introduce
 ideological screenings may further reduce the labour force, potentially 
 increasing economic challenges.  
 
-### *Exchange Rate*
+### *2.4 Exchange Rate*
 
 The U.S. dollar has depreciated, as reflected in the DXY, driven by 
 economic instability from rising fiscal deficits due to increased government 
@@ -88,9 +88,9 @@ depreciation has boosted export competitiveness, improving the trade
 balance, but it also raises inflation risks and highlights challenges to the 
 U.S. economy’s global standing. 
 
-## Mundell-Fleming Model 
+## 3. Mundell-Fleming Model 
 
-### *Assumptions* 
+### *3.1 Assumptions* 
 In order to accurately evaluate these policies using the Mundell Fleming 
 model, the key assumptions must be taken into consideration. 
 1. Economy: The U.S. operates an open economy, engaging in significant 
@@ -105,7 +105,7 @@ capital flows don’t necessarily change due to interest rate changes, but the
 recent tariffs and uncertainty over the US economy has an effect, which 
 results in a slightly upward-sloping balance of payments curve.
 
-### *IS (Investment-Saving) Schedule* 
+### *3.2 IS (Investment-Saving) Schedule* 
 - Variables: 
 Y (real income/GDP) – Although one of Trump’s objectives was to increase GDP, we can 
 clearly see that this has actually decreased. 
@@ -139,7 +139,7 @@ to the uncertainty in the US economy. When considering this, predictions
 could be made for the IS curve to move back to the right with further 
 reduced interest rates, indicating increased demand for goods once again. 
 
-### *LM (Liquidity-Money Supply) Schedule* 
+### *3.3 LM (Liquidity-Money Supply) Schedule* 
 - Variables: 
 
 Transaction money demand – this is the amount of money that is used for everyday 
@@ -173,7 +173,7 @@ Compared to the IS schedule, the LM schedule is seemingly much more difficult to
 predict, largely due to the uncertainty about decisions being made by Trump and 
 congress.  
 
-### BP (Balance of Payments) Schedule  
+### *3.4 BP (Balance of Payments) Schedule*  
 - Variables : 
 
 CA (Current Account) is found by comparing exports and imports, here we can see that 
@@ -200,7 +200,7 @@ mean income would begin to suffer drastically. This would create a scary economy
 live in where in order to grow the domestic market the economy must suffer on a 
 macroeconomic level.
 
-## Conclusion 
+## 4. Conclusion 
 
 By completing this analysis and displaying an IS-LM-BP graph, we can see that while the 
 U.S. economy is at an internal equilibrium (EQ2), it is no longer externally balanced, as 
