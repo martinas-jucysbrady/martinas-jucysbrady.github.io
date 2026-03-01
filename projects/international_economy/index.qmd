@@ -106,7 +106,8 @@ recent tariffs and uncertainty over the US economy has an effect, which
 results in a slightly upward-sloping balance of payments curve.
 
 ### *3.2 IS (Investment-Saving) Schedule* 
-- Variables: 
+Variables: 
+
 Y (real income/GDP) – Although one of Trump’s objectives was to increase GDP, we can 
 clearly see that this has actually decreased. 
 
@@ -140,7 +141,7 @@ could be made for the IS curve to move back to the right with further
 reduced interest rates, indicating increased demand for goods once again. 
 
 ### *3.3 LM (Liquidity-Money Supply) Schedule* 
-- Variables: 
+Variables: 
 
 Transaction money demand – this is the amount of money that is used for everyday 
 transactions, we can see that with a lower Y (income) this value will also decrease. 
@@ -174,7 +175,7 @@ predict, largely due to the uncertainty about decisions being made by Trump and
 congress.  
 
 ### *3.4 BP (Balance of Payments) Schedule*  
-- Variables : 
+Variables : 
 
 CA (Current Account) is found by comparing exports and imports, here we can see that 
 the number of exports is increasing compared to imports. Thus, meaning that we can 
