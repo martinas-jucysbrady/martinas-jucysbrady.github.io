@@ -34,15 +34,6 @@ about:
 ![Siemens' Healthineers](/projects/business_strategy/business_strategy.jpg){width="80%"}
 
 ---
-title: "Siemens Healthineers Strategic Consultancy Report"
-format:
-  html:
-    toc: true
-    toc-location: right
-    toc-title: "On this page"
-    cite-method: citeproc
-bibliography: references.bib
----
 
 ## 0. Executive Summary
 
