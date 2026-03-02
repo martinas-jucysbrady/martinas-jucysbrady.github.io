@@ -19,14 +19,14 @@ about:
   links:
     - icon: github
       text: GitHub
-      href: https://martinas-jucysbrady.github.io
+      href: https://github.com/martinas-jucysbrady
       target: _blank
     - icon: envelope
       text: E-mail
       href: mailto:martinas.jucysbrady2@mail.dcu.ie
     - icon: instagram
       text: Instagram
-      href: https://www.instagram.com/martinas.jucysbrady/
+      href: https://www.instagram.com/martinas.jb/
     - icon: linkedin
       text: LinkedIn
       href: https://linkedin.com/in/martinas-jucysbrady
