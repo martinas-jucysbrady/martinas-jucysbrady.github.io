@@ -102,13 +102,16 @@ U.S. economy’s global standing.
 ### *3.1 Assumptions* 
 In order to accurately evaluate these policies using the Mundell Fleming 
 model, the key assumptions must be taken into consideration. 
+
 1. Economy: The U.S. operates an open economy, engaging in significant 
 international trade and capital flows, with exports and imports influenced 
 by exchange rate changes, and domestic output levels. 
+
 2. Exchange Rate: The U.S. maintains a floating exchange rate, as evidenced 
 by the DXY, allowing the U.S. dollar to adjust freely to balance trade and 
 capital accounts, with recent depreciation enhancing export 
 competitiveness. 
+
 3. Capital Mobility: The U.S. exhibits near perfect capital mobility, where 
 capital flows don’t necessarily change due to interest rate changes, but the 
 recent tariffs and uncertainty over the US economy has an effect, which 

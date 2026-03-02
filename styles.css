@@ -1,1 +1,6 @@
-/* css styles */
+.quarto-title-banner img,
+header .quarto-title img,
+.card-title img {
+  display: none !important;
+}
+
