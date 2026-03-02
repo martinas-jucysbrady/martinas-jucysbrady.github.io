@@ -122,7 +122,7 @@ Variables:
 Y (real income/GDP) – Although one of Trump’s objectives was to increase GDP, we can 
 clearly see that this has actually decreased. 
 
-![Figure 2: US real GDP, as a percentage change from the preceding quarter](inteco2.png){width="80%"}
+![Figure 2: US real GDP, as a percentage change from the preceding quarter](inteco2.svg){width="80%"}
 
 Leakages (S+M) and Injections (I+G+X) 
 Imports (M) have decreased, while exports (X) have increased, decreasing the BoP 
