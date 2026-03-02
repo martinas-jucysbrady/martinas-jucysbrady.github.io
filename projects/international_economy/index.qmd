@@ -128,26 +128,26 @@ Leakages (S+M) and Injections (I+G+X)
 Imports (M) have decreased, while exports (X) have increased, decreasing the BoP 
 deficit. 
 
-![Figure 3: US trade in good with the world](inteco3.png){width="80%"}
+![Figure 3: US trade in good with the world](inteco3.svg){width="80%"}
 
 Government Expenditure (G) has also increased by 6%. 
 
-![Figure 4: US Government Expenditure](inteco4.png){width="80%"}
+![Figure 4: US Government Expenditure](inteco4.svg){width="80%"}
 
 Interest rates (r) have decreased to ~4.5%, and suggestions have been made that they 
 can be decreased even further. 
 
-![Figure 5: US Interest Rates](inteco5.png){width="80%"}
+![Figure 5: US Interest Rates](inteco5.svg){width="80%"}
 
 We must also consider that taxes have been reduced which in turn would increase net 
 income. Another consideration must be made for expenditure, where we can see growth 
 in the CPI has led to decreased consumer spending. 
 
-![Figure 6: US Consumer Expenditure](inteco6.png){width="80%"}
+![Figure 6: US Consumer Expenditure](inteco6.svg){width="80%"}
 
-![Figure 7: US CPI](inteco7.png){width="80%"}
+![Figure 7: US CPI](inteco7.svg){width="80%"}
 
-![Figure 8: US CPI (specific categories)](inteco8.png){width="80%"}
+![Figure 8: US CPI (specific categories)](inteco8.svg){width="80%"}
 
 Using this data we can now find the IS schedule and work out any 
 movement in the line. 
@@ -173,7 +173,7 @@ Variables:
 Transaction money demand – this is the amount of money that is used for everyday 
 transactions, we can see that with a lower Y (income) this value will also decrease. 
 
-![Figure 10: US Consumer Expenditure](inteco6.png){width="80%"}
+![Figure 10: US Consumer Expenditure](inteco6.svg){width="80%"}
 
 Speculative money demand – this is the amount of money held as a store of value, when 
 interest rates are low this value is high, as interest rates can be seen as an opportunity 
@@ -212,14 +212,14 @@ CA (Current Account) is found by comparing exports and imports, here we can see 
 the number of exports is increasing compared to imports. Thus, meaning that we can 
 assume that the value of CA is increasing and nearing a trade surplus. 
 
-![Figure 12: US trade in good with the world](inteco3.png){width="80%"}
+![Figure 12: US trade in good with the world](inteco3.svg){width="80%"}
 
 K (Capital Account) is found by the net capital inflow multiplied by the difference 
 between domestic and foreign interest rates. With the US having an increased amount 
 of inflow compared to outflow recently, and an interest rate which is above the global 
 average, it leads us to assume that K has increased.  
 
-![Figure 13: US Investment Positions](inteco13.png){width="80%"}
+![Figure 13: US Investment Positions](inteco13.svg){width="80%"}
 
 We can also assume that the slope of the BP line will by slightly upward sloped, as the 
 US operated a near perfect capital mobility. I allocated a small slope as due to Trump’s 
