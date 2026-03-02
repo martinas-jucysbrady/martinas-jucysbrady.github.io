@@ -122,37 +122,37 @@ Variables:
 Y (real income/GDP) – Although one of Trump’s objectives was to increase GDP, we can 
 clearly see that this has actually decreased. 
 
-![Figure 2: US real GDP, as a percentage change from the preceding quarter](inteco2.svg){width="80%"}
+![Figure 2: US real GDP, as a percentage change from the preceding quarter](inteco2.svg)
 
 Leakages (S+M) and Injections (I+G+X) 
 Imports (M) have decreased, while exports (X) have increased, decreasing the BoP 
 deficit. 
 
-![Figure 3: US trade in good with the world](inteco3.svg){width="80%"}
+![Figure 3: US trade in good with the world](inteco3.svg)
 
 Government Expenditure (G) has also increased by 6%. 
 
-![Figure 4: US Government Expenditure](inteco4.svg){width="80%"}
+![Figure 4: US Government Expenditure](inteco4.svg)
 
 Interest rates (r) have decreased to ~4.5%, and suggestions have been made that they 
 can be decreased even further. 
 
-![Figure 5: US Interest Rates](inteco5.svg){width="80%"}
+![Figure 5: US Interest Rates](inteco5.svg)
 
 We must also consider that taxes have been reduced which in turn would increase net 
 income. Another consideration must be made for expenditure, where we can see growth 
 in the CPI has led to decreased consumer spending. 
 
-![Figure 6: US Consumer Expenditure](inteco6.svg){width="80%"}
+![Figure 6: US Consumer Expenditure](inteco6.svg)
 
-![Figure 7: US CPI](inteco7.svg){width="80%"}
+![Figure 7: US CPI](inteco7.svg)
 
-![Figure 8: US CPI (specific categories)](inteco8.svg){width="80%"}
+![Figure 8: US CPI (specific categories)](inteco8.svg)
 
 Using this data we can now find the IS schedule and work out any 
 movement in the line. 
 
-![Figure 9: IS Curve Shift](inteco9.png){width="80%"}
+![Figure 9: IS Curve Shift](inteco9.png)
 
 Here we can see that we have found that after the implementation of 
 Trump’s policies the IS line will move to the left, suggesting that there is a 
@@ -173,7 +173,7 @@ Variables:
 Transaction money demand – this is the amount of money that is used for everyday 
 transactions, we can see that with a lower Y (income) this value will also decrease. 
 
-![Figure 10: US Consumer Expenditure](inteco6.svg){width="80%"}
+![Figure 10: US Consumer Expenditure](inteco6.svg)
 
 Speculative money demand – this is the amount of money held as a store of value, when 
 interest rates are low this value is high, as interest rates can be seen as an opportunity 
@@ -182,7 +182,7 @@ cost.
 Y (income) and r (interest rate), which can have already been covered in the IS 
 Schedule. 
 
-![Figure 11: LM Curve Shift](inteco11.png){width="80%"}
+![Figure 11: LM Curve Shift](inteco11.png)
 
 After examining the effects of Trump’s policies on the money market, we can now 
 assess the LM schedule. Interest rates have decreased to around 4.5%, and further 
@@ -212,20 +212,20 @@ CA (Current Account) is found by comparing exports and imports, here we can see 
 the number of exports is increasing compared to imports. Thus, meaning that we can 
 assume that the value of CA is increasing and nearing a trade surplus. 
 
-![Figure 12: US trade in good with the world](inteco3.svg){width="80%"}
+![Figure 12: US trade in good with the world](inteco3.svg)
 
 K (Capital Account) is found by the net capital inflow multiplied by the difference 
 between domestic and foreign interest rates. With the US having an increased amount 
 of inflow compared to outflow recently, and an interest rate which is above the global 
 average, it leads us to assume that K has increased.  
 
-![Figure 13: US Investment Positions](inteco13.svg){width="80%"}
+![Figure 13: US Investment Positions](inteco13.svg)
 
 We can also assume that the slope of the BP line will by slightly upward sloped, as the 
 US operated a near perfect capital mobility. I allocated a small slope as due to Trump’s 
 policies, where capital flows may now indirectly change interest rates. 
 
-![Figure 14: BP Curve Shift](inteco14.png){width="80%"}
+![Figure 14: BP Curve Shift](inteco14.png)
 
 By analysing this BP schedule we can see that less income leads to more capital 
 inflows. This is further influenced by tariffs as with less income you avoid imported 
@@ -240,7 +240,7 @@ macroeconomic level.
 
 ## 4. Conclusion 
 
-![Figure 15: IS-LM-BP Graph](inteco15.png){width="80%"}
+![Figure 15: IS-LM-BP Graph](inteco15.png)
 
 By completing this analysis and displaying an IS-LM-BP graph, we can see that while the 
 U.S. economy is at an internal equilibrium (EQ2), it is no longer externally balanced, as 
