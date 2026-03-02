@@ -1,6 +1,7 @@
-.quarto-title-banner img,
-header .quarto-title img,
-.card-title img {
+.about-image {
   display: none !important;
 }
 
+.about-image.rounded {
+  display: none !important;
+}
