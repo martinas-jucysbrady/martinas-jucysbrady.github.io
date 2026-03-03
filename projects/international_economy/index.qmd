@@ -52,7 +52,7 @@ President Trump introduced tariffs to address trade deficits and stimulate
 U.S. GDP through greater domestic production. A 10% tariff applies to most 
 imported goods, with higher rates of 30% for China and 25% for non
 compliant USMCA goods from Mexico and Canada, boosting exports and 
-reducing imports [@tariffscheck2025]. Plans to escalate tariffs on August 1st to 50% for 
+reducing imports [@tariffcheck2025]. Plans to escalate tariffs on August 1st to 50% for 
 countries without trade deals could further increase consumer prices, 
 potentially affecting economic dynamics. 
 
