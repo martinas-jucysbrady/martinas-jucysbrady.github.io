@@ -52,7 +52,7 @@ President Trump introduced tariffs to address trade deficits and stimulate
 U.S. GDP through greater domestic production. A 10% tariff applies to most 
 imported goods, with higher rates of 30% for China and 25% for non
 compliant USMCA goods from Mexico and Canada, boosting exports and 
-reducing imports. Plans to escalate tariffs on August 1st to 50% for 
+reducing imports [@tariffscheck2025]. Plans to escalate tariffs on August 1st to 50% for 
 countries without trade deals could further increase consumer prices, 
 potentially affecting economic dynamics. 
 
@@ -94,7 +94,7 @@ depreciation has boosted export competitiveness, improving the trade
 balance, but it also raises inflation risks and highlights challenges to the 
 U.S. economy’s global standing. 
 
-![Figure 1: US Dollar depreciation ](inteco1.png){width="80%"}
+![Figure 1: US Dollar depreciation [usdx2025]](inteco1.png){width="80%"}
 
 ## 3. Mundell-Fleming Model 
 
@@ -122,7 +122,7 @@ Variables:
 Y (real income/GDP) – Although one of Trump’s objectives was to increase GDP, we can 
 clearly see that this has actually decreased. 
 
-![Figure 2: US real GDP, as a percentage change from the preceding quarter](inteco2.svg)
+![Figure 2: US real GDP, as a percentage change from the preceding quarter [bea2025]](inteco2.svg)
 
 Leakages (S+M) and Injections (I+G+X) 
 Imports (M) have decreased, while exports (X) have increased, decreasing the BoP 
@@ -135,7 +135,7 @@ Government Expenditure (G) has also increased by 6%.
 ![Figure 4: US Government Expenditure](inteco4.svg)
 
 Interest rates (r) have decreased to ~4.5%, and suggestions have been made that they 
-can be decreased even further. 
+can be decreased even further [@reuters2025fed]. 
 
 ![Figure 5: US Interest Rates](inteco5.svg)
 
