@@ -95,7 +95,7 @@ In this module, I completed two assignments. The first assignment was a research
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Mundell-Fleming Model](http://martinas-jucysbrady.github.io/projects/international_economy), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
 In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
 
