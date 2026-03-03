@@ -45,9 +45,9 @@ Grading: 30% attendance, 30% exam, 40% group assignment.
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
 Developed expertise in EU economic integration, covering the EU Green Deal for sustainability, the EU's global role, policy competition, new Commission dynamics, monetary integration and crisis responses.
-​
+
 Engaged with key materials like Bruegel memos 2024, leadership analyses, and lectures on economic integration.
-​
+
 Grading: 50% assignments, 50% final exam.
 
 :::
@@ -66,9 +66,9 @@ Grading: 50% assignments, 50% final exam.
 ::: {.g-col-12 .g-col-md-10}
 
 Developed skills for empirical economic research, starting with stats foundations and linear regression (OLS, inference via t-tests), then advancing to multivariate models, binary outcomes (logit/probit), panel data (fixed effects) and fixes for heteroskedasticity/serial correlation.
-​
+
 Weekly RStudio assignments built hands-on comfort with running regressions, diagnostics, and interpretation.
-​
+
 Grading: 20% assignments, 30% mid-term, 50% final exam.
 
 :::
