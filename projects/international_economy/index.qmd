@@ -94,7 +94,7 @@ depreciation has boosted export competitiveness, improving the trade
 balance, but it also raises inflation risks and highlights challenges to the 
 U.S. economy’s global standing. 
 
-![Figure 1: US Dollar depreciation [usdx2025]](inteco1.png){width="80%"}
+![Figure 1: US Dollar depreciation [@usdx2025]](inteco1.png){width="80%"}
 
 ## 3. Mundell-Fleming Model 
 
@@ -122,22 +122,22 @@ Variables:
 Y (real income/GDP) – Although one of Trump’s objectives was to increase GDP, we can 
 clearly see that this has actually decreased. 
 
-![Figure 2: US real GDP, as a percentage change from the preceding quarter [bea2025]](inteco2.svg)
+![Figure 2: US real GDP, as a percentage change from the preceding quarter [@bea2025]](inteco2.svg)
 
 Leakages (S+M) and Injections (I+G+X) 
 Imports (M) have decreased, while exports (X) have increased, decreasing the BoP 
 deficit. 
 
-![Figure 3: US trade in good with the world](inteco3.svg)
+![Figure 3: US trade in good with the world [@bea2025]](inteco3.svg)
 
 Government Expenditure (G) has also increased by 6%. 
 
-![Figure 4: US Government Expenditure](inteco4.svg)
+![Figure 4: US Government Expenditure [@bea2025]](inteco4.svg)
 
 Interest rates (r) have decreased to ~4.5%, and suggestions have been made that they 
 can be decreased even further [@reuters2025fed]. 
 
-![Figure 5: US Interest Rates](inteco5.svg)
+![Figure 5: US Interest Rates [@federalreserve2025]](inteco5.svg)
 
 We must also consider that taxes have been reduced which in turn would increase net 
 income. Another consideration must be made for expenditure, where we can see growth 
