@@ -21,7 +21,11 @@ This page contains a summary of the work I have done during my third year in uni
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developed foundational management skills through environmental scanning (STEEPLED analysis), cultural frameworks (Hofstede's dimensions, Schein's three levels, cross-cultural management), classical functions (Fayol's planning/organising/leading/controlling), and Japanese innovation via Shibusawa Eiichi's entrepreneurial legacy.
+​
+Completed weekly readings on these core topics for steady application.
+
+Grading: 30% attendance, 30% exam, 40% group assignment.
 
 :::
 
@@ -40,7 +44,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developed expertise in EU economic integration, covering the EU Green Deal for sustainability, the EU's global role, policy competition, new Commission dynamics, monetary integration and crisis responses.
+​
+Engaged with key materials like Bruegel memos 2024, leadership analyses, and lectures on economic integration.
+​
+Grading: 50% assignments, 50% final exam.
 
 :::
 
@@ -80,7 +88,11 @@ Grading: 20% assignments, 30% mid-term, 50% final exam.
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developed foundational chemistry knowledge, progressing from quantum basics (de Broglie wavelength, Bohr model atomic spectra) and molecular geometry/symmetry (VSEPR shapes like trigonal bipyramidal, square planar; rotational axes) to organic chemistry (IUPAC naming alkanes/alkenes, hydrogenation/HBr reactions), and physical chemistry (ideal gas law, partial pressures, kinetic theory speeds, thermodynamics: state functions, expansion work reversible/irreversible). 
+
+Completed weekly assignments applying these concepts with calculations and drawings.
+
+Grading: 90% assignments, 10% exam. 
 
 :::
 
@@ -97,9 +109,13 @@ In this module, I completed two assignments. The first assignment was a research
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Mundell-Fleming Model](http://martinas-jucysbrady.github.io/projects/international_economy), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Mundell-Fleming Model](http://martinas-jucysbrady.github.io/projects/international_economy)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Gained core understanding of international finance, spanning financial markets structure, exchange rate determination (fixed/flexible, PPP, money/interest rates), balance of payments (definitions, policy via elasticity/IS-LM/monetarist approaches), international systems (gold standard to Bretton Woods/flexible rates), monetary integration (Euro), offshore markets (Eurocurrency/bonds), derivatives (futures/options/swaps) and crises/policy coordination.
+​
+Explored open macro policy linkages and future currency system trends through weekly topics.
+
+Grading: 40% in-class contribution, 60% final exam.
 
 :::
 
@@ -118,7 +134,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developed foundational knowledge of the Japanese legal system, from general introduction and governmental structure to historical evolution, constitutional rights guarantees, and key areas like intellectual property, criminal/administrative procedure, environmental/tax law.
+
+Explored practical applications through video clips and a special lecture, culminating in a summing-up review.
+
+Grading: 20% attendance, 40% minute papers, 40% final essay. 
 
 :::
 
@@ -137,7 +157,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developed foundational knowledge in advertising and marketing communications, covering strategy/planning, privacy in online environments, global advertising, sustainability/CSR, social well-being impacts, and new technologies in marketing.
+
+Fostered critical analysis by evaluating research from leading journals on current trends and issues.
+
+Grading: 50% group assessment, 50% individual video presentation. 
 
 :::
 
@@ -156,7 +180,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developed hands-on expertise in advanced portfolio management, blending theory (objectives, asset allocation, mean-variance optimization, efficient frontiers, hedging, behavioral finance) with practical portfolio construction, security selection, risk/return analysis, and real-world cases.
+
+Managed an 8-week live asset investment portfolio, tracking performance impacts from market elements.
+
+Grading: 20% class participation, 10% homework, 30% mid-term exam, 40% final portfolio presentation.
 
 :::
 
@@ -173,9 +201,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+Developed Intermediate Japanese proficiency (JLPT N3 level equivalent) across 6 integrated modules: General Language, Reading, Kanji, Speaking, Writing and Specific Purposes.
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Built comprehensive skills through targeted practice in vocabulary, grammar, comprehension, character mastery, oral fluency, composition and practical applications.
+
+Grading: 50% mid-term exams, 50% final exams per module.
 
 :::
 
@@ -192,9 +222,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+Developed Upper Intermediate Japanese proficiency (JLPT N2 level equivalent) across 6 integrated modules: General Language, Reading, Kanji, Speaking, Writing and Specific Purposes.
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Built comprehensive skills through targeted practice in vocabulary, grammar, comprehension, character mastery, oral fluency, composition and practical applications.
+
+Grading: 50% mid-term exams, 50% final exams per module.
 
 :::
 
