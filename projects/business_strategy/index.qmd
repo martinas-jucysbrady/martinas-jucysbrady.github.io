@@ -69,7 +69,7 @@ Contemporary healthcare literature highlights numerous demographic, technologica
 Strategically, digital transformation is widely recognised as a core driver of competitive advantage in healthcare organisations [@teece2025]. Sustainability research further emphasises the growing relevance of circular-economy principles in medical-device design and supply chains [@hoveling2024]. Altogether, this literature establishes the external pressures and strategic imperatives shaping value creation in Siemens Healthineers' operating environment.
 
 ## 3. Diagnostic
-### 3.1 PESTEL Analysis
+### *3.1 PESTEL Analysis*
 The environment in which Siemens Healthineers operates is shaped by international policy priorities focused on digital transformation, patient safety, and ethical innovation. The EU's ageing population continues to grow, increasing demand for chronic-disease management and long-term investment in preventive and diagnostic technologies [@oecd2024]. At a regulatory level, the EU Medical Device Regulation and In Vitro Diagnostic Regulation impose strict safety, certification, and traceability standards, raising compliance complexity and barriers to entry [@ema2025]. In addition, the EU Artificial Intelligence Act classifies medical AI as "high risk," requiring transparency and human oversight in diagnostic applications [@aiact2024]. Overall, this political environment both supports digital-health expansion and constrains firms through heightened regulation, making policy navigation a key source of competitive advantage. 
 
 Rising healthcare demand, cost pressures, and shifting investment conditions are shaping the economic environment surrounding Siemens Healthineers. Global healthcare spending accounted for 9.9% of world GDP in 2022 [@who2024], though fiscal tightening and higher debt-servicing costs may limit future growth. Inflationary pressures, particularly in energy and semiconductor manufacturing, have increased production and logistics costs [@deloitte2024]. Despite this, the med-tech sector remains attractive, with KPMG forecasting around 5% annual global growth in medical-device demand to 2030, driven by ageing populations and chronic-disease prevalence. 
@@ -82,7 +82,7 @@ Environmental sustainability has become a major priority within the med-tech sec
 
 Within a complex and evolving legal landscape, Siemens Healthineers must comply with strict frameworks governing both data protection and the ethical use of artificial intelligence. The EU MDR 2017/745 and IVDR 2017/746 require rigorous conformity assessments and certification for all medical devices. Data governance is equally critical, with the European Data Act (2023/2854) and the EU Artificial Intelligence Act (2024) introducing harmonised rules to protect patient privacy, ensure fair data usage, and support trustworthy AI deployment in healthcare.
 
-### 3.2 Porter's Five Forces
+### *3.2 Porter's Five Forces*
 
 **Threat of new entrants**
 
@@ -104,7 +104,7 @@ In the healthcare-technology sector, substitutes include alternative diagnostic 
 
 Competition in the medical-technology sector is intense, with major rivals such as General Electric and Philips Healthcare, alongside over 25,000 medical-device firms in Europe, many of which are SMEs [@mmsl2014]. These firms compete with powerful incumbents holding large market shares, making rivalry strong despite Siemens' leading position. Rivalry is further intensified by moderate market growth and significant price pressure, with customers demanding both value and advanced service. Differentiation is increasingly based on technology and innovation rather than price alone. Siemens' acquisition of Varian Medical Systems highlights the ongoing competition for scale and market share [@subiris2024].
 
-### 3.3 VRIO Analysis
+### *3.3 VRIO Analysis*
 
 
 Siemens Healthineers possesses technological and organisational resources that give it a strong competitive advantage in the global med-tech industry. Its advanced AI-enabled diagnostic and imaging platforms, including the Syngo Carbon IT system, deliver significant value by improving efficiency and supporting value-based healthcare models, a trend accelerated by pandemic-era digitalisation [@siemens_annual2024]. As one of the world's largest medical-technology companies, Siemens Healthineers has capabilities and scale that most competitors cannot easily replicate. 
@@ -113,7 +113,7 @@ These strengths, combined with its embedded relationships with hospitals and hea
 
 Overall, the combination of AI innovation, strategic partnerships, and operational capability underpins Siemens Healthineers' sustained competitive advantage over most other med-tech firms.
 
-### 3.4 Porter's Value Chain Model
+### *3.4 Porter's Value Chain Model*
 Porter's Value Chain Model is a model that analyses a company's internal operations by looking into its activities to see where value is created and where costs occur. The model divides activities into two categories of basic activities and auxiliary activities. Cost control and the determination of competitive advantages can be carried out at every level of the process [@ruan2020]. In the context of Siemens Healthineers, applying this value chain model allows for the analysis of 5 aspects of the business that are inbound logistics, operations, outbound logistics, marketing and sales and service. All these aspects play a key role in value creation and must be considered also in relation to cost structure. Auxiliary activities such as the development of technologies used to aid the business, HR and infrastructure development must also be evaluated in order to identify internal strengths and possible areas for improvement.
 
 **Insights gained from Value Chain Model**
@@ -145,26 +145,26 @@ Despite recognising ageing populations and rising chronic disease as key demand 
 ## 5. Evaluation
 Based on the diagnostic and intervention stages, the evaluation stage assesses how effectively Siemens Healthineers' strategies support sustainable growth, ethical leadership and global healthcare expansion. It examines the impact of the company's strategy across product innovation, sustainability integration, ethical governance and partnerships, highlighting the extent of how these align with Siemens' broader goal of advancing the accessible and sustainable healthcare world.
 
-### 5.1 Expansion of products and services
+### *5.1 Expansion of products and services*
 From the diagnostics stage it can be identified that Siemens already holds a competitive advantage that stems from its use of AI-enabled diagnostic and imaging platforms (such as Syngo Carbon and AI-Rad Companion, which are both deeply integrated into the international healthcare system). In the current healthcare industry, a trend of healthcare professional shortages and a growing demand for scalable, cost-effective technologies can be identified, which presents Siemens with a clear opportunity to expand its offerings and respond to global needs [@deloitte2024]. In line with these findings, the intervention stage highlights Siemens’ efforts to broaden diagnostic access in foreign and emerging markets. Partnerships such as the Africa Medical Equipment Facility demonstrate successful expansion, enabling affordable, modular healthcare solutions for infrastructure-limited settings [@ifc2023]. This highlights that there is significant potential for Siemens to further deploy the Blue Ocean strategy, by collaborating with emerging governments and entering uncontested markets and deliver impactful, sustainable solutions. 
 
 Siemens is well positioned to move beyond the use of AI just for post diagnosis treatment and develop tools with the capabilities of early detection. By developing modular and cost-efficient diagnostic products, with a focus on environmental and sustainable leadership into their core business strategy, Siemens can create a product that serves markets of developed and emerging regions. By taking inspiration from companies like Huma and AliveCor, who are pursuing such business strategies, Siemens can use their huge resource pool and leadership to provide a competitive advantage. 
 
 Giving underserved individuals access to healthcare and sustainability will allow Siemens to speed up their development of scalable products that address global health problems and also support decarbonisation. This approach reinforces Siemens’ commitment to healthcare innovation and also encapsulates their target of long term business growth through the creation of new market opportunities and a greater social purpose.
 
-### 5.2 Integration of sustainable practises
+### *5.2 Integration of sustainable practises*
 From the diagnostic stage, it is evident that the healthcare industry remains a major contributor to the global climate crisis, driving urgent calls for decarbonisation and circular economy adoption. Siemens Healthineers’ 2024 Sustainability Report sets ambitious goals, including a 90% reduction in Scope 1 and 2 emissions by 2030 and a 90% reduction in Scope 3 emissions by 2050 [@siemens_sustainability2024]. However, while these targets demonstrate global leadership in sustainability, they are not yet fully synchronised across all operational regions, pointing to an opportunity for deeper integration of sustainability frameworks into the company’s diagnostic and intervention strategies. 
 
 In response to growing regulatory requirements such as the EU Circular Economy Act, Siemens can embed environmental and social considerations into every product and market strategy. Developing modular, energy-efficient diagnostic tools and transforming supply chains through blockchain and predictive analytics will allow Siemens to track emissions and waste across product lifecycles, aligning sustainability with transparency and compliance. This approach would not only enhance operational resilience but also generate long-term value through sustained innovation and trust. 
 
 By positioning itself as a pioneer in sustainable healthcare, Siemens can enter new eco-conscious markets where sustainability itself becomes a differentiating factor. Integrating sustainability as a core business driver reinforces Siemens’ social purpose, strengthens brand reputation and delivers a competitive advantage by aligning business performance with global health and environmental goals.
 
-### 5.3 Strengthen business ethics
+### *5.3 Strengthen business ethics*
 From the diagnostic analysis, Siemens Healthineers operates under an increasingly complex regulatory environment, particularly concerning data protection, patient safety, and the ethical deployment of artificial intelligence. Frameworks such as the EU Medical Devices Regulation (MDR) 2017/745 and In Vitro Diagnostic Medical Devices Regulation (IVDR) 2017/746 mandate conformity assessments to ensure compliance and ethical use of technology [@ema2025]. As AI-driven medical solutions become more prominent, Siemens faces heightened scrutiny regarding transparency, privacy, and algorithmic bias, which are challenges that position medical AI as a high-risk category under EU law. 
 
 The intervention phase highlights an opportunity to move beyond basic compliance towards proactive ethical innovation. By embedding an “ethical-by-design” framework in every stage of AI development [@teece2025], Siemens can transform regulatory demands into a catalyst for trust-based value creation. This forward-looking ethical governance can strengthen Siemens’ global reputation for safety, integrity, and accountability. In a data-driven healthcare landscape, such ethical leadership not only builds worldwide trust but also serves as a powerful source of competitive advantage.
 
-### 5.4 Build partnerships
+### *5.4 Build partnerships*
 The diagnostic stage shows that Siemens Healthineers has already established a wide-reaching network of partnerships with hospitals and healthcare ministries across the globe. Through its Value Partnerships framework, Siemens collaborates with institutions such as the Ministry of Health in Murcia, Spain, and with emerging market governments under initiatives like the Africa Medical Equipment Facility [@ifc2023]. These embedded relationships form an inimitable part of Siemens’ operational advantage, enabling continuous innovation and effective value capture across markets. 
 
 At the intervention stage, Siemens has the opportunity to further expand this network through strategic collaborations that prioritise responsible innovation and align with the Blue Ocean strategy. By co-developing scalable healthcare infrastructure solutions and entering untapped regions, Siemens can strengthen its position as a transformative partner in global healthcare. These efforts would not only reinforce the company’s competitive edge but also accelerate long-term industry transformation by breaking barriers to healthcare access and driving sustainable growth across international markets.
