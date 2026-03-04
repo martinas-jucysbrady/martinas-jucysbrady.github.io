@@ -180,8 +180,6 @@ Grading: 30% media project, 30% group project, 40% eportfolio.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
-
 Developed complete beginner Japanese proficiency through hiragana/katakana mastery, basic greetings, numbers, particles, simple present/past grammar, everyday vocabulary and introductory conversations.
 
 Built foundational listening, speaking, reading and writing skills for basic communication needs.
@@ -202,8 +200,6 @@ Grading: continuous assignments, tests and exam.
 :::
 
 ::: {.g-col-12 .g-col-md-10}
-
-[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
 Built on Japanese 1 foundations with expanded grammar (te-form, adjectives, transitive/intransitive verbs), additional kanji (50-100 characters), descriptive sentences and situational dialogues.
 

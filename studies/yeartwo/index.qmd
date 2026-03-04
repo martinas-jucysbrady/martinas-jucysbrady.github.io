@@ -202,8 +202,6 @@ Grading: 20% quizzes, 40% reflections, 40% research paper.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
-
 Developed core Japanese language proficiency through integrated practice in vocabulary, grammar, listening, speaking, reading and writing.
 
 Progressed through structured lessons building foundational to intermediate skills for practical communication.
@@ -224,8 +222,6 @@ Grading: continuous assignments, tests and exam.
 :::
 
 ::: {.g-col-12 .g-col-md-10}
-
-[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
 Developed translation skills between Japanese and English, focusing on accurate rendering of meaning, cultural nuances, idiomatic expressions and text types from formal documents to casual dialogue.
 
