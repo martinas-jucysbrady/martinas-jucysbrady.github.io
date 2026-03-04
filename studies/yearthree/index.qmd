@@ -19,7 +19,7 @@ This page contains a summary of the work I have done during my third year in uni
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone)
+[Consultancy Report](http://martinas-jucysbrady.github.io/projects/KIMAP)
 
 Developed critical understanding of management across for-profit/non-profit sectors, exploring strategic roles (scanning environments, coordination/control), organisational dynamics (differentiation/integration, leadership/diversity/conflict), and paradigms like international/cross-cultural/HR/marketing/supply chain management plus entrepreneurship.
 
