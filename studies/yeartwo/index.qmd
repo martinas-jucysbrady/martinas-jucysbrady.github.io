@@ -21,7 +21,11 @@ This page contains a summary of the work I have done during my second year in un
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Analysed economy-wide phenomena including GDP measurement, business cycles, inflation, unemployment, monetary/fiscal policy, IS-LM framework, aggregate supply/demand and growth theory.
+
+Evaluated macroeconomic models and policy debates through problem sets and current events analysis.
+
+Grading: 40% assignments, 60% exam.
 
 :::
 
@@ -40,7 +44,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Gained foundational understanding of psychological principles including cognition, learning, motivation, emotion, personality, social influence and mental health.
+
+Explored theoretical frameworks and empirical research methods through lectures, discussions and critical analysis.
+
+Grading: 50% exam, 50% essay.
 
 :::
 
@@ -59,7 +67,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developed expertise in operations strategy, process design, capacity planning, inventory management, quality control, supply chain coordination and lean/six sigma methodologies.
+
+Analysed operational trade-offs and performance metrics through case studies and process mapping exercises.
+
+Grading: 45% group assignment, 55% individual assignment.
 
 :::
 
@@ -78,7 +90,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Built data analysis skills for business decision-making, covering descriptive statistics, data visualization, regression analysis, forecasting, A/B testing and dashboard creation.
+
+Applied analytics techniques to business case studies using Excel and R for actionable insights.
+
+Grading: 15% group assignment, 30% exams, 55% final assignment.
 
 :::
 
@@ -97,7 +113,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developed core corporate finance skills including time value of money, capital budgeting, cost of capital, capital structure, dividend policy, risk management and valuation methods.
+
+Mastered financial decision-making frameworks through problem sets, case analysis and modeling exercises.
+
+Grading: 30% assignments, 70% exam. 
 
 :::
 
@@ -116,7 +136,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Analysed firm behavior and market structures including perfect competition, monopoly, oligopoly, game theory, pricing strategies, entry deterrence and regulation.
+
+Applied industrial organisation frameworks to antitrust cases, mergers and industry evolution patterns.
+
+Grading: 30% assignments, 70% final essay.
 
 :::
 
@@ -135,7 +159,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Examined evolving consumer behavior patterns driven by digital transformation, sustainability concerns, personalisation demands and cultural shifts.
+
+Analysed marketing implications of new consumer segments, omnichannel strategies and behavioral economics insights.
+
+Grading: 30% group assignment, 70% exams.
 
 :::
 
@@ -154,7 +182,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developed practical critical thinking skills through argument analysis, evidence evaluation, logical reasoning, cognitive biases and decision-making frameworks.
+
+Applied structured thinking tools to real-world problems via case studies, debates and reflective exercises.
+
+Grading: 20% quizzes, 40% reflections, 40% research paper.
 
 :::
 
@@ -172,7 +204,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developed core Japanese language proficiency through integrated practice in vocabulary, grammar, listening, speaking, reading and writing.
+
+Progressed through structured lessons building foundational to intermediate skills for practical communication.
+
+Grading: continuous assignments, tests and exam.
 
 :::
 
@@ -191,7 +227,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developed translation skills between Japanese and English, focusing on accurate rendering of meaning, cultural nuances, idiomatic expressions and text types from formal documents to casual dialogue.
+
+Practiced directional and bidirectional translation with emphasis on fidelity, fluency and context-appropriate style.
+
+Grading: 100% exam.
 
 :::
 
@@ -210,7 +250,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Explored contemporary Japanese society through key themes including social structures, family systems, education, work culture, religion, gender roles, popular culture and social issues.
+
+Analysed cultural patterns and their historical roots alongside modern transformations via readings, discussions and presentations.
+
+Grading: 10% participation, 30% presentation, 60% essay.
 
 :::
 

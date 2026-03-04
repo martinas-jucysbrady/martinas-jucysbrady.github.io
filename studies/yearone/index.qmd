@@ -21,7 +21,11 @@ This page contains a summary of the work I have done during my first year in uni
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developed foundational microeconomic analysis covering supply/demand, elasticity, consumer/producer surplus, market failure, perfect competition, monopoly pricing and welfare economics.
+
+Applied graphical and mathematical models to analyze market outcomes and policy interventions.
+
+Grading: 15% participation, 20% mid-term exam, 65% final exam.
 
 :::
 
@@ -40,7 +44,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Explored globalisation dynamics including trade patterns, multinational corporations, global value chains, cultural convergence/divergence, environmental impacts and geopolitical tensions.
+
+Analysed contemporary global challenges through case studies and theoretical frameworks.
+
+Grading: 30% group assignment, 70% final essay.
 
 :::
 
@@ -59,7 +67,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Mastered fundamental accounting principles including double-entry bookkeeping, financial statements preparation (balance sheet, income statement, cash flow), ratio analysis and basic managerial accounting.
+
+Developed skills in transaction recording, ledger management and financial reporting interpretation.
+
+Grading: 30% continuous assignments, 30% group assignment, 40% video presentation.
 
 :::
 
@@ -78,7 +90,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developed core marketing principles covering market segmentation, targeting, positioning, marketing mix (4Ps), consumer behavior, branding and digital marketing strategies.
+
+Analysed marketing case studies and applied frameworks to strategic decision-making.
+
+Grading: 15% assignments, 25% group assignment, 60% exam. 
 
 :::
 
@@ -97,7 +113,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Gained introductory data analytics skills using Tableau for visualization, Excel for data manipulation, basic statistical analysis and dashboard creation for business insights.
+
+Applied analytical tools to real datasets through structured exercises and exam scenarios.
+
+Grading: 10% Tableau exercise, 30% weekly assignments, 50% exam. 
 
 :::
 
@@ -116,13 +136,17 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Built essential critical thinking foundations including argument identification, logical fallacies, evidence evaluation, reasoning patterns and structured problem-solving approaches.
+
+Practiced analytical skills through continuous exercises, discussions and written analysis.
+
+Grading: 100% continuous assignments. 
 
 :::
 
 :::
 
-## LIFE 
+## Learning Innovation for Enterprise
 
 ::: {.grid}
 
@@ -135,7 +159,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developed personal/professional development skills through media literacy, teamwork, digital portfolio creation and self-reflection on learning experiences.
+
+Applied creative and collaborative approaches to real-world projects showcasing transferable skills.
+
+Grading: 30% media project, 30% group project, 40% eportfolio. 
 
 :::
 
@@ -154,7 +182,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developed complete beginner Japanese proficiency through hiragana/katakana mastery, basic greetings, numbers, particles, simple present/past grammar, everyday vocabulary and introductory conversations.
+
+Built foundational listening, speaking, reading and writing skills for basic communication needs.
+
+Grading: continuous assignments, tests and exam. 
 
 :::
 
@@ -173,7 +205,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 [Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Built on Japanese 1 foundations with expanded grammar (te-form, adjectives, transitive/intransitive verbs), additional kanji (50-100 characters), descriptive sentences and situational dialogues.
+
+Progressed to intermediate beginner level with increased focus on sentence patterns and practical usage.
+
+Grading: continuous assignments, tests and exam. 
 
 :::
 
