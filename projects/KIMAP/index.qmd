@@ -25,7 +25,7 @@ about:
 
 ---
 
-![Cover Page](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fesgnews.com%2Fwp-content%2Fuploads%2F2024%2F12%2FEU-Commission-Publishes-EU-Taxonomy-FAQ-to-Simplify-Sustainability-Reporting.jpeg&f=1&nofb=1&ipt=e731735188aabfab9de9d262aae6b4c165a7251affac2844a3a5267f0815d24c){width="80%"}
+![Cover Page](/projects/KIMAP/kimapconsult_cover.jpg){width="80%"}
 
 ::: {.callout-note}
 ## Disclaimer
