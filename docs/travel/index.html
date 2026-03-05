@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index – Martinas Jucys Brady</title>
+<title>Travel Map – Martinas Jucys Brady</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,11 +128,58 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Travel Map</h1>
+</div>
 
 
 
+<div class="quarto-title-meta column-page">
 
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="map" style="height: 500px; width: 100%;"></div>
+
+//unpkg.com/leaflet@1.9.4/dist/leaflet.css"/&gt;
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var map = L.map('map', {
+      center: ,
+      zoom: 2,
+      minZoom: 2,
+      maxZoom: 6
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    var places = [
+      { name: "Japan", lat: 36.2, lng: 138.2, note: "Tokyo & Kyoto" },
+      { name: "Ireland", lat: 53.3, lng: -8.2, note: "Home base 🏠" },
+      { name: "France", lat: 46.2, lng: 2.2, note: "Paris trip" }
+    ];
+
+    places.forEach(function(p) {
+      L.marker([p.lat, p.lng])
+        .addTo(map)
+        .bindPopup("<b>" + p.name + "</b><br>" + p.note);
+    });
+  });
+</script>
 
 
 
