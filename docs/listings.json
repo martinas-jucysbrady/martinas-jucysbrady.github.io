@@ -1,6 +1,6 @@
 [
   {
-    "listing": "/projects.html",
+    "listing": "/index.html",
     "items": [
       "/projects/business_strategy/index.html",
       "/projects/international_economy/index.html",
@@ -9,7 +9,7 @@
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/projects.html",
     "items": [
       "/projects/business_strategy/index.html",
       "/projects/international_economy/index.html",

@@ -1,0 +1,32 @@
+```{=html}
+<div id="map" style="height: 500px; width: 100%;"></div>
+
+//unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+  var map = L.map('map', {
+    center: ,
+    zoom: 2,
+    minZoom: 2,
+    maxZoom: 6
+  });
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Add markers for visited places
+  var places = [
+    { name: "Japan", lat: 36.2, lng: 138.2, note: "Tokyo & Kyoto" },
+    { name: "Ireland", lat: 53.3, lng: -8.2, note: "Home base 🏠" },
+    { name: "France", lat: 46.2, lng: 2.2, note: "Paris trip" }
+  ];
+
+  places.forEach(function(p) {
+    L.marker([p.lat, p.lng])
+      .addTo(map)
+      .bindPopup("<b>" + p.name + "</b><br>" + p.note);
+  });
+</script>
+```
