@@ -42,7 +42,7 @@ Grading: 30% exam, 30% participation, 40% group report.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Assignment 1](http://martinas-jucysbrady.github.io/assets/EU_economy_one.pdf), &nbsp; [Assignment 2](http://martinas-jucysbrady.github.io/assets/EU_economy_two.pdf), &nbsp; [Assignment 3](http://martinas-jucysbrady.github.io/assets/EU_economy_three.pdf), &nbsp; [Assignment 4](http://martinas-jucysbrady.github.io/assets/EU_economy_four.pdf)
 
 Developed expertise in EU economic integration, covering the EU Green Deal for sustainability, the EU's global role, policy competition, new Commission dynamics, monetary integration and crisis responses.
 
