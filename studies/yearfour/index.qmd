@@ -13,7 +13,7 @@ This page contains a summary of the work I have done during my fourth and final 
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](../../assets/module_image/busstrat.jpg)](projects/business_strategy/)
+![](../../assets/module_image/busstrat.jpg)
 
 :::
 
