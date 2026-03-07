@@ -42,6 +42,8 @@ Here the household with the ID 114 is clearly seen as an outlier. I concluded th
 Below I have included scatterplot representations of households with a checking account as a percentage of the total population, with any outliers removed.
 
 ![Figure 2: Households with a Checking Account as % of Total Population (Outside); Created by Martinas Jucys Brady](busana2.png){width="50%"}
+
+
 ![Figure 3: Households with a Checking Account as % of Total Population (Inside); Created by Martinas Jucys Brady](busana3.png){width="50%"}
 
 
