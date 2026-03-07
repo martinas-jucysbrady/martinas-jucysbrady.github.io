@@ -3,7 +3,7 @@ title: "Japanese Criminal Justice System "
 subtitle: "*Analysis*"
 description: ""
 categories: [Law, Year 3]
-date: '2025-09-07'
+date: '2025-08-07'
 author: 
     - "Martinas Jucys Brady"
 bibliography: references.bib
