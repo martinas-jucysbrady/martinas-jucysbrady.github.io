@@ -153,7 +153,7 @@ Grading: 20% attendance, 40% minute papers, 40% final essay.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Video Presentation](https://youtu.be/aPNcRYueZzA)
 
 Developed foundational knowledge in advertising and marketing communications, covering strategy/planning, privacy in online environments, global advertising, sustainability/CSR, social well-being impacts, and new technologies in marketing.
 
@@ -178,7 +178,7 @@ Grading: 50% group assessment, 50% individual video presentation.
 
 [Portfolio](http://martinas-jucysbrady.github.io/projects/portfolio_management)
 
-Developed hands-on expertise in advanced portfolio management, blending theory (objectives, asset allocation, mean-variance optimization, efficient frontiers, hedging, behavioral finance) with practical portfolio construction, security selection, risk/return analysis, and real-world cases.
+Developed hands-on expertise in advanced portfolio management, blending theory (objectives, asset allocation, mean-variance optimisation, efficient frontiers, hedging, behavioral finance) with practical portfolio construction, security selection, risk/return analysis, and real-world cases.
 
 Managed an 8-week live asset investment portfolio, tracking performance impacts from market elements.
 
