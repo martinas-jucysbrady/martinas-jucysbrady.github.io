@@ -1,0 +1,69 @@
+---
+title: "Japanese Criminal Justice System "
+subtitle: "*Analysis*"
+description: ""
+categories: [Law, Year 3]
+date: '2025-09-07'
+author: 
+    - "Martinas Jucys Brady"
+bibliography: references.bib
+format:
+  html:
+    toc: true
+    toc-location: right
+    toc-title: "On this page"
+    cite-method: citeproc
+
+about:
+  template: solana
+  links:
+    - icon: file-earmark-pdf
+      text: "Analysis PDF"
+      href: projects/legal_system/criminal_law.pdf
+---
+
+![Cover Page](){width="80%"}
+
+---
+
+## 1. Introduction
+
+The criminal justice system in Japan is world renowned for having extremely high conviction rates, which exceed 99% [@murai2019order], and very harsh pre-trial practises. I found this really interesting, so in this essay I will look to analyse how Japan operates very stringent pre trial conditions (such as hostage justice and interrogation procedures), and employs more lenient measures (such as suspended sentences and promoting rehabilitation). The example of the Carlos Ghosn case which was covered in the lecture is one particular case that struck me because of how it highlights how the Japanese criminal system can perform. In my home country, Ireland, I could draw some similarities with Japan through the promotion of rehabilitation, but the pre trial conditions contrast vastly with the Irish less-invasive pre trial approach. This essay will also argue that Japan’s criminal justice system, when compared with international standards, has an issue with due process and diminishing individual rights. 
+
+## 2. Overview
+
+**Japan’s criminal justice system** 
+
+Japan’s criminal justice system, which is heavily influenced by a German civil law framework, focuses on maintaining societal order and safety with authority. The system involves police, prosecutors (who have significant authority over investigation, and therefore pre trial procedures) and the courts. Japan’s conviction rate, which is reported at 99.8%, shows us how prosecutors must rely on confessions [@kambayashi2023presumed]. When being sentenced, rehabilitation is favoured, and suspended sentences are handed out for less serious criminal offences. This is done with the aim of integrating these criminals back into society with the hope that they will not commit any further crime. When it comes to analyses pre trial practises, there are clear ethical issues, as prolonged detention and intense interrogations often compromise the suspects’ rights. These actions are done with the aim of extracting a confession, which then allows the court to easily convict the suspect of a crime. To combat these issues reforms have been introduced with the hope of eradicating illegal practises. Reforms include that of creating transparency in interrogations (video and audio recording of entire process), eradicating “hostage justice” (where hostages are kept in detention rooms for prolonged periods of time), establishing and expanding the court appointed attorney system for suspects (to protect suspects and provide attorneys when requested), and improving the lay judge system (increasing public participation in the judicial system)[@jfba2023reform]. 
+
+## 3. Leniency
+**In Japan’s criminal justice system**
+
+Japan’s sentencing procedures are notably lenient, through the fact that rehabilitation is prioritised with the use of suspended sentences. For example, in 2016 a total of 60% of convictions actually led to suspended sentences [@murai2019order]. The receivers of suspended sentences would only avoid imprisonment if they followed the guidelines set by the probation conditions. This process is used to be able to rehabilitate offenders and promote social cohesion at the same time. Using figures from 2023, provided by the [@worldpop2025incarceration], we can see that these procedures have a serious influence over Japan’s incarceration rate, which is 33 per 100,000 people (9th lowest in the world). This also has many other benefits such as the reduction of overcrowding in prisons and lowering overall costs of maintaining prisons.  
+
+Although there is a positive outlook on suspended sentences and more lenient procedures, a recidivism rate of approximately 48% may indicate otherwise [@nippon2025crime]. Repeat offenders are fairly common, which indicates that rehabilitation and leniency may not be appropriately balanced in order to discourage any further crimes taking place. This has been criticised by the public and media, as the belief that suspended sentences shouldn’t be given for more serious offences like assault or robbery, which would discourage these actions and maintain public confidence in regard to safety.
+
+When I looked into the issues of leniency further, I stumbled upon the 2023 case of Rina Gonoi. While in the Japan Self-Defense Forces Rina Gonoi suffered from continuous harassment which eventually led to experiencing sexual assault from three colleagues. Initially the three colleagues received a two year prison sentence each, which was then turned into a suspended sentence, allowing them to avoid imprisonment. Only after Rina went public with details about this assault and harassment did actual progress in this case be made, with many colleagues who partook and witnessed the crime being dismissed by the JSDF and the Ministry of Defense making public apologies to Rina  [@okamoto2023soldier]. This case really highlights the issues regarding leniency in the Japanese criminal system, where initially this case was dropped due to lack of evidence but was revised due to public pressure. It can also be noted that in the end the assaulters only received a two year suspended sentence for ongoing harassment over two years and sexual assault [@magramo2024gonoi]. Many critics argued that leniency should have not been used in such serious cases, and that cases like this should not need social pressure to be investigated further. 
+
+## 4. Pre trial practises
+**In Japan’s criminal justice system**
+
+In contrast to Japan’s lenient sentencing there are some extreme pre trial procedures that take place in order to secure confessions, most notably the daiyo kangoku and hostage justice procedures. Suspects can be detained for up to 23 days without charge, with prosecutors extending detention through re-arrests on related charges. We even see in an [@amnesty2009japan] report that they condemn the daiyo kangoku system as it doesn’t comply with international standards or provide persons with basic human rights.
+
+The Carlos Ghosn case that was explained in the lectures exemplifies these concerns. Ghosn, a former Nissan executive, faced multiple re-arrests to extend detention, enduring prolonged interrogations without consistent legal representation. This high profile case drew global scrutiny, highlighting how hostage justice and confession driven procedures undermine due process. Despite calls for reform, progress remains slow, emphasising the tension between Japan’s judicial practices and international human rights standards.
+
+## 5. Death Penalty
+**In Japan’s criminal justice system**
+
+One other thing that interested me in Japan was the presence of the death penalty which also shows the Japanese system’s severity. When very serious offences occur, such as murder, the death sentence may come in to play, but what is more severe is the process of conducting it. Inmates are usually only informed hours beforehand, and the families of these inmates are only informed after the execution has taken place, and inmates are usually held in solitary settings for their whole time on death row. Many international bodies criticise Japan’s death penalty, including [@amnesty2025execution], and push for Japan to align with international values and abolish death sentences. It is seen as dismissing one’s basic human right to life [@amnesty2025execution].
+
+When looking deeper into this matter I also discovered the case of Iwao Hakamada who spent 45 years on death row, due to being found guilty of murder in 1968. In 2014, a judge ruled that he was innocent as evidence was “fabricated” and “tampered” with by the authorities in control of the case [@amnesty2024japan]. After this case, many more calls for the abolishment of this procedure were brought forward to ensure that no more lives and in particular innocent lives would be lost. 
+
+## 6. Conclusion
+
+Japan’s criminal justice system presents a complex interplay of lenient sentencing, stringent pre-trial practices, and severe punitive measures, as exemplified by its 99.8% conviction rate, hostage justice, and death penalty. Suspended sentences, applied in 60% of convictions, promote rehabilitation and reduce incarceration rates to 33 per 100,000, yet high recidivism and cases like Rina Gonoi’s reveal public concerns over leniency for serious crimes. Conversely, pre-trial practices like daiyo kangoku and prolonged interrogations, highlighted by the Carlos Ghosn case, prioritise confessions over due process, drawing international criticism. The death penalty, with secretive executions and cases like Iwao Hakamada’s, further underscores human rights issues. Compared to international standards, Japan’s system compromises individual rights, necessitating reforms such as mandatory interrogation recordings, expanded legal access, and death penalty abolition to balance societal order with fairness, preserving rehabilitative strengths while addressing ethical shortcomings.
+
+## 7. Bibliography
+
+::: {#refs}
+:::
