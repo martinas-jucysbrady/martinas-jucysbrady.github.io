@@ -19,9 +19,13 @@ This page contains a summary of the work I have done during my fourth and final 
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Strategic Consultancy Report](http://martinas-jucysbrady.github.io/projects/business_strategy), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Strategic Consultancy Report](http://martinas-jucysbrady.github.io/projects/business_strategy)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developed understanding of core business strategy concepts, tools, and frameworks across macro, industry and firm levels.
+​
+Worked in a consulting team to complete a strategic analysis, presentation and written report.
+​
+Grading: 25% group presentation, 25% group report, 50% case analysis.
 
 :::
 
@@ -38,9 +42,13 @@ In this module, I completed two assignments. The first assignment was a research
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Compare and Contrast Report](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Reflection](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developed critical understanding of managing organisational change and digital transformation, focusing on technologies, agile structures and the future of work.
+​
+Applied concepts through case studies on successful and failed digital transformations, linking theory to real-world strategic decisions.
+​
+Grading: 15% Reflection, 30% Exam, 55% Report. 
 
 :::
 
@@ -57,9 +65,13 @@ In this module, I completed two assignments. The first assignment was a research
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Power BI](https://martinas-jucysbrady.github.io/studies/yearone)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developed practical skills in business data analytics using SQL, Python and Power BI for end‑to‑end analysis and visualisation.
+​
+Learned to design databases, write queries, manipulate datasets, and build interactive dashboards that communicate insights to stakeholders.
+​
+Grading: 30% SQL Exam, 30% Power BI Presentation, 40% Python Exam.
 
 :::
 
@@ -76,9 +88,13 @@ In this module, I completed two assignments. The first assignment was a research
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Research Paper](https://martinas-jucysbrady.github.io/studies/yearone)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developing skills in machine learning and advanced Python for applied business data analytics and predictive modelling.
+​
+Applying algorithms and coding techniques through weekly classes, tutorials and case‑based exercises on real datasets.
+​
+Grading: 40% Exams, 60% Research Paper
 
 :::
 
@@ -95,9 +111,13 @@ In this module, I completed two assignments. The first assignment was a research
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[ePortfolio](https://martinas-jucysbrady.github.io/studies/yearone)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developing practical skills in workflow and data management using modern web, cloud and version‑control tools.
+​
+Designing secure, cloud‑based data flows and databases to support efficient business analytics and protect sensitive information.
+​
+Grading: 10% Online Courses, 90% ePortfolio (This website). 
 
 :::
 
@@ -114,9 +134,13 @@ In this module, I completed two assignments. The first assignment was a research
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Presentation](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Vlog](https://martinas-jucysbrady.github.io/studies/yeartwo), &nbsp; [Essay](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Developing awareness of how business and media language varies across cultures and communicative contexts.
+​
+Reading, presenting and analysing authentic texts to explore power, persuasion and intercultural communication.
+​
+Grading: 15% Presentation, 18% Vlog, 67% Essay. 
 
 :::
 
@@ -133,9 +157,13 @@ In this module, I completed two assignments. The first assignment was a research
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Presentation](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Poster](https://martinas-jucysbrady.github.io/studies/yeartwo), &nbsp; [Video Presenation](https://martinas-jucysbrady.github.io/studies/yeartwo), &nbsp; [Report](https://martinas-jucysbrady.github.io/studies/yeartwo), &nbsp; [Reflection](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Explored key themes in contemporary Japanese culture, identity and everyday life across multiple topics.
+​
+Engaged with materials on media, food, fashion, humour, gender and work culture to challenge stereotypes.
+​
+Grading: 25% Poster, 25% Video Presentation, 25% Report, 25% Reflection.
 
 :::
 
@@ -152,9 +180,11 @@ In this module, I completed two assignments. The first assignment was a research
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+Improved Japanese language proficiency through integrated practice in vocabulary, grammar, listening, speaking, reading and writing.
 
-In this module, I completed two assignments. The first assignment was a research paper on the topic of "X". The second assignment was a presentation on the topic of "Y". 
+Progressed through structured lessons building complex skills for practical communication.
+
+Grading: continuous assignments, tests and exam. 
 
 :::
 
