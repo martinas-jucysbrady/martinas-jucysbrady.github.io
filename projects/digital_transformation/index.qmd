@@ -48,9 +48,13 @@ Revolut’s objectives of digital transformation are based on the revolutionisin
 
 In order to support the ambitious digital transformation objectives, Revolut heavily relies on cloud computing infrastructure provided by Google Cloud to enable scalability, security and resilience of operations. Revolut made use of Cloud APIs and other third-party software to automatically set up and manage their computer systems, allowing engineers to quickly launch updates or undo changes when needed. This allows horizontal and vertical scaling while maintaining operational efficiency or stability [@googlecloud2025revolut]. Google Cloud Identity and Access Management were used to enable quick and easy access to resources while maintaining high security [@googlecloud2025revolut].
 
-"As a fast-growing startup, pace of innovation is very important for us. With Google Cloud, we could build an environment where we can have continuous delivery, releasing as much as we can as quickly as possible." 
+::: {style="text-align: center; font-style: italic;"}
 
-*Vlad Yatsenko, CTO and Founder, Revolut*
+>"As a fast-growing startup, pace of innovation is very important for us. With Google Cloud, we could build an environment where we can have continuous delivery, releasing as much as we can as quickly as possible."
+>
+>Vlad Yatsenko, CTO and Founder, Revolut
+
+:::
 
 This also allowed Revolut to use Google Workspace for daily operations on a global level due to the automatic integration with Google Cloud and efficient facilitation of global collaboration between different teams [@googleworkspace2025revolut]. They also used other Google applications, such as Sheets and Forms, to gather customer feedback and insights quickly. Hence enabling fast data driven product innovation and meeting the ever-changing needs of consumers [@googleworkspace2025revolut]. Revolut didn’t have to reinvent a new way of operations but used what was already available to find an easy way to operate all aspects of their business.
 
@@ -63,18 +67,23 @@ By using the Strategic Alignment Model, the use of a Competitive Potential pathw
 This strategic transformation aligns closely with the five building blocks that are key to a successful digital design [@ross2019designed].
 
 - *Shared Customer Insights* 
+
 Revolut leveraged data to reshape their services to align with current and anticipated customer needs. 
 
 - *Operational Backbone* 
+
 The core systems within Revolut were highly scalable, secure and reliable. Google Cloud and other Google applications were the key to this operational efficiency. 
 
 - *Digital Platforms*  
+
 Used a variety of digital services and a highly adaptable format to ensure that quick innovation and seamless integration of new services. 
 
 - *Accountability Framework* 
+
 Leadership within Revolut took control and defined clear objectives and pathway for the business to take. Continuous development to meet regulations globally has also maintained Revolut’s trustworthiness. 
 
 - *External Developer Ecosystem* 
+
 The partnerships made with Google allowed them to use APIs to integrate new business ideas easily. It also allowed the business to find new, modern ways to collaborate within in order to maximise success. 
 
 The combination of these concepts ensures that Revolut’s capabilities, governance, innovation, customer satisfaction, strategy and leadership all align and facilitate strong competitiveness and growth within the fast-evolving financial services industry. This alignment also empowers them to innovate rapidly, meet rising customer expectations and redefine the industry landscape effectively.
