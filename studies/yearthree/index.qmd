@@ -130,7 +130,7 @@ Grading: 20% in-class contribution, 80% final assignment.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Criminal Justice System](http://martinas-jucysbrady.github.io/projects/legal_system), &nbsp; [Minute Paper](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Criminal Justice System](http://martinas-jucysbrady.github.io/projects/legal_system)
 
 Developed foundational knowledge of the Japanese legal system, from general introduction and governmental structure to historical evolution, constitutional rights guarantees, and key areas like intellectual property, criminal/administrative procedure, environmental/tax law.
 
