@@ -170,13 +170,13 @@ Grading: 50% group assessment, 50% individual video presentation.
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.clipartmax.com%2Fpng%2Fmiddle%2F144-1441200_project-portfolio-management-project-management-logo-png.png&f=1&nofb=1&ipt=767ba1f66e4d23325add3c4cea815c9e5eda13efabbce26a0551a5fa3c78d6bb) 
+![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.freepik.com%2Fpremium-photo%2Ffinancial-business-graph-chart-analysis-stock-market-graph-stock-market-forex-trading-graph-candlestick-chart-indicator-financial-investment_73523-3582.jpg%3Fw%3D2000&f=1&nofb=1&ipt=0a0f0b0b9e214ee49f88b974bf0b1fe829c972438cc412400affbbcced82e25e) 
 
 :::
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment 1](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Assignment 2](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Portfolio](http://martinas-jucysbrady.github.io/projects/portfolio_management)
 
 Developed hands-on expertise in advanced portfolio management, blending theory (objectives, asset allocation, mean-variance optimization, efficient frontiers, hedging, behavioral finance) with practical portfolio construction, security selection, risk/return analysis, and real-world cases.
 
