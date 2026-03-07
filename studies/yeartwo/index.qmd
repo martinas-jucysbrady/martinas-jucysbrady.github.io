@@ -65,7 +65,7 @@ Grading: 50% exam, 50% essay.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Group Assignment](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Individual Assignment](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Group Assignment](https://martinas-jucysbrady.github.io/assets/files/operations_group.pdf), &nbsp; [Individual Assignment](https://martinas-jucysbrady.github.io/assets/files/operations_essay.pdf)
 
 Developed expertise in operations strategy, process design, capacity planning, inventory management, quality control, supply chain coordination and lean/six sigma methodologies.
 
@@ -88,7 +88,7 @@ Grading: 45% group assignment, 55% individual assignment.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Case Study](https://martinas-jucysbrady.github.io/studies/yearone)
+[Case Study](https://martinas-jucysbrady.github.io/projects/business_analytics)
 
 Built data analysis skills for business decision-making, covering descriptive statistics, data visualization, regression analysis, forecasting, A/B testing and dashboard creation.
 
@@ -240,7 +240,7 @@ Grading: 100% exam.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Presentation](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Essay](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Presentation](https://martinas-jucysbrady.github.io/assets/files/japcult_presentation.pdf), &nbsp; [Essay](https://martinas-jucysbrady.github.io/assets/files/japcult_essay.pdf)
 
 Explored contemporary Japanese society through key themes including social structures, family systems, education, work culture, religion, gender roles, popular culture and social issues.
 

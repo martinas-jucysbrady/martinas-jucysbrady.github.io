@@ -46,5 +46,8 @@
   },
   "projects/psychology/index.qmd": {
     "index.html": "8f476c6e"
+  },
+  "projects/business_analytics/index.qmd": {
+    "index.html": "cf167f5b"
   }
 }
