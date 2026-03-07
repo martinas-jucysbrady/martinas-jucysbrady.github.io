@@ -1,7 +1,7 @@
 ---
 title: "Japanese Criminal Justice System "
 subtitle: "*Analysis*"
-description: ""
+description: "This analysis covers how Japan’s criminal justice system balances strict pre‑trial procedures, exceptionally high conviction rates, and comparatively lenient sentencing, and what this reveals about due process and human rights in modern Japan."
 categories: [Law, Year 3]
 date: '2025-08-07'
 author: 
