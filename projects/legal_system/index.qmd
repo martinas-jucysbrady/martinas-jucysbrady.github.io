@@ -22,7 +22,7 @@ about:
       href: projects/legal_system/criminal_law.pdf
 ---
 
-![Cover Page](){width="80%"}
+![Cover Page](/projects/legal_system/legal_system.jpg){width="80%"}
 
 ---
 
