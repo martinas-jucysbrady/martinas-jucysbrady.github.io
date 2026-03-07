@@ -1,7 +1,7 @@
 ---
 title: "Trump’s Policies Through the Mundell-Fleming Model"
 subtitle: "*International Economy*"
-description: "This project is an analysis of Donald Trump's economic policies through the lens of the Mundell-Fleming model, which is a framework used to understand the interactions between exchange rates, interest rates, and output in an open economy. The report examines how Trump's policies, such as tax cuts, trade tariffs, and deregulation, impacted the U.S. economy in terms of exchange rates, interest rates, and overall economic output. The analysis also explores the implications of these policies for international trade and capital flows, providing insights into the broader effects on the global economy."
+description: "Application of the Mundell‑Fleming model to assess how Trump’s policies affected exchange rates, interest rates, output and global trade."
 categories: [Economics, International Economy, Year 3]
 date: '2025-07-26'
 author: 

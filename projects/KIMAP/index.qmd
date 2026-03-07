@@ -1,7 +1,7 @@
 ---
 title: "Consultancy Report: Avoiding conflict and performance failure of future EU projects"
 subtitle: "*Key considerations for the EU commission *"
-description: "This project is an advisory consultancy report for the European Commission’s Directorate‑General for International Partnerships, focused on avoiding conflict and performance failures in future EU‑funded multinational projects. Using the EPPO case study as a core example, the report identifies governance challenges such as cultural misalignment, weak conflict‑resolution mechanisms, and inefficient resource allocation, and proposes a framework built on cross‑cultural integration, structured conflict‑resolution and reconciliation processes, and performance‑based funding. Drawing on global examples from Singapore, El Salvador, South Africa, and South Korea, it offers practical recommendations to strengthen transparency, accountability, and collaboration in complex cross‑border project environments."
+description: "Advisory report for the European Commission proposing governance, culture, and resource‑allocation reforms to reduce conflict in multinational projects."
 categories: [Management, Year 3]
 date: '2025-02-10'
 author: 
