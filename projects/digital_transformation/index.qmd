@@ -18,11 +18,11 @@ about:
   template: solana
   links:
     - icon: file-earmark-pdf
-      text: Strategic Consultancy Report PDF
+      text: Compare and Contrast PDF
       href: projects/digital_transformation/compare_contrast.pdf
 ---
 
-![Cover Photo](/projects/digital_transformation/digital_transformation.jpg){width="80%"}
+![Revolut v. Ulster Bank](/projects/digital_transformation/digital_transformation.png){width="80%"}
 
 ---
 
@@ -97,18 +97,23 @@ This strategic misalignment can be seen through the analysis of the five buildin
 blocks that are key to a successful digital design [@ross2019designed]. 
 
 - *Shared Customer Insights* 
+
 Customer insight remained fragmented, with poor adoption of digital tools and limited understanding of changing customer needs. 
 
 - *Operational Backbone* 
+
 Core systems were unreliable and inefficient, as legacy IT infrastructure frequently failed and was not fully integrated with modern cloud platforms   
 
 - *Digital Platforms* 
+
 The bank’s efforts focused on standalone launches like the mobile app but lacked true scalable and integrated digital infrastructure which could be found in other successful projects. 
 
 - *Accountability Framework* 
+
 Weak governance was evident from the inconsistent execution and underinvestment in foundational systems, with leadership often failing to unite business and IT priorities [@weston2013ulster]. 
 
 - *External Relationships* 
+
 There were few meaningful partnerships or integrations with third party platforms, and no culture of external digital collaboration developed. 
 
 Ultimately, Ulster Bank’s case serves as a cautionary example of how not to implement digital transformation. Treating it as a IT modernisation project without real integration in the business as a whole, ultimately leads to failure. This emphasises the importance of strong leadership, strategic alignment and continuous innovation in any case of digital transformation.
@@ -132,12 +137,15 @@ While both companies operated in similar regulatory and market environments incl
 The case of Revolut clearly identifies the importance of strategic alignment between IT initiatives and core business objectives. While the case of Ulster Bank identifies what happens when you don’t take a holistic approach and don’t have a strong business model framed around integration. 
 
 1. *Strategic Alignment* 
+
 Digital projects must serve the overall business objectives, with transformation being facilitated through a strong and united leadership and workforce that want to embrace digital change [@venkatraman1993continuous].
 
 2. *Cloud and Data Platforms* 
+
 Investment in scalable and adaptable infrastructure is a must. Cloud platforms, API and external collaboration platforms allow a business to achieve automation, innovation and integration on a scope that could not be achieved without it. Developing partnerships with providers of infrastructure of this kind is highly advantageous ([@googlecloud2025revolut]; [@googleworkspace2025revolut]).
 
 3. *Customer Focused Innovation* 
+
 Using customer feedback lets you quickly capture what customers actually want form your product/service. Taking note of new industry norms or trends and constantly innovating your platforms are key to maintaining customer satisfaction [@llabres2025metamorphosis]. 
 
 What Ulster Bank should have done to overcome their challenges: 
@@ -152,7 +160,9 @@ What Ulster Bank should have done to overcome their challenges:
 
 5. Allocate realistic resources and set transition timelines that avoid customer disruption, learning from the costly rushed migration processes [@fsu2021central].
 
-*Broader Industry Implications*
+
+
+**Broader Industry Implications**
 
 Success in digital banking demands strong leadership, strategic alignment, resilience for regulatory compliance, agile infrastructure and cultures of learning and experimentation. Achieving sustainable business-IT alignment is not a goal that should be at a standstill but ever-developing, through the use of a continually interacting and adapting strategy, culture, skills and collaboration. Banks that treat digital transformation merely as “technology modernisation” rather than as an integrated organisational transformation will remain vulnerable to rapid market shifts [@amarilli2024navigating].
 
