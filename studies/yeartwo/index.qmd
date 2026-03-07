@@ -174,7 +174,7 @@ Grading: 30% group assignment, 70% exams.
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](../../assets/module_image  /critical.png)] 
+[![](../../assets/module_image/critical.png)] 
 
 :::
 
@@ -238,7 +238,7 @@ Grading: 100% exam.
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.rvhall.online%2Fwp-content%2Fuploads%2F2025%2F01%2Fweb-image.jpg&f=1&nofb=1&ipt=aa5bede9f5a2d4ead77f4c6fae392a32258982e982b823e6c4c26f23606d7af0)] 
+[![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.rvhall.online%2Fwp-content%2Fuploads%2F2025%2F01%2Fweb-image.jpg&f=1&nofb=1&ipt=aa5bede9f5a2d4ead77f4c6fae392a32258982e982b823e6c4c26f23606d7af0)]
 
 :::
 
