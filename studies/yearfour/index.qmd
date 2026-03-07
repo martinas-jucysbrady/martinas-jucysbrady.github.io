@@ -69,8 +69,6 @@ Grading: 15% Reflection, 30% Exam, 55% Report.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Power BI](https://martinas-jucysbrady.github.io/studies/yearone)
-
 Developed practical skills in business data analytics using SQL, Python and Power BI for end‑to‑end analysis and visualisation.
 
 ​
@@ -93,8 +91,6 @@ Grading: 30% SQL Exam, 30% Power BI Presentation, 40% Python Exam.
 :::
 
 ::: {.g-col-12 .g-col-md-10}
-
-[Research Paper](https://martinas-jucysbrady.github.io/studies/yearone)
 
 Developing skills in machine learning and advanced Python for applied business data analytics and predictive modelling.
 ​
@@ -144,7 +140,7 @@ Grading: 10% Online Courses, 90% ePortfolio (This website).
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Presentation](https://martinas-jucysbrady.github.io/assets/files/lig1000_presentation.pdf), &nbsp; [Vlog](https://martinas-jucysbrady.github.io/studies/yeartwo), &nbsp; [Essay](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Presentation](https://martinas-jucysbrady.github.io/assets/files/lig1000_presentation.pdf)
 
 Developing awareness of how business and media language varies across cultures and communicative contexts.
 
