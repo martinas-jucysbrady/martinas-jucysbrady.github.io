@@ -44,7 +44,7 @@ Grading: 25% group presentation, 25% group report, 50% case analysis.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Compare and Contrast Report](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Reflection](http://martinas-jucysbrady.github.io/assets/files/digital_transform_reflection.pdf)
+[Compare and Contrast Report](http://martinas-jucysbrady.github.io/projects/digital_transformation), &nbsp; [Reflection](http://martinas-jucysbrady.github.io/assets/files/digital_transform_reflection.pdf)
 
 Developed critical understanding of managing organisational change and digital transformation, focusing on technologies, agile structures and the future of work.
 ​
