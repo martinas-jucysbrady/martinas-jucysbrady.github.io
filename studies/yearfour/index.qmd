@@ -144,7 +144,7 @@ Grading: 10% Online Courses, 90% ePortfolio (This website).
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Presentation](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Vlog](https://martinas-jucysbrady.github.io/studies/yeartwo), &nbsp; [Essay](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Presentation](https://martinas-jucysbrady.github.io/assets/files/lig1000_presentation.pdf), &nbsp; [Vlog](https://martinas-jucysbrady.github.io/studies/yeartwo), &nbsp; [Essay](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
 Developing awareness of how business and media language varies across cultures and communicative contexts.
 
@@ -169,14 +169,12 @@ Grading: 15% Presentation, 18% Vlog, 67% Essay.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Presentation](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Poster](http://martinas-jucysbrady.github.io/assets/files/jappers_poster.pdf), &nbsp; [Video Presenation](https://martinas-jucysbrady.github.io/studies/yeartwo), &nbsp; [Report](http://martinas-jucysbrady.github.io/assets/files/jappers_report.pdf), &nbsp; [Reflection](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Poster](http://martinas-jucysbrady.github.io/assets/files/jappers_poster.pdf), &nbsp; [Video Presenation](https://youtu.be/n9-NoHSrM9U), &nbsp; [Report](http://martinas-jucysbrady.github.io/assets/files/jappers_report.pdf), &nbsp; [Reflection](http://martinas-jucysbrady.github.io/assets/files/jappers_reflection.pdf)
 
 Explored key themes in contemporary Japanese culture, identity and everyday life across multiple topics.
 
-​
 Engaged with materials on media, food, fashion, humour, gender and work culture to challenge stereotypes.
 ​
-
 Grading: 25% Poster, 25% Video Presentation, 25% Report, 25% Reflection.
 
 :::
