@@ -19,7 +19,7 @@ This page contains a summary of the work I have done during my second year in un
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment](https://martinas-jucysbrady.github.io/studies/yearone)
+[Assignment](https://martinas-jucysbrady.github.io/assets/files/macroeconomics.pdf)
 
 Analysed economy-wide phenomena including GDP measurement, business cycles, inflation, unemployment, monetary/fiscal policy, IS-LM framework, aggregate supply/demand and growth theory.
 
