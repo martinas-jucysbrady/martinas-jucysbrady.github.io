@@ -35,14 +35,14 @@ To answer your query I used data from 120 Metropolitan Statistical Areas (MSAs),
 
 My first step in answering your question was to prepare the data through careful analysis. I organised the data according to whether it the area in question had an inside footprint (with a physical bank branch) or an outside footprint (without a physical bank branch, but with ATMs instead). I then calculated the percentage of households with a checking account by the total number of households. I analysed the percentage values I got and carefully identified any outliers. To identify any outliers I used a scatterplot graph in order to be able to clearly distinguish any abnormalities. Below I have included an example of an outlier that I have identified. 
 
-![Figure 1: Identification of Outlier; Created by Martinas Jucys Brady](busana1.png)
+![Figure 1: Identification of Outlier; Created by Martinas Jucys Brady](busana1.png){width="50%"}
 
 Here the household with the ID 114 is clearly seen as an outlier. I concluded that this was either due to the total number of households or households with a checking account being misinterpreted. The most logical reasoning for it to be an outlier is that instead of 10,731 total households, the real value should have been 107,310 total households, as then the percentage value would have been in line with the rest. Without any evidence I cannot change this value, so I proceeded to not include its values in my data.
 
 Below I have included scatterplot representations of households with a checking account as a percentage of the total population, with any outliers removed.
 
-![Figure 2: Households with a Checking Account as % of Total Population (Outside); Created by Martinas Jucys Brady](busana2.png)
-![Figure 3: Households with a Checking Account as % of Total Population (Inside); Created by Martinas Jucys Brady](busana3.png)
+![Figure 2: Households with a Checking Account as % of Total Population (Outside); Created by Martinas Jucys Brady](busana2.png){width="50%"}
+![Figure 3: Households with a Checking Account as % of Total Population (Inside); Created by Martinas Jucys Brady](busana3.png){width="50%"}
 
 
 ## 2. Data Analysis
@@ -53,7 +53,7 @@ Firstly I conducted a simple calculation to give me the average percentage of ho
 
 Also, the scatterplot below shows the linearity of the percentages of checking accounts from both inside and outside footprint. We can see that there is very little variability between values and that there are no distinct indicators to show that there is a difference in demand if there is a physical bank branch presence or not.
 
-![Figure 4: Scatterplot of Checking Account Demand; Created by Martinas Jucys Brady](busana4.png)
+![Figure 4: Scatterplot of Checking Account Demand; Created by Martinas Jucys Brady](busana4.png){width="50%"}
 
 To back this hypothesis, I will conduct multiple other studies. 
 
@@ -61,12 +61,14 @@ To back this hypothesis, I will conduct multiple other studies.
 
 I used a simple linear regression model with the presence of a physical branch as the independent variable (indicated by using 0 for outside footprint and 1 for inside footprint) and the percentage of households with checking accounts as the dependent variable (in numerical format) in Excel. Using the in-built data analysis tool within Excel I was able to compare both sets of data. Below I have included the data that Excel provided me with.
 
+
 |                  | Coefficients | Std Error | t Stat | P-value | Lower 95% | Upper 95% |
 |------------------|--------------|-----------|--------|---------|-----------|-----------|
 | Intercept        | 0.30562      | 0.09675   | 3.15891| 0.0025  | 0.14702   | 0.46412   |
 | X                | 8.05829      | 6.11357   | 1.31806| 0.1901  | -4.0846   | 20.1651   |
 
 : Regression results {#tbl-regression}
+
 
 Here the Intercept X indicates the values for an outside footprint. The values of Variable 1 will be our main focus as these values indicates the differences between demand for checking accounts when there is a physical bank branch in the area compared to when there isn’t. From this data we are given 6 distinct values [@montgomery2021introduction]. 
 
@@ -82,6 +84,7 @@ Here the Intercept X indicates the values for an outside footprint. The values o
 
 The data from this part of the linear regression model indicates that there is minimal significance of a physical bank branch on the demand for a checking account. Using more data from our Excel file, I was able to confirm this.
 
+
 | Statistic          | Value     |
 |--------------------|-----------|
 | Multiple R         | 0.120973  |
@@ -91,6 +94,7 @@ The data from this part of the linear regression model indicates that there is m
 | Observations       | 119       |
 
 : Model summary statistics {#tbl-reg-stats}
+
 
 R square is an important value here as it indicates the percentage of values that have been influenced by the variable. Our variable here was if the area has an inside or outside footprint. The value, 0.014634, is low and shows that there was not much influence on the demand. This data has further strengthened my hypothesis.
 
