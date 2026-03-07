@@ -86,7 +86,7 @@ Grading: 30% continuous assignments, 30% group assignment, 40% video presentatio
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Group Assignment](https://martinas-jucysbrady.github.io/studies/yearone)
+[Group Assignment](https://martinas-jucysbrady.github.io/assets/files/marketing_group.pdf)
 
 Developed core marketing principles covering market segmentation, targeting, positioning, marketing mix (4Ps), consumer behavior, branding and digital marketing strategies.
 
