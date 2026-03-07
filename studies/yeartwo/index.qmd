@@ -42,7 +42,7 @@ Grading: 40% assignments, 60% exam.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment](https://martinas-jucysbrady.github.io/studies/yearone)
+[Essay](https://martinas-jucysbrady.github.io/projects/psychology)
 
 Gained foundational understanding of psychological principles including cognition, learning, motivation, emotion, personality, social influence and mental health.
 
