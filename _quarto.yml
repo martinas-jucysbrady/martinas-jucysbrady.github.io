@@ -7,6 +7,10 @@ project:
    - projects/international_economy/international_economy.pdf
    - projects/portfolio_management/investment_portfolio.xlsx
    - projects/portfolio_management/investment_portfolio/investment_portfolio_presentation.html
+   - assets/EU_economy_one.pdf
+   - assets/EU_economy_two.pdf
+   - assets/EU_economy_three.pdf
+   - assets/EU_economy_four.pdf
    
 
 website:

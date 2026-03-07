@@ -151,7 +151,7 @@ Grading: 30% assignments, 70% final essay.
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](../../assets/changingconsumer.jpg)](https://martinas-jucysbrady.github.io/)
+[![](../../assets/module_image/changingconsumer.jpg)](https://martinas-jucysbrady.github.io/)
 
 :::
 
@@ -174,7 +174,7 @@ Grading: 30% group assignment, 70% exams.
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](../../assets/critical.png)](https://martinas-jucysbrady.github.io/)
+[![](../../assets/module_image  /critical.png)](https://martinas-jucysbrady.github.io/)
 
 :::
 
@@ -197,7 +197,7 @@ Grading: 20% quizzes, 40% reflections, 40% research paper.
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](../../assets/japan_l3.png)](https://martinas-jucysbrady.github.io/)
+[![](../../assets/module_image/japan_l3.png)](https://martinas-jucysbrady.github.io/)
 :::
 
 ::: {.g-col-12 .g-col-md-10}

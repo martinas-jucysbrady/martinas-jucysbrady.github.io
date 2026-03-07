@@ -82,7 +82,7 @@ Grading: 30% continuous assignments, 30% group assignment, 40% video presentatio
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](../../assets/marketing.jpg)](https://martinas-jucysbrady.github.io/)
+[![](../../assets/module_image/marketing.jpg)](https://martinas-jucysbrady.github.io/)
 
 :::
 
@@ -174,7 +174,7 @@ Grading: 30% media project, 30% group project, 40% eportfolio.
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](../../assets/japan_l1.png)](https://martinas-jucysbrady.github.io/)
+[![](../../assets/module_image/japan_l1.png)](https://martinas-jucysbrady.github.io/)
 
 :::
 
@@ -195,7 +195,7 @@ Grading: continuous assignments, tests and exam.
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](../../assets/japan_l2.png)](https://martinas-jucysbrady.github.io/)
+[![](../../assets/module_image/japan_l2.png)](https://martinas-jucysbrady.github.io/)
 
 :::
 

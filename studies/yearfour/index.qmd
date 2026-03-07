@@ -13,7 +13,7 @@ This page contains a summary of the work I have done during my fourth and final 
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](../../assets/busstrat.jpg)](projects/business_strategy/)
+[![](../../assets/module_image/busstrat.jpg)](projects/business_strategy/)
 
 :::
 
@@ -51,7 +51,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](../../assets/datapv.png)](https://martinas-jucysbrady.github.io/)
+[![](../../assets/module_image/datapv.png)](https://martinas-jucysbrady.github.io/)
 
 :::
 
@@ -89,7 +89,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](../../assets/workflow.jpg)](https://martinas-jucysbrady.github.io/)
+[![](../../assets/module_image/workflow.jpg)](https://martinas-jucysbrady.github.io/)
 
 :::
 
@@ -127,7 +127,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](../../assets/japers.jpg)](https://martinas-jucysbrady.github.io/)
+[![](../../assets/module_image/japers.jpg)](https://martinas-jucysbrady.github.io/)
 
 :::
 
@@ -146,7 +146,7 @@ In this module, I completed two assignments. The first assignment was a research
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-2}
-[![](../../assets/japan_l4.png)](https://martinas-jucysbrady.github.io/)
+[![](../../assets/module_image/japan_l4.png)](https://martinas-jucysbrady.github.io/)
 
 :::
 
