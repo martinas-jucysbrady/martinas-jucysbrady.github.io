@@ -12,7 +12,9 @@ project:
    - assets/files/EU_economy_three.pdf
    - assets/files/EU_economy_four.pdf
    - projects/legal_system/criminal_law.pdf
-   
+   - assets/files/digital_transform_reflection.pdf
+   - assets/files/jappers_report.pdf
+   - assets/files/jappers_poster.pdf
 
 website:
   title: "Martinas Jucys Brady"

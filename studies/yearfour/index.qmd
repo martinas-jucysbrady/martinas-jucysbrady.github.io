@@ -44,7 +44,7 @@ Grading: 25% group presentation, 25% group report, 50% case analysis.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Compare and Contrast Report](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Reflection](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Compare and Contrast Report](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Reflection](http://martinas-jucysbrady.github.io/assets/files/digital_transform_reflection.pdf)
 
 Developed critical understanding of managing organisational change and digital transformation, focusing on technologies, agile structures and the future of work.
 ​
@@ -119,7 +119,7 @@ Grading: 40% Exams, 60% Research Paper
 
 ::: {.g-col-12 .g-col-md-10}
 
-[ePortfolio](https://martinas-jucysbrady.github.io/studies/yearone)
+[ePortfolio - GitHub Repository](https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io)
 
 Developing practical skills in workflow and data management using modern web, cloud and version‑control tools.
 ​
@@ -169,7 +169,7 @@ Grading: 15% Presentation, 18% Vlog, 67% Essay.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Presentation](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Poster](https://martinas-jucysbrady.github.io/studies/yeartwo), &nbsp; [Video Presenation](https://martinas-jucysbrady.github.io/studies/yeartwo), &nbsp; [Report](https://martinas-jucysbrady.github.io/studies/yeartwo), &nbsp; [Reflection](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Presentation](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Poster](http://martinas-jucysbrady.github.io/assets/files/jappers_poster.pdf), &nbsp; [Video Presenation](https://martinas-jucysbrady.github.io/studies/yeartwo), &nbsp; [Report](http://martinas-jucysbrady.github.io/assets/files/jappers_report.pdf), &nbsp; [Reflection](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
 Explored key themes in contemporary Japanese culture, identity and everyday life across multiple topics.
 
