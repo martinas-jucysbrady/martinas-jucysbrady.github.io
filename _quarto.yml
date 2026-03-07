@@ -19,6 +19,9 @@ project:
    - assets/files/lig1000_presentation.pdf
    - projects/digital_transformation/compare_contrast.pdf
    - assets/files/macroeconomics.pdf
+   - assets/files/changing_consumer.pdf
+   - assets/files/industrial_assignment.pdf
+   - assets/files/industrial_final.pdf
 
 website:
   title: "Martinas Jucys Brady"

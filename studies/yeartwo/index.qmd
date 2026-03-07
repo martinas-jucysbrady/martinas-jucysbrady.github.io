@@ -132,7 +132,7 @@ Grading: 30% assignments, 70% exam.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Assignment](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Final Assignment](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Assignment](https://martinas-jucysbrady.github.io/assets/files/industrial_assignment.pdf), &nbsp; [Final Assignment](https://martinas-jucysbrady.github.io/assets/files/industrial_final.pdf)
 
 Analysed firm behavior and market structures including perfect competition, monopoly, oligopoly, game theory, pricing strategies, entry deterrence and regulation.
 
@@ -155,7 +155,7 @@ Grading: 30% assignments, 70% final essay.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Group Assignment](https://martinas-jucysbrady.github.io/studies/yearone)
+[Group Assignment](https://martinas-jucysbrady.github.io/assets/files/changing_consumer.pdf)
 
 Examined evolving consumer behavior patterns driven by digital transformation, sustainability concerns, personalisation demands and cultural shifts.
 
