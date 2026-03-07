@@ -1,0 +1,95 @@
+---
+title: "How Motivation Helps Managers Motivate Employees "
+subtitle: "*Using theories from Maslow and Herzberg*"
+description: ""
+categories: [Psychology, Year 2]
+date: '2023-12-04'
+author: 
+    - "Martinas Jucys Brady"
+bibliography: references.bib
+format:
+  html:
+    toc: true
+    toc-location: right
+    toc-title: "On this page"
+    cite-method: citeproc
+
+about:
+  template: solana
+  links:
+    - icon: file-earmark-pdf
+      text: "Essay PDF"
+      href: projects/psychology/psychology.pdf
+---
+
+![Cover Page](/projects/psychology/psychology.png){width="80%"}
+
+---
+
+## 1. Introduction
+
+Motivation in organisations is the process that influences one’s drive to work intensely and to their maximum capabilities in order to achieve goals, whether it be business-oriented or self-oriented goals [@kanfer2016motivation].
+
+Motivation is extremely important in organisations due to many factors. It gives employees the desire to go forward and continuously improve all aspects of their lives. A motivated workforce, from management to employees, drastically improves all aspects of business efficiency and quality.
+
+In this essay I will cover two main theories that cover the concept of motivation most accurately and effectively in today's world. I will cover the Hierarchy of Needs that was developed by Abraham Maslow and Frederick Herzberg’s Two Factor Theory of Motivation. After my conclusion of these two theories, I will then write about what theory I think explains my drive to perform in college the best.
+
+## 2. Maslow’s Hierarchy of Needs
+
+Abraham Maslow developed the Hierarchy of Needs over several decades in the mid-20th century, he identified nine innate needs that are categorised by the importance in our lives on physical and mental levels [@buchanan2017motivation]. Maslow’s categorisation of needs shows that you cannot have a need without having the need fulfilled on the previous level.
+
+The most important needs are described as biological and safety needs, without these we would not be able to survive. Biological needs include vital things such as water, food, and oxygen, while safety needs include order, stability, and shelter [@buchanan2017motivation].
+
+The needs of esteem and affiliation follows the previous needs, these needs are commonly unmet as we need to have satisfactory relationships with others and ourselves. A sense of belonging in society is extremely important for everybody, this is done through building various relationships and developing self-love. Receiving and giving affection is important here as it allows us to express ourselves and become confident in the person we are [@poston2009maslow]. Without such affection we cannot progress to achieving the following five needs that Maslow identified.
+
+To know and to understand, aesthetics, transcendence, freedom of enquiry and inquiry, and self-actualisation needs are all interlinked and focus on one’s ability to become the best they can be. These needs focus on the development of one’s full potential through spiritualism, knowledge, and beauty. 
+
+Even though Maslow’s Hierarchy of Needs accurately depicts many human needs, especially those regarding ourselves, it may lack in an area regarding needs that societal and cultural needs. According to @greene2007beyond, moving “beyond self-actualisation needs” may be the highest level that should have been more focused on in Maslow’s Hierarchy of Needs. It encompasses the ability for one to become selfless and creative, and not only become the best they can be, but to aid and develop the world around them so it can become the best it can be.
+
+Another criticism of Maslow’s Hierarchy is that it also implies that the needs are linear and to continue to the next need you must fulfil the previous. In reality this cannot be applicable to the vast majority of the world due to cultural and societal differences, with each person’s perceptions of what is important. From the study by @soelistya2016problems, we can see that many of the workers that took part have a focus on multiple areas at once. Some employees have reached a peak in their motivation and are described as “lazy”, while others have priorities aligned with family but also perform to the best of their capabilities regarding work. This may be due to cultural factors that Maslow’s theory does not include but it also shows that the theory lacks in the field of finding a balance between multiple needs. Using this study we can assume that many will use multiple needs at once to act as motivators, this can include searching for housing, a relationship and gaining a promotion all at once.
+
+## 3. Herzberg’s Two Factor Theory of Motivation
+
+Frederick Herzberg developed the Two Factor Theory of Motivation in the 1960s, it 
+showcases two distinct factors that affect job satisfaction levels. These two factors 
+are Hygiene and Motivators [@buchanan2017motivation]. Similarly to Maslow’s 
+Theory it also belongs to the school of content theories.
+
+Hygiene factors are directly associated with the level of job dissatisfaction, and according to this theory these factors have little to no effect on job satisfaction [@alshmemri2017herzberg]. The factors here include the basic areas of a job, including pay, status, security and working conditions. For example, this theory suggests that if an employee receives low pay for work done then they will be dissatisfied, but if an employee receives high pay for work done then they will not be dissatisfied. It suggests that even with high pay the employee will gain no satisfaction.
+
+Motivator factors are the direct opposite of hygiene factors, wherein they associated with the level of job satisfaction, but have little to no effect on job dissatisfaction [@alshmemri2017herzberg]. The factors are regarding the direct responsibilities and opportunities in a job, it includes achievement, growth, responsibility, and acknowledgement. These factors were identified by Herzberg as being the key ways in which to increase performance and motivation. Through his research he discovered that intrinsic rewards had a much more immediate relationship with performance, this suggests that one values their own emotions higher than physical rewards such as pay rises [@buchanan2017motivation].
+
+The research of @bassettjones2005herzberg delved into the idea of contesting Herzberg’s theory and conducted various studies to conclude whether Herzberg’s theory is still relevant in the 21st century. Though many researched critiqued Herzberg’s theory, concerning him deducing money as a hygiene factor, there was no conclusive evidence to show otherwise. Money was shown to be a hygiene factor even in these recent studies as there was a clear correlation between money and dissatisfaction, but no significant change in satisfaction.
+
+Although Herzberg’s theory was largely accepted through these studies, some criticism arised. This was about irregularities found in the factor of recognition that was included as a Motivator factor. The conducted research showed that recognition may mover but not a motivator, as there was no obvious increase in motivation or performance due to recognition from coworkers or management. This idea believes that recognition may just be a morale booster that doesn’t directly motivate one.
+
+Herzberg’s Theory also failed to consider personal preferences in relation to what satisfies and dissatisfies. Some people may be money driven, whereas others may be striving to fulfil their self-actualisation needs. Herzberg did initially point this flaw out in his research as he identified unskilled and uneducated workers in India and South Africa to be of this money-driven nature. He deduced that this was because they relied on the Hygiene factors to survive daily.
+
+## 4. Conclusion
+
+Even though these theories were developed in the mid-20th century, they have been proven as relevant to this day. Both theories have various similarities within their works. Although Maslow’s Theory states that all components are motivators they are divided into distinct parts. This can be seen in the division between self-actualisation needs and the other needs, where the other needs are seen as more necessary in order to live daily life. Similarly, Herzberg’s Theory also divides factors into two categories that are basically seen as vital needs (Hygiene) and needs that are not as necessary (Motivators).
+
+Both theories are useful to managers as they accurately depict what employees need, how to retain staff through satisfaction, and how to motivate their workforce to benefit the business. Managers are directed to ensure that all Motivator factors and all lower levels of Maslow’s Theory are fulfilled in order to have a highly motivated workforce that strives to grow and develop with the business. Mangers may use the knowledge from these theories to their advantage to retain staff, through more training and promotion chances.
+
+## 5. My Motivation
+
+I think that Herzberg’s Two Factor Theory of Motivation represents my motivation to perform in college most accurately. Its concept of Motivator and Hygiene factors have more of a correlation with my motivation in college than Maslow’s Hierarchy of Needs.
+
+Motivator Factors are what motivate me to do better and achieve the highest level of satisfaction within college.
+
+Recognition can both be seen as the feedback from lecturers from assignments completed and the relationships built with other students. Personally, recognition plays a big part in the satisfaction I get from completing work. I always aim to achieve grades that I believe are the best I can get, this varies from module to module. For example, I believe that I am strong in business-oriented modules so I will set my goals as above 70% for assignments here, and for my weaker modules that relate to the Japanese language I will aim for 50%. If I do not achieve my goal in an assignment, I will work harder to achieve it in my next assignment and use lecturer feedback to improve.
+
+Responsibility, achievement, and advancement correlate as I my overall goal is to do well in each semester and to do this I must advance further in my studies. The responsibility of being in control of my own work and research motivates me as I am the one who controls my own future. I believe that once I graduate with my degree, I will not only have a diploma to show this, but I will have gained vital skills and knowledge that I can bring to any workforce.
+
+Hygiene Factors are the minimum requirements I need to achieve motivation from satisfaction in college. If I don’t have these factors, I will become dissatisfied and unmotivated.
+
+Security and status may refer to my position of being in college and the friends that I make. I have come from a family that doesn’t have much money so to be able to progress through college is an achievement. Without the security of having a position in college I wouldn’t be able to attend, this motivates me to make sure that I maintain my standards and do enough to progress through college. Without status I would still be able to study here but life would be bleak and unenjoyable. Gaining friends is immensely important as they bring enjoyment to your life and enable you to get away from the constant pressure of college for a few hours every week.
+
+The college policy and lecturing style are not as important in my motivation in college, they would not satisfy my time but have the possibility of causing dissatisfaction. Personally, the teaching style in DCU is not always the most enjoyable but then again, I prefer a more interactive and working approach to learning. It fulfils my needs, so I am not dissatisfied. The college policies may include areas such as academic calendars. I think the academic calendar of DCU is perfect and gives you enough time to do everything, even if exam time does become a lot of pressure.
+
+I believe that, in my case, all of my hygiene factors are fulfilled, and my motivator factors are performing in the way they should. I am constantly motivated to perform well in college.
+
+## 6. Bibliography
+
+::: {#refs}
+:::
