@@ -2,7 +2,7 @@
 title: "Strategic Consultancy Report: Siemens Healthineers"
 subtitle: "*Consultancy Analysis and Strategic Direction*"
 description: "Strategic consultancy report analysing market position and challenges, recommending actions to strengthen competitiveness and profitability."
-categories: [Business Strategy, Year 4]
+categories: [Management, Year 4]
 date: '2025-12-05'
 author: 
     - "Cian O'Connor"
