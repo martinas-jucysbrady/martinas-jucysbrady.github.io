@@ -2,7 +2,7 @@
 title: "Trump’s Policies Through the Mundell-Fleming Model"
 subtitle: "*International Economy*"
 description: "Application of the Mundell‑Fleming model to assess how Trump’s policies affected exchange rates, interest rates, output and global trade."
-categories: [Economics, International Economy, Year 3]
+categories: [Economics, Year 3]
 date: '2025-07-26'
 author: 
     - "Martinas Jucys Brady"
