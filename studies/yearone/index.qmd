@@ -63,7 +63,7 @@ Grading: 30% group assignment, 70% final essay.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Group Assignment](https://martinas-jucysbrady.github.io/assets/files/accounting_group.pdf), &nbsp; [Video Presentation](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Group Assignment](https://martinas-jucysbrady.github.io/assets/files/accounting_group.pdf), &nbsp; [Video Presentation](https://youtu.be/vkhTaE3tdjM)
 
 Mastered fundamental accounting principles including double-entry bookkeeping, financial statements preparation (balance sheet, income statement, cash flow), ratio analysis and basic managerial accounting.
 
