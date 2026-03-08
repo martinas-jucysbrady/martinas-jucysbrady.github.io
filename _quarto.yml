@@ -29,6 +29,10 @@ project:
    - assets/files/operations_essay.pdf
    - projects/business_analytics/business_analytics.pdf
    - assets/files/marketing_group.pdf
+   - assets/files/global_environment_reflection.pdf
+   - assets/files/accounting_group.pdf
+   - projects/global_group/volkswagenag.pdf
+   - projects/life/applegreen_group.pdf
 
 website:
   title: "Martinas Jucys Brady"

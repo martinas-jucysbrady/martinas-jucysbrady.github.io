@@ -1,0 +1,24 @@
+---
+title: "Volkswagen AG Analysis"
+subtitle: "*Global Business Environment*"
+description: ""
+categories: [Management, Year 1]
+date: '2022-11-15'
+author: 
+    - "Anne-Marie Adetunji"  
+    - "Martinas Jucys Brady"  
+    - "Jack Madden"
+    - "Aaroh Bhargava" 
+    - "Ciara Abragan"
+bibliography: references.bib
+format:
+  html:
+    toc: true
+    toc-location: right
+    toc-title: "On this page"
+    cite-method: citeproc
+
+about:
+  template: solana
+
+---

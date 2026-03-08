@@ -49,5 +49,14 @@
   },
   "projects/business_analytics/index.qmd": {
     "index.html": "cf167f5b"
+  },
+  "projects/data_analytics_pv/index.qmd": {
+    "index.html": "efd6eb9c"
+  },
+  "projects/global_group/index.qmd": {
+    "index.html": "07b38535"
+  },
+  "projects/life/index.qmd": {
+    "index.html": "6913f905"
   }
 }

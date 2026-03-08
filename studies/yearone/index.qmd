@@ -40,7 +40,7 @@ Grading: 15% participation, 20% mid-term exam, 65% final exam.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Group Assignment](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Individual Assignment](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Group Assignment](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Individual Assignment](https://martinas-jucysbrady.github.io/assets/files/global_environment_reflection.pdf)
 
 Explored globalisation dynamics including trade patterns, multinational corporations, global value chains, cultural convergence/divergence, environmental impacts and geopolitical tensions.
 
@@ -63,7 +63,7 @@ Grading: 30% group assignment, 70% final essay.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Group Assignment](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Video Presentation](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Group Assignment](https://martinas-jucysbrady.github.io/assets/files/accounting_group.pdf), &nbsp; [Video Presentation](https://martinas-jucysbrady.github.io/studies/yeartwo)
 
 Mastered fundamental accounting principles including double-entry bookkeeping, financial statements preparation (balance sheet, income statement, cash flow), ratio analysis and basic managerial accounting.
 

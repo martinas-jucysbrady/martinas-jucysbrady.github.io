@@ -3,26 +3,32 @@
     "listing": "/index.html",
     "items": [
       "/projects/business_strategy/index.html",
+      "/projects/data_analytics_pv/index.html",
       "/projects/digital_transformation/index.html",
       "/projects/legal_system/index.html",
       "/projects/international_economy/index.html",
       "/projects/portfolio_management/index.html",
       "/projects/KIMAP/index.html",
       "/projects/business_analytics/index.html",
-      "/projects/psychology/index.html"
+      "/projects/psychology/index.html",
+      "/projects/life/index.html",
+      "/projects/global_group/index.html"
     ]
   },
   {
     "listing": "/projects.html",
     "items": [
       "/projects/business_strategy/index.html",
+      "/projects/data_analytics_pv/index.html",
       "/projects/digital_transformation/index.html",
       "/projects/legal_system/index.html",
       "/projects/international_economy/index.html",
       "/projects/portfolio_management/index.html",
       "/projects/KIMAP/index.html",
       "/projects/business_analytics/index.html",
-      "/projects/psychology/index.html"
+      "/projects/psychology/index.html",
+      "/projects/life/index.html",
+      "/projects/global_group/index.html"
     ]
   }
 ]
