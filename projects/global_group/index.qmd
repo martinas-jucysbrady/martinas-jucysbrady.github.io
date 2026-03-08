@@ -1,8 +1,8 @@
 ---
 title: "Volkswagen AG Analysis"
 subtitle: "*Global Business Environment*"
-description: ""
-categories: [Management, Year 1, unfinished]
+description: "A PESTEL analysis of Volkswagen AG covering industry environment, Indian market cultural considerations, competitive rivalry, and strategic recommendations."
+categories: [Management, Year 1]
 date: '2022-11-15'
 author: 
     - "Anne-Marie Adetunji"  
@@ -20,5 +20,122 @@ format:
 
 about:
   template: solana
+  links:
+    - icon: file-earmark-pdf
+      text: Report PDF
+      href: projects/global_group/volkswagenag.pdf
+    
+---
+
+![Volkswagen AG](/projects/global_group/volkswagenag.jpg){width="80%"}
 
 ---
+
+## 1. Introduction
+
+Volkswagen AG, founded in Germany in 1937, is one of the world's leading commercial vehicle manufacturers. The company develops, manufactures, and sells commercial vehicles, engines, and industrial equipment. The multinational is the parent company to brands such as Volkswagen, Audi, Bentley, Cupra, Lamborghini, Porsche, SEAT, and Škoda. This essay will provide a background on the company, analyse its position in the industry (on a macro level), and what affects its position. We will also explore the cultural considerations they had to consider inside specific markets (particularly India). Additionally, it will highlight their rivals, threats, and opportunities and give further recommendations based on those threats and opportunities.
+
+## 2. Essay Background
+
+We investigated and researched Volkswagen AG as part of our essay to gain a broader understanding of its place in the automotive industry. DCU Library databases were primarily used in gathering any information that we acquired about this company.
+
+A PESTEL Analysis was conducted for Volkswagen AG to identify the factors affecting their business at a macro level politically, economically, socio-culturally, technologically, environmentally, and legally. We examined various advantages and disadvantages in each aspect of this analysis.
+
+A more detailed evaluation of Volkswagen AG in the Indian market was conducted to give us an in-depth analysis of its ability to create products for specific groups of consumers. India's niche was more compact SUVs, and we looked at the success of their expansion in this country.
+
+An analysis of Volkswagen AG's close rivals within Ireland and the rest of the world also occurred so that we could establish their significance in Ireland and on a global scale. We discovered that Volkswagen and Ford had recently entered a partnership to develop EVs.
+
+We also looked closely at what opportunities and threats Volkswagen AG has faced. This includes their well-known emissions scandal and rising costs in all aspects of the business. Recommendations were then given on what we believed must be done to keep them profitable.
+
+## 3. Industry Analysis (PESTEL)
+
+### *3.1 Political* 
+
+Volkswagen AG has 120 production plants all over the globe, though the majority are in East Asia and Central Europe [@volkswagen2022portrait]. Expanding to the East Asian market was vital as it offers low manufacturing costs and extensive exposure to new customers. Volkswagen AG has benefitted from having facilities worldwide since now they can adapt their factories to produce vehicles in line with local demands and, in turn, reduce their transportation costs [@marketline2022vw]. Volkswagen AG also benefits from the trade blocs and agreements (EU, BRICS, and USMCA) in their respective regions as many tariffs, taxes and barriers are reduced or removed altogether.
+
+### *3.2 Economical*
+
+The Irish oil and gas market value grew by 90.6% from 2020 to 2021 due to the resumption of everyday life after COVID-19 [@marketline2022oilgas]. During COVID-19, the demand for fuel was falling steadily. The sudden spike in demand, paired with a shortage of oil and gas supply due to the war in Ukraine, has caused the price of this necessity over the past year [@aldworth2022fuel]. This has affected consumer spending as now consumers are less likely to purchase new diesel or petrol cars. Volkswagen AG has also been impacted negatively by the current inflation rate, which stood at 8.1% from September 2021 to September 2022 [@passport2022economies]. Unemployment rates have decreased to 5% at the end of 2021, so this should benefit Volkswagen AG as consumers will have more disposable income [@passport2022pest]. 
+ 
+### *3.3 Socio-cultural*
+ 
+Ireland makes up 1% of the new car market in Europe. It has grown by 32% since last year and is now estimated to be worth $5 billion [@marketline2022newcars]. Volkswagen AG, the group of all their car brands, has most of the market share in Ireland, standing at 27% [@marketline2022competitive]. Large-scale competition within the car market has led to some brands being more desirable than others as consumers are attracted by branding, price, purpose, and quality. New and improved taxi services, such as Bolt, FreeNow, and Uber, affect the car market significantly as consumers turn to more affordable travel rather than buying and maintaining 5 a car. This can be seen more in urban regions. Consumers have also become more environmentally aware, so when they buy a new car, they will consider factors such as fuel consumption, fuel type, and maintenance costs. 
+  
+### *3.4 Technological*
+  
+Technology has advanced dramatically, and cars are steering towards becoming fully autonomous. With the range of models, availability of charging, and decreases in EV prices, we will see a significant change in the automotive industry. In 2021 approximately 25% of consumers said that their next car would likely be an EV [@ludlow2021ev]. Environmental technologies are being introduced to reduce emissions, and any other damage cars cause to the environment. Hybrids and EVs are highly desirable as their effect on climate change is minimal compared to diesel or petrol-powered vehicles. BMW has also developed a new E Ink technology that allows you to change the colour of your car with a touch of a button [@elliott2022car]. Volkswagen AG must take advantage of technological developments to gain market control; otherwise, they will lose consumer interest. Technology has become more expensive to buy and maintain; this increases the popularity of public transport and taxi services as it costs too much to keep a new car. Volkswagen AG must innovate and develop new models to keep up with market trends. 
+   
+### *3.5 Environmental*
+   
+Vehicle emissions make up one-quarter of all EU greenhouse gas emissions. In 2020, we saw a decline in emissions from within Europe by 13% from 2019. However, this still didn't meet their average new car emissions target. Volkswagen AG was one such group that failed to meet its average CO2 emissions target of 98.624g of CO2; only Suzuki fared worse in meeting its specific target. Volkswagen Group were given a fine of €95 per car per gram of CO2 for the 0.945g of CO2 they exceeded [@eea2022co2]. These targets set by the EEA (European Environment Agency) have further influenced car makers to move their interests to the EV market. We have also seen one of Volkswagen AG's companies, SEAT, act against environmental damage by reducing their ecological impact by 34% since 2010 [@seat2019environmental]. 
+
+### *3.6 Legal*
+
+Emission standards were set globally to reduce vehicles' toxic and greenhouse gas emissions. In 2007, Volkswagen diesel engines were put under some of the strictest NOX limits; Volkswagen AG had seemingly abided by these limits until it was discovered that Volkswagen had used a defeat device in their exhaust system, which allowed their cars to reduce their NOX emissions solely during tests; when the exhaust system stabilised, it would reach values 40 times greater than the limit. Within days of the disclosure of these findings by the EPA, Volkswagen had lost 20% of its value. It is estimated that approximately 11 million cars were sold with this defeat device between 2009 and 2014 [@lechner2020sorting]. As Volkswagen lost its environmental quality, value, and integrity, multiple lawsuits ensued. This scandal not only affected Volkswagen but, in fact, disrupted the whole diesel car market as it was found that the maker of this defeat device, Bosch AG, had sold the same device to multiple companies. Volkswagen has likely learned from the loss of tens of billions of dollars; they will strive to abide by all laws in the future. 
+
+### *3.7 Conclusion* 
+
+Through this PESTEL Analysis, we identified that Volkswagen AG is still a leading member of the car market due to its variety, quality, and brand name. Although they have faced many difficulties regarding technology, laws, and regulations, they have managed to excel within the car market and keep up with new demands and trends. Volkswagen AG looks like a company that will stay at the top of the car market for decades.
+
+## 4. Cultural Considerations 
+
+Volkswagen AG has an international presence in 153 markets across the world. This global presence presents them with the opportunity to consider national cultures present across their markets and capitalise on the opportunities that can be derived from this. Specifically, we shall consider Volkswagen's cultural considerations in the Indian market.
+
+In 2014, Indian prime minister Narendra Modi launched an international marketing campaign in India called 'Make in India'. This campaign drove the Indian consumer's sentiments towards buying products and choosing companies supporting 'make in India' [@jain2017effectiveness]. Volkswagen was quick to pick up this change in sentiments of the consumers in India and began marketing their Pune plant with a workforce of 3,500 employees and a production capacity of 200,000 cars in a year [@vwindia2022brand].
+
+However, in 2020 there was a paradigm shift in the policy tactic, which shifted focus from 'Make in India' to 'Make in India, for the world' [@modi2020makeinIndia]. As a result, this led to an export-oriented model for Volkswagen in the Indian market, with it exporting more than 25,000 cars from its Chakan facility at the end of the same year[@frpt2020skoda]. This has led to a growing notion of extensive investment by Volkswagen towards superiority in quality and growing R&D, which have witnessed customer loyalty increasing through repetitive purchase guarantees and confidence purchases.
+
+Now in 2022, A possible battery manufacturing plant along with the Make in India Volkswagen Virtus and T-cross models being exported are being marketed by the company to mark their support for the 'Make in India, Make for the World' movement [@frpt2022battery]; [@frpt2022tcross]; [@frpt2022virtus]. This growing support for making India its manufacturing hub helped Volkswagen grow in the Indian market with the help of cultural considerations taken towards the Indian market.
+
+## 5. Competitive Rivalry Within Industry
+
+Hyundai Motor Company is a multinational corporation that specialises in the design and manufacture of automobiles. Hyundai is headquartered in Seoul, South Korea. The firm was projected to occupy 27% of the new car market in Ireland in 2021, making it one of the Volkswagen Group’s primary competitors [@marketline2022newcars]. Currently, Hyundai is increasing the production of cheaper electric vehicles. With this strategy, the company is striving to appeal to the younger demographic of consumers. According to the CSO, electric or plug-in hybrid electric vehicles constituted 15.9% of brand new cars licensed in 2021, compared to 7.5% in 2020. By targeting this growth, Hyundai hopes that this will lead to an increase in its share of the market.
+
+Toyota Motor Corporation is an automobile production and sales firm based in Toyota City, 
+Japan. Toyota Ireland is one of Toyota’s international subsidiaries and was projected to 
+occupy 10.4% of all new car sales in Ireland in 2021 [@marketline2022newcars]. That same year, 
+Toyota was the most sold type of car in Ireland, with 12, 435 units sold [@cso2022vehicles]. The 
+Volkswagen brand itself was a close second, with 12,422 vehicles sold in the same year 
+[@cso2022vehicles]. Toyota is also in the process of increasing its production and distribution of 
+electric cars, with it looking for sales of its electric and hybrid models to constitute half of its 
+total sales by 2025 [@marketline2022newcars]. The firm has formed strategic partnerships with 
+Mazda and Denso in a bid to accelerate this goal [@marketline2022newcars].  
+
+Ford Motor Company is also one of Volkswagen’s rivals in the Irish automobile market. In 2021, it was projected to occupy 12.6% of the market [@marketline2022newcars]. A US based firm, Ford is regarded as one of the pioneers of the automobile industry. In 2019, Ford and Volkswagen created a partnership with the aim of producing more electric cars and developing autonomous driving technologies [@vw2022ford]. In this case, both firms have put their rivalry aside in order to focus on a joint venture that they hope will be beneficial to both of them in the long run.
+
+## 6. Opportunities and Threats
+
+Volkswagen can make steps towards restoring the company's image following their emission scandal where over 5 million cars had to be returned. Many people lost trust in the company. In order to regain their strength as a brand, they will have to do a lot of brand building.
+
+Volkswagen declared in early 2020 that it will increase its investment in electric vehicles and digitalization. The company would devote 56% of its 159-billion-euro investment to developing. According to the report, "one in every four automobiles sold in 2026 will feature a battery-electric motor" [@scholz2021vwelectric]. About $45B of which will be invested in electric cars, $26.5B in self driving technology and the rest in Bi-directional driving, flying vehicles and automotive battery supply [@pestle2021vwswot]. 
+
+A major threat which Volkswagen may face is the rapidly increasing cost of raw materials. Prices have more than doubled from before the pandemic and are still rising due to supply shortages. Due to these shortages in 2021, an estimation of 4 million less cars were produced in the industry. The cost to produce electric cars in particular are surging due to the cost increase of cobalt, nickel, and lithium which are all required for producing the batteries that fuel electric automobiles [@alixpartners2021automotive].
+
+The cost of production for traditional vehicles is also at a peak but has increased at a slightly lower rate than electric. This may impede Volkswagens plan to develop electric vehicles and rebrand as environmentally friendly.
+
+Another threat which the group is facing are the effects of the Russian-Ukraine crisis. Like many other firms, Volkswagen halted the production of cars in Russia. As a result, they’ve had to make some production cuts at some of their plants. Halting one of their major plants for over a week. They reduced production at multiple plants including production of Volkswagen brand electric vehicles Zwickau and Dresden plants for a few weeks and couldn’t rule out further production adjustments. They’ve also had trouble transporting material from and to their Ukrainian plants. Volkswagen will have to continue making cuts for the foreseeable future which will affect the entire group [@reuters2022vwcuts].
+
+## 7. Recommendations
+
+Volkswagen Group has already made efforts to amend their previous faults. Once the scandal regarding their emissions had been revealed, Volkswagen displayed their remorse by providing a public apology. Additionally, vehicles could be returned and the CEO, with other directors involved, left their position in the company [@zhou2016vwscandal]. With this foundation, Volkswagen can continue to regain the trust of the public. Volkswagen's rebranding into a more environmentally friendly manufacturer is a great move to follow up on regaining trust. It is also possibly the only move that they possess to overcome their scandal, as they have lost customer trust with diesel vehicles.
+
+Volkswagen has also been called a possible ‘Tesla killer’ by analysts, due to its ability to compete against the electric vehicle industry leader, Tesla [@mourdoukoutas2018vwtesla]. It is leading against other vehicle manufacturers, such as Toyota and General Motors. According to an analysis done relating to these three companies, Volkswagen is in a better position. It is more liquid than Toyota and General Motors, as well as earning better profit figures [@mahmoud2022workingcapital]. There is a high chance of success if they continue to develop their eco-friendly vehicles. Since Volkswagen is also based in Europe, the sale of electric vehicles correlates with the European Parliament’s goal of ceasing the selling of new diesel and gasoline cars. Volkswagen can establish themselves to be an electric vehicle manufacturer earlier in order to ensure continuity before they are forced to.
+
+The rising costs of production is a major issue for Volkswagen. As stated above, less cars have been produced as a result of this. Since the raw materials causing the costs to rise are essential, Volkswagen must look for other ways to lessen costs. The company can look at the methods that Mercedes and Hyundai have utilised in order to combat this problem. Certain aesthetics of the car, such as the body trim, can be removed to save material. This can be observed in the 2015 (W204) and 2018 (W205) Mercedes C Class Models front bumpers. The use of aluminium by Mercedes in the W205 Model, in order to make it both lighter and cheaper, can also be adopted. In making it lighter, fuel consumption is lessened by 20 percent [@autoevolution2014mercedesC]. Additionally, Hyundai also took on the practice of not installing AC air filters to save costs, whereas the consumer must apply it themselves. All these small changes accumulate to make significant savings in their costs of production.
+
+## 8. Conclusion
+
+Throughout our analysis we have identified Volkswagen AG as an innovative and pliant multinational company. New technologies have allowed Volkswagen AG to explore possibilities that were only able to be seen in futuristic movies a couple decades ago. Self driving cars are close to becoming a norm with technological advancements. Even the idea of flying-cars doesn’t seem to be outside the realm of possibility for the near future, just like we’ve all seen in the movie ‘Back to the Future 2’ when Marty McFly travels 30 years into the future to 2015.
+
+The popularity of EVs and hybrid vehicles is rapidly growing, and Volkswagen AG has been able to orient their vast range of car makes to suit this new market trend. Volkswagen AG has aimed to cease production of all combustion-engine vehicles by the year 2033, and they also have a partnership with Ford to increase their production and quality of EVs in the future. This shows that they have planned accordingly and increased their desirability among their green-minded customers.
+
+Volkswagen AG has also seen an increase in sales globally due to their ability to adapt to specific markets, we seen this in the case of India. The compatibility between their latest models with the Indian market has proved to be a huge success. They may start taking a similar approach towards many more unique countries soon.
+
+Even though Volkswagen AG has previously struggled in the legal aspect of business, they’ve continued to grow. This is partially due to their focus on amending the mistakes that they’ve made previously. The emissions scandal tainted Volkswagen AGs image massively and incurred them with heavy financial woes. Their focus on becoming sustainable, ethical and environmentally friendly became their largest selling point.
+
+Volkswagen AG is one of the most successful and profitable car manufacturers in the world. They have come under some serious scrutiny over the last decade but have showed their prowess to overcome many major issues. Volkswagen AG will undoubtedly see further grow as the new car market expands and advancements in technology are made.
+
+## 7. Bibliography
+
+::: {#refs}
+:::
