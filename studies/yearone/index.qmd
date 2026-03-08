@@ -109,13 +109,13 @@ Grading: 15% assignments, 25% group assignment, 60% exam.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Tableau Dashboard](https://martinas-jucysbrady.github.io/studies/yearone)
+[Tableau Dashboard PDF overview](https://martinas-jucysbrady.github.io/assets/files/tableau_assignment.pdf), &nbsp; [Tableau Assignment TWBX](https://martinas-jucysbrady.github.io/assets/files/tableau_assignment.twbx)
 
 Gained introductory data analytics skills using Tableau for visualization, Excel for data manipulation, basic statistical analysis and dashboard creation for business insights.
 
 Applied analytical tools to real datasets through structured exercises and exam scenarios.
 
-Grading: 10% Tableau exercise, 30% weekly assignments, 50% exam. 
+Grading: 10% Tableau assignment, 30% weekly assignments, 50% Excel exam. 
 
 :::
 

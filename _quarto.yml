@@ -32,7 +32,9 @@ project:
    - assets/files/accounting_group.pdf
    - projects/global_group/volkswagenag.pdf
    - projects/life/applegreen_group.pdf
-
+   - assets/files/tableau_assignment.twbx
+   - assets/files/tableau_assignment.pdf
+   
 website:
   title: "Martinas Jucys Brady"
   favicon: assets/mjb_favicon.png
