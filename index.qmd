@@ -53,7 +53,7 @@ I am a fourth year student in DCU doing BA in Business Studies - International. 
 :::
 
 ## Recent Posts
-Check out the latest &nbsp;[Projects](project.qmd)&nbsp;
+Check out the latest &nbsp;[Projects](projects.qmd)&nbsp;
 
 :::{#recent-posts}
 :::
