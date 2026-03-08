@@ -40,7 +40,7 @@ Grading: 15% participation, 20% mid-term exam, 65% final exam.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Group Assignment](https://martinas-jucysbrady.github.io/studies/yearone), &nbsp; [Individual Assignment](https://martinas-jucysbrady.github.io/assets/files/global_environment_reflection.pdf)
+[Group Assignment](https://martinas-jucysbrady.github.io/projects/global_group), &nbsp; [Individual Assignment](https://martinas-jucysbrady.github.io/assets/files/global_environment_reflection.pdf)
 
 Explored globalisation dynamics including trade patterns, multinational corporations, global value chains, cultural convergence/divergence, environmental impacts and geopolitical tensions.
 
@@ -153,7 +153,7 @@ Grading: 100% continuous assignments.
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Family Enterprise Video](https://www.youtube.com/watch?v=7DghnNaj6-4), &nbsp; [Applegreen Group Project](https://martinas-jucysbrady.github.io/studies/yeartwo)
+[Family Enterprise Video](https://www.youtube.com/watch?v=7DghnNaj6-4), &nbsp; [Applegreen Group Project](https://martinas-jucysbrady.github.io/projects/life)
 
 Developed personal/professional development skills through media literacy, teamwork, digital portfolio creation and self-reflection on learning experiences.
 

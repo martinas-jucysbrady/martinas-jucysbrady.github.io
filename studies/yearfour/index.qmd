@@ -69,6 +69,8 @@ Grading: 15% Reflection, 30% Exam, 55% Report.
 
 ::: {.g-col-12 .g-col-md-10}
 
+[Power BI Project](https://martinas-jucysbrady.github.io/projects/data_analytics_pv)
+
 Developed practical skills in business data analytics using SQL, Python and Power BI for end‑to‑end analysis and visualisation.
 
 ​
