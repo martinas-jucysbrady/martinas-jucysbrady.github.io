@@ -2,7 +2,7 @@
 title: "Global Profitability Insights and Strategic Recommendations for EcoEnergy Corp"
 subtitle: "*Using Power BI*"
 description: ""
-categories: [Analytics, Year 4]
+categories: [Analytics, Year 4, unfinished]
 date: '2025-11-11'
 author: 
     - "Martinas Jucys Brady"

@@ -2,7 +2,7 @@
 title: "Volkswagen AG Analysis"
 subtitle: "*Global Business Environment*"
 description: ""
-categories: [Management, Year 1]
+categories: [Management, Year 1, unfinished]
 date: '2022-11-15'
 author: 
     - "Anne-Marie Adetunji"  

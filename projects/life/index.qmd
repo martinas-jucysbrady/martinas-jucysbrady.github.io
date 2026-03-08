@@ -2,7 +2,7 @@
 title: "Streamlining Fuel Payments: Applegreen's Smart Tag Solution"
 subtitle: "*Applegreen Group Assignment*"
 description: "Group project proposes Applegreen fuel tag innovation for choosy shoppers/traditionalists: app-based pay-at-pump to cut time, drive-offs, staff needs."
-categories: [Management, Year 1]
+categories: [Management, Year 1, unfinished]
 date: '2022-12-20'
 author: 
     - "Conor Jordan" 
