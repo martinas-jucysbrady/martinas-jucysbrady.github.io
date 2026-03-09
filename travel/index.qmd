@@ -1,17 +1,17 @@
 ---
 title: "Travel Map"
+format: html
 ---
 
 ```{=html}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
 <div id="map" style="height: 500px; width: 100%;"></div>
-
-//unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     var map = L.map('map', {
-      center: ,
+      center:,[4]
       zoom: 2,
       minZoom: 2,
       maxZoom: 6
@@ -34,4 +34,3 @@ title: "Travel Map"
     });
   });
 </script>
-```

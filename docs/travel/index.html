@@ -149,15 +149,15 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div id="map" style="height: 500px; width: 100%;"></div>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<div id="map" style="height: 500px; width: 100%;">
 
-//unpkg.com/leaflet@1.9.4/dist/leaflet.css"/&gt;
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     var map = L.map('map', {
-      center: ,
+      center:,[4]
       zoom: 2,
       minZoom: 2,
       maxZoom: 6
