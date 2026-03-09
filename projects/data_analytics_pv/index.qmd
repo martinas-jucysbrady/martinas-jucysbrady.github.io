@@ -29,7 +29,7 @@ about:
       href: projects/data_analytics_pv/ecoenergy_presentation.pdf
 ---
 
-![EcoEnergy Corp; Image created by Martinas Jucys Brady](/projects/data_analytics_pv/ecoenergy.png){width="50%"}
+![EcoEnergy Corp; Image created by Martinas Jucys Brady](/projects/data_analytics_pv/ecoenergy.svg){width="40%"}
 
 ---
 
@@ -64,7 +64,7 @@ Europe’s 10-year outlook for EcoEnergy Corp shows volatility, with profit swin
 
 North America has seen sharp profitability erosion for EcoEnergy Corp, with seven of ten products posting negative net profits. Technology, Transport and Insurance underperformed, with margins of -23% and -22%. Losses in key lines like printers, cars, smartphones and laptops were worsened by pricing below cost and average discounts of 16%, resulting in €4.15 million in total losses. Only the Construction category performed well, achieving a 13.62% margin. To improve, unprofitable Technology and Transport lines should be discontinued, discount policies tightened and pricing discipline enforced. Future efforts should prioritise reinvesting in Construction and refining the sales mix to balance online and offline channels while avoiding low-margin products.
 
-![Figure 4: North American Top Performing Products Chart](powerbi4.png){width="80%"}
+![Figure 4: North American Top Performing Products Chart](powerbi4.png){width="50%"}
 
 
 ![Figure 5: North American Sales & Profit Performance Dashboard](powerbi5.png){width="80%"}
@@ -104,7 +104,7 @@ Analysis of the past three years of operational and sales data reveals clear reg
 
 Data shows South America and Asia maintain the lowest median unit costs in technology, at €339.66 and €346.9 respectively. South America offers the cheapest production for monitors, tablets and printers, while Asia leads in laptops and smartphones. Africa produces printers at the lowest cost, whereas other regions spend over 25% more on technology production. It is recommended to consolidate tech manufacturing in South America and Asia to capitalise on their cost advantages and proven profitability.
 
-![Figure 11: Technology Median Unit Costs by Region (Breakdown by Product) (2021-2024)](powerbi11.png){width="80%"}
+![Figure 11: Technology Median Unit Costs by Region (Breakdown by Product) (2021-2024)](powerbi11.png){width="50%"}
 
 
 ![Figure 12: Technology Median Unit Costs by Region (2021-2024)](powerbi12.png){width="40%"}
@@ -113,25 +113,25 @@ Data shows South America and Asia maintain the lowest median unit costs in techn
 
 Construction analysis proved more complex. North America has the lowest median production cost at €373.25 but no single cheapest product and it recorded a €1.71 million loss in construction over the past three years. South America offers the lowest cost for solar panels at €273.42 per unit, while Europe produces building materials at €511.81 per unit. Though not the cheapest, Europe leads demand for building materials and was the only region to achieve profits in this category. Prioritising solar panel production in South America and building materials in Europe will sustain profitability. With Europe’s average unit price twice that of its nearest market, manufacturing there supports high-margin growth.
 
-![Figure 13: Construction Net Profits by Product and Region (2021-2024)](powerbi13.png){width="50%"}
+![Figure 13: Construction Net Profits by Product and Region (2021-2024)](powerbi13.png){width="40%"}
 
 
-![Figure 14: Construction Products Median Unit Costs by Region (2021-2024)](powerbi14.png){width="50%"}
+![Figure 14: Construction Products Median Unit Costs by Region (2021-2024)](powerbi14.png){width="30%"}
 
 
-![Figure 15: Construction Median Unit Costs by Region (2021-2024)](powerbi15.png){width="50%"}
+![Figure 15: Construction Median Unit Costs by Region (2021-2024)](powerbi15.png){width="30%"}
 
 
-![Figure 16: Construction Median Unit Cost by Region (2021-2024)](powerbi16.png){width="50%"}
+![Figure 16: Construction Median Unit Cost by Region (2021-2024)](powerbi16.png){width="30%"}
 
 ### *3.3 Transport & Insurance*
 
 Transport & Insurance analysis revealed mixed performance. North America reported the lowest median production cost at €351.83. yet no cost-leading product, alongside a €1.74 million loss in Transport & Insurance over three years. North America also achieved the lowest car and flight ticket cost at €206.84 and 252.73 per unit respectively, while Europe produced insurance plans at €380.49 per unit. Although not the cheapest, Europe led demand and was the only region to deliver profits in Transport & Insurance. Focusing car and flight ticket production in North America and Insurance plans in Europe will strengthen profitability.
 
-![Figure 17: Transport & Insurance Median Unit Cost by Region (2021-2024)](powerbi17.png){width="50%"}
+![Figure 17: Transport & Insurance Median Unit Cost by Region (2021-2024)](powerbi17.png){width="40%"}
 
 
-![Figure 18: Construction Average Unit Cost by Region (2021-2024)](powerbi18.png){width="50%"}
+![Figure 18: Construction Average Unit Cost by Region (2021-2024)](powerbi18.png){width="40%"}
 
 ## 4. Next Steps
 
@@ -153,7 +153,7 @@ We addressed key issues:
 
 Predictive analysis indicates steady net profit growth across all industries. In year one, we expect a €1.55 million profit even with capped production, reaching €3.09 million annually at full output with a 49.7% profit margin. Technology leads profitability, generating €7.75 million (49.72% of total revenue). Construction, while earning €2 million, suffers from high costs and weak margins, suggesting potential discontinuation unless market conditions improve. Overall, the proposed production hub strategy is projected to restore EcoEnergy Corp’s profitability and prevent further losses from poor cost management.
 
-![Figure 19: Predicted Sales & Profit Performance Dashboard with the Implementation of Recommendations](powerbi19.png){width="80%"}
+![Figure 19: Predicted Sales & Profit Performance Dashboard with the Implementation of Recommendations](powerbi19.png){width="60%"}
 
 ## 7. Industry Benchmarks
 
