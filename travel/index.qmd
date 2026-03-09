@@ -4,33 +4,30 @@ format: html
 ---
 
 ```{=html}
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
 <div id="map" style="height: 500px; width: 100%;"></div>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var map = L.map('map', {
-      center:,[4]
-      zoom: 2,
-      minZoom: 2,
-      maxZoom: 6
-    });
+document.addEventListener("DOMContentLoaded", function () {
+  var map = L.map("map").setView(, 2);[4][5]
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap contributors"
+  }).addTo(map);
 
-    var places = [
-      { name: "Japan", lat: 36.2, lng: 138.2, note: "Tokyo & Kyoto" },
-      { name: "Ireland", lat: 53.3, lng: -8.2, note: "Home base 🏠" },
-      { name: "France", lat: 46.2, lng: 2.2, note: "Paris trip" }
-    ];
+  var places = [
+    { name: "Japan", lat: 36.2, lng: 138.2, note: "Tokyo & Kyoto" },
+    { name: "Ireland", lat: 53.3, lng: -8.2, note: "Home base" },
+    { name: "France", lat: 46.2, lng: 2.2, note: "Paris trip" }
+  ];
 
-    places.forEach(function(p) {
-      L.marker([p.lat, p.lng])
-        .addTo(map)
-        .bindPopup("<b>" + p.name + "</b><br>" + p.note);
-    });
+  places.forEach(function (p) {
+    L.marker([p.lat, p.lng])
+      .addTo(map)
+      .bindPopup("<b>" + p.name + "</b><br>" + p.note);
   });
+});
 </script>
