@@ -34,16 +34,21 @@ All analysis in this project is based on my underlying Excel model, which includ
 You can download the full Excel file above.
 
 :::
+::: {.callout-note}
+## Risk / volatility scale
+
+🟢⚪⚪⚪⚪ (very low) → 🟢🟡🟠🔴🔴 (very high)
+
+:::
 ---
 
 ## Initial Portfolio
 
 For my initial portfolio, my main objective was to diversify across asset classes and minimise correlation between holdings. I began by selecting 32 assets from a range of sectors and industries, using five years of quarterly price data (up to 19 May 2025). This horizon provides a balance between the short, two‑month assignment period and a realistic long‑term investment perspective. After further research, I removed assets with high correlations to others and those whose risk did not seem justified by their expected return.
 
-<div style="text-align: center; margin-top: 0.5rem;">
+<div style="text-align: center; margin-top: 0.4rem;">
 
-**Risk:** <span style="font-size: 1.1rem;">🟠</span>  
-**Volatility:** <span style="font-size: 1.1rem;">🔴</span>
+**Risk:** 🟢🟡🟠🔴⚪  **Volatility:** 🟢🟡🟠🔴🔴
 
 </div>
 
@@ -77,20 +82,28 @@ I also excluded some stocks due to limited available information or because they
 
 In terms of objectives, my realistic target was an annualised return of around 8% with a standard deviation below 10%. I initially worked with quarterly data to better reflect short‑term behaviour and to capture correlations more precisely, but I later converted the figures to an annual basis. This change increased the Sharpe ratio from 0.61 (quarterly) to 1.34 (annual), with an expected return of 17.81% and a standard deviation of 12.58%. This meant that my targets for return and Sharpe ratio were being met, but volatility was still slightly above my preferred level.
 
+<div style="text-align: center; margin-top: 0.5rem;">
+
+| Period        | Exp. return | Std. dev. | Sharpe |
+|---------------|------------:|----------:|-------:|
+| Target        | ~8.00%      | <10.00%   | –      |
+| Initial (ann) | 17.81%      | 12.58%    | 1.34   |
+
+</div>
+
 On review, it appeared that BTC was likely overweight, so I identified this as a key area to reduce in future rebalancing steps.
 
 ## Week 1
 
 My initial portfolio was based on Monday closing prices, but because Monday 26 May was Memorial Day and markets were closed, I used the closing prices from Tuesday 27 May instead.
 
-- <span style="color: green;">Portfolio value: 101,009.45 USD (+1.01%)</span>
-- <span style="color: green;">Top performer (% and $): RHM.DE – Rheinmetall AG (+9.58%, +564.27 USD)</span>
-- <span style="color: red;">Worst performer (% and $): PLD – Prologis (−3.64%, −290.16 USD)</span>
+**<span style="color: green;">Portfolio value: 101,009.45 USD (+1.01%)</span>**
+**<span style="color: green;">Top performer (% and $): RHM.DE – Rheinmetall AG (+9.58%, +564.27 USD)</span>**
+**<span style="color: red;">Worst performer (% and $): PLD – Prologis (−3.64%, −290.16 USD)</span>**
 
-<div style="text-align: center; margin-top: 0.5rem;">
+<div style="text-align: center; margin-top: 0.4rem;">
 
-**Risk:** <span style="font-size: 1.1rem;">🟠</span>  
-**Volatility:** <span style="font-size: 1.1rem;">🔴</span>
+**Risk:** 🟢🟡🟠🔴⚪  **Volatility:** 🟢🟡🟠🔴🔴
 
 </div>
 
@@ -98,30 +111,27 @@ Both the annual and quarterly Sharpe ratios increased by 0.02 this week, indicat
 
 After selling 0.01 BTC and purchasing 15 additional BNDX units, the portfolio metrics were:
 
-- **Quarterly data:**  
-  Sum of weights: 1.00  
-  Expected return: 4.02%  
-  Standard deviation: 4.69%  
-  Sharpe ratio: 0.63  
+<div style="text-align: center; margin-top: 0.5rem;">
 
-- **Annual data:**  
-  Sum of weights: 0.96247  
-  Expected return: 18.04%  
-  Standard deviation: 12.35%  
-  Sharpe ratio: 1.37  
+| Period    | Sum of weights | Exp. return | Std. dev. | Sharpe |
+|-----------|----------------|------------:|----------:|-------:|
+| Quarterly | 1.00           | 4.02%       | 4.69%     | 0.63   |
+| Annual    | 0.96247        | 18.04%      | 12.35%    | 1.37   |
+
+</div>
+
 
 Looking ahead, I planned to monitor European markets closely, particularly financials (BNP.PA, SAN.MC, PKO.WA, HSBA.L, EUFN) and selected consumer names, as rising trade tensions between the US and EU suggested potential relative strength in European assets. I also began reassessing my exposure to volatile names like TSLA, which I had initially included based on a positive outlook for its leadership focus and growth prospects.
 
 ## Week 2
 
-- <span style="color: red;">Portfolio value: 100,495.07 USD (−0.51%)</span>
-- <span style="color: green;">Top performer: PLD – Prologis (+2.00%, +153.36 USD)</span>
-- <span style="color: red;">Worst performer: TSLA – Tesla, Inc. (−5.57%); RHM.DE – Rheinmetall AG (−258.20 USD)</span>
+**<span style="color: red;">Portfolio value: 100,495.07 USD (−0.51%)</span>**
+**<span style="color: green;">Top performer: PLD – Prologis (+2.00%, +153.36 USD)</span>**
+**<span style="color: red;">Worst performer: TSLA – Tesla, Inc. (−5.57%); RHM.DE – Rheinmetall AG (−258.20 USD)</span>**
 
-<div style="text-align: center; margin-top: 0.5rem;">
+<div style="text-align: center; margin-top: 0.4rem;">
 
-**Risk:** <span style="font-size: 1.1rem;">🟠</span>  
-**Volatility:** <span style="font-size: 1.1rem;">🟠</span>
+**Risk:** 🟢🟡🟠⚪⚪  **Volatility:** 🟢🟡🟠⚪⚪
 
 </div>
 
@@ -133,13 +143,6 @@ In terms of portfolio impact, NVDA’s strength supported VOO, which ended the w
 
 As planned, I continued diversifying into European assets, especially in financials and consumer sectors, while removing candidates that were either politically exposed or highly correlated with existing holdings. My objective remained to move closer to a standard deviation below 10% while maintaining a high but realistic expected return and Sharpe ratio.
 
-Using annual data before transactions, the portfolio metrics were:
-
-- Sum of weights: 0.98  
-- Expected return: 18.72%  
-- Standard deviation: 12.99%  
-- Sharpe ratio: 1.36  
-
 To reduce volatility, I carried out the following transactions:
 
 - Added BNP.PA (European financials)  
@@ -147,25 +150,26 @@ To reduce volatility, I carried out the following transactions:
 - Reduced GOOGL and TSLA holdings significantly, based on Solver results and their contribution to portfolio risk  
 - Further reduced BTC to limit exposure to large price swings  
 
-After these changes, the portfolio metrics became:
+<div style="text-align: center; margin-top: 0.5rem;">
 
-- Sum of weights: 0.97782  
-- Expected return: 15.11%  
-- Standard deviation: 9.27%  
-- Sharpe ratio: 1.17  
+| Period | Sum of weights | Exp. return | Std. dev. | Sharpe |
+|--------|----------------|------------:|----------:|-------:|
+| Before | 0.98           | 18.72%      | 12.99%    | 1.36   |
+| After  | 0.97782        | 15.11%      | 9.27%     | 1.17   |
+
+</div>
 
 These adjustments brought standard deviation in line with my target of below 10%, at the cost of a lower expected return and Sharpe ratio. I considered more aggressive Solver outputs that increased the Sharpe ratio to 1.43, but they required reducing bond and VOO exposure and concentrating more than 10% in a single stock, which I judged imprudent. For the following week, my main focus was to improve expected returns while keeping standard deviation under 10%.
 
 ## Week 3
 
-- <span style="color: green;">Portfolio value: 102,092.30 USD (+1.59%)</span>
-- <span style="color: green;">Top performer: SBUX – Starbucks Corporation (+6.43%, +383.60 USD)</span>
-- <span style="color: red;">Worst performer: SLNG – Stabilis Solutions, Inc. (−3.97%); RHM.DE – Rheinmetall AG (−76.41 USD)</span>
+**<span style="color: green;">Portfolio value: 102,092.30 USD (+1.59%)</span>**
+**<span style="color: green;">Top performer: SBUX – Starbucks Corporation (+6.43%, +383.60 USD)</span>**
+**<span style="color: red;">Worst performer: SLNG – Stabilis Solutions, Inc. (−3.97%); RHM.DE – Rheinmetall AG (−76.41 USD)</span>**
 
-<div style="text-align: center; margin-top: 0.5rem;">
+<div style="text-align: center; margin-top: 0.4rem;">
 
-**Risk:** <span style="font-size: 1.1rem;">🟠</span>  
-**Volatility:** <span style="font-size: 1.1rem;">🟠</span>
+**Risk:** 🟢🟡🟠⚪⚪  **Volatility:** 🟢🟡🟠⚪⚪
 
 </div>
 
@@ -186,23 +190,25 @@ These trades reduced concentration risk in recent winners and increased the cash
 
 Post‑transactions, the portfolio metrics (annual data) were:
 
-- Sum of weights: 0.97703  
-- Expected return: 14.47%  
-- Standard deviation: 9.29%  
-- Sharpe ratio: 1.10  
+<div style="text-align: center; margin-top: 0.5rem;">
+
+| Period | Sum of weights | Exp. return | Std. dev. | Sharpe |
+|--------|----------------|------------:|----------:|-------:|
+| After  | 0.97703        | 14.47%      | 9.29%     | 1.10   |
+
+</div>
 
 The Sharpe ratio declined slightly, but I believe these adjustments were still rational in terms of risk management and profit‑taking. The portfolio’s target standard deviation remained comfortably below 10%, expected returns were above my initial 8% goal, and asset correlations stayed relatively low. With the portfolio already up 2.2% after three weeks versus a quarterly expected return of 3.47%, I judged the trajectory as favourable and planned to focus on maintaining disciplined risk levels rather than chasing short‑term performance.
 
 ## Week 4
 
-- <span style="color: green;">Portfolio value: 102,512.62 USD (+0.41%)</span>
-- <span style="color: green;">Top performer: EQNR – Equinor ASA (+11.82%); XOM – Exxon Mobil Corporation (+337.95 USD)</span>
-- <span style="color: red;">Worst performer: SLNG – Stabilis Solutions, Inc. (−9.02%); PLD – Prologis (−151.92 USD)</span>
+**<span style="color: green;">Portfolio value: 102,512.62 USD (+0.41%)</span>**
+**<span style="color: green;">Top performer: EQNR – Equinor ASA (+11.82%); XOM – Exxon Mobil Corporation (+337.95 USD)</span>**
+**<span style="color: red;">Worst performer: SLNG – Stabilis Solutions, Inc. (−9.02%); PLD – Prologis (−151.92 USD)</span>**
 
-<div style="text-align: center; margin-top: 0.5rem;">
+<div style="text-align: center; margin-top: 0.4rem;">
 
-**Risk:** <span style="font-size: 1.1rem;">🟡</span>  
-**Volatility:** <span style="font-size: 1.1rem;">🟡</span>
+**Risk:** 🟢🟡⚪⚪⚪  **Volatility:** 🟢🟡⚪⚪⚪
 
 </div>
 
@@ -216,23 +222,25 @@ No transactions were made this week, as I was broadly satisfied with the portfol
 
 Using annual data, the portfolio metrics at the end of Week 4 were:
 
-- Sum of weights: 0.98  
-- Expected return: 14.44%  
-- Standard deviation: 9.04%  
-- Sharpe ratio: 1.13  
+<div style="text-align: center; margin-top: 0.5rem;">
+
+| Period | Sum of weights | Exp. return | Std. dev. | Sharpe |
+|--------|----------------|------------:|----------:|-------:|
+| End wk4| 0.98           | 14.44%      | 9.04%     | 1.13   |
+
+</div>
 
 The increase in the Sharpe ratio indicated that, despite heightened geopolitical uncertainty, the portfolio’s risk‑adjusted performance continued to move in a positive direction.
 
 ## Week 5
 
-- <span style="color: red;">Portfolio value: 101,618.67 USD (−0.87%)</span>
-- <span style="color: green;">Top performer: TSLA – Tesla, Inc. (+5.94%); BAC – Bank of America Corporation (+62.37 USD)</span>
-- <span style="color: red;">Worst performer: GOOGL – Alphabet Inc. (−6.55%); BNP.PA – BNP Paribas SA (−275.80 USD)</span>
+**<span style="color: red;">Portfolio value: 101,618.67 USD (−0.87%)</span>**
+**<span style="color: green;">Top performer: TSLA – Tesla, Inc. (+5.94%); BAC – Bank of America Corporation (+62.37 USD)</span>**
+**<span style="color: red;">Worst performer: GOOGL – Alphabet Inc. (−6.55%); BNP.PA – BNP Paribas SA (−275.80 USD)</span>**
 
-<div style="text-align: center; margin-top: 0.5rem;">
+<div style="text-align: center; margin-top: 0.4rem;">
 
-**Risk:** <span style="font-size: 1.1rem;">🔴</span>  
-**Volatility:** <span style="font-size: 1.1rem;">🔴</span>
+**Risk:** 🟢🟡🟠🔴⚪  **Volatility:** 🟢🟡🟠🔴⚪
 
 </div>
 
@@ -241,13 +249,6 @@ This was the weakest week of performance for the portfolio so far. The main driv
 Tech names underperformed broadly, with GOOGL among the hardest hit. Energy stocks also declined as oil prices reversed earlier gains. BAC was one of the few bright spots, supported by the easing of tensions and a more positive outlook for the financial sector. V and GOOGL were affected both by weaker technology sentiment and, in V’s case, signs of softer consumer expenditure. Overall, anything tied to technology and defence came under pressure this week.
 
 After a lecture on portfolio construction, I became more aware of the risk of over‑exposure to individual assets. PLD appeared overweight given its recent underperformance, while consumer‑focused stocks and US financials seemed underrepresented. I also reflected that some of my earlier additions had contributed to larger drawdowns than expected. Shorting BTC was considered but rejected, as in practice high transaction costs would make such a strategy less realistic.
-
-Using annual data before transactions, the portfolio metrics were:
-
-- Sum of weights: 0.97658  
-- Expected return: 14.38%  
-- Standard deviation: 9.08%  
-- Sharpe ratio: 1.12  
 
 Following this review, I made the following transactions:
 
@@ -258,23 +259,26 @@ The added VOO increased exposure to a diversified, more stable core holding. NKE
 
 After these changes, the portfolio metrics became:
 
-- Sum of weights: 0.97740  
-- Expected return: 16.03%  
-- Standard deviation: 10.93%  
-- Sharpe ratio: 1.08  
+<div style="text-align: center; margin-top: 0.5rem;">
+
+| Period | Sum of weights | Exp. return | Std. dev. | Sharpe |
+|--------|----------------|------------:|----------:|-------:|
+| Before | 0.97658        | 14.38%      | 9.08%     | 1.12   |
+| After  | 0.97740        | 16.03%      | 10.93%    | 1.08   |
+
+</div>
 
 These adjustments raised expected returns but pushed standard deviation just under 11% and slightly reduced the Sharpe ratio. The stock allocation also increased to around 40%, which I recognise as relatively aggressive. While the greater emphasis on equities, particularly in consumer and defence names, may enhance long‑term growth potential, it also requires closer monitoring of volatility and correlations in the final week.
 
 ## Week 6
 
-- <span style="color: green;">Portfolio value: 104,042.21 USD (+2.38%)</span>
-- <span style="color: green;">Top performer: NKE – Nike, Inc. (+16.88%); RR.L – Rolls‑Royce Holdings plc (+564.30 USD)</span>
-- <span style="color: red;">Worst performer: TSLA – Tesla, Inc. (−8.90%); XOM – Exxon Mobil Corporation (−177.30 USD)</span>
+**<span style="color: green;">Portfolio value: 104,042.21 USD (+2.38%)</span>**
+**<span style="color: green;">Top performer: NKE – Nike, Inc. (+16.88%); RR.L – Rolls‑Royce Holdings plc (+564.30 USD)</span>**
+**<span style="color: red;">Worst performer: TSLA – Tesla, Inc. (−8.90%); XOM – Exxon Mobil Corporation (−177.30 USD)</span>**
 
-<div style="text-align: center; margin-top: 0.5rem;">
+<div style="text-align: center; margin-top: 0.4rem;">
 
-**Risk:** <span style="font-size: 1.1rem;">🔴</span>  
-**Volatility:** <span style="font-size: 1.1rem;">🔴</span>
+**Risk:** 🟢🟡🟠🔴⚪  **Volatility:** 🟢🟡🟠🔴⚪
 
 </div>
 
@@ -288,24 +292,26 @@ Across the portfolio, most assets performed well this week, with the exception o
 
 Using annual data at the end of Week 6, the portfolio metrics were:
 
-- Sum of weights: 0.98  
-- Expected return: 16.53%  
-- Standard deviation: 11.40%  
-- Sharpe ratio: 1.08  
+<div style="text-align: center; margin-top: 0.5rem;">
+
+| Period | Sum of weights | Exp. return | Std. dev. | Sharpe |
+|--------|----------------|------------:|----------:|-------:|
+| End wk6| 0.98           | 16.53%      | 11.40%    | 1.08   |
+
+</div>
 
 These figures show that the portfolio finished the six‑week period with expected returns comfortably above the initial 8% target, albeit with volatility slightly above the preferred 10% threshold. Overall, the risk‑return profile remained attractive, and the final positioning reflected a deliberate balance between growth opportunities and risk management.
 
 ## Final Evaluation
 
-- <span style="color: green;">Final portfolio value: 105,053.26 USD (+5.05% over six weeks)</span>
-- <span style="color: green;">Best performer: NKE – Nike, Inc. (+7.53% over the final week; >25% over the period)</span>
-- <span style="color: green;">Largest $ gain: VOO – Vanguard S&P 500 ETF (+251.65 USD)</span>
-- <span style="color: red;">Largest % loser: SLNG – Stabilis Solutions, Inc. (around −20%)</span>
+**<span style="color: green;">Final portfolio value: 105,053.26 USD (+5.05% over six weeks)</span>**
+**<span style="color: green;">Best performer: NKE – Nike, Inc. (+7.53% over the final week; >25% over the period)</span>**
+**<span style="color: green;">Largest $ gain: VOO – Vanguard S&P 500 ETF (+251.65 USD)</span>**
+**<span style="color: red;">Largest % loser: SLNG – Stabilis Solutions, Inc. (around −20%)</span>**
 
-<div style="text-align: center; margin-top: 0.75rem;">
+<div style="text-align: center; margin-top: 0.6rem;">
 
-**Overall risk:** <span style="font-size: 1.1rem;">🟠</span>  
-**Overall volatility:** <span style="font-size: 1.1rem;">🟠</span>
+**Overall risk:** 🟢🟡🟠⚪⚪  **Overall volatility:** 🟢🟡🟠🔴⚪
 
 </div>
 
@@ -319,10 +325,16 @@ On the downside, TSLA, SLNG, DGE.L, ULVR.L and PLD detracted from performance. T
 
 From a risk‑return perspective, the final annual figures were:
 
-- **Sum of weights:** 0.98  
-- **Expected return:** 16.18%  
-- **Standard deviation:** 11.14%  
-- **Sharpe ratio:** 1.07  
+<div style="text-align: center; margin-top: 0.5rem;">
+
+| Metric         | Value   |
+|----------------|--------:|
+| Sum of weights | 0.98    |
+| Exp. return    | 16.18%  |
+| Std. dev.      | 11.14%  |
+| Sharpe         | 1.07    |
+
+</div>  
 
 These metrics show that the portfolio exceeded the initial annualised return target of around 8%, while ending with volatility slightly above the preferred 10% threshold. The Sharpe ratio of 1.07 is respectable, especially considering the limited data window (five years) and the highly event‑driven nature of the period. Throughout the assignment, I consistently used Solver to explore higher Sharpe ratio solutions but regularly rejected allocations that concentrated too much risk in a few high‑volatility assets, instead favouring more diversified, realistic portfolios.
 
