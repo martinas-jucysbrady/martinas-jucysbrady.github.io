@@ -1,8 +1,8 @@
 ---
 title: "Global Profitability Insights and Strategic Recommendations for EcoEnergy Corp"
 subtitle: "*Using Power BI*"
-description: ""
-categories: [Analytics, Year 4, unfinished]
+description: "PowerBI analysis of EcoEnergy Corp's profitability revealed regional trends, cost issues, outsourcing recommendations, and predictive profit recovery via low-cost hubs."
+categories: [Analytics, Year 4]
 date: '2025-11-11'
 author: 
     - "Martinas Jucys Brady"
