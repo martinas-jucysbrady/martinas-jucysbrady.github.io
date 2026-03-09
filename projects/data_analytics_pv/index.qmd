@@ -27,6 +27,9 @@ about:
     - icon: file-earmark-pdf
       text: Presentation PDF
       href: projects/data_analytics_pv/ecoenergy_presentation.pdf
+    - icon: file-earmark-pdf
+      text: Power BI Dashboard PBIX
+      href: projects/data_analytics_pv/powerbi_ecoenergy.pbix
 ---
 
 ![EcoEnergy Corp; Image created by Martinas Jucys Brady](/projects/data_analytics_pv/ecoenergy.svg){width="40%"}
