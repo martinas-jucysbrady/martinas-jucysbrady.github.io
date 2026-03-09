@@ -12,7 +12,7 @@ format: html
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  var map = L.map("map").setView(, 2);[4][5]
+  var map = L.map("map").setView(, 2);[1][2]
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "&copy; OpenStreetMap contributors"
