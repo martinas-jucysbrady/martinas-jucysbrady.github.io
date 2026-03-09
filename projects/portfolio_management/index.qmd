@@ -97,10 +97,15 @@ On review, it appeared that BTC was likely overweight, so I identified this as a
 
 My initial portfolio was based on Monday closing prices, but because Monday 26 May was Memorial Day and markets were closed, I used the closing prices from Tuesday 27 May instead.
 
+<div style="text-align: center;">
+
 **<span style="color: green;">Portfolio value: 101,009.45 USD (+1.01%)</span>**
+
 **<span style="color: green;">Top performer (% and $): RHM.DE – Rheinmetall AG (+9.58%, +564.27 USD)</span>**
+
 **<span style="color: red;">Worst performer (% and $): PLD – Prologis (−3.64%, −290.16 USD)</span>**
 
+</div>
 <div style="text-align: center; margin-top: 0.4rem;">
 
 **Risk:** 🟢🟡🟠🔴⚪  **Volatility:** 🟢🟡🟠🔴🔴
@@ -125,9 +130,15 @@ Looking ahead, I planned to monitor European markets closely, particularly finan
 
 ## Week 2
 
+<div style="text-align: center;">
+
 **<span style="color: red;">Portfolio value: 100,495.07 USD (−0.51%)</span>**
+
 **<span style="color: green;">Top performer: PLD – Prologis (+2.00%, +153.36 USD)</span>**
+
 **<span style="color: red;">Worst performer: TSLA – Tesla, Inc. (−5.57%); RHM.DE – Rheinmetall AG (−258.20 USD)</span>**
+
+</div>
 
 <div style="text-align: center; margin-top: 0.4rem;">
 
@@ -163,9 +174,15 @@ These adjustments brought standard deviation in line with my target of below 10%
 
 ## Week 3
 
+<div style="text-align: center;">
+
 **<span style="color: green;">Portfolio value: 102,092.30 USD (+1.59%)</span>**
+
 **<span style="color: green;">Top performer: SBUX – Starbucks Corporation (+6.43%, +383.60 USD)</span>**
+
 **<span style="color: red;">Worst performer: SLNG – Stabilis Solutions, Inc. (−3.97%); RHM.DE – Rheinmetall AG (−76.41 USD)</span>**
+
+</div>
 
 <div style="text-align: center; margin-top: 0.4rem;">
 
@@ -202,9 +219,15 @@ The Sharpe ratio declined slightly, but I believe these adjustments were still r
 
 ## Week 4
 
+<div style="text-align: center;">
+
 **<span style="color: green;">Portfolio value: 102,512.62 USD (+0.41%)</span>**
+
 **<span style="color: green;">Top performer: EQNR – Equinor ASA (+11.82%); XOM – Exxon Mobil Corporation (+337.95 USD)</span>**
+
 **<span style="color: red;">Worst performer: SLNG – Stabilis Solutions, Inc. (−9.02%); PLD – Prologis (−151.92 USD)</span>**
+
+</div>
 
 <div style="text-align: center; margin-top: 0.4rem;">
 
@@ -234,9 +257,15 @@ The increase in the Sharpe ratio indicated that, despite heightened geopolitical
 
 ## Week 5
 
+<div style="text-align: center;">
+
 **<span style="color: red;">Portfolio value: 101,618.67 USD (−0.87%)</span>**
+
 **<span style="color: green;">Top performer: TSLA – Tesla, Inc. (+5.94%); BAC – Bank of America Corporation (+62.37 USD)</span>**
+
 **<span style="color: red;">Worst performer: GOOGL – Alphabet Inc. (−6.55%); BNP.PA – BNP Paribas SA (−275.80 USD)</span>**
+
+</div>
 
 <div style="text-align: center; margin-top: 0.4rem;">
 
@@ -272,9 +301,15 @@ These adjustments raised expected returns but pushed standard deviation just und
 
 ## Week 6
 
+<div style="text-align: center;">
+
 **<span style="color: green;">Portfolio value: 104,042.21 USD (+2.38%)</span>**
+
 **<span style="color: green;">Top performer: NKE – Nike, Inc. (+16.88%); RR.L – Rolls‑Royce Holdings plc (+564.30 USD)</span>**
+
 **<span style="color: red;">Worst performer: TSLA – Tesla, Inc. (−8.90%); XOM – Exxon Mobil Corporation (−177.30 USD)</span>**
+
+</div>
 
 <div style="text-align: center; margin-top: 0.4rem;">
 
@@ -304,10 +339,17 @@ These figures show that the portfolio finished the six‑week period with expect
 
 ## Final Evaluation
 
+<div style="text-align: center;">
+
 **<span style="color: green;">Final portfolio value: 105,053.26 USD (+5.05% over six weeks)</span>**
+
 **<span style="color: green;">Best performer: NKE – Nike, Inc. (+7.53% over the final week; >25% over the period)</span>**
+
 **<span style="color: green;">Largest $ gain: VOO – Vanguard S&P 500 ETF (+251.65 USD)</span>**
+
 **<span style="color: red;">Largest % loser: SLNG – Stabilis Solutions, Inc. (around −20%)</span>**
+
+</div>
 
 <div style="text-align: center; margin-top: 0.6rem;">
 
