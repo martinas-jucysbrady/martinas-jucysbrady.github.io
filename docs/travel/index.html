@@ -156,14 +156,20 @@ ul.task-list li input[type="checkbox"] {
   <p style="font-size:1.1rem; letter-spacing:0.25em; text-transform:uppercase; color:#9b8877; margin-bottom:6px;">My Travels</p>
   <h2 style="font-size:2rem; font-style:italic; color:#3a3a3a; margin-bottom:30px;" class="anchored">Places I've Been</h2>
 
-  <div id="travel-map" style="width:100%; height:480px; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.08);"></div>
+  <div id="travel-map" style="width:100%; height:520px; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.08);"></div>
 
   <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:22px;">
+    <div class="tmap-btn" data-region="world" style="display:inline-flex;align-items:center;gap:6px;background:#e8ddd7;border:1.5px solid #e8ddd7;border-radius:20px;padding:8px 20px;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;color:#9b8877;cursor:pointer;">
+      🌐 World
+    </div>
     <div class="tmap-btn" data-region="europe" style="display:inline-flex;align-items:center;gap:6px;background:#c9aa96;border:1.5px solid #c9aa96;border-radius:20px;padding:8px 20px;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;color:#fff;cursor:pointer;">
       🌍 Europe
     </div>
     <div class="tmap-btn" data-region="east-asia" style="display:inline-flex;align-items:center;gap:6px;background:#c9aa96;border:1.5px solid #c9aa96;border-radius:20px;padding:8px 20px;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;color:#fff;cursor:pointer;">
-      🌏 East Asia
+      🗾 East Asia
+    </div>
+    <div class="tmap-btn" data-region="se-asia" style="display:inline-flex;align-items:center;gap:6px;background:#c9aa96;border:1.5px solid #c9aa96;border-radius:20px;padding:8px 20px;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;color:#fff;cursor:pointer;">
+      🌴 SE Asia
     </div>
     <div class="tmap-btn" data-region="australia" style="display:inline-flex;align-items:center;gap:6px;background:#c9aa96;border:1.5px solid #c9aa96;border-radius:20px;padding:8px 20px;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;color:#fff;cursor:pointer;">
       🦘 Australia
@@ -173,16 +179,21 @@ ul.task-list li input[type="checkbox"] {
 
 <style>
   .leaflet-popup-content-wrapper { border-radius: 8px; font-family: 'Georgia', serif; }
-  .tmap-btn { transition: all 0.2s ease; }
+  .tmap-btn { transition: all 0.2s ease; user-select: none; }
   .tmap-btn:hover { opacity: 0.8; transform: translateY(-1px); }
-  .tmap-btn.active { background: #a07860 !important; border-color: #a07860 !important; }
+  .tmap-btn.active { box-shadow: 0 2px 10px rgba(0,0,0,0.18); transform: translateY(-1px); filter: brightness(0.88); }
 </style>
 
 <script>
 (function() {
   var tmap = L.map('travel-map', {
-    center: [30, 20], zoom: 2, minZoom: 2, maxZoom: 10,
-    scrollWheelZoom: true, zoomControl: true,
+    center: [30, 20], zoom: 2, minZoom: 2, maxZoom: 12,
+    scrollWheelZoom: false,
+    dragging: false,
+    doubleClickZoom: false,
+    boxZoom: false,
+    keyboard: false,
+    zoomControl: false,
     maxBounds: [[-75, -180], [90, 180]],
     maxBoundsViscosity: 1.0
   });
@@ -197,115 +208,166 @@ ul.task-list li input[type="checkbox"] {
   }).addTo(tmap);
 
   var regionViews = {
-    'europe':    { center: [50, 15],  zoom: 4 },
-    'east-asia': { center: [36, 127], zoom: 4 },
-    'australia': { center: [-27, 133], zoom: 4 }
+    'world':     { center: [30, 20],    zoom: 2 },
+    'europe':    { center: [50, 10],    zoom: 4 },
+    'east-asia': { center: [36, 132],   zoom: 5 },
+    'se-asia':   { center: [18, 108],   zoom: 5 },
+    'australia': { center: [-27, 133],  zoom: 4 }
   };
 
-  var places = [
+  var allPlaces = [
     // Europe
-    { name: 'Edinburgh',   latlng: [55.95, -3.19],   region: 'europe' },
-    { name: 'London',      latlng: [51.51, -0.13],   region: 'europe' },
-    { name: 'Amsterdam',   latlng: [52.37, 4.90],    region: 'europe' },
-    { name: 'Cologne',     latlng: [50.94, 6.96],    region: 'europe' },
-    { name: 'Paris',       latlng: [48.85, 2.35],    region: 'europe' },
-    { name: 'Dubrovnik',   latlng: [42.65, 18.09],   region: 'europe' },
-    { name: 'Budva',       latlng: [42.28, 18.84],   region: 'europe' },
-    { name: 'Switzerland', latlng: [46.82, 8.23],    region: 'europe' },
-    { name: 'Liechtenstein', latlng: [47.14, 9.52],  region: 'europe' },
-    { name: 'Vienna',      latlng: [48.21, 16.37],   region: 'europe' },
-    { name: 'Bratislava',  latlng: [48.15, 17.11],   region: 'europe' },
-    { name: 'Budapest',    latlng: [47.50, 19.04],   region: 'europe' },
-    { name: 'Manchester',  latlng: [53.48, -2.24],   region: 'europe' },
-    { name: 'Liverpool',   latlng: [53.41, -2.98],   region: 'europe' },
-    { name: 'Madrid',      latlng: [40.42, -3.70],   region: 'europe' },
-    { name: 'Venice',      latlng: [45.44, 12.33],   region: 'europe' },
-    { name: 'Split',       latlng: [43.51, 16.44],   region: 'europe' },
-    { name: 'Faro',        latlng: [37.02, -7.93],   region: 'europe' },
-    { name: 'Lagos',       latlng: [37.10, -8.67],   region: 'europe' },
-    { name: 'Cadiz',       latlng: [36.53, -6.30],   region: 'europe' },
-    { name: 'Gibraltar',   latlng: [36.14, -5.35],   region: 'europe' },
-    { name: 'Malaga',      latlng: [36.72, -4.42],   region: 'europe' },
-    { name: 'Granada',     latlng: [37.18, -3.60],   region: 'europe' },
-    { name: 'Rome',        latlng: [41.90, 12.50],   region: 'europe' },
-    { name: 'Madeira',     latlng: [32.76, -16.96],  region: 'europe' },
-    { name: 'Milan',       latlng: [45.46, 9.19],    region: 'europe' },
-    { name: 'Como',        latlng: [45.81, 9.09],    region: 'europe' },
-    { name: 'Genoa',       latlng: [44.41, 8.93],    region: 'europe' },
-    { name: 'Monaco',      latlng: [43.74, 7.43],    region: 'europe' },
-    { name: 'Cannes',      latlng: [43.55, 7.02],    region: 'europe' },
-    { name: 'Nice',        latlng: [43.71, 7.26],    region: 'europe' },
-    { name: 'Lithuania',   latlng: [55.17, 23.88],   region: 'europe' },
-    { name: 'Wexford',     latlng: [52.34, -6.46],   region: 'europe' },
-    { name: 'Fermanagh',   latlng: [54.35, -7.63],   region: 'europe' },
+    { name: 'Edinburgh',     latlng: [55.95, -3.19],   region: 'europe' },
+    { name: 'London',        latlng: [51.51, -0.13],   region: 'europe' },
+    { name: 'Amsterdam',     latlng: [52.37, 4.90],    region: 'europe' },
+    { name: 'Cologne',       latlng: [50.94, 6.96],    region: 'europe' },
+    { name: 'Paris',         latlng: [48.85, 2.35],    region: 'europe' },
+    { name: 'Dubrovnik',     latlng: [42.65, 18.09],   region: 'europe' },
+    { name: 'Budva',         latlng: [42.28, 18.84],   region: 'europe' },
+    { name: 'Switzerland',   latlng: [46.82, 8.23],    region: 'europe' },
+    { name: 'Liechtenstein', latlng: [47.14, 9.52],    region: 'europe' },
+    { name: 'Vienna',        latlng: [48.21, 16.37],   region: 'europe' },
+    { name: 'Bratislava',    latlng: [48.15, 17.11],   region: 'europe' },
+    { name: 'Budapest',      latlng: [47.50, 19.04],   region: 'europe' },
+    { name: 'Manchester',    latlng: [53.48, -2.24],   region: 'europe' },
+    { name: 'Liverpool',     latlng: [53.41, -2.98],   region: 'europe' },
+    { name: 'Madrid',        latlng: [40.42, -3.70],   region: 'europe' },
+    { name: 'Venice',        latlng: [45.44, 12.33],   region: 'europe' },
+    { name: 'Split',         latlng: [43.51, 16.44],   region: 'europe' },
+    { name: 'Faro',          latlng: [37.02, -7.93],   region: 'europe' },
+    { name: 'Lagos',         latlng: [37.10, -8.67],   region: 'europe' },
+    { name: 'Cadiz',         latlng: [36.53, -6.30],   region: 'europe' },
+    { name: 'Gibraltar',     latlng: [36.14, -5.35],   region: 'europe' },
+    { name: 'Malaga',        latlng: [36.72, -4.42],   region: 'europe' },
+    { name: 'Granada',       latlng: [37.18, -3.60],   region: 'europe' },
+    { name: 'Rome',          latlng: [41.90, 12.50],   region: 'europe' },
+    { name: 'Madeira',       latlng: [32.76, -16.96],  region: 'europe' },
+    { name: 'Milan',         latlng: [45.46, 9.19],    region: 'europe' },
+    { name: 'Como',          latlng: [45.81, 9.09],    region: 'europe' },
+    { name: 'Genoa',         latlng: [44.41, 8.93],    region: 'europe' },
+    { name: 'Monaco',        latlng: [43.74, 7.43],    region: 'europe' },
+    { name: 'Cannes',        latlng: [43.55, 7.02],    region: 'europe' },
+    { name: 'Nice',          latlng: [43.71, 7.26],    region: 'europe' },
+    { name: 'Lithuania',     latlng: [55.17, 23.88],   region: 'europe' },
+    { name: 'Wexford',       latlng: [52.34, -6.46],   region: 'europe' },
+    { name: 'Fermanagh',     latlng: [54.35, -7.63],   region: 'europe' },
 
     // East Asia
-    { name: 'Tokyo',       latlng: [35.68, 139.69],  region: 'east-asia' },
-    { name: 'Kyoto',       latlng: [35.01, 135.77],  region: 'east-asia' },
-    { name: 'Osaka',       latlng: [34.69, 135.50],  region: 'east-asia' },
-    { name: 'Nara',        latlng: [34.69, 135.83],  region: 'east-asia' },
-    { name: 'Kobe',        latlng: [34.69, 135.19],  region: 'east-asia' },
-    { name: 'Himeji',      latlng: [34.84, 134.69],  region: 'east-asia' },
-    { name: 'Arashiyama',  latlng: [35.01, 135.67],  region: 'east-asia' },
-    { name: 'Hiroshima',   latlng: [34.39, 132.45],  region: 'east-asia' },
-    { name: 'Fukuoka',     latlng: [33.59, 130.40],  region: 'east-asia' },
-    { name: 'Nagasaki',    latlng: [32.75, 129.88],  region: 'east-asia' },
-    { name: 'Nagoya',      latlng: [35.18, 136.91],  region: 'east-asia' },
-    { name: 'Sapporo',     latlng: [43.06, 141.35],  region: 'east-asia' },
-    { name: 'Okinawa',     latlng: [26.33, 127.80],  region: 'east-asia' },
-    { name: 'Oita',        latlng: [33.23, 131.61],  region: 'east-asia' },
-    { name: 'Beppu',       latlng: [33.28, 131.50],  region: 'east-asia' },
-    { name: 'Kumamoto',    latlng: [32.80, 130.70],  region: 'east-asia' },
-    { name: 'Kagoshima',   latlng: [31.60, 130.56],  region: 'east-asia' },
-    { name: 'Miyazaki',    latlng: [31.91, 131.42],  region: 'east-asia' },
-    { name: 'Matsue',      latlng: [35.47, 133.06],  region: 'east-asia' },
-    { name: 'Izumo',       latlng: [35.37, 132.76],  region: 'east-asia' },
-    { name: 'Matsumoto',   latlng: [36.24, 137.97],  region: 'east-asia' },
-    { name: 'Kanazawa',    latlng: [36.56, 136.66],  region: 'east-asia' },
-    { name: 'Shizuoka',    latlng: [34.98, 138.38],  region: 'east-asia' },
-    { name: 'Mount Fuji',  latlng: [35.36, 138.73],  region: 'east-asia' },
-    { name: 'Suzuka',      latlng: [34.84, 136.54],  region: 'east-asia' },
-    { name: 'Wakayama',    latlng: [34.23, 135.17],  region: 'east-asia' },
-    { name: 'Tokushima',   latlng: [34.07, 134.56],  region: 'east-asia' },
-    { name: 'Tottori',     latlng: [35.50, 134.24],  region: 'east-asia' },
-    { name: 'Minoh',       latlng: [34.83, 135.47],  region: 'east-asia' },
-    { name: 'Hikone',      latlng: [35.27, 136.26],  region: 'east-asia' },
-    { name: 'Naruto',      latlng: [34.18, 134.61],  region: 'east-asia' },
-    { name: 'Seoul',       latlng: [37.57, 126.98],  region: 'east-asia' },
-    { name: 'Busan',       latlng: [35.10, 129.04],  region: 'east-asia' },
-    { name: 'Gyeongju',    latlng: [35.86, 129.22],  region: 'east-asia' },
-    { name: 'Taipei',      latlng: [25.03, 121.56],  region: 'east-asia' },
-    { name: 'Hanoi',       latlng: [21.03, 105.85],  region: 'east-asia' },
+    { name: 'Tokyo',         latlng: [35.68, 139.69],  region: 'east-asia' },
+    { name: 'Kyoto',         latlng: [35.01, 135.77],  region: 'east-asia' },
+    { name: 'Osaka',         latlng: [34.69, 135.50],  region: 'east-asia' },
+    { name: 'Nara',          latlng: [34.69, 135.83],  region: 'east-asia' },
+    { name: 'Kobe',          latlng: [34.69, 135.19],  region: 'east-asia' },
+    { name: 'Himeji',        latlng: [34.84, 134.69],  region: 'east-asia' },
+    { name: 'Arashiyama',    latlng: [35.01, 135.67],  region: 'east-asia' },
+    { name: 'Fukuoka',       latlng: [33.59, 130.40],  region: 'east-asia' },
+    { name: 'Nagasaki',      latlng: [32.75, 129.88],  region: 'east-asia' },
+    { name: 'Nagoya',        latlng: [35.18, 136.91],  region: 'east-asia' },
+    { name: 'Sapporo',       latlng: [43.06, 141.35],  region: 'east-asia' },
+    { name: 'Okinawa',       latlng: [26.33, 127.80],  region: 'east-asia' },
+    { name: 'Oita',          latlng: [33.23, 131.61],  region: 'east-asia' },
+    { name: 'Beppu',         latlng: [33.28, 131.50],  region: 'east-asia' },
+    { name: 'Kumamoto',      latlng: [32.80, 130.70],  region: 'east-asia' },
+    { name: 'Kagoshima',     latlng: [31.60, 130.56],  region: 'east-asia' },
+    { name: 'Miyazaki',      latlng: [31.91, 131.42],  region: 'east-asia' },
+    { name: 'Matsue',        latlng: [35.47, 133.06],  region: 'east-asia' },
+    { name: 'Izumo',         latlng: [35.37, 132.76],  region: 'east-asia' },
+    { name: 'Matsumoto',     latlng: [36.24, 137.97],  region: 'east-asia' },
+    { name: 'Kanazawa',      latlng: [36.56, 136.66],  region: 'east-asia' },
+    { name: 'Shizuoka',      latlng: [34.98, 138.38],  region: 'east-asia' },
+    { name: 'Mount Fuji',    latlng: [35.36, 138.73],  region: 'east-asia' },
+    { name: 'Suzuka',        latlng: [34.84, 136.54],  region: 'east-asia' },
+    { name: 'Wakayama',      latlng: [34.23, 135.17],  region: 'east-asia' },
+    { name: 'Tokushima',     latlng: [34.07, 134.56],  region: 'east-asia' },
+    { name: 'Tottori',       latlng: [35.50, 134.24],  region: 'east-asia' },
+    { name: 'Minoh',         latlng: [34.83, 135.47],  region: 'east-asia' },
+    { name: 'Hikone',        latlng: [35.27, 136.26],  region: 'east-asia' },
+    { name: 'Naruto',        latlng: [34.18, 134.61],  region: 'east-asia' },
+    { name: 'Amakusa',       latlng: [32.45, 130.20],  region: 'east-asia' },
+    { name: 'Seoul',         latlng: [37.57, 126.98],  region: 'east-asia' },
+    { name: 'Busan',         latlng: [35.10, 129.04],  region: 'east-asia' },
+    { name: 'Gyeongju',      latlng: [35.86, 129.22],  region: 'east-asia' },
+
+    // SE Asia
+    { name: 'Taipei',        latlng: [25.03, 121.56],  region: 'se-asia' },
+    { name: 'Hanoi',         latlng: [21.03, 105.85],  region: 'se-asia' },
 
     // Australia
-    { name: 'Sydney',      latlng: [-33.87, 151.21], region: 'australia' },
-    { name: 'Perth',       latlng: [-31.95, 115.86], region: 'australia' },
-    { name: 'Busselton',   latlng: [-33.65, 115.35], region: 'australia' },
+    { name: 'Sydney',        latlng: [-33.87, 151.21], region: 'australia' },
+    { name: 'Perth',         latlng: [-31.95, 115.86], region: 'australia' },
+    { name: 'Busselton',     latlng: [-33.65, 115.35], region: 'australia' },
   ];
 
-  var dotIcon = L.divIcon({
-    className: '',
-    html: '<div style="width:10px;height:10px;background:#c9aa96;border:2px solid #fff;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,0.3);"></div>',
-    iconSize: [10, 10], iconAnchor: [5, 5], popupAnchor: [0, -8]
-  });
+  // Region highlight rectangles on world view
+  var regionRects = {
+    'europe':    L.rectangle([[35,-25],[71,40]],   { color:'#c9aa96', weight:1.5, fillColor:'#c9aa96', fillOpacity:0.15 }),
+    'east-asia': L.rectangle([[20,120],[50,148]],  { color:'#c9aa96', weight:1.5, fillColor:'#c9aa96', fillOpacity:0.15 }),
+    'se-asia':   L.rectangle([[10,100],[27,123]],  { color:'#c9aa96', weight:1.5, fillColor:'#c9aa96', fillOpacity:0.15 }),
+    'australia': L.rectangle([[-44,113],[-10,154]],{ color:'#c9aa96', weight:1.5, fillColor:'#c9aa96', fillOpacity:0.15 })
+  };
 
-  places.forEach(function(p) {
-    L.marker(p.latlng, { icon: dotIcon })
-      .addTo(tmap)
-      .bindPopup(
-        '<div style="text-align:center;font-family:Georgia,serif;font-style:italic;color:#3a3a3a;font-size:1rem;">' + p.name + '</div>',
-        { maxWidth: 160 }
-      );
-  });
+  var dotIcon = function(region) {
+    var colors = { 'europe':'#c9aa96', 'east-asia':'#9ab8c9', 'se-asia':'#9ac9ab', 'australia':'#c9b89a' };
+    var c = colors[region] || '#c9aa96';
+    return L.divIcon({
+      className: '',
+      html: '<div style="width:11px;height:11px;background:' + c + ';border:2px solid #fff;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,0.25);cursor:pointer;"></div>',
+      iconSize: [11, 11], iconAnchor: [5, 5], popupAnchor: [0, -8]
+    });
+  };
+
+  var markers = [];
+  var currentRegion = 'world';
+
+  function showMarkersForRegion(region) {
+    markers.forEach(function(m) { tmap.removeLayer(m); });
+    markers = [];
+    // Remove all rects
+    Object.values(regionRects).forEach(function(r) { tmap.removeLayer(r); });
+
+    if (region === 'world') {
+      // Show region highlight boxes only
+      Object.values(regionRects).forEach(function(r) { r.addTo(tmap); });
+      // Make boxes clickable
+      Object.entries(regionRects).forEach(function(entry) {
+        var id = entry[0], rect = entry[1];
+        rect.on('click', function() {
+          document.querySelector('[data-region="' + id + '"]').click();
+        });
+        rect.on('mouseover', function() { this.setStyle({ fillOpacity: 0.3 }); });
+        rect.on('mouseout',  function() { this.setStyle({ fillOpacity: 0.15 }); });
+      });
+    } else {
+      // Show dots for this region only
+      allPlaces.filter(function(p) { return p.region === region; }).forEach(function(p) {
+        var m = L.marker(p.latlng, { icon: dotIcon(p.region) })
+          .addTo(tmap)
+          .bindPopup(
+            '<div style="text-align:center;font-family:Georgia,serif;font-style:italic;color:#3a3a3a;font-size:1rem;padding:4px 8px;">' + p.name + '</div>',
+            { maxWidth: 160 }
+          );
+        markers.push(m);
+      });
+    }
+  }
+
+  // Start on world view
+  showMarkersForRegion('world');
 
   document.querySelectorAll('.tmap-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.tmap-btn').forEach(function(b) { b.classList.remove('active'); });
       this.classList.add('active');
-      var v = regionViews[this.getAttribute('data-region')];
+      var region = this.getAttribute('data-region');
+      currentRegion = region;
+      var v = regionViews[region];
       tmap.flyTo(v.center, v.zoom, { duration: 1.2 });
+      setTimeout(function() { showMarkersForRegion(region); }, 400);
     });
   });
+
+  // Set world button active on load
+  document.querySelector('[data-region="world"]').classList.add('active');
 })();
 </script>
 
