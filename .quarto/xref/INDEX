@@ -61,5 +61,203 @@
   },
   "travel/travel.qmd": {
     "travel.html": "9af1b3a2"
+  },
+  "travel/australia/nsw.qmd": {
+    "nsw.html": "ccefc4b0"
+  },
+  "travel/australia/wa.qmd": {
+    "wa.html": "4f9c1134"
+  },
+  "travel/europe/c_europe/bratislava.qmd": {
+    "bratislava.html": "8405251e"
+  },
+  "travel/europe/c_europe/budapest.qmd": {
+    "budapest.html": "d2fb1164"
+  },
+  "travel/europe/c_europe/liechtenstein.qmd": {
+    "liechtenstein.html": "ce405113"
+  },
+  "travel/europe/c_europe/switzerland.qmd": {
+    "switzerland.html": "4b68bb7e"
+  },
+  "travel/europe/c_europe/vienna.qmd": {
+    "vienna.html": "8cde8774"
+  },
+  "travel/europe/c_europe/w_germany.qmd": {
+    "w_germany.html": "2703d269"
+  },
+  "travel/europe/iberia/gibraltar.qmd": {
+    "gibraltar.html": "c07fac1b"
+  },
+  "travel/europe/iberia/madeira.qmd": {
+    "madeira.html": "a9fcf05f"
+  },
+  "travel/europe/iberia/portugal.qmd": {
+    "portugal.html": "9bbc7c6e"
+  },
+  "travel/europe/iberia/spain.qmd": {
+    "spain.html": "9712de07"
+  },
+  "travel/europe/ire_uk/england.qmd": {
+    "england.html": "7f9055a0"
+  },
+  "travel/europe/ire_uk/ireland.qmd": {
+    "ireland.html": "f34289cc"
+  },
+  "travel/europe/ire_uk/scotland.qmd": {
+    "scotland.html": "2ffa4f56"
+  },
+  "travel/europe/s_europe/dubrovnik.qmd": {
+    "dubrovnik.html": "2f39ed00"
+  },
+  "travel/europe/s_europe/genoa.qmd": {
+    "genoa.html": "b846c731"
+  },
+  "travel/europe/s_europe/milan.qmd": {
+    "milan.html": "96e81925"
+  },
+  "travel/europe/s_europe/montenegro.qmd": {
+    "montenegro.html": "fb5e9623"
+  },
+  "travel/europe/s_europe/rome.qmd": {
+    "rome.html": "98b5de61"
+  },
+  "travel/europe/s_europe/split.qmd": {
+    "split.html": "2a5341ad"
+  },
+  "travel/europe/s_europe/venice.qmd": {
+    "venice.html": "41ad4372"
+  },
+  "travel/europe/w_europe/monaco.qmd": {
+    "monaco.html": "6df0560d"
+  },
+  "travel/europe/w_europe/netherlands.qmd": {
+    "netherlands.html": "894019df"
+  },
+  "travel/europe/w_europe/paris.qmd": {
+    "paris.html": "c65b9116"
+  },
+  "travel/europe/w_europe/s_france.qmd": {
+    "s_france.html": "2912912e"
+  },
+  "travel/e_asia/busan.qmd": {
+    "busan.html": "e0d5e410"
+  },
+  "travel/e_asia/japan/chubu/aichi.qmd": {
+    "aichi.html": "a209f457"
+  },
+  "travel/e_asia/japan/chubu/fukui.qmd": {
+    "fukui.html": "a0257921"
+  },
+  "travel/e_asia/japan/chubu/gifu.qmd": {
+    "gifu.html": "317c006e"
+  },
+  "travel/e_asia/japan/chubu/ishikawa.qmd": {
+    "ishikawa.html": "046b23d4"
+  },
+  "travel/e_asia/japan/chubu/nagano.qmd": {
+    "nagano.html": "5981c33a"
+  },
+  "travel/e_asia/japan/chubu/shizuoka.qmd": {
+    "shizuoka.html": "87b21133"
+  },
+  "travel/e_asia/japan/chubu/yamanashi.qmd": {
+    "yamanashi.html": "f2de5e61"
+  },
+  "travel/e_asia/japan/chugoku_shikoku/ehime.qmd": {
+    "ehime.html": "b7a977c0"
+  },
+  "travel/e_asia/japan/chugoku_shikoku/hiroshima.qmd": {
+    "hiroshima.html": "f6facaed"
+  },
+  "travel/e_asia/japan/chugoku_shikoku/okayama.qmd": {
+    "okayama.html": "b85e7c02"
+  },
+  "travel/e_asia/japan/chugoku_shikoku/shimane.qmd": {
+    "shimane.html": "e9b1b32c"
+  },
+  "travel/e_asia/japan/chugoku_shikoku/tokushima.qmd": {
+    "tokushima.html": "e59ee245"
+  },
+  "travel/e_asia/japan/chugoku_shikoku/tottori.qmd": {
+    "tottori.html": "769b75b7"
+  },
+  "travel/e_asia/japan/hokkaido/hokkaido.qmd": {
+    "hokkaido.html": "4033e43f"
+  },
+  "travel/e_asia/japan/kansai/hyogo.qmd": {
+    "hyogo.html": "cbd4ffa9"
+  },
+  "travel/e_asia/japan/kansai/kyoto.qmd": {
+    "kyoto.html": "b97a2dcf"
+  },
+  "travel/e_asia/japan/kansai/mie.qmd": {
+    "mie.html": "11f86282"
+  },
+  "travel/e_asia/japan/kansai/nara.qmd": {
+    "nara.html": "60263d2a"
+  },
+  "travel/e_asia/japan/kansai/osaka.qmd": {
+    "osaka.html": "07c46c26"
+  },
+  "travel/e_asia/japan/kansai/shiga.qmd": {
+    "shiga.html": "902d5ba4"
+  },
+  "travel/e_asia/japan/kansai/wakayama.qmd": {
+    "wakayama.html": "dcbdaf57"
+  },
+  "travel/e_asia/japan/kanto/kanagawa.qmd": {
+    "kanagawa.html": "068dbea5"
+  },
+  "travel/e_asia/japan/kanto/tokyo.qmd": {
+    "tokyo.html": "e1a968b5"
+  },
+  "travel/e_asia/japan/kyushu_okinawa/fukuoka.qmd": {
+    "fukuoka.html": "bc20447f"
+  },
+  "travel/e_asia/japan/kyushu_okinawa/kagoshima.qmd": {
+    "kagoshima.html": "9e845345"
+  },
+  "travel/e_asia/japan/kyushu_okinawa/kumamoto.qmd": {
+    "kumamoto.html": "697c0ac0"
+  },
+  "travel/e_asia/japan/kyushu_okinawa/miyazaki.qmd": {
+    "miyazaki.html": "0a94c538"
+  },
+  "travel/e_asia/japan/kyushu_okinawa/nagasaki.qmd": {
+    "nagasaki.html": "ccf97eac"
+  },
+  "travel/e_asia/japan/kyushu_okinawa/oita.qmd": {
+    "oita.html": "f6e1900a"
+  },
+  "travel/e_asia/japan/kyushu_okinawa/okinawa.qmd": {
+    "okinawa.html": "fc8f758d"
+  },
+  "travel/e_asia/japan/kyushu_okinawa/saga.qmd": {
+    "saga.html": "e74747b0"
+  },
+  "travel/e_asia/japan/tohoku/akita.qmd": {
+    "akita.html": "4f377bd0"
+  },
+  "travel/e_asia/japan/tohoku/fukushima.qmd": {
+    "fukushima.html": "b7e63942"
+  },
+  "travel/e_asia/japan/tohoku/iwate.qmd": {
+    "iwate.html": "874534da"
+  },
+  "travel/e_asia/japan/tohoku/miyagi.qmd": {
+    "miyagi.html": "6bc475ec"
+  },
+  "travel/e_asia/japan/tohoku/yamagata.qmd": {
+    "yamagata.html": "1f8a0f80"
+  },
+  "travel/e_asia/seoul.qmd": {
+    "seoul.html": "ee46feb9"
+  },
+  "travel/se_asia/taiwan.qmd": {
+    "taiwan.html": "3648699b"
+  },
+  "travel/se_asia/vietnam.qmd": {
+    "vietnam.html": "51ee4b68"
   }
 }
