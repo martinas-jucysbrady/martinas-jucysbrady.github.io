@@ -41,7 +41,7 @@ title: "My Travels"
   var tmap = L.map('travel-map', {
     center: [30, 20], zoom: 2, minZoom: 2, maxZoom: 6,
     scrollWheelZoom: true, zoomControl: true,
-    maxBounds: [[-90, -180], [90, 180]],
+    maxBounds: [[-75, -180], [90, 180]],
     maxBoundsViscosity: 1.0
   });
 
