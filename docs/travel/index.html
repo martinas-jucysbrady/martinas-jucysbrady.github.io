@@ -157,13 +157,18 @@ ul.task-list li input[type="checkbox"] {
   <h2 style="font-size:2rem; font-style:italic; color:#3a3a3a; margin-bottom:30px;" class="anchored">Places I've Been</h2>
 
   <div style="display:flex; gap:16px; align-items:flex-start;">
-    <div style="flex:1; min-width:0;">
-      <div id="travel-map" style="width:100%; height:520px; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.08);"></div>
+    <div style="flex:1; min-width:0; position:relative;">
+      <div id="travel-map" style="width:100%; height:540px; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.08);"></div>
+      <!-- Okinawa inset box -->
+      <div id="okinawa-inset" style="display:none; position:absolute; bottom:12px; right:12px; width:120px; height:130px; background:#faf8f6; border:1.5px solid #ddd; border-radius:6px; box-shadow:0 2px 10px rgba(0,0,0,0.12); z-index:1000; overflow:hidden;">
+        <div id="okinawa-map" style="width:100%; height:100%;"></div>
+        <div style="position:absolute;top:4px;left:6px;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#9b8877;font-family:Georgia,serif;">Okinawa</div>
+      </div>
     </div>
-    <div id="sidebar" style="width:200px; min-height:520px; background:#faf8f6; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.06); padding:16px; text-align:left; display:none; flex-shrink:0;">
-      <div id="sidebar-title" style="font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:#c9aa96; margin-bottom:10px;"></div>
-      <ul id="sidebar-list" style="list-style:none; margin:0; padding:0; font-family:'Georgia',serif; font-style:italic; color:#3a3a3a; font-size:0.92rem; line-height:2;"></ul>
-      <div id="back-btn" style="margin-top:16px; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:#c9aa96; cursor:pointer; display:none;">← Back</div>
+    <div id="sidebar" style="width:190px; min-height:540px; background:#faf8f6; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.06); padding:16px; text-align:left; display:none; flex-shrink:0;">
+      <div id="sidebar-title" style="font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:#c9aa96; margin-bottom:12px;"></div>
+      <ul id="sidebar-list" style="list-style:none; margin:0; padding:0; font-family:'Georgia',serif; font-style:italic; color:#3a3a3a; font-size:0.88rem; line-height:1.9;"></ul>
+      <div id="back-btn" style="margin-top:18px; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:#c9aa96; cursor:pointer; display:none;">← Back</div>
     </div>
   </div>
 
@@ -177,218 +182,228 @@ ul.task-list li input[type="checkbox"] {
 </div>
 
 <style>
-  .leaflet-popup-content-wrapper { border-radius:8px; font-family:'Georgia',serif; }
+  .leaflet-popup-content-wrapper { border-radius:8px; font-family:'Georgia',serif; box-shadow:0 4px 20px rgba(0,0,0,0.12); border:none; }
+  .leaflet-popup-tip { display:none; }
   .tmap-btn { transition:all 0.2s ease; user-select:none; }
   .tmap-btn:hover { opacity:0.8; transform:translateY(-1px); }
   .tmap-btn.active { box-shadow:0 2px 10px rgba(0,0,0,0.18); transform:translateY(-1px); filter:brightness(0.88); }
-  .area-dot { cursor:pointer; }
-  #sidebar-list li { cursor:default; padding:1px 0; border-bottom:1px solid #f0ebe6; }
+  #sidebar-list li { padding:3px 0; border-bottom:1px solid #f0ebe6; cursor:default; }
   #sidebar-list li:last-child { border-bottom:none; }
+
+  /* Polaroid styles */
+  .polaroid-marker {
+    background:#fff;
+    padding:5px 5px 18px 5px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.18);
+    border-radius:1px;
+    cursor:pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transform-origin: bottom center;
+  }
+  .polaroid-marker:hover {
+    transform: scale(1.6);
+    box-shadow:0 6px 20px rgba(0,0,0,0.22);
+    z-index:9999 !important;
+  }
+  .polaroid-img {
+    width:44px; height:40px;
+    background:#f0ebe6;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .polaroid-img svg { opacity:0.25; }
+  .polaroid-label {
+    font-family:'Georgia',serif;
+    font-style:italic;
+    font-size:7px;
+    color:#555;
+    text-align:center;
+    margin-top:3px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    max-width:54px;
+  }
+  /* Area cluster dots */
+  .area-cluster {
+    width:13px; height:13px;
+    background:#b8cdd6;
+    border:2px solid #fff;
+    border-radius:50%;
+    box-shadow:0 1px 5px rgba(0,0,0,0.2);
+    cursor:pointer;
+    transition:transform 0.15s ease;
+  }
+  .area-cluster:hover { transform:scale(1.4); }
 </style>
 
 <script>
 (function() {
 
+  // ── Map init ──────────────────────────────────────────────────────────────
   var tmap = L.map('travel-map', {
-    center: [30, 20], zoom: 2, minZoom: 2, maxZoom: 13,
-    scrollWheelZoom: false, dragging: false,
-    doubleClickZoom: false, boxZoom: false,
-    keyboard: false, zoomControl: false,
-    maxBounds: [[-75,-180],[90,180]],
-    maxBoundsViscosity: 1.0
+    center:[30,20], zoom:2, minZoom:2, maxZoom:13,
+    scrollWheelZoom:false, dragging:false,
+    doubleClickZoom:false, boxZoom:false,
+    keyboard:false, zoomControl:false,
+    maxBounds:[[-75,-180],[90,180]],
+    maxBoundsViscosity:1.0
   });
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
-    subdomains: 'abcd', maxZoom: 19
-  }).addTo(tmap);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
-    subdomains: 'abcd', maxZoom: 19, opacity: 0.6
-  }).addTo(tmap);
+  var cartoBase   = 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png';
+  var cartoLabels = 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png';
 
-  // ── Region top-level views ──────────────────────────────────────────────
+  L.tileLayer(cartoBase,   { attribution:'&copy; CARTO', subdomains:'abcd', maxZoom:19 }).addTo(tmap);
+  L.tileLayer(cartoLabels, { subdomains:'abcd', maxZoom:19, opacity:0.5 }).addTo(tmap);
+
+  // ── Okinawa mini-map ──────────────────────────────────────────────────────
+  var oki_map = null;
+
+  function initOkinawaInset() {
+    if (oki_map) return;
+    oki_map = L.map('okinawa-map', {
+      center:[26.5,128.0], zoom:7,
+      zoomControl:false, scrollWheelZoom:false,
+      dragging:false, attributionControl:false,
+      doubleClickZoom:false
+    });
+    L.tileLayer(cartoBase,   { subdomains:'abcd', maxZoom:19 }).addTo(oki_map);
+    L.tileLayer(cartoLabels, { subdomains:'abcd', maxZoom:19, opacity:0.5 }).addTo(oki_map);
+    // Okinawa polaroid on inset
+    var pol = makePolaroidIcon('Okinawa', 32);
+    L.marker([26.33,127.80], { icon: pol, zIndexOffset:500 })
+      .addTo(oki_map)
+      .bindPopup(makePolaroidPopup('Okinawa'), {maxWidth:180, className:'polaroid-popup'});
+  }
+
+  // ── Region views ──────────────────────────────────────────────────────────
   var regionViews = {
-    'world':     { center:[30,20],    zoom:2 },
-    'europe':    { center:[50,10],    zoom:4 },
-    'east-asia': { center:[36,132],   zoom:5 },
-    'se-asia':   { center:[18,108],   zoom:5 },
-    'australia': { center:[-27,133],  zoom:4 }
+    'world':     { center:[30,20],   zoom:2 },
+    'europe':    { center:[50,10],   zoom:4 },
+    'east-asia': { center:[37,133],  zoom:5 },
+    'se-asia':   { center:[18,108],  zoom:5 },
+    'australia': { center:[-27,133], zoom:4 }
   };
 
-  // ── East Asia: prefecture/area clusters ─────────────────────────────────
+  // ── East Asia area clusters ───────────────────────────────────────────────
   var eaAreas = [
-    {
-      id:'hokkaido', label:'Hokkaido', center:[43.06,141.35], zoom:7,
-      places:[ {name:'Sapporo', latlng:[43.06,141.35]} ]
-    },
-    {
-      id:'tohoku', label:'Tohoku / North Honshu', center:[39.7,141.0], zoom:7,
-      places:[ {name:'Northern Japan (Tohoku)', latlng:[39.7,141.0]} ]
-    },
-    {
-      id:'kanto', label:'Kanto', center:[35.68,139.69], zoom:9,
-      places:[
-        {name:'Tokyo',      latlng:[35.68,139.69]},
-        {name:'Shizuoka',   latlng:[34.98,138.38]},
-        {name:'Mount Fuji', latlng:[35.36,138.73]}
-      ]
-    },
-    {
-      id:'chubu', label:'Chubu', center:[36.2,137.5], zoom:8,
-      places:[
-        {name:'Nagoya',    latlng:[35.18,136.91]},
-        {name:'Matsumoto', latlng:[36.24,137.97]},
-        {name:'Kanazawa',  latlng:[36.56,136.66]},
-        {name:'Suzuka',    latlng:[34.84,136.54]},
-        {name:'Hikone',    latlng:[35.27,136.26]}
-      ]
-    },
-    {
-      id:'kansai', label:'Kansai', center:[34.7,135.5], zoom:9,
-      places:[
-        {name:'Osaka',      latlng:[34.69,135.50]},
-        {name:'Kyoto',      latlng:[35.01,135.77]},
-        {name:'Nara',       latlng:[34.69,135.83]},
-        {name:'Kobe',       latlng:[34.69,135.19]},
-        {name:'Himeji',     latlng:[34.84,134.69]},
-        {name:'Arashiyama', latlng:[35.01,135.67]},
-        {name:'Wakayama',   latlng:[34.23,135.17]},
-        {name:'Minoh',      latlng:[34.83,135.47]}
-      ]
-    },
-    {
-      id:'chugoku', label:'Chugoku / Shikoku', center:[34.2,133.5], zoom:8,
-      places:[
-        {name:'Hiroshima',  latlng:[34.39,132.45]},
-        {name:'Tottori',    latlng:[35.50,134.24]},
-        {name:'Matsue',     latlng:[35.47,133.06]},
-        {name:'Izumo',      latlng:[35.37,132.76]},
-        {name:'Tokushima',  latlng:[34.07,134.56]},
-        {name:'Naruto',     latlng:[34.18,134.61]}
-      ]
-    },
-    {
-      id:'kyushu', label:'Kyushu', center:[32.8,130.8], zoom:7,
-      places:[
-        {name:'Fukuoka',   latlng:[33.59,130.40]},
-        {name:'Nagasaki',  latlng:[32.75,129.88]},
-        {name:'Amakusa',   latlng:[32.45,130.20]},
-        {name:'Kumamoto',  latlng:[32.80,130.70]},
-        {name:'Kagoshima', latlng:[31.60,130.56]},
-        {name:'Miyazaki',  latlng:[31.91,131.42]},
-        {name:'Oita',      latlng:[33.23,131.61]},
-        {name:'Beppu',     latlng:[33.28,131.50]}
-      ]
-    },
-    {
-      id:'okinawa', label:'Okinawa', center:[26.33,127.80], zoom:8,
-      places:[ {name:'Okinawa', latlng:[26.33,127.80]} ]
-    },
-    {
-      id:'korea', label:'Korea', center:[36.5,128.0], zoom:7,
-      places:[
-        {name:'Seoul',    latlng:[37.57,126.98]},
-        {name:'Busan',    latlng:[35.10,129.04]},
-        {name:'Gyeongju', latlng:[35.86,129.22]}
-      ]
-    }
+    { id:'hokkaido', label:'Hokkaido',         center:[43.5,142.5],  zoom:7,
+      places:[{name:'Sapporo', latlng:[43.06,141.35]}] },
+    { id:'tohoku',   label:'Tohoku',            center:[39.5,141.0],  zoom:7,
+      places:[{name:'Northern Japan', latlng:[39.7,141.0]}] },
+    { id:'kanto',    label:'Kanto',             center:[35.6,139.2],  zoom:8,
+      places:[{name:'Tokyo',latlng:[35.68,139.69]},{name:'Shizuoka',latlng:[34.98,138.38]},{name:'Mount Fuji',latlng:[35.36,138.73]}] },
+    { id:'chubu',    label:'Chubu',             center:[35.8,137.0],  zoom:7,
+      places:[{name:'Nagoya',latlng:[35.18,136.91]},{name:'Matsumoto',latlng:[36.24,137.97]},{name:'Kanazawa',latlng:[36.56,136.66]},{name:'Suzuka',latlng:[34.84,136.54]},{name:'Hikone',latlng:[35.27,136.26]}] },
+    { id:'kansai',   label:'Kansai',            center:[34.8,135.4],  zoom:9,
+      places:[{name:'Osaka',latlng:[34.69,135.50]},{name:'Kyoto',latlng:[35.01,135.77]},{name:'Nara',latlng:[34.69,135.83]},{name:'Kobe',latlng:[34.69,135.19]},{name:'Himeji',latlng:[34.84,134.69]},{name:'Arashiyama',latlng:[35.01,135.67]},{name:'Wakayama',latlng:[34.23,135.17]},{name:'Minoh',latlng:[34.83,135.47]}] },
+    { id:'chugoku',  label:'Chugoku / Shikoku', center:[34.2,133.2],  zoom:7,
+      places:[{name:'Hiroshima',latlng:[34.39,132.45]},{name:'Tottori',latlng:[35.50,134.24]},{name:'Matsue',latlng:[35.47,133.06]},{name:'Izumo',latlng:[35.37,132.76]},{name:'Tokushima',latlng:[34.07,134.56]},{name:'Naruto',latlng:[34.18,134.61]}] },
+    { id:'kyushu',   label:'Kyushu',            center:[32.8,130.8],  zoom:7,
+      places:[{name:'Fukuoka',latlng:[33.59,130.40]},{name:'Nagasaki',latlng:[32.75,129.88]},{name:'Amakusa',latlng:[32.45,130.20]},{name:'Kumamoto',latlng:[32.80,130.70]},{name:'Kagoshima',latlng:[31.60,130.56]},{name:'Miyazaki',latlng:[31.91,131.42]},{name:'Oita',latlng:[33.23,131.61]},{name:'Beppu',latlng:[33.28,131.50]}] },
+    { id:'korea',    label:'Korea',             center:[36.5,128.0],  zoom:7,
+      places:[{name:'Seoul',latlng:[37.57,126.98]},{name:'Busan',latlng:[35.10,129.04]},{name:'Gyeongju',latlng:[35.86,129.22]}] }
   ];
 
-  // ── Simple places for other regions ─────────────────────────────────────
+  // ── Simple places ─────────────────────────────────────────────────────────
   var simplePlaces = {
-    'europe': [
-      {name:'Edinburgh',     latlng:[55.95,-3.19]},
-      {name:'London',        latlng:[51.51,-0.13]},
-      {name:'Amsterdam',     latlng:[52.37,4.90]},
-      {name:'Cologne',       latlng:[50.94,6.96]},
-      {name:'Paris',         latlng:[48.85,2.35]},
-      {name:'Dubrovnik',     latlng:[42.65,18.09]},
-      {name:'Budva',         latlng:[42.28,18.84]},
-      {name:'Switzerland',   latlng:[46.82,8.23]},
-      {name:'Liechtenstein', latlng:[47.14,9.52]},
-      {name:'Vienna',        latlng:[48.21,16.37]},
-      {name:'Bratislava',    latlng:[48.15,17.11]},
-      {name:'Budapest',      latlng:[47.50,19.04]},
-      {name:'Manchester',    latlng:[53.48,-2.24]},
-      {name:'Liverpool',     latlng:[53.41,-2.98]},
-      {name:'Madrid',        latlng:[40.42,-3.70]},
-      {name:'Venice',        latlng:[45.44,12.33]},
-      {name:'Split',         latlng:[43.51,16.44]},
-      {name:'Faro',          latlng:[37.02,-7.93]},
-      {name:'Lagos',         latlng:[37.10,-8.67]},
-      {name:'Cadiz',         latlng:[36.53,-6.30]},
-      {name:'Gibraltar',     latlng:[36.14,-5.35]},
-      {name:'Malaga',        latlng:[36.72,-4.42]},
-      {name:'Granada',       latlng:[37.18,-3.60]},
-      {name:'Rome',          latlng:[41.90,12.50]},
-      {name:'Madeira',       latlng:[32.76,-16.96]},
-      {name:'Milan',         latlng:[45.46,9.19]},
-      {name:'Como',          latlng:[45.81,9.09]},
-      {name:'Genoa',         latlng:[44.41,8.93]},
-      {name:'Monaco',        latlng:[43.74,7.43]},
-      {name:'Cannes',        latlng:[43.55,7.02]},
-      {name:'Nice',          latlng:[43.71,7.26]},
-      {name:'Lithuania',     latlng:[55.17,23.88]},
-      {name:'Wexford',       latlng:[52.34,-6.46]},
-      {name:'Fermanagh',     latlng:[54.35,-7.63]}
+    'europe':[
+      {name:'Edinburgh',latlng:[55.95,-3.19]},{name:'London',latlng:[51.51,-0.13]},
+      {name:'Amsterdam',latlng:[52.37,4.90]},{name:'Cologne',latlng:[50.94,6.96]},
+      {name:'Paris',latlng:[48.85,2.35]},{name:'Dubrovnik',latlng:[42.65,18.09]},
+      {name:'Budva',latlng:[42.28,18.84]},{name:'Switzerland',latlng:[46.82,8.23]},
+      {name:'Liechtenstein',latlng:[47.14,9.52]},{name:'Vienna',latlng:[48.21,16.37]},
+      {name:'Bratislava',latlng:[48.15,17.11]},{name:'Budapest',latlng:[47.50,19.04]},
+      {name:'Manchester',latlng:[53.48,-2.24]},{name:'Liverpool',latlng:[53.41,-2.98]},
+      {name:'Madrid',latlng:[40.42,-3.70]},{name:'Venice',latlng:[45.44,12.33]},
+      {name:'Split',latlng:[43.51,16.44]},{name:'Faro',latlng:[37.02,-7.93]},
+      {name:'Lagos',latlng:[37.10,-8.67]},{name:'Cadiz',latlng:[36.53,-6.30]},
+      {name:'Gibraltar',latlng:[36.14,-5.35]},{name:'Malaga',latlng:[36.72,-4.42]},
+      {name:'Granada',latlng:[37.18,-3.60]},{name:'Rome',latlng:[41.90,12.50]},
+      {name:'Madeira',latlng:[32.76,-16.96]},{name:'Milan',latlng:[45.46,9.19]},
+      {name:'Como',latlng:[45.81,9.09]},{name:'Genoa',latlng:[44.41,8.93]},
+      {name:'Monaco',latlng:[43.74,7.43]},{name:'Cannes',latlng:[43.55,7.02]},
+      {name:'Nice',latlng:[43.71,7.26]},{name:'Lithuania',latlng:[55.17,23.88]},
+      {name:'Wexford',latlng:[52.34,-6.46]},{name:'Fermanagh',latlng:[54.35,-7.63]}
     ],
-    'se-asia': [
-      {name:'Taipei', latlng:[25.03,121.56]},
-      {name:'Hanoi',  latlng:[21.03,105.85]}
+    'se-asia':[
+      {name:'Taipei',latlng:[25.03,121.56]},
+      {name:'Hanoi',latlng:[21.03,105.85]}
     ],
-    'australia': [
-      {name:'Sydney',    latlng:[-33.87,151.21]},
-      {name:'Perth',     latlng:[-31.95,115.86]},
-      {name:'Busselton', latlng:[-33.65,115.35]}
+    'australia':[
+      {name:'Sydney',latlng:[-33.87,151.21]},
+      {name:'Perth',latlng:[-31.95,115.86]},
+      {name:'Busselton',latlng:[-33.65,115.35]}
     ]
   };
 
-  // ── World region rectangles ──────────────────────────────────────────────
+  // ── World region rects ────────────────────────────────────────────────────
   var regionRects = {
-    'europe':    L.rectangle([[35,-25],[71,40]],    {color:'#c9aa96',weight:1.5,fillColor:'#c9aa96',fillOpacity:0.15}),
-    'east-asia': L.rectangle([[25,128],[50,148]],   {color:'#9ab8c9',weight:1.5,fillColor:'#9ab8c9',fillOpacity:0.15}),
-    'se-asia':   L.rectangle([[10,100],[27,123]],   {color:'#9ac9ab',weight:1.5,fillColor:'#9ac9ab',fillOpacity:0.15}),
-    'australia': L.rectangle([[-44,113],[-10,154]], {color:'#c9b89a',weight:1.5,fillColor:'#c9b89a',fillOpacity:0.15})
+    'europe':    L.rectangle([[35,-25],[71,40]],    {color:'#c9aa96',weight:1,fillColor:'#c9aa96',fillOpacity:0.12}),
+    'east-asia': L.rectangle([[25,128],[50,148]],   {color:'#9ab8c9',weight:1,fillColor:'#9ab8c9',fillOpacity:0.12}),
+    'se-asia':   L.rectangle([[10,100],[27,123]],   {color:'#9ac9ab',weight:1,fillColor:'#9ac9ab',fillOpacity:0.12}),
+    'australia': L.rectangle([[-44,113],[-10,154]], {color:'#c9b89a',weight:1,fillColor:'#c9b89a',fillOpacity:0.12})
   };
 
-  // ── Icon helpers ─────────────────────────────────────────────────────────
-  function areaDotIcon(label) {
+  // ── Polaroid icon factory ─────────────────────────────────────────────────
+  function makePolaroidIcon(name, size) {
+    size = size || 44;
+    var imgH = Math.round(size * 0.85);
+    var total = size + 16;
     return L.divIcon({
       className:'',
-      html:'<div class="area-dot" title="' + label + '" style="width:16px;height:16px;background:#9ab8c9;border:2.5px solid #fff;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;"></div>',
-      iconSize:[16,16], iconAnchor:[8,8], popupAnchor:[0,-10]
+      html: '<div class="polaroid-marker" style="width:'+size+'px;">' +
+              '<div class="polaroid-img" style="width:'+size+'px;height:'+imgH+'px;">' +
+                '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5">' +
+                  '<rect x="3" y="3" width="18" height="18" rx="2"/>' +
+                  '<circle cx="8.5" cy="8.5" r="1.5"/>' +
+                  '<polyline points="21,15 16,10 5,21"/>' +
+                '</svg>' +
+              '</div>' +
+              '<div class="polaroid-label">'+name+'</div>' +
+            '</div>',
+      iconSize:[total, total+4],
+      iconAnchor:[total/2, total+4],
+      popupAnchor:[0, -(total+4)]
     });
   }
 
-  function placeDotIcon(color) {
+  function makePolaroidPopup(name) {
+    return '<div style="text-align:center;padding:6px 10px;font-family:Georgia,serif;">' +
+           '<div style="width:120px;height:100px;background:#f5f0eb;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;border-radius:2px;">' +
+           '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>' +
+           '</div>' +
+           '<div style="font-style:italic;color:#3a3a3a;font-size:0.95rem;">'+name+'</div>' +
+           '</div>';
+  }
+
+  // ── Area cluster icon ─────────────────────────────────────────────────────
+  function makeAreaIcon(label) {
     return L.divIcon({
       className:'',
-      html:'<div style="width:11px;height:11px;background:' + (color||'#c9aa96') + ';border:2px solid #fff;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,0.25);"></div>',
-      iconSize:[11,11], iconAnchor:[5,5], popupAnchor:[0,-8]
+      html:'<div class="area-cluster" title="'+label+'"></div>',
+      iconSize:[13,13], iconAnchor:[6,6], popupAnchor:[0,-10]
     });
   }
 
   // ── State ─────────────────────────────────────────────────────────────────
   var activeMarkers = [];
   var currentRegion = 'world';
-  var currentArea   = null;
 
   function clearMarkers() {
     activeMarkers.forEach(function(m){ tmap.removeLayer(m); });
     activeMarkers = [];
     Object.values(regionRects).forEach(function(r){ tmap.removeLayer(r); });
+    document.getElementById('okinawa-inset').style.display = 'none';
   }
 
   // ── Sidebar ───────────────────────────────────────────────────────────────
   function showSidebar(title, places) {
-    var sb = document.getElementById('sidebar');
-    var st = document.getElementById('sidebar-title');
-    var sl = document.getElementById('sidebar-list');
-    st.textContent = title;
-    sl.innerHTML = places.map(function(p){
-      return '<li>' + p.name + '</li>';
+    document.getElementById('sidebar-title').textContent = title;
+    document.getElementById('sidebar-list').innerHTML = places.map(function(p){
+      return '<li>'+p.name+'</li>';
     }).join('');
-    sb.style.display = 'block';
+    document.getElementById('sidebar').style.display = 'block';
     document.getElementById('back-btn').style.display = 'block';
   }
 
@@ -396,69 +411,70 @@ ul.task-list li input[type="checkbox"] {
     document.getElementById('sidebar').style.display = 'none';
   }
 
-  // ── Render functions ──────────────────────────────────────────────────────
+  // ── Render: world ─────────────────────────────────────────────────────────
   function showWorld() {
     clearMarkers(); hideSidebar();
-    currentArea = null;
-    Object.entries(regionRects).forEach(function(entry){
-      var id = entry[0], rect = entry[1];
+    Object.entries(regionRects).forEach(function(e){
+      var id=e[0], rect=e[1];
       rect.addTo(tmap);
       rect.on('click', function(){ document.querySelector('[data-region="'+id+'"]').click(); });
-      rect.on('mouseover', function(){ this.setStyle({fillOpacity:0.32}); });
-      rect.on('mouseout',  function(){ this.setStyle({fillOpacity:0.15}); });
+      rect.on('mouseover', function(){ this.setStyle({fillOpacity:0.28}); });
+      rect.on('mouseout',  function(){ this.setStyle({fillOpacity:0.12}); });
     });
   }
 
+  // ── Render: simple regions ────────────────────────────────────────────────
   function showSimpleRegion(region) {
     clearMarkers(); hideSidebar();
-    currentArea = null;
-    var color = {europe:'#c9aa96','se-asia':'#9ac9ab',australia:'#c9b89a'}[region] || '#c9aa96';
     (simplePlaces[region]||[]).forEach(function(p){
-      var m = L.marker(p.latlng, {icon: placeDotIcon(color)})
+      var m = L.marker(p.latlng, { icon: makePolaroidIcon(p.name), zIndexOffset:100 })
         .addTo(tmap)
-        .bindPopup('<div style="text-align:center;font-family:Georgia,serif;font-style:italic;color:#3a3a3a;font-size:1rem;padding:4px 8px;">'+p.name+'</div>', {maxWidth:160});
+        .bindPopup(makePolaroidPopup(p.name), {maxWidth:200, className:'polaroid-popup'});
       activeMarkers.push(m);
     });
   }
 
+  // ── Render: East Asia clusters ────────────────────────────────────────────
   function showEastAsia() {
     clearMarkers(); hideSidebar();
-    currentArea = null;
+    // Show mainland Japan + Korea — Okinawa lives in the inset
     eaAreas.forEach(function(area){
-      var m = L.marker(area.center, {icon: areaDotIcon(area.label)})
+      if (area.id === 'okinawa') return;
+      var m = L.marker(area.center, { icon: makeAreaIcon(area.label), zIndexOffset:200 })
         .addTo(tmap)
-        .bindTooltip(area.label, {permanent:false, direction:'top', className:'', offset:[0,-10]});
+        .bindTooltip(area.label, {permanent:false, direction:'top', offset:[0,-8], className:''});
       m.on('click', function(){ drillIntoArea(area); });
       activeMarkers.push(m);
     });
+    // Show Okinawa inset
+    document.getElementById('okinawa-inset').style.display = 'block';
+    setTimeout(function(){
+      initOkinawaInset();
+      if (oki_map) oki_map.invalidateSize();
+    }, 100);
   }
 
+  // ── Drill into area ───────────────────────────────────────────────────────
   function drillIntoArea(area) {
-    currentArea = area.id;
-    // Remove area cluster dots
     activeMarkers.forEach(function(m){ tmap.removeLayer(m); });
     activeMarkers = [];
-
     tmap.flyTo(area.center, area.zoom, {duration:1.0});
-
     setTimeout(function(){
       area.places.forEach(function(p){
-        var m = L.marker(p.latlng, {icon: placeDotIcon('#9ab8c9')})
+        var m = L.marker(p.latlng, { icon: makePolaroidIcon(p.name, 40), zIndexOffset:300 })
           .addTo(tmap)
-          .bindPopup('<div style="text-align:center;font-family:Georgia,serif;font-style:italic;color:#3a3a3a;font-size:1rem;padding:4px 8px;">'+p.name+'</div>', {maxWidth:160});
+          .bindPopup(makePolaroidPopup(p.name), {maxWidth:200});
         activeMarkers.push(m);
       });
       showSidebar(area.label, area.places);
-    }, 900);
+    }, 950);
   }
 
   // ── Back button ───────────────────────────────────────────────────────────
   document.getElementById('back-btn').addEventListener('click', function(){
-    currentArea = null;
     hideSidebar();
-    var v = regionViews['east-asia'];
-    tmap.flyTo(v.center, v.zoom, {duration:1.0});
-    setTimeout(function(){ showEastAsia(); }, 900);
+    tmap.flyTo(regionViews['east-asia'].center, regionViews['east-asia'].zoom, {duration:1.0});
+    setTimeout(function(){ showEastAsia(); }, 950);
   });
 
   // ── Region buttons ────────────────────────────────────────────────────────
@@ -468,12 +484,11 @@ ul.task-list li input[type="checkbox"] {
       this.classList.add('active');
       var region = this.getAttribute('data-region');
       currentRegion = region;
-      var v = regionViews[region];
-      tmap.flyTo(v.center, v.zoom, {duration:1.2});
+      tmap.flyTo(regionViews[region].center, regionViews[region].zoom, {duration:1.2});
       setTimeout(function(){
-        if (region === 'world')          showWorld();
-        else if (region === 'east-asia') showEastAsia();
-        else                             showSimpleRegion(region);
+        if      (region === 'world')      showWorld();
+        else if (region === 'east-asia')  showEastAsia();
+        else                              showSimpleRegion(region);
       }, 500);
     });
   });
