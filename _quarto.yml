@@ -37,6 +37,7 @@ project:
    
 website:
   title: "Martinas Jucys Brady"
+  site-url: "https://martinas-jucysbrady.github.io"
   favicon: assets/mjb_favicon.png
   back-to-top-navigation: true
   navbar:
@@ -68,5 +69,6 @@ website:
 format:
   html:
     theme: assets/custom.scss
+    include-after-body: assets/category-filter.html
     toc: false
     page-layout: full

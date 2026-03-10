@@ -48,12 +48,32 @@ listing:
 
 :::{#hero-heading}
 
-I am a fourth year student in DCU doing BA in Business Studies - International. My choice of language is Japanese, and I am specialising in data analytics.
+## Hi, I’m Martinas Jucys Brady
+
+Welcome to my ePortfolio — a space that brings together business, data analytics, and international perspective.
+
+I am a fourth-year student at Dublin City University studying Business Studies International, with Japanese as my language and Data Analytics as my specialism. My academic journey has allowed me to explore how analytical thinking, communication, and global awareness can work together to solve problems and create meaningful insight.
+
+This site is more than a collection of university work. It reflects my growth across different projects, ideas, and experiences, from business-focused analysis to data-driven thinking and creative presentation. Each section represents part of the skill set I have developed throughout my degree and the direction I hope to continue building in.
+
+## What This Portfolio Represents
+
+This portfolio is a snapshot of where I am now as a student and where I want to go next. It highlights the combination of skills that define my degree and my interests:
+
+- business understanding
+- analytical thinking
+- data visualisation
+- international perspective
+- Japanese language and intercultural learning
+
+## Explore
+
+Here you can browse selected projects, academic work, and reflections that showcase my development throughout university. Together, they tell the story of a student interested in not only understanding ideas, but also presenting them clearly, creatively, and with purpose.
 
 :::
 
 ## Recent Posts
-Check out the latest &nbsp;[Projects](projects.qmd)&nbsp;
+Check out the latest projects.....
 
 :::{#recent-posts}
 :::

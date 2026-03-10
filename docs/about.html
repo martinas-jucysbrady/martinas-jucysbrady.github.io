@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d49ac434bd8bb181918eb5035f7e3465.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-68797689c04a33acf2eecaad7b1d9b4f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -182,6 +182,189 @@ ul.task-list li input[type="checkbox"] {
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+
+
+
+  var tools = document.querySelector('.quarto-listing-tools');
+
+  if (!tools) return;
+
+
+
+  var selectStyle = [
+
+    'height: 42px',
+
+    'background: white',
+
+    'border-radius: 10px',
+
+    'border: 1px solid #e0e0f0',
+
+    'box-shadow: 0 1px 6px rgba(0,0,0,0.06)',
+
+    'padding: 0 14px',
+
+    'font-family: Plus Jakarta Sans, sans-serif',
+
+    'font-size: 0.82rem',
+
+    'font-weight: 400',
+
+    'color: #1E4264',
+
+    'outline: none',
+
+    'cursor: pointer',
+
+    'box-sizing: border-box'
+
+  ].join(';');
+
+
+
+  // ── Order By select ───────────────────────────────────────────────────
+
+  var sortContainer = document.querySelector('.quarto-listing-sort');
+
+  var sortSelect = document.createElement('select');
+
+  sortSelect.id = 'sort-select';
+
+  sortSelect.style.cssText = selectStyle;
+
+  sortSelect.style.minWidth = '160px';
+
+
+
+  if (sortContainer) {
+
+    var sortItems = sortContainer.querySelectorAll('.dropdown-item');
+
+    sortItems.forEach(function (item) {
+
+      var option = document.createElement('option');
+
+      option.value = item.getAttribute('data-value') || item.textContent.trim();
+
+      option.textContent = item.textContent.trim();
+
+      sortSelect.appendChild(option);
+
+    });
+
+    sortContainer.style.display = 'none';
+
+  }
+
+
+
+  // ── Category filter select ────────────────────────────────────────────
+
+  var filterInput = document.querySelector('.quarto-listing-filter');
+
+  var catSelect = document.createElement('select');
+
+  catSelect.id = 'category-select';
+
+  catSelect.style.cssText = selectStyle;
+
+  catSelect.style.flex = '1';
+
+  catSelect.style.maxWidth = '300px';
+
+
+
+  var allOption = document.createElement('option');
+
+  allOption.value = '';
+
+  allOption.textContent = 'Filter by Category';
+
+  catSelect.appendChild(allOption);
+
+
+
+  var categories = new Set();
+
+  document.querySelectorAll('.listing-category').forEach(function (el) {
+
+    categories.add(el.textContent.trim());
+
+  });
+
+  Array.from(categories).sort().forEach(function (cat) {
+
+    var option = document.createElement('option');
+
+    option.value = cat;
+
+    option.textContent = cat;
+
+    catSelect.appendChild(option);
+
+  });
+
+
+
+  if (filterInput) filterInput.style.display = 'none';
+
+
+
+  // ── Inject both into toolbar ──────────────────────────────────────────
+
+  tools.innerHTML = '';
+
+  tools.appendChild(sortSelect);
+
+  tools.appendChild(catSelect);
+
+
+
+  // ── Wire up events ────────────────────────────────────────────────────
+
+  sortSelect.addEventListener('change', function () {
+
+    var val = this.value;
+
+    if (sortContainer) {
+
+      sortContainer.querySelectorAll('.dropdown-item').forEach(function (item) {
+
+        if ((item.getAttribute('data-value') || item.textContent.trim()) === val) {
+
+          item.click();
+
+        }
+
+      });
+
+    }
+
+  });
+
+
+
+  catSelect.addEventListener('change', function () {
+
+    if (filterInput) {
+
+      filterInput.value = this.value;
+
+      filterInput.dispatchEvent(new Event('input', { bubbles: true }));
+
+    }
+
+  });
+
+
+
+});
+
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -255,7 +438,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/martinas-jucysbrady\.github\.io");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

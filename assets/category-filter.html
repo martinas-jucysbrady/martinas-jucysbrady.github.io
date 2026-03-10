@@ -1,0 +1,92 @@
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  var tools = document.querySelector('.quarto-listing-tools');
+  if (!tools) return;
+
+  var selectStyle = [
+    'height: 42px',
+    'background: white',
+    'border-radius: 10px',
+    'border: 1px solid #e0e0f0',
+    'box-shadow: 0 1px 6px rgba(0,0,0,0.06)',
+    'padding: 0 14px',
+    'font-family: Plus Jakarta Sans, sans-serif',
+    'font-size: 0.82rem',
+    'font-weight: 400',
+    'color: #1E4264',
+    'outline: none',
+    'cursor: pointer',
+    'box-sizing: border-box'
+  ].join(';');
+
+  // ── Order By select ───────────────────────────────────────────────────
+  var sortContainer = document.querySelector('.quarto-listing-sort');
+  var sortSelect = document.createElement('select');
+  sortSelect.id = 'sort-select';
+  sortSelect.style.cssText = selectStyle;
+  sortSelect.style.minWidth = '160px';
+
+  if (sortContainer) {
+    var sortItems = sortContainer.querySelectorAll('.dropdown-item');
+    sortItems.forEach(function (item) {
+      var option = document.createElement('option');
+      option.value = item.getAttribute('data-value') || item.textContent.trim();
+      option.textContent = item.textContent.trim();
+      sortSelect.appendChild(option);
+    });
+    sortContainer.style.display = 'none';
+  }
+
+  // ── Category filter select ────────────────────────────────────────────
+  var filterInput = document.querySelector('.quarto-listing-filter');
+  var catSelect = document.createElement('select');
+  catSelect.id = 'category-select';
+  catSelect.style.cssText = selectStyle;
+  catSelect.style.flex = '1';
+  catSelect.style.maxWidth = '300px';
+
+  var allOption = document.createElement('option');
+  allOption.value = '';
+  allOption.textContent = 'Filter by Category';
+  catSelect.appendChild(allOption);
+
+  var categories = new Set();
+  document.querySelectorAll('.listing-category').forEach(function (el) {
+    categories.add(el.textContent.trim());
+  });
+  Array.from(categories).sort().forEach(function (cat) {
+    var option = document.createElement('option');
+    option.value = cat;
+    option.textContent = cat;
+    catSelect.appendChild(option);
+  });
+
+  if (filterInput) filterInput.style.display = 'none';
+
+  // ── Inject both into toolbar ──────────────────────────────────────────
+  tools.innerHTML = '';
+  tools.appendChild(sortSelect);
+  tools.appendChild(catSelect);
+
+  // ── Wire up events ────────────────────────────────────────────────────
+  sortSelect.addEventListener('change', function () {
+    var val = this.value;
+    if (sortContainer) {
+      sortContainer.querySelectorAll('.dropdown-item').forEach(function (item) {
+        if ((item.getAttribute('data-value') || item.textContent.trim()) === val) {
+          item.click();
+        }
+      });
+    }
+  });
+
+  catSelect.addEventListener('change', function () {
+    if (filterInput) {
+      filterInput.value = this.value;
+      filterInput.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+  });
+
+});
+</script>
