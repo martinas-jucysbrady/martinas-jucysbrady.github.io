@@ -67,9 +67,6 @@ website:
 
 format:
   html:
-    theme: [cosmo, assets/custom.scss] 
+    theme: assets/custom.scss
     toc: false
     page-layout: full
-
-
-
