@@ -1,12 +1,21 @@
 /*-- scss:defaults --*/
 
+// Import fonts
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+// Fonts
+$headings-font-family: 'Plus Jakarta Sans', sans-serif;
+$font-family-base: 'Inter', sans-serif;
+$headings-font-weight: 800;
+$font-weight-base: 400;
+
 // Colors
 $dark-blue: #1E4264;
 $blue-grey: #80A4B6;
 $blue-grey2: #7EA3B6;
 $off-white: #F1F3F4;
 $light-sky-blue: #F0F4FF;
-$light-dark-blue: #B3B8F4;
+$light-dark-blue: #e9e9ff;
 
 // Base document colors
 $navbar-bg: $light-dark-blue; // 
@@ -17,12 +26,14 @@ $footer-bg: $light-sky-blue; //
 
 /*-- scss:rules --*/
 
+// Size of the logo in the navbar
 .navbar-logo {
 max-height: 40px !important;
 width: auto;
 height: auto;
 }
 
+// expanding the nav links on hover
 .navbar-nav .nav-link {
   transition: font-size 0.15s ease, transform 0.15s ease;
 }
@@ -31,3 +42,18 @@ height: auto;
   transform: scale(1.15);
   display: inline-block;
 }
+
+// Cormorant for anything italic — captions, labels, travel notes, blockquotes
+em, 
+blockquote,
+.travel-caption,
+.subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+}
+
+// Different heding levels
+h1 { font-weight: 800; }
+h2 { font-weight: 700; }
+h3 { font-weight: 600; }

@@ -68,7 +68,6 @@ website:
 format:
   html:
     theme: [cosmo, assets/custom.scss] 
-    mainfont: sans-serif
     toc: false
     page-layout: full
 
