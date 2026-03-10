@@ -68,7 +68,7 @@ website:
 format:
   html:
     theme:
-      - cosmo
+      - lux
     css: styles.css
     mainfont: sans-serif
     toc: false
