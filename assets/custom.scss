@@ -41,9 +41,9 @@ $footer-bg: $light-sky-blue;
   transform: scale(1.15);
 }
 
-// Force fonts globally — covers all Quarto layouts and grid pages
-body, main, .quarto-container, #quarto-content {
-  font-family: 'Inter', sans-serif !important;
+// Global font override — catches everything
+*, *::before, *::after {
+  font-family: 'Inter', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -57,40 +57,17 @@ h2, .h2 { font-weight: 700 !important; }
 h3, .h3 { font-weight: 600 !important; }
 h4, h5, h6 { font-weight: 600 !important; }
 
-p, li, td, th, a {
-  font-family: 'Inter', sans-serif !important;
-}
-
 em, blockquote, .travel-caption, .subtitle {
   font-family: 'Cormorant Garamond', serif !important;
   font-style: italic;
   font-weight: 600;
 }
 
-// Grid content pages (studies/year pages)
-.g-col-12, .g-col-md-10, .g-col-md-2,
-.g-col-md-10 p, .g-col-md-10 a {
-  font-family: 'Inter', sans-serif !important;
-}
-
-main h1, main h2, main h3 {
-  font-family: 'Plus Jakarta Sans', sans-serif !important;
-}
-
 // Trestles about template
-.quarto-about-trestles,
-.quarto-about-trestles .about-entity,
-.quarto-about-trestles .about-links {
-  font-family: 'Inter', sans-serif !important;
-}
-
-.quarto-about-trestles h1,
-.quarto-about-trestles h2,
 .quarto-about-trestles .about-title {
   font-family: 'Plus Jakarta Sans', sans-serif !important;
   font-weight: 800 !important;
 }
-
 .quarto-about-trestles .about-subtitle {
   font-family: 'Cormorant Garamond', serif !important;
   font-style: italic;
@@ -104,17 +81,4 @@ main h1, main h2, main h3 {
 #recent-posts .listing-title {
   font-family: 'Plus Jakarta Sans', sans-serif !important;
   font-weight: 800 !important;
-}
-
-.listing-description,
-.listing-date,
-.listing-author,
-.quarto-listing-category,
-.quarto-listing-category-title {
-  font-family: 'Inter', sans-serif !important;
-}
-
-// Override inline text-align divs to still use correct font
-div[style] {
-  font-family: 'Inter', sans-serif !important;
 }
