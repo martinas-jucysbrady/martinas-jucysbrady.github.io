@@ -159,10 +159,10 @@ ul.task-list li input[type="checkbox"] {
   <div style="display:flex; gap:16px; align-items:flex-start;">
     <div style="flex:1; min-width:0; position:relative;">
       <div id="travel-map" style="width:100%; height:540px; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.08);"></div>
-      <!-- Okinawa inset box -->
-      <div id="okinawa-inset" style="display:none; position:absolute; bottom:12px; right:12px; width:120px; height:130px; background:#faf8f6; border:1.5px solid #ddd; border-radius:6px; box-shadow:0 2px 10px rgba(0,0,0,0.12); z-index:1000; overflow:hidden;">
+      <!-- Okinawa inset — slightly overlapping bottom-right edge -->
+      <div id="okinawa-inset" style="display:none; position:absolute; bottom:-18px; right:-18px; width:130px; height:140px; background:#faf8f6; border:1.5px solid #ddd; border-radius:6px; box-shadow:0 2px 12px rgba(0,0,0,0.14); z-index:1000; overflow:hidden;">
         <div id="okinawa-map" style="width:100%; height:100%;"></div>
-        <div style="position:absolute;top:4px;left:6px;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#9b8877;font-family:Georgia,serif;">Okinawa</div>
+        <div style="position:absolute;top:5px;left:7px;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:#9b8877;font-family:Georgia,serif;pointer-events:none;">Okinawa</div>
       </div>
     </div>
     <div id="sidebar" style="width:190px; min-height:540px; background:#faf8f6; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.06); padding:16px; text-align:left; display:none; flex-shrink:0;">
@@ -190,57 +190,51 @@ ul.task-list li input[type="checkbox"] {
   #sidebar-list li { padding:3px 0; border-bottom:1px solid #f0ebe6; cursor:default; }
   #sidebar-list li:last-child { border-bottom:none; }
 
-  /* Polaroid styles */
   .polaroid-marker {
     background:#fff;
-    padding:5px 5px 18px 5px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.18);
+    padding:4px 4px 16px 4px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.16);
     border-radius:1px;
     cursor:pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    transform-origin: bottom center;
+    transition:transform 0.22s ease, box-shadow 0.22s ease;
+    transform-origin:bottom center;
+    position:relative;
   }
   .polaroid-marker:hover {
-    transform: scale(1.6);
-    box-shadow:0 6px 20px rgba(0,0,0,0.22);
+    transform:scale(1.75) translateY(-4px);
+    box-shadow:0 8px 24px rgba(0,0,0,0.22);
     z-index:9999 !important;
   }
   .polaroid-img {
-    width:44px; height:40px;
-    background:#f0ebe6;
+    background:#ede8e2;
     display:flex; align-items:center; justify-content:center;
-    overflow:hidden;
   }
-  .polaroid-img svg { opacity:0.25; }
   .polaroid-label {
     font-family:'Georgia',serif;
     font-style:italic;
-    font-size:7px;
+    font-size:6.5px;
     color:#555;
     text-align:center;
-    margin-top:3px;
+    margin-top:2px;
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
-    max-width:54px;
   }
-  /* Area cluster dots */
   .area-cluster {
-    width:13px; height:13px;
+    width:12px; height:12px;
     background:#b8cdd6;
     border:2px solid #fff;
     border-radius:50%;
-    box-shadow:0 1px 5px rgba(0,0,0,0.2);
+    box-shadow:0 1px 5px rgba(0,0,0,0.18);
     cursor:pointer;
     transition:transform 0.15s ease;
   }
-  .area-cluster:hover { transform:scale(1.4); }
+  .area-cluster:hover { transform:scale(1.5); }
 </style>
 
 <script>
 (function() {
 
-  // ── Map init ──────────────────────────────────────────────────────────────
   var tmap = L.map('travel-map', {
     center:[30,20], zoom:2, minZoom:2, maxZoom:13,
     scrollWheelZoom:false, dragging:false,
@@ -252,92 +246,91 @@ ul.task-list li input[type="checkbox"] {
 
   var cartoBase   = 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png';
   var cartoLabels = 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png';
+  L.tileLayer(cartoBase,   {attribution:'&copy; CARTO', subdomains:'abcd', maxZoom:19}).addTo(tmap);
+  L.tileLayer(cartoLabels, {subdomains:'abcd', maxZoom:19, opacity:0.45}).addTo(tmap);
 
-  L.tileLayer(cartoBase,   { attribution:'&copy; CARTO', subdomains:'abcd', maxZoom:19 }).addTo(tmap);
-  L.tileLayer(cartoLabels, { subdomains:'abcd', maxZoom:19, opacity:0.5 }).addTo(tmap);
-
-  // ── Okinawa mini-map ──────────────────────────────────────────────────────
+  // ── Okinawa inset map ─────────────────────────────────────────────────────
   var oki_map = null;
-
   function initOkinawaInset() {
     if (oki_map) return;
     oki_map = L.map('okinawa-map', {
       center:[26.5,128.0], zoom:7,
-      zoomControl:false, scrollWheelZoom:false,
-      dragging:false, attributionControl:false,
-      doubleClickZoom:false
+      zoomControl:false, scrollWheelZoom:false, dragging:false,
+      attributionControl:false, doubleClickZoom:false
     });
-    L.tileLayer(cartoBase,   { subdomains:'abcd', maxZoom:19 }).addTo(oki_map);
-    L.tileLayer(cartoLabels, { subdomains:'abcd', maxZoom:19, opacity:0.5 }).addTo(oki_map);
-    // Okinawa polaroid on inset
-    var pol = makePolaroidIcon('Okinawa', 32);
-    L.marker([26.33,127.80], { icon: pol, zIndexOffset:500 })
+    L.tileLayer(cartoBase,   {subdomains:'abcd', maxZoom:19}).addTo(oki_map);
+    L.tileLayer(cartoLabels, {subdomains:'abcd', maxZoom:19, opacity:0.45}).addTo(oki_map);
+    L.marker([26.33,127.80], {icon: makePolaroidIcon('Okinawa', 28), zIndexOffset:500})
       .addTo(oki_map)
-      .bindPopup(makePolaroidPopup('Okinawa'), {maxWidth:180, className:'polaroid-popup'});
+      .bindPopup(makePolaroidPopup('Okinawa'), {maxWidth:180});
   }
 
   // ── Region views ──────────────────────────────────────────────────────────
   var regionViews = {
-    'world':     { center:[30,20],   zoom:2 },
-    'europe':    { center:[50,10],   zoom:4 },
-    'east-asia': { center:[37,133],  zoom:5 },
-    'se-asia':   { center:[18,108],  zoom:5 },
-    'australia': { center:[-27,133], zoom:4 }
+    'world':     {center:[30,20],   zoom:2},
+    'europe':    {center:[50,10],   zoom:4},
+    'east-asia': {center:[37,134],  zoom:5},
+    'se-asia':   {center:[18,108],  zoom:5},
+    'australia': {center:[-27,133], zoom:4}
   };
 
-  // ── East Asia area clusters ───────────────────────────────────────────────
+  // ── East Asia: area clusters → prefecture polaroids ───────────────────────
   var eaAreas = [
-    { id:'hokkaido', label:'Hokkaido',         center:[43.5,142.5],  zoom:7,
-      places:[{name:'Sapporo', latlng:[43.06,141.35]}] },
-    { id:'tohoku',   label:'Tohoku',            center:[39.5,141.0],  zoom:7,
-      places:[{name:'Northern Japan', latlng:[39.7,141.0]}] },
-    { id:'kanto',    label:'Kanto',             center:[35.6,139.2],  zoom:8,
-      places:[{name:'Tokyo',latlng:[35.68,139.69]},{name:'Shizuoka',latlng:[34.98,138.38]},{name:'Mount Fuji',latlng:[35.36,138.73]}] },
-    { id:'chubu',    label:'Chubu',             center:[35.8,137.0],  zoom:7,
-      places:[{name:'Nagoya',latlng:[35.18,136.91]},{name:'Matsumoto',latlng:[36.24,137.97]},{name:'Kanazawa',latlng:[36.56,136.66]},{name:'Suzuka',latlng:[34.84,136.54]},{name:'Hikone',latlng:[35.27,136.26]}] },
-    { id:'kansai',   label:'Kansai',            center:[34.8,135.4],  zoom:9,
-      places:[{name:'Osaka',latlng:[34.69,135.50]},{name:'Kyoto',latlng:[35.01,135.77]},{name:'Nara',latlng:[34.69,135.83]},{name:'Kobe',latlng:[34.69,135.19]},{name:'Himeji',latlng:[34.84,134.69]},{name:'Arashiyama',latlng:[35.01,135.67]},{name:'Wakayama',latlng:[34.23,135.17]},{name:'Minoh',latlng:[34.83,135.47]}] },
-    { id:'chugoku',  label:'Chugoku / Shikoku', center:[34.2,133.2],  zoom:7,
-      places:[{name:'Hiroshima',latlng:[34.39,132.45]},{name:'Tottori',latlng:[35.50,134.24]},{name:'Matsue',latlng:[35.47,133.06]},{name:'Izumo',latlng:[35.37,132.76]},{name:'Tokushima',latlng:[34.07,134.56]},{name:'Naruto',latlng:[34.18,134.61]}] },
-    { id:'kyushu',   label:'Kyushu',            center:[32.8,130.8],  zoom:7,
-      places:[{name:'Fukuoka',latlng:[33.59,130.40]},{name:'Nagasaki',latlng:[32.75,129.88]},{name:'Amakusa',latlng:[32.45,130.20]},{name:'Kumamoto',latlng:[32.80,130.70]},{name:'Kagoshima',latlng:[31.60,130.56]},{name:'Miyazaki',latlng:[31.91,131.42]},{name:'Oita',latlng:[33.23,131.61]},{name:'Beppu',latlng:[33.28,131.50]}] },
-    { id:'korea',    label:'Korea',             center:[36.5,128.0],  zoom:7,
-      places:[{name:'Seoul',latlng:[37.57,126.98]},{name:'Busan',latlng:[35.10,129.04]},{name:'Gyeongju',latlng:[35.86,129.22]}] }
+    { id:'hokkaido', label:'Hokkaido', center:[43.5,142.5], zoom:7,
+      prefectures:[{name:'Hokkaido', latlng:[43.06,141.35]}] },
+    { id:'tohoku', label:'Tohoku', center:[39.5,141.0], zoom:7,
+      prefectures:[{name:'Aomori',latlng:[40.82,140.74]},{name:'Iwate',latlng:[39.70,141.13]},{name:'Miyagi',latlng:[38.27,140.87]},{name:'Akita',latlng:[39.72,140.10]},{name:'Yamagata',latlng:[38.24,140.36]},{name:'Fukushima',latlng:[37.75,140.47]}] },
+    { id:'kanto', label:'Kanto', center:[35.6,139.4], zoom:8,
+      prefectures:[{name:'Tokyo',latlng:[35.68,139.69]},{name:'Kanagawa',latlng:[35.45,139.64]},{name:'Saitama',latlng:[35.86,139.65]},{name:'Chiba',latlng:[35.60,140.12]},{name:'Shizuoka',latlng:[34.98,138.38]}] },
+    { id:'chubu', label:'Chubu', center:[36.0,137.2], zoom:7,
+      prefectures:[{name:'Aichi (Nagoya)',latlng:[35.18,136.91]},{name:'Nagano (Matsumoto)',latlng:[36.24,137.97]},{name:'Ishikawa (Kanazawa)',latlng:[36.56,136.66]},{name:'Mie (Suzuka)',latlng:[34.73,136.51]},{name:'Shiga (Hikone)',latlng:[35.27,136.26]},{name:'Yamanashi (Mt Fuji)',latlng:[35.44,138.57]}] },
+    { id:'kansai', label:'Kansai', center:[34.8,135.5], zoom:8,
+      prefectures:[{name:'Osaka',latlng:[34.69,135.50]},{name:'Kyoto',latlng:[35.01,135.77]},{name:'Nara',latlng:[34.69,135.83]},{name:'Hyogo (Kobe/Himeji)',latlng:[34.69,135.19]},{name:'Wakayama',latlng:[34.23,135.17]}] },
+    { id:'chugoku', label:'Chugoku / Shikoku', center:[34.3,133.5], zoom:7,
+      prefectures:[{name:'Hiroshima',latlng:[34.39,132.45]},{name:'Tottori',latlng:[35.50,134.24]},{name:'Shimane (Matsue/Izumo)',latlng:[35.47,133.06]},{name:'Tokushima',latlng:[34.07,134.56]}] },
+    { id:'kyushu', label:'Kyushu', center:[32.8,130.8], zoom:7,
+      prefectures:[{name:'Fukuoka',latlng:[33.59,130.40]},{name:'Nagasaki',latlng:[32.75,129.88]},{name:'Kumamoto',latlng:[32.80,130.70]},{name:'Kagoshima',latlng:[31.60,130.56]},{name:'Miyazaki',latlng:[31.91,131.42]},{name:'Oita',latlng:[33.23,131.61]}] },
+    { id:'korea', label:'Korea', center:[36.5,128.0], zoom:7,
+      prefectures:[{name:'Seoul',latlng:[37.57,126.98]},{name:'Busan',latlng:[35.10,129.04]},{name:'Gyeongju',latlng:[35.86,129.22]}] }
   ];
 
-  // ── Simple places ─────────────────────────────────────────────────────────
+  // ── Europe: country polaroids ─────────────────────────────────────────────
+  var europeCountries = [
+    {name:'Ireland',        latlng:[53.41,-8.24]},
+    {name:'UK',             latlng:[54.00,-2.50]},
+    {name:'France',         latlng:[46.23,2.21]},
+    {name:'Germany',        latlng:[51.16,10.45]},
+    {name:'Netherlands',    latlng:[52.37,4.90]},
+    {name:'Belgium',        latlng:[50.50,4.47]},
+    {name:'Luxembourg',     latlng:[49.81,6.13]},
+    {name:'Switzerland',    latlng:[46.82,8.23]},
+    {name:'Liechtenstein',  latlng:[47.14,9.52]},
+    {name:'Austria',        latlng:[47.52,14.55]},
+    {name:'Italy',          latlng:[41.87,12.57]},
+    {name:'Portugal',       latlng:[39.40,-8.22]},
+    {name:'Spain',          latlng:[40.46,-3.75]},
+    {name:'Monaco',         latlng:[43.74,7.43]},
+    {name:'Croatia',        latlng:[45.10,15.20]},
+    {name:'Montenegro',     latlng:[42.71,19.37]},
+    {name:'Hungary',        latlng:[47.16,19.50]},
+    {name:'Slovakia',       latlng:[48.67,19.70]},
+    {name:'Lithuania',      latlng:[55.17,23.88]},
+    {name:'Madeira',        latlng:[32.76,-16.96]}
+  ];
+
+  // ── Simple places (SE Asia, Australia) ───────────────────────────────────
   var simplePlaces = {
-    'europe':[
-      {name:'Edinburgh',latlng:[55.95,-3.19]},{name:'London',latlng:[51.51,-0.13]},
-      {name:'Amsterdam',latlng:[52.37,4.90]},{name:'Cologne',latlng:[50.94,6.96]},
-      {name:'Paris',latlng:[48.85,2.35]},{name:'Dubrovnik',latlng:[42.65,18.09]},
-      {name:'Budva',latlng:[42.28,18.84]},{name:'Switzerland',latlng:[46.82,8.23]},
-      {name:'Liechtenstein',latlng:[47.14,9.52]},{name:'Vienna',latlng:[48.21,16.37]},
-      {name:'Bratislava',latlng:[48.15,17.11]},{name:'Budapest',latlng:[47.50,19.04]},
-      {name:'Manchester',latlng:[53.48,-2.24]},{name:'Liverpool',latlng:[53.41,-2.98]},
-      {name:'Madrid',latlng:[40.42,-3.70]},{name:'Venice',latlng:[45.44,12.33]},
-      {name:'Split',latlng:[43.51,16.44]},{name:'Faro',latlng:[37.02,-7.93]},
-      {name:'Lagos',latlng:[37.10,-8.67]},{name:'Cadiz',latlng:[36.53,-6.30]},
-      {name:'Gibraltar',latlng:[36.14,-5.35]},{name:'Malaga',latlng:[36.72,-4.42]},
-      {name:'Granada',latlng:[37.18,-3.60]},{name:'Rome',latlng:[41.90,12.50]},
-      {name:'Madeira',latlng:[32.76,-16.96]},{name:'Milan',latlng:[45.46,9.19]},
-      {name:'Como',latlng:[45.81,9.09]},{name:'Genoa',latlng:[44.41,8.93]},
-      {name:'Monaco',latlng:[43.74,7.43]},{name:'Cannes',latlng:[43.55,7.02]},
-      {name:'Nice',latlng:[43.71,7.26]},{name:'Lithuania',latlng:[55.17,23.88]},
-      {name:'Wexford',latlng:[52.34,-6.46]},{name:'Fermanagh',latlng:[54.35,-7.63]}
-    ],
     'se-asia':[
-      {name:'Taipei',latlng:[25.03,121.56]},
-      {name:'Hanoi',latlng:[21.03,105.85]}
+      {name:'Taiwan',  latlng:[23.70,121.00]},
+      {name:'Vietnam', latlng:[16.00,107.00]}
     ],
     'australia':[
-      {name:'Sydney',latlng:[-33.87,151.21]},
-      {name:'Perth',latlng:[-31.95,115.86]},
-      {name:'Busselton',latlng:[-33.65,115.35]}
+      {name:'New South Wales', latlng:[-33.87,151.21]},
+      {name:'Western Australia', latlng:[-31.95,115.86]}
     ]
   };
 
-  // ── World region rects ────────────────────────────────────────────────────
+  // ── World rects ───────────────────────────────────────────────────────────
   var regionRects = {
     'europe':    L.rectangle([[35,-25],[71,40]],    {color:'#c9aa96',weight:1,fillColor:'#c9aa96',fillOpacity:0.12}),
     'east-asia': L.rectangle([[25,128],[50,148]],   {color:'#9ab8c9',weight:1,fillColor:'#9ab8c9',fillOpacity:0.12}),
@@ -345,44 +338,43 @@ ul.task-list li input[type="checkbox"] {
     'australia': L.rectangle([[-44,113],[-10,154]], {color:'#c9b89a',weight:1,fillColor:'#c9b89a',fillOpacity:0.12})
   };
 
-  // ── Polaroid icon factory ─────────────────────────────────────────────────
+  // ── Icon factories ────────────────────────────────────────────────────────
   function makePolaroidIcon(name, size) {
-    size = size || 44;
-    var imgH = Math.round(size * 0.85);
-    var total = size + 16;
+    size = size || 42;
+    var imgH = Math.round(size * 0.82);
+    var total = size + 14;
     return L.divIcon({
       className:'',
-      html: '<div class="polaroid-marker" style="width:'+size+'px;">' +
-              '<div class="polaroid-img" style="width:'+size+'px;height:'+imgH+'px;">' +
-                '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5">' +
-                  '<rect x="3" y="3" width="18" height="18" rx="2"/>' +
-                  '<circle cx="8.5" cy="8.5" r="1.5"/>' +
-                  '<polyline points="21,15 16,10 5,21"/>' +
-                '</svg>' +
-              '</div>' +
-              '<div class="polaroid-label">'+name+'</div>' +
-            '</div>',
-      iconSize:[total, total+4],
-      iconAnchor:[total/2, total+4],
-      popupAnchor:[0, -(total+4)]
+      html:'<div class="polaroid-marker" style="width:'+size+'px;">' +
+             '<div class="polaroid-img" style="width:'+size+'px;height:'+imgH+'px;">' +
+               '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.5">' +
+                 '<rect x="3" y="3" width="18" height="18" rx="2"/>' +
+                 '<circle cx="8.5" cy="8.5" r="1.5"/>' +
+                 '<polyline points="21,15 16,10 5,21"/>' +
+               '</svg>' +
+             '</div>' +
+             '<div class="polaroid-label" style="max-width:'+size+'px;">'+name+'</div>' +
+           '</div>',
+      iconSize:[total, total],
+      iconAnchor:[total/2, total],
+      popupAnchor:[0, -(total+2)]
     });
   }
 
   function makePolaroidPopup(name) {
-    return '<div style="text-align:center;padding:6px 10px;font-family:Georgia,serif;">' +
-           '<div style="width:120px;height:100px;background:#f5f0eb;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;border-radius:2px;">' +
-           '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>' +
+    return '<div style="text-align:center;padding:8px 12px;font-family:Georgia,serif;">' +
+           '<div style="width:130px;height:110px;background:#f0ebe4;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;border-radius:1px;">' +
+           '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>' +
            '</div>' +
-           '<div style="font-style:italic;color:#3a3a3a;font-size:0.95rem;">'+name+'</div>' +
+           '<div style="font-style:italic;color:#3a3a3a;font-size:0.95rem;margin-bottom:2px;">'+name+'</div>' +
            '</div>';
   }
 
-  // ── Area cluster icon ─────────────────────────────────────────────────────
   function makeAreaIcon(label) {
     return L.divIcon({
       className:'',
       html:'<div class="area-cluster" title="'+label+'"></div>',
-      iconSize:[13,13], iconAnchor:[6,6], popupAnchor:[0,-10]
+      iconSize:[12,12], iconAnchor:[6,6], popupAnchor:[0,-8]
     });
   }
 
@@ -397,10 +389,9 @@ ul.task-list li input[type="checkbox"] {
     document.getElementById('okinawa-inset').style.display = 'none';
   }
 
-  // ── Sidebar ───────────────────────────────────────────────────────────────
-  function showSidebar(title, places) {
+  function showSidebar(title, items) {
     document.getElementById('sidebar-title').textContent = title;
-    document.getElementById('sidebar-list').innerHTML = places.map(function(p){
+    document.getElementById('sidebar-list').innerHTML = items.map(function(p){
       return '<li>'+p.name+'</li>';
     }).join('');
     document.getElementById('sidebar').style.display = 'block';
@@ -411,7 +402,7 @@ ul.task-list li input[type="checkbox"] {
     document.getElementById('sidebar').style.display = 'none';
   }
 
-  // ── Render: world ─────────────────────────────────────────────────────────
+  // ── World ─────────────────────────────────────────────────────────────────
   function showWorld() {
     clearMarkers(); hideSidebar();
     Object.entries(regionRects).forEach(function(e){
@@ -423,61 +414,70 @@ ul.task-list li input[type="checkbox"] {
     });
   }
 
-  // ── Render: simple regions ────────────────────────────────────────────────
-  function showSimpleRegion(region) {
+  // ── Europe: country polaroids ─────────────────────────────────────────────
+  function showEurope() {
     clearMarkers(); hideSidebar();
-    (simplePlaces[region]||[]).forEach(function(p){
-      var m = L.marker(p.latlng, { icon: makePolaroidIcon(p.name), zIndexOffset:100 })
+    europeCountries.forEach(function(c){
+      var m = L.marker(c.latlng, {icon: makePolaroidIcon(c.name, 40), zIndexOffset:100})
         .addTo(tmap)
-        .bindPopup(makePolaroidPopup(p.name), {maxWidth:200, className:'polaroid-popup'});
+        .bindPopup(makePolaroidPopup(c.name), {maxWidth:200});
       activeMarkers.push(m);
     });
   }
 
-  // ── Render: East Asia clusters ────────────────────────────────────────────
+  // ── SE Asia / Australia: simple ───────────────────────────────────────────
+  function showSimpleRegion(region) {
+    clearMarkers(); hideSidebar();
+    (simplePlaces[region]||[]).forEach(function(p){
+      var m = L.marker(p.latlng, {icon: makePolaroidIcon(p.name, 40), zIndexOffset:100})
+        .addTo(tmap)
+        .bindPopup(makePolaroidPopup(p.name), {maxWidth:200});
+      activeMarkers.push(m);
+    });
+  }
+
+  // ── East Asia: area clusters ──────────────────────────────────────────────
   function showEastAsia() {
     clearMarkers(); hideSidebar();
-    // Show mainland Japan + Korea — Okinawa lives in the inset
     eaAreas.forEach(function(area){
-      if (area.id === 'okinawa') return;
-      var m = L.marker(area.center, { icon: makeAreaIcon(area.label), zIndexOffset:200 })
+      var m = L.marker(area.center, {icon: makeAreaIcon(area.label), zIndexOffset:200})
         .addTo(tmap)
-        .bindTooltip(area.label, {permanent:false, direction:'top', offset:[0,-8], className:''});
+        .bindTooltip(area.label, {permanent:false, direction:'top', offset:[0,-8]});
       m.on('click', function(){ drillIntoArea(area); });
       activeMarkers.push(m);
     });
-    // Show Okinawa inset
     document.getElementById('okinawa-inset').style.display = 'block';
     setTimeout(function(){
       initOkinawaInset();
       if (oki_map) oki_map.invalidateSize();
-    }, 100);
+    }, 120);
   }
 
-  // ── Drill into area ───────────────────────────────────────────────────────
+  // ── Drill: area → prefecture polaroids ───────────────────────────────────
   function drillIntoArea(area) {
     activeMarkers.forEach(function(m){ tmap.removeLayer(m); });
     activeMarkers = [];
+    document.getElementById('okinawa-inset').style.display = 'none';
     tmap.flyTo(area.center, area.zoom, {duration:1.0});
     setTimeout(function(){
-      area.places.forEach(function(p){
-        var m = L.marker(p.latlng, { icon: makePolaroidIcon(p.name, 40), zIndexOffset:300 })
+      area.prefectures.forEach(function(p){
+        var m = L.marker(p.latlng, {icon: makePolaroidIcon(p.name, 38), zIndexOffset:300})
           .addTo(tmap)
           .bindPopup(makePolaroidPopup(p.name), {maxWidth:200});
         activeMarkers.push(m);
       });
-      showSidebar(area.label, area.places);
+      showSidebar(area.label, area.prefectures);
     }, 950);
   }
 
-  // ── Back button ───────────────────────────────────────────────────────────
+  // ── Back ──────────────────────────────────────────────────────────────────
   document.getElementById('back-btn').addEventListener('click', function(){
     hideSidebar();
     tmap.flyTo(regionViews['east-asia'].center, regionViews['east-asia'].zoom, {duration:1.0});
     setTimeout(function(){ showEastAsia(); }, 950);
   });
 
-  // ── Region buttons ────────────────────────────────────────────────────────
+  // ── Buttons ───────────────────────────────────────────────────────────────
   document.querySelectorAll('.tmap-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
       document.querySelectorAll('.tmap-btn').forEach(function(b){ b.classList.remove('active'); });
@@ -486,9 +486,10 @@ ul.task-list li input[type="checkbox"] {
       currentRegion = region;
       tmap.flyTo(regionViews[region].center, regionViews[region].zoom, {duration:1.2});
       setTimeout(function(){
-        if      (region === 'world')      showWorld();
-        else if (region === 'east-asia')  showEastAsia();
-        else                              showSimpleRegion(region);
+        if      (region==='world')      showWorld();
+        else if (region==='east-asia')  showEastAsia();
+        else if (region==='europe')     showEurope();
+        else                            showSimpleRegion(region);
       }, 500);
     });
   });
