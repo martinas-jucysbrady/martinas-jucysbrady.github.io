@@ -23,7 +23,7 @@ This a breakdown of the modules I have taken during my time in DCU. I have taken
 :::
 
 
-## Travel
+## Hobbies and Interests
 
 ::: {.grid}
 
@@ -34,29 +34,9 @@ This a breakdown of the modules I have taken during my time in DCU. I have taken
 
 ::: {.g-col-12 .g-col-md-10}
 
-[Travel](https://martinas-jucysbrady.github.io/travel), &nbsp; [Plans](https://martinas-jucysbrady.github.io/)
+[Travel](https://martinas-jucysbrady.github.io/travel), &nbsp; [XYZ](https://martinas-jucysbrady.github.io/)
 
 Travelling is one of my passions. I have been fortunate enough to travel to many different countries and experience different cultures. I have traveled to Europe, Asia, and Australia, and I hope to continue traveling in the future.
-
-:::
-
-:::
-
-
-## Books, Films, and TV Shows
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-[![](/assets/mjb_favicon.png)](https://martinas-jucysbrady.github.io/)
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-[Books](https://martinas-jucysbrady.github.io/), &nbsp; [Films](https://martinas-jucysbrady.github.io/), &nbsp; [TV Shows](https://martinas-jucysbrady.github.io/)
-
-Here I will list some of my favourite books, films, and TV shows. I have a wide range of interests when it comes to books, films, and TV shows, and I am always looking for new recommendations.
 
 :::
 
