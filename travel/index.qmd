@@ -5,31 +5,40 @@ title: "My Travels"
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<div style="max-width:960px; margin:0 auto; padding:40px 20px; text-align:center; font-family:'Georgia',serif;">
-  <p style="font-size:1.1rem; letter-spacing:0.25em; text-transform:uppercase; color:#9b8877; margin-bottom:6px;">My Travels</p>
-  <h2 style="font-size:2rem; font-style:italic; color:#3a3a3a; margin-bottom:30px;">Places I've Been</h2>
+<div style="max-width:960px; margin:0 auto; padding:20px 20px 10px; text-align:center; font-family:'Georgia',serif;">
+  <p style="font-size:1rem; letter-spacing:0.25em; text-transform:uppercase; color:#9b8877; margin-bottom:4px;">My Travels</p>
+  <h2 style="font-size:1.7rem; font-style:italic; color:#3a3a3a; margin-bottom:16px;">Places I've Been</h2>
 
-  <div style="display:flex; gap:16px; align-items:flex-start;">
+  <div style="display:flex; gap:14px; align-items:flex-start;">
     <div style="flex:1; min-width:0; position:relative;">
-      <div id="travel-map" style="width:100%; height:540px; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.08);"></div>
-      <div id="okinawa-inset" style="display:none; position:absolute; bottom:32px; right:32px; width:130px; height:140px; background:#faf8f6; border:1.5px solid #ddd; border-radius:6px; box-shadow:0 2px 12px rgba(0,0,0,0.14); z-index:1000; overflow:hidden;">
+      <div id="travel-map" style="width:100%; height:460px; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.08);"></div>
+
+      <!-- Okinawa inset — bottom right -->
+      <div id="okinawa-inset" style="display:none; position:absolute; bottom:32px; right:32px; width:120px; height:130px; background:#faf8f6; border:1.5px solid #ddd; border-radius:6px; box-shadow:0 2px 12px rgba(0,0,0,0.14); z-index:1000; overflow:hidden;">
         <div id="okinawa-map" style="width:100%; height:100%;"></div>
-        <div style="position:absolute;top:5px;left:7px;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:#9b8877;font-family:Georgia,serif;pointer-events:none;">Okinawa</div>
+        <div style="position:absolute;top:5px;left:7px;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:#9b8877;font-family:Georgia,serif;pointer-events:none;">Okinawa</div>
+      </div>
+
+      <!-- Madeira inset — bottom left -->
+      <div id="madeira-inset" style="display:none; position:absolute; bottom:32px; left:32px; width:120px; height:130px; background:#faf8f6; border:1.5px solid #ddd; border-radius:6px; box-shadow:0 2px 12px rgba(0,0,0,0.14); z-index:1000; overflow:hidden;">
+        <div id="madeira-map" style="width:100%; height:100%;"></div>
+        <div style="position:absolute;top:5px;left:7px;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:#9b8877;font-family:Georgia,serif;pointer-events:none;">Madeira</div>
       </div>
     </div>
-    <div id="sidebar" style="width:190px; min-height:540px; background:#faf8f6; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.06); padding:16px; text-align:left; display:none; flex-shrink:0;">
-      <div id="sidebar-title" style="font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:#c9aa96; margin-bottom:12px;"></div>
-      <ul id="sidebar-list" style="list-style:none; margin:0; padding:0; font-family:'Georgia',serif; font-style:italic; color:#3a3a3a; font-size:0.88rem; line-height:1.9;"></ul>
-      <div id="back-btn" style="margin-top:18px; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:#c9aa96; cursor:pointer; display:none;">← Back</div>
+
+    <div id="sidebar" style="width:180px; min-height:460px; background:#faf8f6; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.06); padding:14px; text-align:left; display:none; flex-shrink:0;">
+      <div id="sidebar-title" style="font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:#c9aa96; margin-bottom:10px;"></div>
+      <ul id="sidebar-list" style="list-style:none; margin:0; padding:0; font-family:'Georgia',serif; font-style:italic; color:#3a3a3a; font-size:0.85rem; line-height:1.85;"></ul>
+      <div id="back-btn" style="margin-top:14px; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:#c9aa96; cursor:pointer; display:none;">← Back</div>
     </div>
   </div>
 
-  <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:22px;">
-    <div class="tmap-btn" data-region="world"     style="display:inline-flex;align-items:center;gap:6px;background:#e8ddd7;border:1.5px solid #e8ddd7;border-radius:20px;padding:8px 20px;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;color:#9b8877;cursor:pointer;">🌐 World</div>
-    <div class="tmap-btn" data-region="europe"    style="display:inline-flex;align-items:center;gap:6px;background:#c9aa96;border:1.5px solid #c9aa96;border-radius:20px;padding:8px 20px;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;color:#fff;cursor:pointer;">🌍 Europe</div>
-    <div class="tmap-btn" data-region="east-asia" style="display:inline-flex;align-items:center;gap:6px;background:#c9aa96;border:1.5px solid #c9aa96;border-radius:20px;padding:8px 20px;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;color:#fff;cursor:pointer;">🗾 East Asia</div>
-    <div class="tmap-btn" data-region="se-asia"   style="display:inline-flex;align-items:center;gap:6px;background:#c9aa96;border:1.5px solid #c9aa96;border-radius:20px;padding:8px 20px;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;color:#fff;cursor:pointer;">🌴 SE Asia</div>
-    <div class="tmap-btn" data-region="australia" style="display:inline-flex;align-items:center;gap:6px;background:#c9aa96;border:1.5px solid #c9aa96;border-radius:20px;padding:8px 20px;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;color:#fff;cursor:pointer;">🦘 Australia</div>
+  <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:14px;">
+    <div class="tmap-btn" data-region="world"     style="display:inline-flex;align-items:center;gap:6px;background:#e8ddd7;border:1.5px solid #e8ddd7;border-radius:20px;padding:7px 16px;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:#9b8877;cursor:pointer;">🌐 World</div>
+    <div class="tmap-btn" data-region="europe"    style="display:inline-flex;align-items:center;gap:6px;background:#c9aa96;border:1.5px solid #c9aa96;border-radius:20px;padding:7px 16px;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:#fff;cursor:pointer;">🌍 Europe</div>
+    <div class="tmap-btn" data-region="east-asia" style="display:inline-flex;align-items:center;gap:6px;background:#c9aa96;border:1.5px solid #c9aa96;border-radius:20px;padding:7px 16px;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:#fff;cursor:pointer;">🗾 East Asia</div>
+    <div class="tmap-btn" data-region="se-asia"   style="display:inline-flex;align-items:center;gap:6px;background:#c9aa96;border:1.5px solid #c9aa96;border-radius:20px;padding:7px 16px;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:#fff;cursor:pointer;">🌴 SE Asia</div>
+    <div class="tmap-btn" data-region="australia" style="display:inline-flex;align-items:center;gap:6px;background:#c9aa96;border:1.5px solid #c9aa96;border-radius:20px;padding:7px 16px;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:#fff;cursor:pointer;">🦘 Australia</div>
   </div>
 </div>
 
@@ -41,6 +50,7 @@ title: "My Travels"
   .tmap-btn.active { box-shadow:0 2px 10px rgba(0,0,0,0.18); transform:translateY(-1px); filter:brightness(0.88); }
   #sidebar-list li { padding:3px 0; border-bottom:1px solid #f0ebe6; cursor:default; }
   #sidebar-list li:last-child { border-bottom:none; }
+
   .polaroid-marker {
     background:#fff; padding:4px 4px 16px 4px;
     box-shadow:0 2px 8px rgba(0,0,0,0.16); border-radius:1px;
@@ -58,20 +68,16 @@ title: "My Travels"
     color:#555; text-align:center; margin-top:2px;
     white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
   }
-  .area-cluster {
-    width:12px; height:12px; background:#b8cdd6;
-    border:2px solid #fff; border-radius:50%;
-    box-shadow:0 1px 5px rgba(0,0,0,0.18);
-    cursor:pointer; transition:transform 0.15s ease;
+
+  .pin-icon {
+    font-size:22px; line-height:1;
+    cursor:pointer;
+    transition:transform 0.18s ease;
+    transform-origin:bottom center;
+    display:block;
+    filter:drop-shadow(0 2px 3px rgba(0,0,0,0.25));
   }
-  .area-cluster:hover { transform:scale(1.5); }
-  .eu-cluster {
-    width:12px; height:12px; background:#c9aa96;
-    border:2px solid #fff; border-radius:50%;
-    box-shadow:0 1px 5px rgba(0,0,0,0.18);
-    cursor:pointer; transition:transform 0.15s ease;
-  }
-  .eu-cluster:hover { transform:scale(1.5); }
+  .pin-icon:hover { transform:scale(1.5) translateY(-3px); }
 </style>
 
 <script>
@@ -91,8 +97,10 @@ title: "My Travels"
   L.tileLayer(cartoBase,   {attribution:'&copy; CARTO', subdomains:'abcd', maxZoom:19}).addTo(tmap);
   L.tileLayer(cartoLabels, {subdomains:'abcd', maxZoom:19, opacity:0.45}).addTo(tmap);
 
-  // ── Okinawa inset ─────────────────────────────────────────────────────────
+  // ── Inset maps ────────────────────────────────────────────────────────────
   var oki_map = null;
+  var mad_map = null;
+
   function initOkinawaInset() {
     if (oki_map) return;
     oki_map = L.map('okinawa-map', {
@@ -102,9 +110,21 @@ title: "My Travels"
     });
     L.tileLayer(cartoBase,   {subdomains:'abcd', maxZoom:19}).addTo(oki_map);
     L.tileLayer(cartoLabels, {subdomains:'abcd', maxZoom:19, opacity:0.45}).addTo(oki_map);
-    L.marker([26.33,127.80], {icon: makePolaroidIcon('Okinawa', 28), zIndexOffset:500})
-      .addTo(oki_map)
-      .bindPopup(makePolaroidPopup('Okinawa'), {maxWidth:180});
+    L.marker([26.33,127.80], {icon: makePolaroidIcon('Okinawa', 26), zIndexOffset:500})
+      .addTo(oki_map).bindPopup(makePolaroidPopup('Okinawa'), {maxWidth:180});
+  }
+
+  function initMadeiraInset() {
+    if (mad_map) return;
+    mad_map = L.map('madeira-map', {
+      center:[32.76,-16.96], zoom:9,
+      zoomControl:false, scrollWheelZoom:false, dragging:false,
+      attributionControl:false, doubleClickZoom:false
+    });
+    L.tileLayer(cartoBase,   {subdomains:'abcd', maxZoom:19}).addTo(mad_map);
+    L.tileLayer(cartoLabels, {subdomains:'abcd', maxZoom:19, opacity:0.45}).addTo(mad_map);
+    L.marker([32.76,-16.96], {icon: makePolaroidIcon('Madeira', 26), zIndexOffset:500})
+      .addTo(mad_map).bindPopup(makePolaroidPopup('Madeira'), {maxWidth:180});
   }
 
   // ── Region views ──────────────────────────────────────────────────────────
@@ -128,10 +148,10 @@ title: "My Travels"
     },
     { id:'iberia', label:'Iberia',
       center:[39.5,-5.0], zoom:6,
+      hasMadeiraInset: true,
       countries:[
         {name:'Spain',    latlng:[40.42,-3.70]},
         {name:'Portugal', latlng:[39.40,-8.22]},
-        {name:'Madeira',  latlng:[32.76,-16.96]},
         {name:'Gibraltar',latlng:[36.14,-5.35]}
       ]
     },
@@ -157,12 +177,12 @@ title: "My Travels"
     { id:'central', label:'Central Europe',
       center:[48.0,11.0], zoom:5,
       countries:[
-        {name:'Germany',        latlng:[51.16,10.45]},
-        {name:'Austria',        latlng:[47.52,14.55]},
-        {name:'Switzerland',    latlng:[46.82,8.23]},
-        {name:'Liechtenstein',  latlng:[47.14,9.52]},
-        {name:'Hungary',        latlng:[47.16,19.50]},
-        {name:'Slovakia',       latlng:[48.67,19.70]}
+        {name:'Germany',       latlng:[51.16,10.45]},
+        {name:'Austria',       latlng:[47.52,14.55]},
+        {name:'Switzerland',   latlng:[46.82,8.23]},
+        {name:'Liechtenstein', latlng:[47.14,9.52]},
+        {name:'Hungary',       latlng:[47.16,19.50]},
+        {name:'Slovakia',      latlng:[48.67,19.70]}
       ]
     },
     { id:'eastern', label:'Eastern Europe',
@@ -200,8 +220,8 @@ title: "My Travels"
       {name:'Vietnam', latlng:[16.00,107.00]}
     ],
     'australia':[
-      {name:'New South Wales',    latlng:[-33.87,151.21]},
-      {name:'Western Australia',  latlng:[-31.95,115.86]}
+      {name:'New South Wales',   latlng:[-33.87,151.21]},
+      {name:'Western Australia', latlng:[-31.95,115.86]}
     ]
   };
 
@@ -214,6 +234,15 @@ title: "My Travels"
   };
 
   // ── Icon factories ────────────────────────────────────────────────────────
+  function makePinIcon(emoji) {
+    emoji = emoji || '📍';
+    return L.divIcon({
+      className:'',
+      html:'<span class="pin-icon">'+emoji+'</span>',
+      iconSize:[28,28], iconAnchor:[14,26], popupAnchor:[0,-28]
+    });
+  }
+
   function makePolaroidIcon(name, size) {
     size = size || 42;
     var imgH = Math.round(size * 0.82);
@@ -240,22 +269,17 @@ title: "My Travels"
            '</div><div style="font-style:italic;color:#3a3a3a;font-size:0.95rem;">'+name+'</div></div>';
   }
 
-  function makeAreaIcon(cls) {
-    return L.divIcon({
-      className:'',
-      html:'<div class="'+cls+'"></div>',
-      iconSize:[12,12], iconAnchor:[6,6], popupAnchor:[0,-8]
-    });
-  }
-
   // ── State ─────────────────────────────────────────────────────────────────
   var activeMarkers = [];
+  var currentRegion = 'world';
+  var currentEuRegion = null;
 
   function clearMarkers() {
     activeMarkers.forEach(function(m){ tmap.removeLayer(m); });
     activeMarkers = [];
     Object.values(regionRects).forEach(function(r){ tmap.removeLayer(r); });
     document.getElementById('okinawa-inset').style.display = 'none';
+    document.getElementById('madeira-inset').style.display = 'none';
   }
 
   function showSidebar(title, items) {
@@ -283,30 +307,37 @@ title: "My Travels"
     });
   }
 
-  // ── Europe: sub-region clusters ───────────────────────────────────────────
+  // ── Europe clusters ───────────────────────────────────────────────────────
   function showEurope() {
     clearMarkers(); hideSidebar();
     euRegions.forEach(function(region){
-      var m = L.marker(region.center, {icon: makeAreaIcon('eu-cluster'), zIndexOffset:200})
+      var m = L.marker(region.center, {icon: makePinIcon('📍'), zIndexOffset:200})
         .addTo(tmap)
-        .bindTooltip(region.label, {permanent:false, direction:'top', offset:[0,-8]});
+        .bindTooltip(region.label, {permanent:false, direction:'top', offset:[0,-24]});
       m.on('click', function(){ drillIntoEuRegion(region); });
       activeMarkers.push(m);
     });
   }
 
   function drillIntoEuRegion(region) {
+    currentEuRegion = region;
     activeMarkers.forEach(function(m){ tmap.removeLayer(m); });
     activeMarkers = [];
     tmap.flyTo(region.center, region.zoom, {duration:1.0});
     setTimeout(function(){
       region.countries.forEach(function(c){
         var m = L.marker(c.latlng, {icon: makePolaroidIcon(c.name, 38), zIndexOffset:300})
-          .addTo(tmap)
-          .bindPopup(makePolaroidPopup(c.name), {maxWidth:200});
+          .addTo(tmap).bindPopup(makePolaroidPopup(c.name), {maxWidth:200});
         activeMarkers.push(m);
       });
       showSidebar(region.label, region.countries);
+      if (region.hasMadeiraInset) {
+        document.getElementById('madeira-inset').style.display = 'block';
+        setTimeout(function(){
+          initMadeiraInset();
+          if (mad_map) mad_map.invalidateSize();
+        }, 120);
+      }
     }, 950);
   }
 
@@ -314,9 +345,9 @@ title: "My Travels"
   function showEastAsia() {
     clearMarkers(); hideSidebar();
     eaAreas.forEach(function(area){
-      var m = L.marker(area.center, {icon: makeAreaIcon('area-cluster'), zIndexOffset:200})
+      var m = L.marker(area.center, {icon: makePinIcon('📍'), zIndexOffset:200})
         .addTo(tmap)
-        .bindTooltip(area.label, {permanent:false, direction:'top', offset:[0,-8]});
+        .bindTooltip(area.label, {permanent:false, direction:'top', offset:[0,-24]});
       m.on('click', function(){ drillIntoEaArea(area); });
       activeMarkers.push(m);
     });
@@ -335,30 +366,27 @@ title: "My Travels"
     setTimeout(function(){
       area.prefectures.forEach(function(p){
         var m = L.marker(p.latlng, {icon: makePolaroidIcon(p.name, 38), zIndexOffset:300})
-          .addTo(tmap)
-          .bindPopup(makePolaroidPopup(p.name), {maxWidth:200});
+          .addTo(tmap).bindPopup(makePolaroidPopup(p.name), {maxWidth:200});
         activeMarkers.push(m);
       });
       showSidebar(area.label, area.prefectures);
     }, 950);
   }
 
-  // ── Simple ────────────────────────────────────────────────────────────────
+  // ── Simple regions ────────────────────────────────────────────────────────
   function showSimpleRegion(region) {
     clearMarkers(); hideSidebar();
     (simplePlaces[region]||[]).forEach(function(p){
       var m = L.marker(p.latlng, {icon: makePolaroidIcon(p.name, 40), zIndexOffset:100})
-        .addTo(tmap)
-        .bindPopup(makePolaroidPopup(p.name), {maxWidth:200});
+        .addTo(tmap).bindPopup(makePolaroidPopup(p.name), {maxWidth:200});
       activeMarkers.push(m);
     });
   }
 
-  // ── Back button ───────────────────────────────────────────────────────────
-  var currentRegion = 'world';
-
+  // ── Back ──────────────────────────────────────────────────────────────────
   document.getElementById('back-btn').addEventListener('click', function(){
     hideSidebar();
+    document.getElementById('madeira-inset').style.display = 'none';
     var v = regionViews[currentRegion];
     tmap.flyTo(v.center, v.zoom, {duration:1.0});
     setTimeout(function(){
