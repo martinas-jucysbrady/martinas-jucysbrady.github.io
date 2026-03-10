@@ -65,3 +65,33 @@ em, blockquote, .travel-caption, .subtitle {
   font-style: italic;
   font-weight: 600;
 }
+
+// Trestles about template
+.quarto-about-trestles .about-entity,
+.quarto-about-trestles .about-links,
+.quarto-about-trestles {
+  font-family: 'Inter', sans-serif !important;
+}
+
+.quarto-about-trestles h1,
+.quarto-about-trestles h2 {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 800 !important;
+}
+
+.quarto-about-trestles .about-entity .about-title {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 800 !important;
+}
+
+.quarto-about-trestles .about-entity .about-subtitle {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic;
+  font-weight: 600;
+}
+
+// Recent posts section heading
+#recent-posts .listing-title {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 800 !important;
+}
