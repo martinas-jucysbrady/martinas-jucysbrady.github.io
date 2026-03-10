@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>index – Martinas Jucys Brady</title>
+<title>My Travels – Martinas Jucys Brady</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,12 +128,28 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">My Travels</h1>
+</div>
 
 
 
+<div class="quarto-title-meta column-page">
 
-//unpkg.com/leaflet@1.9.4/dist/leaflet.css"/&gt;
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <div style="max-width:960px; margin:0 auto; padding:40px 20px; text-align:center; font-family:'Georgia',serif;">
@@ -170,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
 <script>
 (function() {
   var tmap = L.map('travel-map', {
-    center: , zoom: 2, minZoom: 2, maxZoom: 6,
+    center: [30, 20], zoom: 2, minZoom: 2, maxZoom: 6,
     scrollWheelZoom: true, zoomControl: true
   });
 
@@ -184,10 +200,10 @@ ul.task-list li input[type="checkbox"] {
   }).addTo(tmap);
 
   var regions = [
-    { id: 'europe',        bounds: [[-12,-25],],   center: ,   label: 'Europe',       note: 'Ireland, Germany &amp more' },
-    { id: 'east-asia',     bounds: [,],   center: ,  label: 'East Asia',    note: 'Japan &amp more' },
-    { id: 'southeast-asia',bounds: [[-10,95],],   center: ,  label: 'Southeast Asia', note: 'Thailand, Vietnam &amp more' },
-    { id: 'australia',     bounds: [[-44,113],[-10,154]], center: [-27,133], label: 'Australia',    note: 'Australia' }
+    { id: 'europe',         bounds: [[35, -25], [71, 40]],    center: [54, 10],   label: 'Europe',         note: 'Ireland, Germany &amp; more' },
+    { id: 'east-asia',      bounds: [[20, 100], [50, 145]],   center: [35, 125],  label: 'East Asia',      note: 'Japan &amp; more' },
+    { id: 'southeast-asia', bounds: [[-10, 95], [25, 140]],   center: [10, 115],  label: 'Southeast Asia', note: 'Thailand, Vietnam &amp; more' },
+    { id: 'australia',      bounds: [[-44, 113], [-10, 154]], center: [-27, 133], label: 'Australia',      note: 'Australia' }
   ];
 
   var layerMap = {};
@@ -200,7 +216,7 @@ ul.task-list li input[type="checkbox"] {
     var icon = L.divIcon({
       className: '',
       html: '<div style="width:36px;height:36px;background:#c9aa96;border:2.5px solid #fff;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;color:#fff;font-family:Georgia,serif;font-style:italic;font-size:13px;font-weight:bold;">' + (i+1) + '</div>',
-      iconSize: , iconAnchor: , popupAnchor: [0,-20]
+      iconSize: [36, 36], iconAnchor: [18, 18], popupAnchor: [0, -20]
     });
 
     var marker = L.marker(r.center, { icon: icon }).addTo(tmap)
