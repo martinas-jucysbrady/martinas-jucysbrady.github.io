@@ -5,13 +5,14 @@ $dark-blue: #1E4264;
 $blue-grey: #80A4B6;
 $blue-grey2: #7EA3B6;
 $white: #F8F9FA;
-$light-blue-grey: #B1E4FF;
+$light-sky-blue: #F0F4FF;
 
 // Base document colors
-$navbar-bg: $light-blue-grey; // 
+$navbar-bg: $light-sky-blue; // 
 $navbar-fg: $dark-blue; //
+$navbar-hl: $blue-grey; //
 $body-bg: $white; // 
-
+$footer-bg: $light-sky-blue; //
 
 /*-- scss:rules --*/
 
@@ -19,4 +20,13 @@ $body-bg: $white; //
 max-height: 40px !important;
 width: auto;
 height: auto;
+}
+
+.navbar-nav .nav-link {
+  transition: font-size 0.15s ease, transform 0.15s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  transform: scale(1.15);
+  display: inline-block;
 }
