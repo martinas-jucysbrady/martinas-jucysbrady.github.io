@@ -12,8 +12,7 @@ title: "My Travels"
   <div style="display:flex; gap:16px; align-items:flex-start;">
     <div style="flex:1; min-width:0; position:relative;">
       <div id="travel-map" style="width:100%; height:540px; border-radius:8px; box-shadow:0 4px 24px rgba(0,0,0,0.08);"></div>
-      <!-- Okinawa inset — slightly overlapping bottom-right edge -->
-      <div id="okinawa-inset" style="display:none; position:absolute; bottom:-18px; right:-18px; width:130px; height:140px; background:#faf8f6; border:1.5px solid #ddd; border-radius:6px; box-shadow:0 2px 12px rgba(0,0,0,0.14); z-index:1000; overflow:hidden;">
+      <div id="okinawa-inset" style="display:none; position:absolute; bottom:32px; right:32px; width:130px; height:140px; background:#faf8f6; border:1.5px solid #ddd; border-radius:6px; box-shadow:0 2px 12px rgba(0,0,0,0.14); z-index:1000; overflow:hidden;">
         <div id="okinawa-map" style="width:100%; height:100%;"></div>
         <div style="position:absolute;top:5px;left:7px;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:#9b8877;font-family:Georgia,serif;pointer-events:none;">Okinawa</div>
       </div>
@@ -42,47 +41,37 @@ title: "My Travels"
   .tmap-btn.active { box-shadow:0 2px 10px rgba(0,0,0,0.18); transform:translateY(-1px); filter:brightness(0.88); }
   #sidebar-list li { padding:3px 0; border-bottom:1px solid #f0ebe6; cursor:default; }
   #sidebar-list li:last-child { border-bottom:none; }
-
   .polaroid-marker {
-    background:#fff;
-    padding:4px 4px 16px 4px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.16);
-    border-radius:1px;
-    cursor:pointer;
-    transition:transform 0.22s ease, box-shadow 0.22s ease;
+    background:#fff; padding:4px 4px 16px 4px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.16); border-radius:1px;
+    cursor:pointer; transition:transform 0.22s ease, box-shadow 0.22s ease;
     transform-origin:bottom center;
-    position:relative;
   }
   .polaroid-marker:hover {
     transform:scale(1.75) translateY(-4px);
     box-shadow:0 8px 24px rgba(0,0,0,0.22);
     z-index:9999 !important;
   }
-  .polaroid-img {
-    background:#ede8e2;
-    display:flex; align-items:center; justify-content:center;
-  }
+  .polaroid-img { background:#ede8e2; display:flex; align-items:center; justify-content:center; }
   .polaroid-label {
-    font-family:'Georgia',serif;
-    font-style:italic;
-    font-size:6.5px;
-    color:#555;
-    text-align:center;
-    margin-top:2px;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+    font-family:'Georgia',serif; font-style:italic; font-size:6.5px;
+    color:#555; text-align:center; margin-top:2px;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
   }
   .area-cluster {
-    width:12px; height:12px;
-    background:#b8cdd6;
-    border:2px solid #fff;
-    border-radius:50%;
+    width:12px; height:12px; background:#b8cdd6;
+    border:2px solid #fff; border-radius:50%;
     box-shadow:0 1px 5px rgba(0,0,0,0.18);
-    cursor:pointer;
-    transition:transform 0.15s ease;
+    cursor:pointer; transition:transform 0.15s ease;
   }
   .area-cluster:hover { transform:scale(1.5); }
+  .eu-cluster {
+    width:12px; height:12px; background:#c9aa96;
+    border:2px solid #fff; border-radius:50%;
+    box-shadow:0 1px 5px rgba(0,0,0,0.18);
+    cursor:pointer; transition:transform 0.15s ease;
+  }
+  .eu-cluster:hover { transform:scale(1.5); }
 </style>
 
 <script>
@@ -102,7 +91,7 @@ title: "My Travels"
   L.tileLayer(cartoBase,   {attribution:'&copy; CARTO', subdomains:'abcd', maxZoom:19}).addTo(tmap);
   L.tileLayer(cartoLabels, {subdomains:'abcd', maxZoom:19, opacity:0.45}).addTo(tmap);
 
-  // ── Okinawa inset map ─────────────────────────────────────────────────────
+  // ── Okinawa inset ─────────────────────────────────────────────────────────
   var oki_map = null;
   function initOkinawaInset() {
     if (oki_map) return;
@@ -121,13 +110,70 @@ title: "My Travels"
   // ── Region views ──────────────────────────────────────────────────────────
   var regionViews = {
     'world':     {center:[30,20],   zoom:2},
-    'europe':    {center:[50,10],   zoom:4},
+    'europe':    {center:[50,12],   zoom:4},
     'east-asia': {center:[37,134],  zoom:5},
     'se-asia':   {center:[18,108],  zoom:5},
     'australia': {center:[-27,133], zoom:4}
   };
 
-  // ── East Asia: area clusters → prefecture polaroids ───────────────────────
+  // ── Europe sub-regions ────────────────────────────────────────────────────
+  var euRegions = [
+    { id:'british-isles', label:'Ireland & UK',
+      center:[54.5,-3.5], zoom:6,
+      countries:[
+        {name:'Ireland',  latlng:[53.41,-8.24]},
+        {name:'England',  latlng:[52.50,-1.50]},
+        {name:'Scotland', latlng:[56.50,-4.00]}
+      ]
+    },
+    { id:'iberia', label:'Iberia',
+      center:[39.5,-5.0], zoom:6,
+      countries:[
+        {name:'Spain',    latlng:[40.42,-3.70]},
+        {name:'Portugal', latlng:[39.40,-8.22]},
+        {name:'Madeira',  latlng:[32.76,-16.96]},
+        {name:'Gibraltar',latlng:[36.14,-5.35]}
+      ]
+    },
+    { id:'western', label:'Western Europe',
+      center:[48.5,4.0], zoom:6,
+      countries:[
+        {name:'France',      latlng:[46.23,2.21]},
+        {name:'Monaco',      latlng:[43.74,7.43]},
+        {name:'Netherlands', latlng:[52.37,4.90]},
+        {name:'Belgium',     latlng:[50.50,4.47]},
+        {name:'Luxembourg',  latlng:[49.61,6.13]}
+      ]
+    },
+    { id:'southern', label:'Southern Europe',
+      center:[43.0,14.0], zoom:5,
+      countries:[
+        {name:'Italy',      latlng:[42.50,12.50]},
+        {name:'Vatican',    latlng:[41.90,12.45]},
+        {name:'Croatia',    latlng:[45.10,15.20]},
+        {name:'Montenegro', latlng:[42.71,19.37]}
+      ]
+    },
+    { id:'central', label:'Central Europe',
+      center:[48.0,11.0], zoom:5,
+      countries:[
+        {name:'Germany',        latlng:[51.16,10.45]},
+        {name:'Austria',        latlng:[47.52,14.55]},
+        {name:'Switzerland',    latlng:[46.82,8.23]},
+        {name:'Liechtenstein',  latlng:[47.14,9.52]},
+        {name:'Hungary',        latlng:[47.16,19.50]},
+        {name:'Slovakia',       latlng:[48.67,19.70]}
+      ]
+    },
+    { id:'eastern', label:'Eastern Europe',
+      center:[55.17,23.88], zoom:6,
+      countries:[
+        {name:'Lithuania', latlng:[55.17,23.88]}
+      ]
+    }
+  ];
+
+  // ── East Asia areas ───────────────────────────────────────────────────────
   var eaAreas = [
     { id:'hokkaido', label:'Hokkaido', center:[43.5,142.5], zoom:7,
       prefectures:[{name:'Hokkaido', latlng:[43.06,141.35]}] },
@@ -147,39 +193,15 @@ title: "My Travels"
       prefectures:[{name:'Seoul',latlng:[37.57,126.98]},{name:'Busan',latlng:[35.10,129.04]},{name:'Gyeongju',latlng:[35.86,129.22]}] }
   ];
 
-  // ── Europe: country polaroids ─────────────────────────────────────────────
-  var europeCountries = [
-    {name:'Ireland',        latlng:[53.41,-8.24]},
-    {name:'UK',             latlng:[54.00,-2.50]},
-    {name:'France',         latlng:[46.23,2.21]},
-    {name:'Germany',        latlng:[51.16,10.45]},
-    {name:'Netherlands',    latlng:[52.37,4.90]},
-    {name:'Belgium',        latlng:[50.50,4.47]},
-    {name:'Luxembourg',     latlng:[49.81,6.13]},
-    {name:'Switzerland',    latlng:[46.82,8.23]},
-    {name:'Liechtenstein',  latlng:[47.14,9.52]},
-    {name:'Austria',        latlng:[47.52,14.55]},
-    {name:'Italy',          latlng:[41.87,12.57]},
-    {name:'Portugal',       latlng:[39.40,-8.22]},
-    {name:'Spain',          latlng:[40.46,-3.75]},
-    {name:'Monaco',         latlng:[43.74,7.43]},
-    {name:'Croatia',        latlng:[45.10,15.20]},
-    {name:'Montenegro',     latlng:[42.71,19.37]},
-    {name:'Hungary',        latlng:[47.16,19.50]},
-    {name:'Slovakia',       latlng:[48.67,19.70]},
-    {name:'Lithuania',      latlng:[55.17,23.88]},
-    {name:'Madeira',        latlng:[32.76,-16.96]}
-  ];
-
-  // ── Simple places (SE Asia, Australia) ───────────────────────────────────
+  // ── Simple places ─────────────────────────────────────────────────────────
   var simplePlaces = {
     'se-asia':[
       {name:'Taiwan',  latlng:[23.70,121.00]},
       {name:'Vietnam', latlng:[16.00,107.00]}
     ],
     'australia':[
-      {name:'New South Wales', latlng:[-33.87,151.21]},
-      {name:'Western Australia', latlng:[-31.95,115.86]}
+      {name:'New South Wales',    latlng:[-33.87,151.21]},
+      {name:'Western Australia',  latlng:[-31.95,115.86]}
     ]
   };
 
@@ -202,15 +224,12 @@ title: "My Travels"
              '<div class="polaroid-img" style="width:'+size+'px;height:'+imgH+'px;">' +
                '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.5">' +
                  '<rect x="3" y="3" width="18" height="18" rx="2"/>' +
-                 '<circle cx="8.5" cy="8.5" r="1.5"/>' +
-                 '<polyline points="21,15 16,10 5,21"/>' +
+                 '<circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/>' +
                '</svg>' +
              '</div>' +
              '<div class="polaroid-label" style="max-width:'+size+'px;">'+name+'</div>' +
            '</div>',
-      iconSize:[total, total],
-      iconAnchor:[total/2, total],
-      popupAnchor:[0, -(total+2)]
+      iconSize:[total,total], iconAnchor:[total/2,total], popupAnchor:[0,-(total+2)]
     });
   }
 
@@ -218,22 +237,19 @@ title: "My Travels"
     return '<div style="text-align:center;padding:8px 12px;font-family:Georgia,serif;">' +
            '<div style="width:130px;height:110px;background:#f0ebe4;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;border-radius:1px;">' +
            '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>' +
-           '</div>' +
-           '<div style="font-style:italic;color:#3a3a3a;font-size:0.95rem;margin-bottom:2px;">'+name+'</div>' +
-           '</div>';
+           '</div><div style="font-style:italic;color:#3a3a3a;font-size:0.95rem;">'+name+'</div></div>';
   }
 
-  function makeAreaIcon(label) {
+  function makeAreaIcon(cls) {
     return L.divIcon({
       className:'',
-      html:'<div class="area-cluster" title="'+label+'"></div>',
+      html:'<div class="'+cls+'"></div>',
       iconSize:[12,12], iconAnchor:[6,6], popupAnchor:[0,-8]
     });
   }
 
   // ── State ─────────────────────────────────────────────────────────────────
   var activeMarkers = [];
-  var currentRegion = 'world';
 
   function clearMarkers() {
     activeMarkers.forEach(function(m){ tmap.removeLayer(m); });
@@ -267,36 +283,41 @@ title: "My Travels"
     });
   }
 
-  // ── Europe: country polaroids ─────────────────────────────────────────────
+  // ── Europe: sub-region clusters ───────────────────────────────────────────
   function showEurope() {
     clearMarkers(); hideSidebar();
-    europeCountries.forEach(function(c){
-      var m = L.marker(c.latlng, {icon: makePolaroidIcon(c.name, 40), zIndexOffset:100})
+    euRegions.forEach(function(region){
+      var m = L.marker(region.center, {icon: makeAreaIcon('eu-cluster'), zIndexOffset:200})
         .addTo(tmap)
-        .bindPopup(makePolaroidPopup(c.name), {maxWidth:200});
+        .bindTooltip(region.label, {permanent:false, direction:'top', offset:[0,-8]});
+      m.on('click', function(){ drillIntoEuRegion(region); });
       activeMarkers.push(m);
     });
   }
 
-  // ── SE Asia / Australia: simple ───────────────────────────────────────────
-  function showSimpleRegion(region) {
-    clearMarkers(); hideSidebar();
-    (simplePlaces[region]||[]).forEach(function(p){
-      var m = L.marker(p.latlng, {icon: makePolaroidIcon(p.name, 40), zIndexOffset:100})
-        .addTo(tmap)
-        .bindPopup(makePolaroidPopup(p.name), {maxWidth:200});
-      activeMarkers.push(m);
-    });
+  function drillIntoEuRegion(region) {
+    activeMarkers.forEach(function(m){ tmap.removeLayer(m); });
+    activeMarkers = [];
+    tmap.flyTo(region.center, region.zoom, {duration:1.0});
+    setTimeout(function(){
+      region.countries.forEach(function(c){
+        var m = L.marker(c.latlng, {icon: makePolaroidIcon(c.name, 38), zIndexOffset:300})
+          .addTo(tmap)
+          .bindPopup(makePolaroidPopup(c.name), {maxWidth:200});
+        activeMarkers.push(m);
+      });
+      showSidebar(region.label, region.countries);
+    }, 950);
   }
 
-  // ── East Asia: area clusters ──────────────────────────────────────────────
+  // ── East Asia ─────────────────────────────────────────────────────────────
   function showEastAsia() {
     clearMarkers(); hideSidebar();
     eaAreas.forEach(function(area){
-      var m = L.marker(area.center, {icon: makeAreaIcon(area.label), zIndexOffset:200})
+      var m = L.marker(area.center, {icon: makeAreaIcon('area-cluster'), zIndexOffset:200})
         .addTo(tmap)
         .bindTooltip(area.label, {permanent:false, direction:'top', offset:[0,-8]});
-      m.on('click', function(){ drillIntoArea(area); });
+      m.on('click', function(){ drillIntoEaArea(area); });
       activeMarkers.push(m);
     });
     document.getElementById('okinawa-inset').style.display = 'block';
@@ -306,8 +327,7 @@ title: "My Travels"
     }, 120);
   }
 
-  // ── Drill: area → prefecture polaroids ───────────────────────────────────
-  function drillIntoArea(area) {
+  function drillIntoEaArea(area) {
     activeMarkers.forEach(function(m){ tmap.removeLayer(m); });
     activeMarkers = [];
     document.getElementById('okinawa-inset').style.display = 'none';
@@ -323,11 +343,28 @@ title: "My Travels"
     }, 950);
   }
 
-  // ── Back ──────────────────────────────────────────────────────────────────
+  // ── Simple ────────────────────────────────────────────────────────────────
+  function showSimpleRegion(region) {
+    clearMarkers(); hideSidebar();
+    (simplePlaces[region]||[]).forEach(function(p){
+      var m = L.marker(p.latlng, {icon: makePolaroidIcon(p.name, 40), zIndexOffset:100})
+        .addTo(tmap)
+        .bindPopup(makePolaroidPopup(p.name), {maxWidth:200});
+      activeMarkers.push(m);
+    });
+  }
+
+  // ── Back button ───────────────────────────────────────────────────────────
+  var currentRegion = 'world';
+
   document.getElementById('back-btn').addEventListener('click', function(){
     hideSidebar();
-    tmap.flyTo(regionViews['east-asia'].center, regionViews['east-asia'].zoom, {duration:1.0});
-    setTimeout(function(){ showEastAsia(); }, 950);
+    var v = regionViews[currentRegion];
+    tmap.flyTo(v.center, v.zoom, {duration:1.0});
+    setTimeout(function(){
+      if      (currentRegion === 'europe')    showEurope();
+      else if (currentRegion === 'east-asia') showEastAsia();
+    }, 950);
   });
 
   // ── Buttons ───────────────────────────────────────────────────────────────
@@ -340,8 +377,8 @@ title: "My Travels"
       tmap.flyTo(regionViews[region].center, regionViews[region].zoom, {duration:1.2});
       setTimeout(function(){
         if      (region==='world')      showWorld();
-        else if (region==='east-asia')  showEastAsia();
         else if (region==='europe')     showEurope();
+        else if (region==='east-asia')  showEastAsia();
         else                            showSimpleRegion(region);
       }, 500);
     });
