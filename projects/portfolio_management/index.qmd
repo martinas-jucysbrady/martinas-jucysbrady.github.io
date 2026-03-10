@@ -1,7 +1,7 @@
 ---
 title: "Investment Portfolio Management"
-subtitle: "6 Week Investmentment Challenge"
-descritpion: "Six-week simulated investment challenge constructing and rebalancing a diversified global portfolio, using Excel optimisation and Sharpe ratios to manage risk‑adjusted returns."
+subtitle: "*6 Week Investmentment Challenge*"
+description: "Six-week simulated investment challenge constructing and rebalancing a diversified global portfolio, using Excel optimisation and Sharpe ratios to manage risk‑adjusted returns."
 categories: [Finance, Year 3]
 date: '2025-07-04'
 author: 
