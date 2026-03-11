@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-08-01">
 
 <title>Australia – Martinas Jucys Brady</title>
 <style>
@@ -143,12 +142,6 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta column-page">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">August 1, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -292,27 +285,114 @@ ul.task-list li input[type="checkbox"] {
 🦘 Travel
 </p>
 <h1 class="trip-title">
-The Other Side of the World
+The Opposite Side of the World
 </h1>
 <p class="trip-subtitle">
-Three weeks across Western and Eastern Australia
+Three weeks in WA and NSW
 </p>
-<div class="route-bar">
-<pre><code>&lt;span&gt;Busselton&lt;/span&gt;
-&lt;span class="dot"&gt;&lt;/span&gt;
-&lt;span&gt;Perth&lt;/span&gt;
-&lt;span class="dot"&gt;&lt;/span&gt;
-&lt;span&gt;Sydney&lt;/span&gt;</code></pre>
+//unpkg.com/leaflet@1.9.4/dist/leaflet.css”/&gt;
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<div style="max-width:860px; margin: 28px auto 8px;">
+<div id="route-map" style="width:100%; height:380px; border-radius:14px; box-shadow:0 4px 24px rgba(0,0,0,0.10);">
+
 </div>
-<div class="trip-meta">
-<pre><code>&lt;span&gt;🗓 August 2025&lt;/span&gt;
-&lt;span&gt;📍 Western Australia &amp; New South Wales&lt;/span&gt;
-&lt;span&gt;✈️ 3 weeks&lt;/span&gt;</code></pre>
+<p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.88rem; color:#9b8877; text-align:center; margin-top:10px;">
+Singapore → Perth → Busselton → Pinnacles → Sydney → Dublin
+</p>
 </div>
+<div class="trip-meta" style="display:flex; gap:24px; justify-content:center; font-size:0.8rem; color:#9b8877; letter-spacing:0.06em; text-transform:uppercase; flex-wrap:wrap; margin-bottom:32px;">
+<p><span>🗓 August 2025</span> <span>📍 Western Australia &amp; New South Wales</span> <span>✈️ 3 weeks</span></p>
 </div>
+<script>
+(function() {
+  var rmap = L.map('route-map', {
+    center: ,
+    zoom: 3,
+    zoomControl: false,
+    scrollWheelZoom: false,
+    dragging: false,
+    doubleClickZoom: false,
+    boxZoom: false,
+    keyboard: false,
+    attributionControl: false
+  });
+
+  var cartoBase   = 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png';
+  var cartoLabels = 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png';
+  L.tileLayer(cartoBase,   {subdomains:'abcd', maxZoom:19}).addTo(rmap);
+  L.tileLayer(cartoLabels, {subdomains:'abcd', maxZoom:19, opacity:0.4}).addTo(rmap);
+
+  function makePin(emoji, label) {
+    return L.divIcon({
+      className: '',
+      html: '<div style="text-align:center;min-width:70px;transform:translateX(-50%);">'
+          + '<div style="font-size:16px;line-height:1;">' + emoji + '</div>'
+          + '<div style="font-family:\'Plus Jakarta Sans\',sans-serif;font-size:8px;'
+          + 'font-weight:700;color:#1E4264;margin-top:2px;white-space:nowrap;">' + label + '</div>'
+          + '</div>',
+      iconSize: ,
+      iconAnchor: 
+    });
+  }
+
+  // Curved arc via intermediate control points
+  function arcPoints(from, to, steps) {
+    steps = steps || 40;
+    var pts = [];
+    var midLat = (from + to) / 2 - Math.abs(to - from) * 0.12;[1]
+    var midLng = (from + to) / 2;[1]
+    for (var i = 0; i <= steps; i++) {
+      var t = i / steps;
+      var lat = (1-t)*(1-t)*from + 2*(1-t)*t*midLat + t*t*to;
+      var lng = (1-t)*(1-t)*from + 2*(1-t)*t*midLng + t*t*to;[1]
+      pts.push([lat, lng]);
+    }
+    return pts;
+  }
+
+  var stops = [
+    { latlng: [1.35,  103.99], label: 'Singapore',      icon: '🏠' },
+    { latlng: [-31.9, 115.9],  label: 'Perth',          icon: '📍' },
+    { latlng: [-33.6, 115.3],  label: 'Busselton',      icon: '📍' },
+    { latlng: [-31.9, 115.9],  label: 'Perth',          icon: '📍' },
+    { latlng: [-30.6, 115.0],  label: 'Pinnacles',      icon: '📍' },
+    { latlng: [-31.9, 115.9],  label: 'Perth Airport',  icon: '✈️' },
+    { latlng: [-33.9, 151.2],  label: 'Sydney',         icon: '📍' },
+    { latlng: [-33.9, 151.28], label: 'Bondi',          icon: '📍' },
+    { latlng: [-33.7, 150.3],  label: 'Blue Mountains', icon: '📍' },
+    { latlng: [-33.9, 151.2],  label: 'Sydney Airport', icon: '✈️' },
+    { latlng: [53.4,  -6.3],   label: 'Dublin',         icon: '🏠' }
+  ];
+
+  // Long-haul legs that get curved arcs (index of FROM stop)
+  var longHaul = ; // Singapore→Perth, PerthAirport→Sydney, SydneyAirport→Dublin
+
+  var delays = ;
+
+  stops.forEach(function(stop, i) {
+    setTimeout(function() {
+      // Draw line from previous stop
+      if (i > 0) {
+        var from = stops[i-1].latlng;
+        var to   = stop.latlng;
+        var pts  = longHaul.indexOf(i-1) !== -1 ? arcPoints(from, to, 60) : [from, to];
+        L.polyline(pts, {
+          color: longHaul.indexOf(i-1) !== -1 ? '#9ab8c9' : '#c9aa96',
+          weight: longHaul.indexOf(i-1) !== -1 ? 1.5 : 2,
+          dashArray: longHaul.indexOf(i-1) !== -1 ? '4,5' : '5,4',
+          opacity: 0.85
+        }).addTo(rmap);
+      }
+      // Drop pin
+      L.marker(stop.latlng, { icon: makePin(stop.icon, stop.label) }).addTo(rmap);
+    }, delays[i]);
+  });
+})();
+</script>
 <hr class="section-divider">
 <div class="prose">
-<p>Busselton — Where It Started {#western-australia} There is something disorientating about landing in a country that looks vaguely familiar — same language, same cars on the road, same coffee culture — but feels undeniably foreign the moment you step outside. The light is different. The sky is bigger. The air smells like eucalyptus and salt.</p>
+<p>Busselton — Where It Started</p>
+<p>There is something disorientating about landing in a country that looks vaguely familiar — same language, same culture — but feels undeniably foreign the moment you step outside (especially after a year in Japan). The light is different. The sky is bigger. The air smells like eucalyptus and salt.</p>
 <p>Busselton was the first stop, a coastal town a couple of hours south of Perth that most people outside Australia have never heard of. It is the kind of place where the days move slowly and the sunsets take their time. The famous jetty stretches out over a kilometre into the Indian Ocean, long enough that by the end of it the shore behind you looks small and the horizon feels enormous.</p>
 </div>
 <div class="media-block">
@@ -408,6 +488,7 @@ Somewhere between Busselton and everything else.
 </div>
 
 
+</div>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
