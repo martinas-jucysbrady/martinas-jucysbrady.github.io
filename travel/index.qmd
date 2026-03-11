@@ -108,7 +108,7 @@
     L.tileLayer(cartoBase,   {subdomains:'abcd', maxZoom:19}).addTo(oki_map);
     L.tileLayer(cartoLabels, {subdomains:'abcd', maxZoom:19, opacity:0.45}).addTo(oki_map);
     L.marker([26.33,127.80], {icon: makePolaroidIcon('Okinawa', 26), zIndexOffset:500})
-      .addTo(oki_map).bindPopup(makePolaroidPopup('Okinawa'), {maxWidth:180});
+      .addTo(oki_map).bindPopup(makePolaroidPopup('Okinawa', null, '/travel/e_asia/okinawa/'), {maxWidth:180});
   }
 
   function initMadeiraInset() {
@@ -124,7 +124,7 @@
     L.tileLayer(cartoBase,   {subdomains:'abcd', maxZoom:19}).addTo(mad_map);
     L.tileLayer(cartoLabels, {subdomains:'abcd', maxZoom:19, opacity:0.45}).addTo(mad_map);
     L.marker([32.76,-16.96], {icon: makePolaroidIcon('Madeira', 26), zIndexOffset:500})
-      .addTo(mad_map).bindPopup(makePolaroidPopup('Madeira'), {maxWidth:180});
+      .addTo(mad_map).bindPopup(makePolaroidPopup('Madeira', null, '/travel/europe/madeira/'), {maxWidth:180});
   }
 
 
@@ -142,85 +142,104 @@
     { id:'british-isles', label:'Ireland & UK',
       center:[54.5,-3.5], zoom:6,
       countries:[
-        {name:'Ireland',  latlng:[53.41,-8.24]},
-        {name:'England',  latlng:[52.50,-1.50]},
-        {name:'Scotland', latlng:[56.50,-4.00]}
-      ]
+        {name:'Dublin',           latlng:[53.33,-6.25],  url:'/travel/europe/city_breaks/'},
+        {name:'London',           latlng:[51.51,-0.13],  url:'/travel/europe/city_breaks/'},
+        {name:'Edinburgh',        latlng:[55.95,-3.19],  url:'/travel/europe/city_breaks/'},
+        {name:'Liverpool',        latlng:[53.41,-2.99],  url:'/travel/europe/city_breaks/'},
+        {name:'Manchester',       latlng:[53.48,-2.24],  url:'/travel/europe/city_breaks/'},
+        {name:'Wexford',          latlng:[52.33,-6.46],  url:'/travel/europe/ireland/'},
+        {name:'Northern Ireland', latlng:[54.60,-5.93],  url:'/travel/europe/ireland/'},
+        {name:'Sligo',            latlng:[54.27,-8.47],  url:'/travel/europe/ireland/'}
+    ] 
     },
     { id:'iberia', label:'Iberia',
       center:[39.5,-5.0], zoom:6,
       hasMadeiraInset: true,
       countries:[
-        {name:'Spain',    latlng:[40.42,-3.70]},
-        {name:'Portugal', latlng:[39.40,-8.22]},
-        {name:'Gibraltar',latlng:[36.14,-5.35]}
-      ]
+        {name:'Lagos',     latlng:[37.10,-8.67],  url:'/travel/europe/alg_anda/'},
+        {name:'Faro',      latlng:[37.02,-7.93],  url:'/travel/europe/alg_anda/'},
+        {name:'Cadiz',     latlng:[36.53,-6.30],  url:'/travel/europe/alg_anda/'},
+        {name:'Gibraltar', latlng:[36.14,-5.35],  url:'/travel/europe/alg_anda/'},
+        {name:'Malaga',    latlng:[36.72,-4.42],  url:'/travel/europe/alg_anda/'},
+        {name:'Granada',   latlng:[37.18,-3.60],  url:'/travel/europe/alg_anda/'},
+        {name:'Madrid',    latlng:[40.42,-3.70],  url:'/travel/europe/city_breaks/'}
+    ]
     },
     { id:'western', label:'Western Europe',
       center:[48.5,4.0], zoom:5,
       countries:[
-        {name:'France',      latlng:[46.23,2.21]},
-        {name:'Monaco',      latlng:[43.74,7.43]},
-        {name:'Netherlands', latlng:[52.37,4.90]}
-      ]
+        {name:'Paris',       latlng:[48.86,2.35],  url:'/travel/europe/city_breaks/'},
+        {name:'Amsterdam',   latlng:[52.37,4.90],  url:'/travel/europe/city_breaks/'},
+        {name:'Monaco',      latlng:[43.74,7.43],  url:'/travel/europe/milan_nice/'},
+        {name:'Nice',        latlng:[43.70,7.26],  url:'/travel/europe/milan_nice/'}
+    ]
     },
     { id:'southern', label:'Southern Europe',
       center:[43.0,14.0], zoom:6,
       countries:[
-        {name:'Italy',      latlng:[42.50,12.50]},
-        {name:'Vatican',    latlng:[41.90,12.45]},
-        {name:'Croatia',    latlng:[45.10,15.20]},
-        {name:'Montenegro', latlng:[42.71,19.37]}
-      ]
+        {name:'Genoa',        latlng:[44.41,8.93],   url:'/travel/europe/milan_nice/'},
+        {name:'Milan',        latlng:[45.46,9.19],   url:'/travel/europe/milan_nice/'},
+        {name:'Como',         latlng:[45.81,9.09],   url:'/travel/europe/milan_nice/'},
+        {name:'Venice',       latlng:[45.44,12.33],  url:'/travel/europe/city_breaks/'},
+        {name:'Rome/Vatican', latlng:[41.90,12.48],  url:'/travel/europe/city_breaks/'},
+        {name:'Split',        latlng:[43.51,16.44],  url:'/travel/europe/balkans/'},
+        {name:'Dubrovnik',    latlng:[42.65,18.09],  url:'/travel/europe/balkans/'},
+        {name:'Montenegro',   latlng:[42.44,19.26],  url:'/travel/europe/balkans/'}
+    ]
     },
     { id:'central', label:'Central Europe',
       center:[50.08,14.44], zoom:5,
       countries:[
-        {name:'Germany',       latlng:[51.16,10.45]},
-        {name:'Austria',       latlng:[47.52,14.55]},
-        {name:'Switzerland',   latlng:[46.82,8.23]},
-        {name:'Liechtenstein', latlng:[47.14,9.52]},
-        {name:'Hungary',       latlng:[47.16,19.50]},
-        {name:'Slovakia',      latlng:[48.67,19.70]}
-      ]
+        {name:'Cologne',       latlng:[50.94,6.96],   url:'/travel/europe/city_breaks/'},
+        {name:'Budapest',      latlng:[47.50,19.04],  url:'/travel/europe/city_breaks/'},
+        {name:'Vienna',        latlng:[48.21,16.37],  url:'/travel/europe/city_breaks/'},
+        {name:'Bratislava',    latlng:[48.15,17.11],  url:'/travel/europe/city_breaks/'},
+        {name:'Switzerland',   latlng:[46.82,8.23],   url:'/travel/europe/switzerland/'},
+        {name:'Liechtenstein', latlng:[47.14,9.52],   url:'/travel/europe/switzerland/'}
+    ]
     },
     { id:'eastern', label:'Eastern Europe',
       center:[55.17,23.88], zoom:6,
       countries:[
-        {name:'Lithuania', latlng:[55.17,23.88]}
-      ]
+        {name:'Palanga',   latlng:[55.92,21.07], url:'/travel/europe/lithuania/'},
+        {name:'Klaipėda',  latlng:[55.71,21.13], url:'/travel/europe/lithuania/'}
+    ]
     }
   ];
 
   // ── East Asia areas ───────────────────────────────────────────────────────
   var eaAreas = [
-    { id:'hokkaido', label:'Hokkaido', center:[43.5,142.5], zoom:7,
-      prefectures:[{name:'Hokkaido', latlng:[43.06,141.35]}] },
+    { id:'hokkaido', label:'Hokkaido', center:[43.3,141.5], zoom:7,
+  prefectures:[
+    {name:'Sapporo', latlng:[43.06,141.35], url:'/travel/e_asia/hokkaido/'},
+    {name:'Otaru',   latlng:[43.19,140.99], url:'/travel/e_asia/hokkaido/'}] },
     { id:'tohoku', label:'Tohoku', center:[39.5,141.0], zoom:7,
-      prefectures:[{name:'Aomori',latlng:[40.82,140.74]},{name:'Iwate',latlng:[39.70,141.13]},{name:'Miyagi',latlng:[38.27,140.87]},{name:'Akita',latlng:[39.72,140.10]},{name:'Yamagata',latlng:[38.24,140.36]},{name:'Fukushima',latlng:[37.75,140.47]}] },
+      prefectures:[{name:'Iwate',latlng:[39.70,141.13], url: '/travel/e_asia/tohoku/' },{name:'Miyagi',latlng:[38.27,140.87], url: '/travel/e_asia/tohoku/' },{name:'Akita',latlng:[39.72,140.10], url: '/travel/e_asia/tohoku/' },{name:'Yamagata',latlng:[38.24,140.36], url: '/travel/e_asia/tohoku/' },{name:'Fukushima',latlng:[37.75,140.47], url: '/travel/e_asia/tohoku/' }] },
     { id:'kanto', label:'Kanto', center:[35.6,139.4], zoom:8,
-      prefectures:[{name:'Tokyo',latlng:[35.68,139.69]},{name:'Kanagawa',latlng:[35.45,139.64]},{name:'Saitama',latlng:[35.86,139.65]},{name:'Chiba',latlng:[35.60,140.12]},{name:'Shizuoka',latlng:[34.98,138.38]}] },
+      prefectures:[{name:'Tokyo',latlng:[35.68,139.69], url: '/travel/e_asia/kanto/' },{name:'Kanagawa',latlng:[35.45,139.64], url: '/travel/e_asia/kanto/' },{name:'Chiba',latlng:[35.60,140.12], url: '/travel/e_asia/kanto/' }] },
     { id:'chubu', label:'Chubu', center:[36.0,137.2], zoom:7,
-      prefectures:[{name:'Aichi',latlng:[35.18,136.91]},{name:'Nagano',latlng:[36.24,137.97]},{name:'Ishikawa',latlng:[36.56,136.66]},{name:'Mie',latlng:[34.73,136.51]},{name:'Shiga',latlng:[35.27,136.26]},{name:'Yamanashi',latlng:[35.44,138.57]}] },
+      prefectures:[{name:'Aichi',latlng:[35.18,136.91], url: '/travel/e_asia/chubu/' },{name:'Nagano',latlng:[36.24,137.97], url: '/travel/e_asia/chubu/' },{name:'Ishikawa',latlng:[36.56,136.66], url: '/travel/e_asia/chubu/' },{name:'Mie',latlng:[34.73,136.51], url: '/travel/e_asia/chubu/' },{name:'Shizuoka', latlng:[34.98,138.38], url: '/travel/e_asia/chubu/' },{name:'Yamanashi',latlng:[35.44,138.57], url: '/travel/e_asia/chubu/' }] },
     { id:'kansai', label:'Kansai', center:[34.8,135.5], zoom:8,
-      prefectures:[{name:'Osaka',latlng:[34.69,135.50]},{name:'Kyoto',latlng:[35.01,135.77]},{name:'Nara',latlng:[34.69,135.83]},{name:'Hyogo',latlng:[34.69,135.19]},{name:'Wakayama',latlng:[34.23,135.17]}] },
+      prefectures:[{name:'Osaka',latlng:[34.69,135.50], url: '/travel/e_asia/kansai/' },{name:'Kyoto',latlng:[35.01,135.77], url: '/travel/e_asia/kansai/' },{name:'Nara',latlng:[34.69,135.83], url: '/travel/e_asia/kansai/' },{name:'Hyogo',latlng:[34.69,135.19], url: '/travel/e_asia/kansai/' },{name:'Shiga', latlng:[35.27,136.26], url:'/travel/e_asia/kansai/' },{name:'Wakayama',latlng:[34.23,135.17], url: '/travel/e_asia/kansai/' }] },
     { id:'chugoku', label:'Chugoku / Shikoku', center:[34.3,133.5], zoom:7,
-      prefectures:[{name:'Hiroshima',latlng:[34.39,132.45]},{name:'Tottori',latlng:[35.50,134.24]},{name:'Shimane',latlng:[35.47,133.06]},{name:'Tokushima',latlng:[34.07,134.56]}] },
+      prefectures:[{name:'Hiroshima',latlng:[34.39,132.45], url: '/travel/e_asia/chugoku_shikoku/' },{name:'Okayama',   latlng:[34.66,133.93], url:'/travel/e_asia/chugoku_shikoku/'},{name:'Tottori',latlng:[35.50,134.24], url: '/travel/e_asia/chugoku_shikoku/' },{name:'Shimane',latlng:[35.47,133.06], url: '/travel/e_asia/chugoku_shikoku/' },{name:'Tokushima',latlng:[34.07,134.56], url: '/travel/e_asia/chugoku_shikoku/' }] },
     { id:'kyushu', label:'Kyushu', center:[32.8,130.8], zoom:7,
-      prefectures:[{name:'Fukuoka',latlng:[33.59,130.40]},{name:'Nagasaki',latlng:[32.75,129.88]},{name:'Kumamoto',latlng:[32.80,130.70]},{name:'Kagoshima',latlng:[31.60,130.56]},{name:'Miyazaki',latlng:[31.91,131.42]},{name:'Oita',latlng:[33.23,131.61]}] },
+      prefectures:[{name:'Fukuoka',latlng:[33.59,130.40], url: '/travel/e_asia/kyushu/' },{name:'Nagasaki',latlng:[32.75,129.88], url: '/travel/e_asia/kyushu/' },{name:'Kumamoto',latlng:[32.80,130.70], url: '/travel/e_asia/kyushu/' },{name:'Kagoshima',latlng:[31.60,130.56], url: '/travel/e_asia/kyushu/' },{name:'Miyazaki',latlng:[31.91,131.42], url: '/travel/e_asia/kyushu/' },{name:'Oita',latlng:[33.23,131.61], url: '/travel/e_asia/kyushu/' }] },
     { id:'korea', label:'Korea', center:[36.5,128.0], zoom:7,
-      prefectures:[{name:'Seoul',latlng:[37.57,126.98]},{name:'Busan',latlng:[35.10,129.04]},{name:'Gyeongju',latlng:[35.86,129.22]}] }
+      prefectures:[{name:'Seoul',latlng:[37.57,126.98], url: '/travel/e_asia/s_korea/' },{name:'Busan',latlng:[35.10,129.04], url: '/travel/e_asia/s_korea/' },{name:'Gyeongju',latlng:[35.86,129.22], url: '/travel/e_asia/s_korea/' }] }
   ];
 
   // ── Simple places ─────────────────────────────────────────────────────────
   var simplePlaces = {
-    'se-asia':[
-      {name:'Taiwan',  latlng:[23.70,121.00], url: '/travel/se_asia/' },
-      {name:'Vietnam', latlng:[16.00,107.00], url: '/travel/se_asia/' }
-    ],
+    'se-asia': [
+  {name: 'Taipei', latlng: [25.05, 121.5],  url: '/travel/se_asia/' },
+  {name: 'Hanoi', latlng: [21.03, 105.85], url: '/travel/se_asia/' },
+  {name: 'Ha Long Bay', latlng: [20.91, 107.18], url: '/travel/se_asia/' }
+],
     'australia':[
-      {name:'Syndey',   latlng:[-33.87,151.21], url: '/travel/australia/' },
-      {name:'Perth', latlng:[-31.95,115.86], url: '/travel/australia/' }
+      {name:'Sydney',   latlng:[-33.87,151.21], url: '/travel/australia/' },
+      {name:'Perth', latlng:[-31.95,115.86], url: '/travel/australia/' },
+      {name:'Busselton', latlng:[-34.2, 114.8], url: '/travel/australia/' }
     ]
   };
 

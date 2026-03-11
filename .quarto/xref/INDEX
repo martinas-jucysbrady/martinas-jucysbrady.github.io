@@ -64,5 +64,59 @@
   },
   "travel/se_asia/index.qmd": {
     "index.html": "36eeb0c1"
+  },
+  "travel/europe/alg_anda/index.qmd": {
+    "index.html": "a32d0529"
+  },
+  "travel/europe/balkans/index.qmd": {
+    "index.html": "24cf41ad"
+  },
+  "travel/europe/city_breaks/index.qmd": {
+    "index.html": "f4f2e890"
+  },
+  "travel/europe/c_europe/index.qmd": {
+    "index.html": "80db2aa5"
+  },
+  "travel/europe/ireland/index.qmd": {
+    "index.html": "103b6205"
+  },
+  "travel/europe/lithuania/index.qmd": {
+    "index.html": "3cf31eca"
+  },
+  "travel/europe/madeira/index.qmd": {
+    "index.html": "23fa2b7e"
+  },
+  "travel/europe/milan_nice/index.qmd": {
+    "index.html": "9ded428d"
+  },
+  "travel/europe/switzerland/index.qmd": {
+    "index.html": "6da5811a"
+  },
+  "travel/e_asia/chubu/index.qmd": {
+    "index.html": "8da273ba"
+  },
+  "travel/e_asia/chugoku_shikoku/index.qmd/index.qmd": {
+    "index.html": "7ab1e0fc"
+  },
+  "travel/e_asia/hokkaido/index.qmd": {
+    "index.html": "74724ad2"
+  },
+  "travel/e_asia/kansai/index.qmd": {
+    "index.html": "14a398ae"
+  },
+  "travel/e_asia/kanto/index.qmd": {
+    "index.html": "80c8b4fa"
+  },
+  "travel/e_asia/kyushu/index.qmd": {
+    "index.html": "f992a884"
+  },
+  "travel/e_asia/okinawa/index.qmd": {
+    "index.html": "6ee62c9f"
+  },
+  "travel/e_asia/s_korea/index.qmd": {
+    "index.html": "940b6ccf"
+  },
+  "travel/e_asia/tohoku/index.qmd": {
+    "index.html": "f9495c7a"
   }
 }
