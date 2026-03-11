@@ -131,8 +131,8 @@
   // ── Region views ──────────────────────────────────────────────────────────
   var regionViews = {
     'world':     {center:[30,20],   zoom:1},
-    'europe':    {center:[50,12],   zoom:5},
-    'east-asia': {center:[40,134],  zoom:6},
+    'europe':    {center:[50,12],   zoom:4},
+    'east-asia': {center:[40,134],  zoom:5},
     'se-asia':   {center:[18,108],  zoom:5},
     'australia': {center:[-27,133], zoom:4}
   };
@@ -157,7 +157,7 @@
       ]
     },
     { id:'western', label:'Western Europe',
-      center:[48.5,4.0], zoom:6,
+      center:[48.5,4.0], zoom:7,
       countries:[
         {name:'France',      latlng:[46.23,2.21]},
         {name:'Monaco',      latlng:[43.74,7.43]},
@@ -165,7 +165,7 @@
       ]
     },
     { id:'southern', label:'Southern Europe',
-      center:[43.0,14.0], zoom:8,
+      center:[43.0,14.0], zoom:6,
       countries:[
         {name:'Italy',      latlng:[42.50,12.50]},
         {name:'Vatican',    latlng:[41.90,12.45]},
