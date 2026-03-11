@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://martinas-jucysbrady.github.io/travel/index.html</loc>
-    <lastmod>2026-03-11T13:13:25.991Z</lastmod>
+    <lastmod>2026-03-11T13:53:50.532Z</lastmod>
   </url>
   <url>
     <loc>https://martinas-jucysbrady.github.io/studies/yearthree/index.html</loc>
@@ -75,5 +75,9 @@
   <url>
     <loc>https://martinas-jucysbrady.github.io/studies/yeartwo/index.html</loc>
     <lastmod>2026-03-08T00:41:12.163Z</lastmod>
+  </url>
+  <url>
+    <loc>https://martinas-jucysbrady.github.io/travel/australia/index.html</loc>
+    <lastmod>2026-03-11T13:50:08.462Z</lastmod>
   </url>
 </urlset>
