@@ -7,5 +7,56 @@
   },
   "about.qmd": {
     "about.html": "fb9890b2"
+  },
+  "404.qmd": {
+    "404.html": "c48f7fc7"
+  },
+  "projects/business_analytics/index.qmd": {
+    "index.html": "427cde33"
+  },
+  "projects/business_strategy/index.qmd": {
+    "index.html": "3b92cda1"
+  },
+  "projects/data_analytics_pv/index.qmd": {
+    "index.html": "6a6ad637"
+  },
+  "projects/digital_transformation/index.qmd": {
+    "index.html": "0050e2e2"
+  },
+  "projects/global_group/index.qmd": {
+    "index.html": "8ed3541c"
+  },
+  "projects/international_economy/index.qmd": {
+    "index.html": "eeabe7fb"
+  },
+  "projects/KIMAP/index.qmd": {
+    "index.html": "284f977e"
+  },
+  "projects/legal_system/index.qmd": {
+    "index.html": "c9b6d505"
+  },
+  "projects/life/index.qmd": {
+    "index.html": "5d05f617"
+  },
+  "projects/portfolio_management/index.qmd": {
+    "index.html": "19eca06b"
+  },
+  "projects/psychology/index.qmd": {
+    "index.html": "dc64cd99"
+  },
+  "studies/yearfour/index.qmd": {
+    "index.html": "20d6252d"
+  },
+  "studies/yearone/index.qmd": {
+    "index.html": "85003fa8"
+  },
+  "studies/yearthree/index.qmd": {
+    "index.html": "163b8565"
+  },
+  "studies/yeartwo/index.qmd": {
+    "index.html": "63a59845"
+  },
+  "travel/index.qmd": {
+    "index.html": "573f00bf"
   }
 }

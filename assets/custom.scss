@@ -220,7 +220,7 @@ em, blockquote, .travel-caption, .subtitle {
   transition: transform 0.25s ease, box-shadow 0.25s ease !important;
   overflow: hidden !important;
   display: grid !important;
-  grid-template-columns: 150px 1fr 170px !important;
+  grid-template-columns: 150px 1fr 200px !important;
   grid-template-areas: "meta body thumb" !important;
   align-items: stretch !important;
   min-height: 110px !important;
@@ -266,7 +266,7 @@ em, blockquote, .travel-caption, .subtitle {
 
 .quarto-listing-default .quarto-post .thumbnail img {
   width: 100% !important;
-  height: 85px !important;
+  height: 110px !important;
   object-fit: contain !important;
   border-radius: 8px !important;
   background: white !important;
@@ -365,4 +365,25 @@ em, blockquote, .travel-caption, .subtitle {
 .quarto-listing-tools select:focus {
   border-color: #80A4B6 !important;
   box-shadow: 0 0 0 3px rgba(128, 164, 182, 0.15) !important;
+}
+
+.quarto-listing-category-container {
+  display: none !important;
+}
+
+#category-select {
+  height: 42px !important;
+  background: white !important;
+  border-radius: 10px !important;
+  border: 1px solid #e0e0f0 !important;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06) !important;
+  padding: 0 14px !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 400 !important;
+  color: #1E4264 !important;
+  outline: none !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  min-width: 200px !important;
 }

@@ -66,7 +66,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-d49ac434bd8bb181918eb5035f7e3465.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-20b68e69d1ad54bbb5def62b4dc29a2c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -407,6 +407,75 @@ Zhou, A. 2016. <span>“Analysis of the Volkswagen Scandal: Possible Solutions f
   </div>
 </div>
  <!-- /main -->
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+
+
+
+  var filterInput = document.querySelector('.quarto-listing-filter');
+
+  if (!filterInput) return;
+
+
+
+  var categories = new Set();
+
+  document.querySelectorAll('.listing-category').forEach(function (el) {
+
+    categories.add(el.textContent.trim());
+
+  });
+
+
+
+  var catSelect = document.createElement('select');
+
+  catSelect.id = 'category-select';
+
+
+
+  var allOption = document.createElement('option');
+
+  allOption.value = '';
+
+  allOption.textContent = 'Filter by Category';
+
+  catSelect.appendChild(allOption);
+
+
+
+  Array.from(categories).sort().forEach(function (cat) {
+
+    var option = document.createElement('option');
+
+    option.value = cat;
+
+    option.textContent = cat;
+
+    catSelect.appendChild(option);
+
+  });
+
+
+
+  filterInput.parentNode.insertBefore(catSelect, filterInput);
+
+
+
+  catSelect.addEventListener('change', function () {
+
+    filterInput.value = this.value;
+
+    filterInput.dispatchEvent(new Event('input', { bubbles: true }));
+
+  });
+
+
+
+});
+
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const isCodeAnnotation = (el) => {
@@ -473,7 +542,7 @@ Zhou, A. 2016. <span>“Analysis of the Volkswagen Scandal: Possible Solutions f
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/martinas-jucysbrady\.github\.io");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

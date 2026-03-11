@@ -1,15 +1,12 @@
 ---
 title: "My Projects"
 page-layout: full
-description: |
-  My projects are listed here. You can find more information about each project by clicking on the links below.
 listing: 
   contents: projects
   type: default
   sort: "date desc"
-  sort-ui: [date, title]
+  sort-ui: false
   filter-ui: true
   categories: false
-  feed: true
   fields: [image, date, title, subtitle, categories, description, author]
 ---
