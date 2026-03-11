@@ -101,7 +101,7 @@
   function initOkinawaInset() {
     if (oki_map) return;
     oki_map = L.map('okinawa-map', {
-      center:[26.5,128.0], zoom:7,
+      center:[26.5,128.0], zoom:6,
       zoomControl:false, scrollWheelZoom:false, dragging:false,
       attributionControl:false, doubleClickZoom:false
     });
@@ -112,9 +112,12 @@
   }
 
   function initMadeiraInset() {
-    if (mad_map) return;
+    if (mad_map) {
+      mad_map.remove();
+      mad_map = null;
+    }
     mad_map = L.map('madeira-map', {
-      center:[32.76,-16.96], zoom:9,
+      center:[32.76,-16.96], zoom:5,
       zoomControl:false, scrollWheelZoom:false, dragging:false,
       attributionControl:false, doubleClickZoom:false
     });
@@ -124,11 +127,12 @@
       .addTo(mad_map).bindPopup(makePolaroidPopup('Madeira'), {maxWidth:180});
   }
 
+
   // ── Region views ──────────────────────────────────────────────────────────
   var regionViews = {
-    'world':     {center:[30,20],   zoom:2},
-    'europe':    {center:[50,12],   zoom:4},
-    'east-asia': {center:[40,134],  zoom:5},
+    'world':     {center:[30,20],   zoom:1},
+    'europe':    {center:[50,12],   zoom:3},
+    'east-asia': {center:[45,134],  zoom:4},
     'se-asia':   {center:[18,108],  zoom:5},
     'australia': {center:[-27,133], zoom:4}
   };
@@ -144,7 +148,7 @@
       ]
     },
     { id:'iberia', label:'Iberia',
-      center:[39.5,-5.0], zoom:6,
+      center:[39.5,-5.0], zoom:4,
       hasMadeiraInset: true,
       countries:[
         {name:'Spain',    latlng:[40.42,-3.70]},
@@ -153,13 +157,11 @@
       ]
     },
     { id:'western', label:'Western Europe',
-      center:[48.5,4.0], zoom:6,
+      center:[48.5,4.0], zoom:4,
       countries:[
         {name:'France',      latlng:[46.23,2.21]},
         {name:'Monaco',      latlng:[43.74,7.43]},
-        {name:'Netherlands', latlng:[52.37,4.90]},
-        {name:'Belgium',     latlng:[50.50,4.47]},
-        {name:'Luxembourg',  latlng:[49.61,6.13]}
+        {name:'Netherlands', latlng:[52.37,4.90]}
       ]
     },
     { id:'southern', label:'Southern Europe',
@@ -199,11 +201,11 @@
     { id:'kanto', label:'Kanto', center:[35.6,139.4], zoom:8,
       prefectures:[{name:'Tokyo',latlng:[35.68,139.69]},{name:'Kanagawa',latlng:[35.45,139.64]},{name:'Saitama',latlng:[35.86,139.65]},{name:'Chiba',latlng:[35.60,140.12]},{name:'Shizuoka',latlng:[34.98,138.38]}] },
     { id:'chubu', label:'Chubu', center:[36.0,137.2], zoom:7,
-      prefectures:[{name:'Aichi (Nagoya)',latlng:[35.18,136.91]},{name:'Nagano (Matsumoto)',latlng:[36.24,137.97]},{name:'Ishikawa (Kanazawa)',latlng:[36.56,136.66]},{name:'Mie (Suzuka)',latlng:[34.73,136.51]},{name:'Shiga (Hikone)',latlng:[35.27,136.26]},{name:'Yamanashi (Mt Fuji)',latlng:[35.44,138.57]}] },
+      prefectures:[{name:'Aichi',latlng:[35.18,136.91]},{name:'Nagano',latlng:[36.24,137.97]},{name:'Ishikawa',latlng:[36.56,136.66]},{name:'Mie',latlng:[34.73,136.51]},{name:'Shiga',latlng:[35.27,136.26]},{name:'Yamanashi',latlng:[35.44,138.57]}] },
     { id:'kansai', label:'Kansai', center:[34.8,135.5], zoom:8,
-      prefectures:[{name:'Osaka',latlng:[34.69,135.50]},{name:'Kyoto',latlng:[35.01,135.77]},{name:'Nara',latlng:[34.69,135.83]},{name:'Hyogo (Kobe/Himeji)',latlng:[34.69,135.19]},{name:'Wakayama',latlng:[34.23,135.17]}] },
+      prefectures:[{name:'Osaka',latlng:[34.69,135.50]},{name:'Kyoto',latlng:[35.01,135.77]},{name:'Nara',latlng:[34.69,135.83]},{name:'Hyogo',latlng:[34.69,135.19]},{name:'Wakayama',latlng:[34.23,135.17]}] },
     { id:'chugoku', label:'Chugoku / Shikoku', center:[34.3,133.5], zoom:7,
-      prefectures:[{name:'Hiroshima',latlng:[34.39,132.45]},{name:'Tottori',latlng:[35.50,134.24]},{name:'Shimane (Matsue/Izumo)',latlng:[35.47,133.06]},{name:'Tokushima',latlng:[34.07,134.56]}] },
+      prefectures:[{name:'Hiroshima',latlng:[34.39,132.45]},{name:'Tottori',latlng:[35.50,134.24]},{name:'Shimane',latlng:[35.47,133.06]},{name:'Tokushima',latlng:[34.07,134.56]}] },
     { id:'kyushu', label:'Kyushu', center:[32.8,130.8], zoom:7,
       prefectures:[{name:'Fukuoka',latlng:[33.59,130.40]},{name:'Nagasaki',latlng:[32.75,129.88]},{name:'Kumamoto',latlng:[32.80,130.70]},{name:'Kagoshima',latlng:[31.60,130.56]},{name:'Miyazaki',latlng:[31.91,131.42]},{name:'Oita',latlng:[33.23,131.61]}] },
     { id:'korea', label:'Korea', center:[36.5,128.0], zoom:7,
@@ -217,8 +219,8 @@
       {name:'Vietnam', latlng:[16.00,107.00]}
     ],
     'australia':[
-      {name:'New South Wales',   latlng:[-33.87,151.21]},
-      {name:'Western Australia', latlng:[-31.95,115.86]}
+      {name:'Syndey',   latlng:[-33.87,151.21]},
+      {name:'Perth', latlng:[-31.95,115.86]}
     ]
   };
 
