@@ -128,7 +128,7 @@
   var regionViews = {
     'world':     {center:[30,20],   zoom:2},
     'europe':    {center:[50,12],   zoom:4},
-    'east-asia': {center:[37,134],  zoom:5},
+    'east-asia': {center:[40,134],  zoom:5},
     'se-asia':   {center:[18,108],  zoom:5},
     'australia': {center:[-27,133], zoom:4}
   };
