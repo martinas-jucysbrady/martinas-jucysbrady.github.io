@@ -132,7 +132,7 @@
   var regionViews = {
     'world':     {center:[30,20],   zoom:1},
     'europe':    {center:[50,12],   zoom:4},
-    'east-asia': {center:[40,134],  zoom:5},
+    'east-asia': {center:[40,134],  zoom:4},
     'se-asia':   {center:[18,108],  zoom:5},
     'australia': {center:[-27,133], zoom:4}
   };
@@ -157,7 +157,7 @@
       ]
     },
     { id:'western', label:'Western Europe',
-      center:[48.5,4.0], zoom:7,
+      center:[48.5,4.0], zoom:6,
       countries:[
         {name:'France',      latlng:[46.23,2.21]},
         {name:'Monaco',      latlng:[43.74,7.43]},
@@ -174,7 +174,7 @@
       ]
     },
     { id:'central', label:'Central Europe',
-      center:[48.0,11.0], zoom:5,
+      center:[50.08,14.44], zoom:5,
       countries:[
         {name:'Germany',       latlng:[51.16,10.45]},
         {name:'Austria',       latlng:[47.52,14.55]},
