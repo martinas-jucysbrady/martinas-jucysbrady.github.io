@@ -335,20 +335,16 @@ em, blockquote, .travel-caption, .subtitle {
   margin-bottom: 20px !important;
 }
 
-// Hidden but accessible for JS to read sort items
 .quarto-listing-sort {
   visibility: hidden !important;
   position: absolute !important;
   pointer-events: none !important;
 }
 
-// Hide original Bootstrap sort and filter — replaced by JS native selects
-
 .quarto-listing-filter {
   display: none !important;
 }
 
-// Native select dropdowns injected by JS
 .quarto-listing-tools select {
   height: 42px !important;
   background: white !important;
@@ -363,17 +359,10 @@ em, blockquote, .travel-caption, .subtitle {
   outline: none !important;
   cursor: pointer !important;
   box-sizing: border-box !important;
+  min-width: 200px !important;
 }
 
 .quarto-listing-tools select:focus {
   border-color: #80A4B6 !important;
   box-shadow: 0 0 0 3px rgba(128, 164, 182, 0.15) !important;
-}
-
-#sort-select {
-  min-width: 140px !important;
-}
-
-#category-select {
-  flex: 1 !important;
 }
