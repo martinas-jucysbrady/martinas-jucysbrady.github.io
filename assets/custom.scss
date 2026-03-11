@@ -11,9 +11,7 @@ $font-weight-base: 400;
 // Colors
 $dark-blue: #1E4264;
 $blue-grey: #80A4B6;
-$blue-grey2: #7EA3B6;
 $off-white: #F1F3F4;
-$light-sky-blue: #F0F4FF;
 $light-dark-blue: #e9e9ff;
 
 // Base document colors
@@ -203,11 +201,6 @@ em, blockquote, .travel-caption, .subtitle {
   letter-spacing: 0.05em !important;
 }
 
-#recent-posts .list.grid {
-  padding: 0 8px !important;
-  gap: 20px !important;
-}
-
 // ── Default listing rows (projects page) ─────────────────────────────────────
 
 .quarto-listing-default .quarto-post {
@@ -335,47 +328,7 @@ em, blockquote, .travel-caption, .subtitle {
   margin-bottom: 20px !important;
 }
 
-.quarto-listing-sort {
-  visibility: hidden !important;
-  position: absolute !important;
-  pointer-events: none !important;
-}
-
-.quarto-listing-tools select {
-  height: 42px !important;
-  background: white !important;
-  border-radius: 10px !important;
-  border: 1px solid #e0e0f0 !important;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.06) !important;
-  padding: 0 14px !important;
-  font-family: 'Plus Jakarta Sans', sans-serif !important;
-  font-size: 0.82rem !important;
-  font-weight: 400 !important;
-  color: #1E4264 !important;
-  outline: none !important;
-  cursor: pointer !important;
-  box-sizing: border-box !important;
-  min-width: 200px !important;
-}
-
-.quarto-listing-tools select:focus {
-  border-color: #80A4B6 !important;
-  box-shadow: 0 0 0 3px rgba(128, 164, 182, 0.15) !important;
-}
-
 // ── Category filter pills ─────────────────────────────────────────────────────
-
-.quarto-listing-category-container {
-  display: block !important;
-  width: 100% !important;
-  float: none !important;
-  padding: 0 !important;
-  margin: 0 0 20px 0 !important;
-}
-
-.quarto-listing-category-title {
-  display: none !important;
-}
 
 .quarto-listing-category {
   display: flex !important;
@@ -386,20 +339,6 @@ em, blockquote, .travel-caption, .subtitle {
   margin: 0 !important;
 }
 
-.quarto-listing-category .category {
-  background: white !important;
-  border: 1px solid #e0e0f0 !important;
-  border-radius: 10px !important;
-  padding: 6px 14px !important;
-  font-family: 'Plus Jakarta Sans', sans-serif !important;
-  font-size: 0.82rem !important;
-  font-weight: 500 !important;
-  color: #1E4264 !important;
-  cursor: pointer !important;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.06) !important;
-  transition: all 0.15s ease !important;
-}
-
 .quarto-listing-category .category:hover {
   background: #e9e9ff !important;
 }
@@ -408,31 +347,6 @@ em, blockquote, .travel-caption, .subtitle {
   background: #1E4264 !important;
   color: white !important;
   border-color: #1E4264 !important;
-}
-
-.quarto-category-count {
-  display: none !important;
-}
-
-#category-select {
-  height: 42px !important;
-  background: white !important;
-  border-radius: 10px !important;
-  border: 1px solid #e0e0f0 !important;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.06) !important;
-  padding: 0 14px !important;
-  font-family: 'Plus Jakarta Sans', sans-serif !important;
-  font-size: 0.82rem !important;
-  font-weight: 400 !important;
-  color: #1E4264 !important;
-  outline: none !important;
-  cursor: pointer !important;
-  box-sizing: border-box !important;
-  min-width: 200px !important;
-}
-
-.quarto-listing-filter {
-  display: none !important;
 }
 
 // ── Force single column layout on projects page ───────────────────────────────
@@ -459,14 +373,6 @@ em, blockquote, .travel-caption, .subtitle {
 }
 
 // Horizontal pill row
-.quarto-listing-category {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: wrap !important;
-  gap: 8px !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
 
 .quarto-listing-category .category {
   background: white !important;
@@ -496,10 +402,4 @@ em, blockquote, .travel-caption, .subtitle {
 
 .quarto-category-count {
   display: none !important;
-}
-
-// Make the listing take full width (no sidebar column)
-.quarto-listing-cols-1,
-.quarto-listing-cols-2 {
-  grid-template-columns: 1fr !important;
 }
