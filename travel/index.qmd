@@ -219,8 +219,8 @@
       {name:'Vietnam', latlng:[16.00,107.00]}
     ],
     'australia':[
-      {name:'Syndey',   latlng:[-33.87,151.21], url: '../australia/#sydney' },
-      {name:'Perth', latlng:[-31.95,115.86], url: '../australia/#western-australia' }
+      {name:'Syndey',   latlng:[-33.87,151.21], url: '/travel/australia/#sydney' },
+      {name:'Perth', latlng:[-31.95,115.86], url: '/travel/australia/#perth' }
     ]
   };
 
