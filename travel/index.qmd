@@ -117,7 +117,7 @@
       mad_map = null;
     }
     mad_map = L.map('madeira-map', {
-      center:[32.76,-16.96], zoom:5,
+      center:[32.76,-16.96], zoom:8,
       zoomControl:false, scrollWheelZoom:false, dragging:false,
       attributionControl:false, doubleClickZoom:false
     });
@@ -132,7 +132,7 @@
   var regionViews = {
     'world':     {center:[30,20],   zoom:1},
     'europe':    {center:[50,12],   zoom:5},
-    'east-asia': {center:[40,134],  zoom:5},
+    'east-asia': {center:[40,134],  zoom:6},
     'se-asia':   {center:[18,108],  zoom:5},
     'australia': {center:[-27,133], zoom:4}
   };
@@ -148,7 +148,7 @@
       ]
     },
     { id:'iberia', label:'Iberia',
-      center:[39.5,-5.0], zoom:4,
+      center:[39.5,-5.0], zoom:6,
       hasMadeiraInset: true,
       countries:[
         {name:'Spain',    latlng:[40.42,-3.70]},
@@ -157,7 +157,7 @@
       ]
     },
     { id:'western', label:'Western Europe',
-      center:[48.5,4.0], zoom:5,
+      center:[48.5,4.0], zoom:6,
       countries:[
         {name:'France',      latlng:[46.23,2.21]},
         {name:'Monaco',      latlng:[43.74,7.43]},
