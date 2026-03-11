@@ -1,4 +1,3 @@
-```markdown
 ---
 title: "Vietnam & Taiwan"
 subtitle: "Taipei · Hanoi · Ha Long Bay"
