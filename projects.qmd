@@ -9,7 +9,7 @@ listing:
   sort: "date desc"
   sort-ui: [date, title]
   filter-ui: true
-  categories: true
+  categories: false
   feed: true
   fields: [image, date, title, subtitle, categories, description, author]
 ---
