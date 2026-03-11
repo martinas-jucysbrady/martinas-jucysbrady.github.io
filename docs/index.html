@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dd89f8a5dccf36ba0a24eeb39c9ac1ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b847148f3b527d95fbc368cd00874f25.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -327,117 +327,6 @@ Nov 5, 2025
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
-<script>
-
-document.addEventListener('DOMContentLoaded', function () {
-
-  setTimeout(function () {
-
-
-
-    // Find the hidden category sidebar links Quarto generates
-
-    var categoryLinks = document.querySelectorAll('.quarto-listing-category a');
-
-    if (!categoryLinks.length) return;
-
-
-
-    // Build set of category names from the sidebar links
-
-    var categories = [];
-
-    categoryLinks.forEach(function (link) {
-
-      var text = link.textContent.trim().replace(/\s*\(\d+\)\s*$/, '');
-
-      if (text !== 'All') categories.push({ label: text, el: link });
-
-    });
-
-
-
-    // Find All link
-
-    var allLink = document.querySelector('.quarto-listing-category a[data-listing-category="all"]') ||
-
-                  Array.from(categoryLinks).find(function(l) {
-
-                    return l.textContent.trim().startsWith('All');
-
-                  });
-
-
-
-    // Build dropdown
-
-    var catSelect = document.createElement('select');
-
-    catSelect.id = 'category-select';
-
-
-
-    var allOption = document.createElement('option');
-
-    allOption.value = '';
-
-    allOption.textContent = 'Filter by Category';
-
-    catSelect.appendChild(allOption);
-
-
-
-    categories.sort(function(a,b){ return a.label.localeCompare(b.label); }).forEach(function (cat) {
-
-      var option = document.createElement('option');
-
-      option.value = cat.label;
-
-      option.textContent = cat.label;
-
-      catSelect.appendChild(option);
-
-    });
-
-
-
-    // Insert into toolbar
-
-    var tools = document.querySelector('.quarto-listing-tools');
-
-    if (tools) tools.appendChild(catSelect);
-
-
-
-    // On change — click the matching sidebar link
-
-    catSelect.addEventListener('change', function () {
-
-      var val = this.value;
-
-      if (val === '') {
-
-        if (allLink) allLink.click();
-
-      } else {
-
-        categories.forEach(function (cat) {
-
-          if (cat.label === val) cat.el.click();
-
-        });
-
-      }
-
-    });
-
-
-
-  }, 300);
-
-});
-
-</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const isCodeAnnotation = (el) => {

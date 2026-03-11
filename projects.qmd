@@ -5,8 +5,8 @@ listing:
   contents: projects
   type: default
   sort: "date desc"
-  sort-ui: true
-  filter-ui: true
-  categories: false
+  sort-ui: false
+  filter-ui: false
+  categories: true
   fields: [image, date, title, subtitle, categories, description, author]
 ---
