@@ -341,13 +341,6 @@ em, blockquote, .travel-caption, .subtitle {
   pointer-events: none !important;
 }
 
-.quarto-listing-filter {
-  position: absolute !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
 .quarto-listing-tools select {
   height: 42px !important;
   background: white !important;
@@ -389,4 +382,8 @@ em, blockquote, .travel-caption, .subtitle {
   cursor: pointer !important;
   box-sizing: border-box !important;
   min-width: 200px !important;
+}
+
+.quarto-listing-filter {
+  display: none !important;
 }

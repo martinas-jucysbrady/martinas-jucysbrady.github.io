@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   catSelect.addEventListener('change', function () {
     filterInput.value = this.value;
-    filterInput.dispatchEvent(new Event('input', { bubbles: true }));
+    filterInput.dispatchEvent(new KeyboardEvent('keyup', { bubbles: true }));
   });
 
 });
