@@ -1,0 +1,408 @@
+```markdown
+---
+title: "Vietnam & Taiwan"
+subtitle: "Taipei · Hanoi · Ha Long Bay"
+date: "2024-10-01"
+page-layout: full
+toc: true
+toc-title: "On this page"
+toc-depth: 2
+sidebar: false
+---
+
+```{=html}
+//unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<style>
+  .trip-header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .trip-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #9b8877;
+    margin-bottom: 8px;
+  }
+  .trip-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: #1E4264;
+    margin: 0 0 12px;
+    line-height: 1.1;
+  }
+  .trip-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #6b7280;
+    margin-bottom: 24px;
+  }
+  .trip-meta {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: #9b8877;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .section-divider {
+    border: none;
+    border-top: 1px solid #e0e0f0;
+    margin: 48px auto;
+    max-width: 600px;
+  }
+  .prose {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: #2d3748;
+  }
+  .prose h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: #1E4264;
+    margin-top: 56px;
+    margin-bottom: 12px;
+  }
+  .prose p { margin-bottom: 1.4rem; }
+  .media-block {
+    max-width: 860px;
+    margin: 32px auto;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  }
+  .media-block img, .media-block video {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  .media-caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #9b8877;
+    text-align: center;
+    margin-top: 10px;
+    padding: 0 12px 4px;
+  }
+  .media-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 860px;
+    margin: 32px auto;
+  }
+  .media-grid .media-block { margin: 0; }
+  .pull-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.55rem;
+    font-weight: 600;
+    color: #1E4264;
+    text-align: center;
+    max-width: 640px;
+    margin: 48px auto;
+    line-height: 1.5;
+    padding: 0 24px;
+    border-left: 3px solid #c9aa96;
+  }
+</style>
+
+<div class="trip-header">
+  <p class="trip-label">🌏 Travel</p>
+  <h1 class="trip-title">East by East</h1>
+  <p class="trip-subtitle">Temples, night markets, karst limestone, and street food that ruined all other food</p>
+</div>
+
+<div style="max-width:860px; margin: 0 auto 8px;">
+  <div id="route-map" style="width:100%; height:360px; border-radius:14px; box-shadow:0 4px 24px rgba(0,0,0,0.10);"></div>
+  <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.88rem; color:#9b8877; text-align:center; margin-top:10px;">
+    Dublin → Taipei → Hanoi → Ha Long Bay → Dublin
+  </p>
+</div>
+
+<div class="trip-meta">
+  <span>🗓 2024</span>
+  <span>📍 Taiwan & Vietnam</span>
+  <span>✈️ Two countries, one trip</span>
+</div>
+
+<script>
+(function() {
+  var rmap = L.map('route-map', {
+    center: ,
+    zoom: 4,
+    zoomControl: false,
+    scrollWheelZoom: false,
+    dragging: false,
+    doubleClickZoom: false,
+    boxZoom: false,
+    keyboard: false,
+    attributionControl: false
+  });
+
+  var cartoBase   = 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png';
+  var cartoLabels = 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png';
+  L.tileLayer(cartoBase,   {subdomains:'abcd', maxZoom:19}).addTo(rmap);
+  L.tileLayer(cartoLabels, {subdomains:'abcd', maxZoom:19, opacity:0.4}).addTo(rmap);
+
+  function makePin(emoji, label) {
+    return L.divIcon({
+      className: '',
+      html: '<div style="text-align:center;min-width:80px;transform:translateX(-50%);">'
+          + '<div style="font-size:16px;line-height:1;">' + emoji + '</div>'
+          + '<div style="font-family:\'Plus Jakarta Sans\',sans-serif;font-size:8px;font-weight:700;color:#1E4264;margin-top:2px;white-space:nowrap;">' + label + '</div>'
+          + '</div>',
+      iconSize: ,
+      iconAnchor: 
+    });
+  }
+
+  function arcPoints(from, to, steps) {
+    steps = steps || 50;
+    var pts = [];
+    var midLat = (from + to) / 2 - Math.abs(to - from) * 0.10; [instagram](https://www.instagram.com/stories/highlights/18063784441872087/)
+    var midLng = (from + to) / 2; [instagram](https://www.instagram.com/stories/highlights/18063784441872087/)
+    for (var i = 0; i <= steps; i++) {
+      var t = i / steps;
+      var lat = (1-t)*(1-t)*from + 2*(1-t)*t*midLat + t*t*to;
+      var lng = (1-t)*(1-t)*from + 2*(1-t)*t*midLng + t*t*to; [instagram](https://www.instagram.com/stories/highlights/18063784441872087/)
+      pts.push([lat, lng]);
+    }
+    return pts;
+  }
+
+  var stops = [
+    { latlng: [53.4,  -6.3],   label: 'Dublin',       icon: '🏠' },
+    { latlng: [25.05, 121.5],  label: 'Taipei',        icon: '📍' },
+    { latlng: [21.03, 105.85], label: 'Hanoi',         icon: '📍' },
+    { latlng: [20.91, 107.18], label: 'Ha Long Bay',   icon: '📍' },
+    { latlng: [21.03, 105.85], label: 'Hanoi Airport', icon: '✈️' },
+    { latlng: [53.4,  -6.3],   label: 'Dublin',        icon: '🏠' }
+  ];
+
+  var longHaul =; // Dublin→Taipei, Taipei→Hanoi, Hanoi→Dublin [instagram](https://www.instagram.com/stories/highlights/18063784441872087/)
+  var delays   = ;
+
+  stops.forEach(function(stop, i) {
+    setTimeout(function() {
+      if (i > 0) {
+        var from = stops[i-1].latlng;
+        var to   = stop.latlng;
+        var isLong = longHaul.indexOf(i-1) !== -1;
+        var pts  = isLong ? arcPoints(from, to, 60) : [from, to];
+        L.polyline(pts, {
+          color: isLong ? '#9ab8c9' : '#c9aa96',
+          weight: isLong ? 1.5 : 2,
+          dashArray: '5,5',
+          opacity: 0.85
+        }).addTo(rmap);
+      }
+      L.marker(stop.latlng, { icon: makePin(stop.icon, stop.label) }).addTo(rmap);
+    }, delays[i]);
+  });
+})();
+</script>
+```
+
+<hr class="section-divider">
+
+::: {.prose}
+
+## Taiwan — Taipei {#taiwan}
+
+Taiwan is not a place most people plan to go. It tends to happen to you — a stopover that becomes a destination, a recommendation from someone who went for three days and stayed for three weeks, a country that quietly overdelivers on everything. Taipei is one of the most liveable cities in Asia: clean, fast, inexpensive, and dense with things to look at and eat.
+
+The Chiang Kai-shek Memorial Hall is the kind of landmark that stops you mid-step. The plaza is enormous — white marble and open sky and the hall at the far end rising up with its blue octagonal roof. It is architecturally imposing but somehow still peaceful, especially in the early morning before the crowds arrive.
+
+:::
+
+```{=html}
+<div class="media-block">
+  <!-- (image 1) Chiang Kai-shek Memorial Hall plaza wide shot -->
+  <img src="cksmh.jpg" alt="Chiang Kai-shek Memorial Hall, Taipei" />
+  <p class="media-caption">Chiang Kai-shek Memorial Hall — the scale of it doesn't translate in photos.</p>
+</div>
+```
+
+::: {.prose}
+
+Longshan Temple is the opposite energy — old, incense-heavy, always busy with actual worshippers. Red lanterns, the smell of burning offerings, gold dragons wrapped around columns. It feels genuinely alive in a way that tourist temples often don't.
+
+Taipei 101 is worth doing once, mostly for the view from the top — the city spread out in every direction, mountains visible in the haze behind the suburban sprawl, and the sunset turning the whole skyline copper.
+
+:::
+
+```{=html}
+<div class="media-grid">
+  <div class="media-block">
+    <!-- (image 2) Longshan Temple -->
+    <img src="longshan.jpg" alt="Longshan Temple, Taipei" />
+    <p class="media-caption">Longshan Temple.</p>
+  </div>
+  <div class="media-block">
+    <!-- (image 3) Taipei 101 night shot / lit up -->
+    <img src="taipei101-night.jpg" alt="Taipei 101 at night" />
+    <p class="media-caption">Taipei 101 after dark.</p>
+  </div>
+</div>
+```
+
+::: {.prose}
+
+The day trip to Jiufen is one of those experiences that earns its reputation. The old tea house street clings to the hillside above the sea, red lanterns strung across the narrow lanes, the harbour far below catching the last light. At night it looks like it was designed by a film set decorator — slightly too beautiful to be real.
+
+Shifen, further along the same line, is where the sky lanterns go up. You write something on the paper, hold it while it fills with hot air, and let it go. Hundreds of them drift over the valley at any given time, catching the wind, slowly disappearing into the clouds above the gorge.
+
+:::
+
+```{=html}
+<div class="media-block">
+  <!-- (image 4) Shifen sky lanterns -->
+  <img src="shifen-lanterns.jpg" alt="Sky lanterns at Shifen Old Street" />
+  <p class="media-caption">Shifen Old Street — sky lanterns drifting up over the valley.</p>
+</div>
+
+<div class="media-block">
+  <!-- (image 5) Jiufen tea house street at night -->
+  <img src="jiufen-night.jpg" alt="Jiufen old street at night" />
+  <p class="media-caption">Jiufen — the tea house lanterns after dark.</p>
+</div>
+
+<div class="pull-quote">
+  "A country that quietly overdelivers on everything."
+</div>
+
+<hr class="section-divider">
+```
+
+---
+
+::: {.prose}
+
+## Vietnam — Hanoi {#vietnam}
+
+Hanoi is louder, older, and considerably more chaotic than Taipei. The Old Quarter is a maze of narrow streets named after the trade they once specialised in — silk street, paper street, tin street — and crossing the road requires a specific kind of faith in the motorists. You just walk, steadily, and they flow around you.
+
+The city is saturated with history in a way that is hard to avoid even if you wanted to. The Ho Chi Minh Mausoleum sits at the edge of Ba Dinh Square — austere and serious, the kind of place that quiets you down. The Temple of Literature nearby is the opposite: calm, green, beautiful in a classical Vietnamese way, willow trees around still ponds and stone steles listing the names of scholars from dynasties long gone.
+
+:::
+
+```{=html}
+<div class="media-grid">
+  <div class="media-block">
+    <!-- (image 6) Ho Chi Minh Mausoleum -->
+    <img src="hcm-mausoleum.jpg" alt="Ho Chi Minh Mausoleum, Hanoi" />
+    <p class="media-caption">Ho Chi Minh Mausoleum, Ba Dinh Square.</p>
+  </div>
+  <div class="media-block">
+    <!-- (image 7) Temple of Literature -->
+    <img src="temple-literature.jpg" alt="Temple of Literature, Hanoi" />
+    <p class="media-caption">Temple of Literature — Hanoi's oldest university.</p>
+  </div>
+</div>
+```
+
+::: {.prose}
+
+The street food in Hanoi is the best argument for going anywhere in Vietnam. Pho from a plastic stool at 7am, bun cha in the Old Quarter, banh mi from a cart on a corner. It is cheap, fast, and genuinely delicious in a way that makes you immediately recalibrate what you are willing to pay for food back home. The night market around Hoan Kiem Lake on weekends is the city at its most alive — families, tourists, street performers, and the lake itself lit up and calm in the middle of everything.
+
+:::
+
+```{=html}
+<div class="media-block">
+  <!-- (image 8) Hanoi Old Quarter street food / night street scene -->
+  <img src="hanoi-oldquarter.jpg" alt="Hanoi Old Quarter at night" />
+  <p class="media-caption">The Old Quarter after dark — every street corner is a restaurant.</p>
+</div>
+```
+
+:::
+
+```{=html}
+<div class="pull-quote">
+  "Crossing the road requires a specific kind of faith in the motorists."
+</div>
+
+<hr class="section-divider">
+```
+
+---
+
+::: {.prose}
+
+## Ha Long Bay {#ha-long-bay}
+
+Ha Long Bay is one of those places where the photographs do not exaggerate. Nearly two thousand limestone karsts rising out of calm green water, mist sitting in the gaps between them in the early morning, fishing boats moving slowly through channels so narrow the stone walls rise on both sides. It is genuinely otherworldly.
+
+The best way to see it is overnight on a junk boat — you sail out in the afternoon, anchor somewhere deep in the bay as the sun drops behind the karsts, and wake up to the mist before it burns off. Kayaking through the caves at low tide, the ceiling inches above your head, is the kind of thing that would be impossible to explain to someone who hasn't done it.
+
+:::
+
+```{=html}
+<div class="media-block">
+  <!-- (image 9) Ha Long Bay karsts wide shot -->
+  <img src="halong-wide.jpg" alt="Ha Long Bay limestone karsts" />
+  <p class="media-caption">Ha Long Bay — nearly two thousand karsts spread across 1,500 square kilometres.</p>
+</div>
+
+<div class="media-grid">
+  <div class="media-block">
+    <!-- (image 10) Ha Long Bay cave / kayaking -->
+    <img src="halong-cave.jpg" alt="Ha Long Bay cave kayaking" />
+    <p class="media-caption">Kayaking through the sea caves at low tide.</p>
+  </div>
+  <div class="media-block">
+    <!-- (image 11) Ha Long Bay sunset / dusk from boat -->
+    <img src="halong-sunset.jpg" alt="Ha Long Bay sunset" />
+    <p class="media-caption">Sunset from the boat, anchored deep in the bay.</p>
+  </div>
+</div>
+
+<div class="media-block">
+  <!-- (video 1) Ha Long Bay video clip from boat -->
+  <video autoplay muted loop playsinline>
+    <source src="halong-clip.mp4" type="video/mp4" />
+  </video>
+  <p class="media-caption">The bay just after dawn — before the mist burns off.</p>
+</div>
+
+<div class="pull-quote">
+  "You wake up to the mist before it burns off — limestone walls on every side."
+</div>
+
+<hr class="section-divider">
+```
+
+---
+
+::: {.prose}
+
+## On Vietnam & Taiwan
+
+These are two countries that reward going in without too many expectations. Taiwan is efficient and gentle and full of surprises — the kind of place where you intended to spend a long weekend and find yourself genuinely sad to leave. Vietnam is rawer, louder, and more demanding, but it gives back more than it takes.
+
+What they share is food, temples, and a density of things worth looking at that most European cities can't match. If you are building a first trip to East Asia, this combination — a few days in Taipei, fly to Hanoi, day trip to Ha Long — is close to perfect.
+
+:::
+
+```{=html}
+<div class="media-block">
+  <!-- (image 12) best shot from the whole trip — your pick -->
+  <img src="favourite.jpg" alt="Vietnam and Taiwan" />
+  <p class="media-caption">Somewhere between Jiufen and Ha Long Bay.</p>
+</div>
+```
+```
