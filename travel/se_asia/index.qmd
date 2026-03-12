@@ -126,6 +126,16 @@ sidebar: false
   width: 100%;
   max-width: 860px;
   }
+
+  .prose h2 {
+    text-align: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: #1E4264;
+    margin-top: 56px;
+    margin-bottom: 12px;
+  }
 </style>
 
 <div class="trip-header">
@@ -144,7 +154,7 @@ sidebar: false
 <div id="taipei"></div>
 ::: {.prose}
 
-Taipei — Dense, Layered, and Relentlessly Interesting 
+## Taipei — Dense, Layered, and Relentlessly Interesting 
 
 Landing in Taipei on the 28th of December, the city wastes no time. It is one of those places that rewards wandering — each neighbourhood slightly different from the last, the streets dense with temples, street food stalls, and architecture that spans several different centuries without any apparent attempt to reconcile them.
 
@@ -204,7 +214,7 @@ Taipei 101 anchors the skyline in the way only a few buildings in the world actu
 
 ::: {.prose}
 
-The North Coast Tour — Yehliu, Shifen, Jiufen
+## The North Coast Tour — Yehliu, Shifen, Jiufen
 
 The 30th was a full-day tour north of the city, and it covered three places that together felt like a compressed tour of what Taiwan does better than almost anywhere: strange geology, living tradition, and the kind of atmosphere that makes you want to stay until the lights come on.
 
@@ -269,10 +279,10 @@ Jiufen closes the day in the right order. The old town climbs the hillside above
 </div>
 
 <hr class="section-divider">
-<div id="Hanoi"></div>
+<div id="hanoi"></div>
 ::: {.prose}
 
-Hanoi — New Year's Eve and a City Very Much Alive
+## Hanoi — New Year's Eve and a City Very Much Alive
 
 Flying into Hanoi on the 31st of December with the express purpose of being there at midnight is either perfect planning or an accident that worked out. It was the latter, and it delivered. The streets around Hoan Kiem Lake were already moving by the time we arrived — the kind of crowd that isn't chaotic so much as inevitable, the city collectively deciding that this particular evening required everyone outdoors at once.
 
@@ -302,7 +312,8 @@ Midnight arrived with fireworks over the lake and the kind of noise that makes y
 <div id="halong"></div>
 ::: {.prose}
 
-Ha Long Bay — The One That Lives Up to It 
+## Ha Long Bay — The One That Lives Up to It
+
 The 1st of January was the tour to Ha Long Bay, a couple of hours east of Hanoi, and it is the kind of place that genuinely earns its UNESCO World Heritage status. Over 1,500 square kilometres of bay, dotted with thousands of limestone karst islands rising straight out of the water — geological formations tens of millions of years old, shaped by erosion into something that looks like it was composed rather than formed.
 
 The boat moved through it slowly, which was the right speed. Sung Sot Cave — the largest cave system in Ha Long Bay — required a steep hike up to reach, and the interior paid it off: a 10,000 square metre system of chambers, stalactites and stalagmites bent into shapes that people have been naming after animals and figures for centuries. Hang Luon is a different experience entirely — a flooded cave you pass through by kayak, the limestone ceiling low overhead, opening out into a hidden lagoon ringed by karst walls on all sides.
@@ -341,7 +352,8 @@ Ti Top Island finishes the day with a climb. The beach at the base is small and 
 </div>
 ::: {.prose}
 
-Hanoi — The City Itself 
+## Hanoi — The City Itself
+
 The 2nd of January was for the city. Ho Chi Minh's Mausoleum is a formal, almost austere building on the western edge of Ba Dinh Square — the scale of the square itself is designed for ceremony, and the mausoleum sits at the end of it accordingly. The Ancient Citadel, a UNESCO-listed complex dating back to the 11th century, holds the layers of Vietnamese history in a way that the mausoleum's 20th-century formality doesn't — older walls, older gates, the sense of a city that existed long before the conflicts it's most associated with abroad.
 
 Tran Quoc Pagoda sits on a small island in West Lake, the oldest Buddhist pagoda in Hanoi, and the late afternoon light on it — particularly the Vietnamese flag catching the air beside the tower — made it the kind of photograph that doesn't require any editing to justify. The markets and shops around the Old Quarter were a different kind of browsing: fabrics, ceramics, clothing stalls that somehow managed to feel both chaotic and organised, the kind of energy that makes a city feel inhabited rather than curated.

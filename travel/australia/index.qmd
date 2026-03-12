@@ -126,6 +126,16 @@ sidebar: false
   width: 100%;
   max-width: 860px;
   }
+
+  .prose h2 {
+    text-align: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: #1E4264;
+    margin-top: 56px;
+    margin-bottom: 12px;
+  }
 </style>
 
 <div class="trip-header">
@@ -144,7 +154,7 @@ sidebar: false
 <div id="busselton"></div>
 ::: {.prose}
 
-Busselton — Where It Started
+## Busselton — Where It Started
 
 My uncle picked me up from Perth Airport — they lived in Busselton for years, which is how I ended up starting there rather than the city. It turned out to be exactly the right call.
 
@@ -200,7 +210,7 @@ The surrounding region filled the rest of the days. Yallingup, with its rugged s
 <div id="perth"></div>
 ::: {.prose}
 
-Perth — A City That Does Things Its Own Way
+## Perth — A City That Does Things Its Own Way
 
 Perth is one of the most isolated cities on earth — closer to Bali than it is to Sydney, and over 2,100 kilometres from its nearest comparable city. That should produce somewhere with a complex about it. Instead, Perth is one of the most self-assured cities I've visited: built on its own terms, answerable to no one, quietly excellent about most things.
 
@@ -286,7 +296,7 @@ The city itself — Kings Park overlooking the Swan River, Cottesloe Beach in th
 <div id="sydney"></div>
 ::: {.prose}
 
-Sydney — The One That Needs No Introduction
+## Sydney — The One That Needs No Introduction
 
 Flying east across the continent takes about five hours. Below: red earth, ancient desert, the occasional road going nowhere in particular. Sydney announces itself before you land — the harbour catching the light from the air, the Opera House unmistakable even at altitude.
 
