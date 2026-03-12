@@ -143,9 +143,6 @@ sidebar: false
   <p class="trip-label">🦘 Travel</p>
   <h1 class="trip-title">The Opposite Side of the World</h1>
   <p class="trip-subtitle">Three weeks in WA and NSW</p>
-  ```{=html}
-//unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <div style="max-width:860px; margin: 28px auto 8px;">
   <div id="route-map" style="width:100%; height:380px; border-radius:14px; box-shadow:0 4px 24px rgba(0,0,0,0.10);"></div>
@@ -155,7 +152,7 @@ sidebar: false
 </div>
 
 <div class="trip-meta" style="display:flex; gap:24px; justify-content:center; font-size:0.8rem; color:#9b8877; letter-spacing:0.06em; text-transform:uppercase; flex-wrap:wrap; margin-bottom:32px;">
-  <span>🗓 August 2025</span>
+  <span>August 2025</span>
   <span>📍 Western Australia & New South Wales</span>
   <span>✈️ 3 weeks</span>
 </div>
@@ -404,7 +401,7 @@ It's a city that knows it's beautiful, and doesn't apologise for it. The best wa
 <div class="media-block" style="margin: 2rem 0;">
   <video autoplay muted loop playsinline
          style="width: 100%; max-height: 560px; object-fit: cover; border-radius: 6px; display: block;">
-    <source src="sydney_manlyferry.mp4" type="video/mp4" />
+    <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/sydney_manlyferry.mp4" type="video/mp4" />
   </video>
   <p class="media-caption">The Manly Ferry crossing — the Bridge and Opera House shrinking behind you as the Pacific opens up ahead.</p>
 </div>
@@ -452,7 +449,7 @@ Bondi is exactly what it promises: busy, sun-drenched, and full of people who se
 <div class="media-block" style="margin: 2rem 0;">
   <video autoplay muted loop playsinline
          style="width: 100%; max-height: 560px; object-fit: cover; border-radius: 6px; display: block;">
-    <source src="sydney_bondi.mp4" type="video/mp4" />
+    <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/sydney_bondi.mp4" type="video/mp4" />
   </video>
   <p class="media-caption">Bondi — the waves on a different scale to anything I'd seen before.</p>
 </div>
