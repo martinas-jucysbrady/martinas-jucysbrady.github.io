@@ -370,7 +370,7 @@ function makePolaroidPopup(name, img, url) {
     setTimeout(function(){
       region.countries.forEach(function(c){
         var m = L.marker(c.latlng, {icon: makePolaroidIcon(c.name, 38, c.img), zIndexOffset:300})
-          .addTo(tmap).bindPopup(makePolaroidPopup(c.name), {maxWidth:200});
+        .addTo(tmap).bindPopup(makePolaroidPopup(c.name, c.img, c.url), {maxWidth:200});
         activeMarkers.push(m);
       });
       showSidebar(region.label, region.countries);
