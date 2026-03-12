@@ -270,15 +270,17 @@ The surrounding region filled the rest of the days. Yallingup, with its rugged s
 
 :::
 
-<div class="media-row two-col">
-  <div class="media-block">
-    <img src="busselton_yallingup.jpg" alt="Yallingup coastline, Western Australia" />
-    <p class="media-caption">The Yallingup coast — rugged, windswept, and worth every kilometre of the drive.</p>
-  </div>
-  <div class="media-block">
-    <img src="busselton_lighthouse.jpg" alt="Cape Naturaliste Lighthouse" />
-    <p class="media-caption">Cape Naturaliste Lighthouse — looking out over open ocean at the tip of the peninsula.</p>
-  </div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="busselton_yallingup.jpg" alt="Yallingup coastline, Western Australia"
+         style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">The Yallingup coast — rugged, windswept, and worth every kilometre of the drive.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="busselton_lighthouse.jpg" alt="Cape Naturaliste Lighthouse"
+         style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Cape Naturaliste Lighthouse — looking out over open ocean at the tip of the peninsula.</figcaption>
+  </figure>
 </div>
 
 <div class="media-block">
@@ -286,19 +288,17 @@ The surrounding region filled the rest of the days. Yallingup, with its rugged s
   <p class="media-caption">The Busselton Jetty — the longest wooden jetty in the Southern Hemisphere.</p>
 </div>
 
-<div class="media-row three-col">
-  <div class="media-block">
-    <img src="busselton_beach.jpg" alt="Beach at Busselton" />
-    <p class="media-caption">Geographe Bay.</p>
-  </div>
-  <div class="media-block">
-    <img src="busselton_beach2.jpg" alt="Beach at Busselton" />
-    <p class="media-caption">Morning at the beach.</p>
-  </div>
-  <div class="media-block">
-    <img src="busselton_pier.jpg" alt="Busselton foreshore at dusk" />
-    <p class="media-caption">The foreshore at dusk.</p>
-  </div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="busselton_beach.jpg" alt="Beach at Busselton"
+         style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Geographe Bay.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="busselton_beach2.jpg" alt="Beach at Busselton"
+         style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Morning at the beach.</figcaption>
+  </figure>
 </div>
 
 <div class="pull-quote">
