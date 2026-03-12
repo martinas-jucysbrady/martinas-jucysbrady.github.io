@@ -2,9 +2,7 @@
 title: "Australia"
 subtitle: "Busselton · Perth · Sydney"
 page-layout: full
-toc: true
-toc-title: "On this page"
-toc-depth: 2
+toc: false
 sidebar: false
 ---
 
