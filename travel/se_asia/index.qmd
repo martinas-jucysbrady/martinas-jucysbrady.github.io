@@ -141,10 +141,10 @@ sidebar: false
 
 <hr class="section-divider">
 ```
-
+<div id="taipei"></div>
 ::: {.prose}
 
-Taipei — Dense, Layered, and Relentlessly Interesting {#taipei}
+Taipei — Dense, Layered, and Relentlessly Interesting 
 
 Landing in Taipei on the 28th of December, the city wastes no time. It is one of those places that rewards wandering — each neighbourhood slightly different from the last, the streets dense with temples, street food stalls, and architecture that spans several different centuries without any apparent attempt to reconcile them.
 
@@ -269,9 +269,10 @@ Jiufen closes the day in the right order. The old town climbs the hillside above
 </div>
 
 <hr class="section-divider">
+<div id="Hanoi"></div>
 ::: {.prose}
 
-Hanoi — New Year's Eve and a City Very Much Alive {#hanoi}
+Hanoi — New Year's Eve and a City Very Much Alive
 
 Flying into Hanoi on the 31st of December with the express purpose of being there at midnight is either perfect planning or an accident that worked out. It was the latter, and it delivered. The streets around Hoan Kiem Lake were already moving by the time we arrived — the kind of crowd that isn't chaotic so much as inevitable, the city collectively deciding that this particular evening required everyone outdoors at once.
 
@@ -298,9 +299,10 @@ Midnight arrived with fireworks over the lake and the kind of noise that makes y
   <img src="hanoi_night.jpg" alt="Night view of Hoan Kiem Lake with Ngoc Son Temple and Hanoi skyline" />
   <p class="media-caption">Hoan Kiem Lake at night — the temple on the water, the city lit up behind it.</p>
 </div>
+<div id="halong"></div>
 ::: {.prose}
 
-Ha Long Bay — The One That Lives Up to It {#halong}
+Ha Long Bay — The One That Lives Up to It 
 The 1st of January was the tour to Ha Long Bay, a couple of hours east of Hanoi, and it is the kind of place that genuinely earns its UNESCO World Heritage status. Over 1,500 square kilometres of bay, dotted with thousands of limestone karst islands rising straight out of the water — geological formations tens of millions of years old, shaped by erosion into something that looks like it was composed rather than formed.
 
 The boat moved through it slowly, which was the right speed. Sung Sot Cave — the largest cave system in Ha Long Bay — required a steep hike up to reach, and the interior paid it off: a 10,000 square metre system of chambers, stalactites and stalagmites bent into shapes that people have been naming after animals and figures for centuries. Hang Luon is a different experience entirely — a flooded cave you pass through by kayak, the limestone ceiling low overhead, opening out into a hidden lagoon ringed by karst walls on all sides.

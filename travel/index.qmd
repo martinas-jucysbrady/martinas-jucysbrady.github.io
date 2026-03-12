@@ -249,14 +249,14 @@
   // ── Simple places ─────────────────────────────────────────────────────────
   var simplePlaces = {
     'se-asia': [
-  {name: 'Taipei', latlng: [25.05, 121.5],  url: '/travel/se_asia/' },
-  {name: 'Hanoi', latlng: [21.03, 105.85], url: '/travel/se_asia/' },
-  {name: 'Ha Long Bay', latlng: [20.91, 107.18], url: '/travel/se_asia/' }
+  {name: 'Taipei', latlng: [25.05, 121.5],  url: '/travel/se_asia/#taipei' },
+  {name: 'Hanoi', latlng: [21.03, 105.85], url: '/travel/se_asia/#hanoi' },
+  {name: 'Ha Long Bay', latlng: [20.91, 107.18], url: '/travel/se_asia/#halong' }
 ],
     'australia':[
-      {name:'Sydney',   latlng:[-33.87,151.21], url: '/travel/australia/' },
-      {name:'Perth', latlng:[-31.95,115.86], url: '/travel/australia/' },
-      {name:'Busselton', latlng:[-34.2, 114.8], url: '/travel/australia/' }
+      {name:'Sydney',   latlng:[-33.87,151.21], url: '/travel/australia/#sydney' },
+      {name:'Perth', latlng:[-31.95,115.86], url: '/travel/australia/#perth' },
+      {name:'Busselton', latlng:[-34.2, 114.8], url: '/travel/australia/#busselton' }
     ]
   };
 
