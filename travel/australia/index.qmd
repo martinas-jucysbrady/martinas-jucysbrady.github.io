@@ -9,6 +9,9 @@ sidebar: false
 ---
 
 ```{=html}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 <style>
   .trip-header {
     text-align: center;
@@ -137,6 +140,46 @@ sidebar: false
     background: #c9aa96;
     display: inline-block;
   }
+
+  /* ── Vehicle sprite overlay ── */
+  #vehicle-sprite {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    transition: none;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+  }
+
+  /* ── Map legend ── */
+  .map-legend {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #9b8877;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .legend-dash {
+    width: 26px;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, currentColor 0, currentColor 4px, transparent 4px, transparent 8px);
+  }
+  .legend-dash.flight { color: #9ab8c9; }
+  .legend-dash.drive  { color: #c9aa96; }
 </style>
 
 <div class="trip-header">
@@ -144,107 +187,206 @@ sidebar: false
   <h1 class="trip-title">The Opposite Side of the World</h1>
   <p class="trip-subtitle">Three weeks in WA and NSW</p>
 
-<div style="max-width:860px; margin: 28px auto 8px;">
-  <div id="route-map" style="width:100%; height:380px; border-radius:14px; box-shadow:0 4px 24px rgba(0,0,0,0.10);"></div>
-  <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.88rem; color:#9b8877; text-align:center; margin-top:10px;">
-    Busselton → Perth → Sydney
-  </p>
-</div>
+  <!-- ── Map container (position:relative so sprite can be positioned inside) ── -->
+  <div style="max-width:860px; margin: 28px auto 8px; position:relative;">
+    <div id="route-map" style="width:100%; height:380px; border-radius:14px; box-shadow:0 4px 24px rgba(0,0,0,0.10);"></div>
+    <!-- Animated vehicle — starts hidden, revealed by JS -->
+    <div id="vehicle-sprite" style="display:none;">
+      <!-- Plane SVG (shown on flight legs) -->
+      <svg id="icon-plane" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" style="display:none;">
+        <circle cx="32" cy="32" r="32" fill="#1E4264" opacity="0.85"/>
+        <text x="32" y="44" text-anchor="middle" font-size="28">✈️</text>
+      </svg>
+      <!-- Car SVG (shown on drive legs) -->
+      <svg id="icon-car" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" style="display:none;">
+        <circle cx="32" cy="32" r="32" fill="#c9aa96" opacity="0.85"/>
+        <text x="32" y="44" text-anchor="middle" font-size="28">🚗</text>
+      </svg>
+    </div>
+    <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.88rem; color:#9b8877; text-align:center; margin-top:10px;">
+      Singapore → Perth → Busselton → Pinnacles → Sydney → Bondi → Blue Mountains → Dublin
+    </p>
+    <div class="map-legend">
+      <span class="legend-item"><span class="legend-dash flight"></span>Flight</span>
+      <span class="legend-item"><span class="legend-dash drive"></span>Road trip</span>
+    </div>
+  </div>
 
-<div class="trip-meta" style="display:flex; gap:24px; justify-content:center; font-size:0.8rem; color:#9b8877; letter-spacing:0.06em; text-transform:uppercase; flex-wrap:wrap; margin-bottom:32px;">
-  <span>August 2025</span>
-  <span>📍 Western Australia & New South Wales</span>
-  <span>✈️ 3 weeks</span>
+  <div class="trip-meta" style="display:flex; gap:24px; justify-content:center; font-size:0.8rem; color:#9b8877; letter-spacing:0.06em; text-transform:uppercase; flex-wrap:wrap; margin-bottom:32px;">
+    <span>August 2025</span>
+    <span>📍 Western Australia & New South Wales</span>
+    <span>✈️ 3 weeks</span>
+  </div>
 </div>
 
 <script>
 (function() {
-  var rmap = L.map('route-map', {
-    center: ,
-    zoom: 3,
-    zoomControl: false,
-    scrollWheelZoom: false,
-    dragging: false,
-    doubleClickZoom: false,
-    boxZoom: false,
-    keyboard: false,
-    attributionControl: false
-  });
+  /* ─────────────────────────────────────────
+     Wait for Leaflet to be ready
+  ───────────────────────────────────────── */
+  function init() {
+    if (typeof L === 'undefined') { setTimeout(init, 100); return; }
 
-  var cartoBase   = 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png';
-  var cartoLabels = 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png';
-  L.tileLayer(cartoBase,   {subdomains:'abcd', maxZoom:19}).addTo(rmap);
-  L.tileLayer(cartoLabels, {subdomains:'abcd', maxZoom:19, opacity:0.4}).addTo(rmap);
-
-  function makePin(emoji, label) {
-    return L.divIcon({
-      className: '',
-      html: '<div style="text-align:center;min-width:70px;transform:translateX(-50%);">'
-          + '<div style="font-size:16px;line-height:1;">' + emoji + '</div>'
-          + '<div style="font-family:\'Plus Jakarta Sans\',sans-serif;font-size:8px;'
-          + 'font-weight:700;color:#1E4264;margin-top:2px;white-space:nowrap;">' + label + '</div>'
-          + '</div>',
-      iconSize: ,
-      iconAnchor: 
+    /* ── Map ── */
+    var rmap = L.map('route-map', {
+      center: [-20, 128],
+      zoom: 3,
+      zoomControl: false,
+      scrollWheelZoom: false,
+      dragging: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      attributionControl: false
     });
-  }
 
-  // Curved arc via intermediate control points
-  function arcPoints(from, to, steps) {
-    steps = steps || 40;
-    var pts = [];
-    var midLat = (from + to) / 2 - Math.abs(to - from) * 0.12;[1]
-    var midLng = (from + to) / 2;[1]
-    for (var i = 0; i <= steps; i++) {
-      var t = i / steps;
-      var lat = (1-t)*(1-t)*from + 2*(1-t)*t*midLat + t*t*to;
-      var lng = (1-t)*(1-t)*from + 2*(1-t)*t*midLng + t*t*to;[1]
-      pts.push([lat, lng]);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',
+      { subdomains: 'abcd', maxZoom: 19 }).addTo(rmap);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png',
+      { subdomains: 'abcd', maxZoom: 19, opacity: 0.4 }).addTo(rmap);
+
+    /* ── Pin marker ── */
+    function makePin(emoji, label) {
+      return L.divIcon({
+        className: '',
+        html: '<div style="text-align:center;min-width:70px;transform:translateX(-50%);">'
+            + '<div style="font-size:16px;line-height:1;">' + emoji + '</div>'
+            + '<div style="font-family:\'Plus Jakarta Sans\',sans-serif;font-size:8px;'
+            + 'font-weight:700;color:#1E4264;margin-top:2px;white-space:nowrap;">' + label + '</div>'
+            + '</div>',
+        iconSize:   [70, 30],
+        iconAnchor: [35, 15]
+      });
     }
-    return pts;
+
+    /* ── Quadratic Bézier arc ── */
+    function arcPoints(from, to, steps) {
+      steps = steps || 50;
+      var pts    = [];
+      // Pull midpoint "up" (northward) for a natural flight arc
+      var midLat = (from[0] + to[0]) / 2 - Math.abs(to[0] - from[0]) * 0.15;
+      var midLng = (from[1] + to[1]) / 2;
+      for (var i = 0; i <= steps; i++) {
+        var t   = i / steps;
+        var lat = (1-t)*(1-t)*from[0] + 2*(1-t)*t*midLat + t*t*to[0];
+        var lng = (1-t)*(1-t)*from[1] + 2*(1-t)*t*midLng + t*t*to[1];
+        pts.push([lat, lng]);
+      }
+      return pts;
+    }
+
+    /* ── Route stops ── */
+    var stops = [
+      { latlng: [1.35,   103.99], label: 'Singapore',      icon: '🏠' },
+      { latlng: [-31.9,  115.9],  label: 'Perth',          icon: '📍' },
+      { latlng: [-33.6,  115.3],  label: 'Busselton',      icon: '📍' },
+      { latlng: [-31.9,  115.9],  label: 'Perth',          icon: '📍' },
+      { latlng: [-30.6,  115.0],  label: 'Pinnacles',      icon: '📍' },
+      { latlng: [-31.9,  115.9],  label: 'Perth Airport',  icon: '✈️' },
+      { latlng: [-33.9,  151.2],  label: 'Sydney',         icon: '📍' },
+      { latlng: [-33.9,  151.28], label: 'Bondi',          icon: '📍' },
+      { latlng: [-33.7,  150.3],  label: 'Blue Mountains', icon: '📍' },
+      { latlng: [-33.9,  151.2],  label: 'Sydney Airport', icon: '✈️' },
+      { latlng: [53.4,   -6.3],   label: 'Dublin',         icon: '🏠' }
+    ];
+
+    // FROM-stop indices that are long-haul flights
+    var flightLegs = [0, 5, 9]; // SIN→PER, PER→SYD, SYD→DUB
+
+    /* ── Vehicle sprite refs ── */
+    var sprite    = document.getElementById('vehicle-sprite');
+    var iconPlane = document.getElementById('icon-plane');
+    var iconCar   = document.getElementById('icon-car');
+
+    /* ─────────────────────────────────────────
+       Animate vehicle along an array of latlngs
+       Returns a Promise that resolves when done.
+    ───────────────────────────────────────── */
+    function animateVehicle(pts, isFlight) {
+      return new Promise(function(resolve) {
+        // Show correct icon
+        iconPlane.style.display = isFlight ? 'block' : 'none';
+        iconCar.style.display   = isFlight ? 'none'  : 'block';
+        sprite.style.display    = 'block';
+
+        var step  = 0;
+        // Speed: flights take ~1200ms total, drives ~800ms
+        var delay = isFlight ? Math.round(1200 / pts.length)
+                             : Math.round(800  / pts.length);
+
+        function tick() {
+          if (step >= pts.length) {
+            sprite.style.display = 'none';
+            resolve();
+            return;
+          }
+          var px = rmap.latLngToContainerPoint(L.latLng(pts[step]));
+          sprite.style.left = px.x + 'px';
+          sprite.style.top  = px.y + 'px';
+
+          // Rotate plane to face direction of travel
+          if (isFlight && step < pts.length - 1) {
+            var next  = rmap.latLngToContainerPoint(L.latLng(pts[step + 1]));
+            var angle = Math.atan2(next.y - px.y, next.x - px.x) * 180 / Math.PI;
+            iconPlane.style.transform = 'rotate(' + (angle - 0) + 'deg)';
+          }
+
+          step++;
+          setTimeout(tick, delay);
+        }
+        tick();
+      });
+    }
+
+    /* ─────────────────────────────────────────
+       Sequential animation: draw leg, move vehicle, drop pin
+    ───────────────────────────────────────── */
+    var LEG_PAUSE = 200; // ms pause between legs
+
+    function runLegs(i) {
+      if (i >= stops.length) return;
+
+      var stop     = stops[i];
+      var isFlight = flightLegs.indexOf(i - 1) !== -1;
+      var isDrive  = !isFlight && i > 0;
+
+      // Drop pin at current stop immediately (stop 0 = origin)
+      if (i === 0) {
+        L.marker(stop.latlng, { icon: makePin(stop.icon, stop.label) }).addTo(rmap);
+        setTimeout(function() { runLegs(1); }, LEG_PAUSE);
+        return;
+      }
+
+      var from = stops[i-1].latlng;
+      var to   = stop.latlng;
+      var pts  = isFlight ? arcPoints(from, to, 60) : [from, to];
+
+      // Draw polyline first
+      L.polyline(pts, {
+        color:     isFlight ? '#9ab8c9' : '#c9aa96',
+        weight:    isFlight ? 1.5 : 2,
+        dashArray: isFlight ? '4,5' : '5,4',
+        opacity:   0.85
+      }).addTo(rmap);
+
+      // Then animate vehicle along it
+      animateVehicle(pts, isFlight).then(function() {
+        // Drop destination pin
+        L.marker(stop.latlng, { icon: makePin(stop.icon, stop.label) }).addTo(rmap);
+        setTimeout(function() { runLegs(i + 1); }, LEG_PAUSE);
+      });
+    }
+
+    // Kick off after a short delay so map tiles load
+    setTimeout(function() { runLegs(0); }, 800);
   }
 
-  var stops = [
-    { latlng: [1.35,  103.99], label: 'Singapore',      icon: '🏠' },
-    { latlng: [-31.9, 115.9],  label: 'Perth',          icon: '📍' },
-    { latlng: [-33.6, 115.3],  label: 'Busselton',      icon: '📍' },
-    { latlng: [-31.9, 115.9],  label: 'Perth',          icon: '📍' },
-    { latlng: [-30.6, 115.0],  label: 'Pinnacles',      icon: '📍' },
-    { latlng: [-31.9, 115.9],  label: 'Perth Airport',  icon: '✈️' },
-    { latlng: [-33.9, 151.2],  label: 'Sydney',         icon: '📍' },
-    { latlng: [-33.9, 151.28], label: 'Bondi',          icon: '📍' },
-    { latlng: [-33.7, 150.3],  label: 'Blue Mountains', icon: '📍' },
-    { latlng: [-33.9, 151.2],  label: 'Sydney Airport', icon: '✈️' },
-    { latlng: [53.4,  -6.3],   label: 'Dublin',         icon: '🏠' }
-  ];
-
-  // Long-haul legs that get curved arcs (index of FROM stop)
-  var longHaul = ; // Singapore→Perth, PerthAirport→Sydney, SydneyAirport→Dublin
-
-  var delays = ;
-
-  stops.forEach(function(stop, i) {
-    setTimeout(function() {
-      // Draw line from previous stop
-      if (i > 0) {
-        var from = stops[i-1].latlng;
-        var to   = stop.latlng;
-        var pts  = longHaul.indexOf(i-1) !== -1 ? arcPoints(from, to, 60) : [from, to];
-        L.polyline(pts, {
-          color: longHaul.indexOf(i-1) !== -1 ? '#9ab8c9' : '#c9aa96',
-          weight: longHaul.indexOf(i-1) !== -1 ? 1.5 : 2,
-          dashArray: longHaul.indexOf(i-1) !== -1 ? '4,5' : '5,4',
-          opacity: 0.85
-        }).addTo(rmap);
-      }
-      // Drop pin
-      L.marker(stop.latlng, { icon: makePin(stop.icon, stop.label) }).addTo(rmap);
-    }, delays[i]);
-  });
+  init();
 })();
 </script>
 
 <hr class="section-divider">
+```
 
 ::: {.prose}
 
