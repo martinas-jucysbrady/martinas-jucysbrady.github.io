@@ -115,6 +115,17 @@ sidebar: false
     padding: 0 24px;
     border-left: 3px solid #c9aa96;
   }
+
+  #quarto-document-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
+
+  #quarto-document-content > * {
+  width: 100%;
+  max-width: 860px;
+  }
 </style>
 
 <div class="trip-header">
@@ -129,6 +140,7 @@ sidebar: false
 </div>
 
 <hr class="section-divider">
+```
 
 ::: {.prose}
 
