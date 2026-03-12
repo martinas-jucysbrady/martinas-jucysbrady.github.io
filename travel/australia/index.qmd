@@ -309,28 +309,72 @@ The surrounding region filled the rest of the days. Yallingup, with its rugged s
 
 Perth — A City That Does Things Its Own Way {#perth}
 
-
 Perth is one of the most isolated cities on earth — closer to Bali than it is to Sydney, and over 2,100 kilometres from its nearest comparable city. That should produce somewhere with a complex about it. Instead, Perth is one of the most self-assured cities I've visited: built on its own terms, answerable to no one, quietly excellent about most things.
 
 The week started with a road trip north to the Pinnacles — hundreds of limestone columns rising out of the desert floor in Nambung National Park, a genuinely alien landscape that was my first real taste of the outback. The drive up was memorable for other reasons too: kangaroos dead on the roadside, every few kilometres, a reminder that the wildlife here is on a different scale entirely. We stopped at Lancelin on the way — a small coastal town with beaches and towering white sand dunes that people sandboard down in the afternoon heat.
 
+:::
+
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="perth_road.jpg" alt="Highway danger signs for kangaroos, wombats and ostriches"
+         style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">The road north — wildlife warning signs every few kilometres.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="perth_pinnacles1.jpg" alt="The Pinnacles, Nambung National Park"
+         style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">The Pinnacles — limestone columns rising from the desert floor.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="perth_pinnacles2.jpg" alt="The Pinnacles desert landscape"
+         style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Nambung National Park — a genuinely alien landscape.</figcaption>
+  </figure>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="perth_lancelin.jpg" alt="Lancelin beach and sand dunes"
+         style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Lancelin — white dunes and a quiet stretch of coast on the way back.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="perth_nambung.jpg" alt="Nambung beach near the Pinnacles"
+         style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">The coast near Nambung — empty beaches that go on further than seems reasonable.</figcaption>
+  </figure>
+</div>
+
+::: {.prose}
+
 Back in the city, a day trip to Fremantle: the old prison (a heritage site and slightly unsettling to walk around), the markets, and Little Creatures Brewery down by the harbour. Fremantle has its own energy, rougher and saltier than central Perth, and is worth the twenty-minute train from the city.
+
+:::
+
+<div class="media-block">
+  <img src="perth_freemantle.jpg" alt="Fremantle Prison heritage site"
+       style="max-height: 580px; width: 100%; object-fit: cover; border-radius: 6px;" />
+  <p class="media-caption">Fremantle Prison — heritage-listed and slightly unsettling to walk around.</p>
+</div>
+
+::: {.prose}
 
 Caversham Wildlife Park gave me everything I'd hoped Australia would deliver — wombats, koalas, emus, and kangaroos that wander freely and will eat pellets from your hand without much ceremony. The Perth Mint was a different kind of education: Western Australia produces a significant portion of the world's gold, and the mint puts that into striking context. One evening, I found Australian-brewed Guinness on tap. It tasted better than it had any right to.
 
 :::
 
-<div class="media-grid">
-  <div class="media-block">
-    <!-- (image 3) Perth skyline / Swan River -->
-    <img src="perth-skyline.jpg" alt="Perth skyline from the Swan River" />
-    <p class="media-caption">Perth from the Swan River.</p>
-  </div>
-  <div class="media-block">
-    <!-- (image 4) Cottesloe beach -->
-    <img src="cottesloe.jpg" alt="Cottesloe Beach, Perth" />
-    <p class="media-caption">Cottesloe Beach — Indian Ocean, no crowds.</p>
-  </div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="perth_caversham.jpg" alt="Kangaroos at Caversham Wildlife Park"
+         style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Caversham Wildlife Park — kangaroos that have no particular interest in being impressed by you.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="perth_roo.jpg" alt="Feeding a kangaroo at Caversham"
+         style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Hand-feeding a kangaroo — no ceremony required.</figcaption>
+  </figure>
 </div>
 
 ::: {.prose}
@@ -339,15 +383,26 @@ The city itself — Kings Park overlooking the Swan River, Cottesloe Beach in th
 
 :::
 
-<div class="media-block">
-  <!-- (video 1) Perth / Kings Park or Cottesloe video clip -->
-  <video autoplay muted loop playsinline>
-    <source src="perth-clip.mp4" type="video/mp4" />
-  </video>
-  <p class="media-caption">Perth from above — Kings Park looking out over the Swan River.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="perth_bird.jpg" alt="Tropical bird on a bench, Perth"
+         style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">The wildlife isn't only in the parks.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="perth-skyline.jpg" alt="Perth skyline from the Swan River"
+         style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Perth from the Swan River.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="cottesloe.jpg" alt="Cottesloe Beach, Perth"
+         style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Cottesloe Beach — Indian Ocean, no crowds.</figcaption>
+  </figure>
 </div>
 
 <hr class="section-divider">
+
 ::: {.prose}
 
 Sydney — The One That Needs No Introduction {#sydney}
@@ -355,6 +410,18 @@ Sydney — The One That Needs No Introduction {#sydney}
 Flying east across the continent takes about five hours. Below: red earth, ancient desert, the occasional road going nowhere in particular. Sydney announces itself before you land — the harbour catching the light from the air, the Opera House unmistakable even at altitude.
 
 It's a city that knows it's beautiful, and doesn't apologise for it. The best way to understand how it fits together is to get on a ferry. The Manly Ferry is the classic — half an hour across the harbour from Circular Quay, the Bridge slowly shrinking behind you as the Pacific opens up ahead. Manly Beach itself is something else: the waves there are on a different scale to anything I'd seen before, sets rolling in with a weight and consistency that made it hard to look away. I could have stayed on that beach for a full day.
+
+:::
+
+<div class="media-block" style="margin: 2rem 0;">
+  <video autoplay muted loop playsinline
+         style="width: 100%; max-height: 560px; object-fit: cover; border-radius: 6px; display: block;">
+    <source src="sydney_manlyferry.mp4" type="video/mp4" />
+  </video>
+  <p class="media-caption">The Manly Ferry crossing — the Bridge and Opera House shrinking behind you as the Pacific opens up ahead.</p>
+</div>
+
+::: {.prose}
 
 The Opera House and Harbour Bridge are as iconic in person as advertised, though what surprised me more was the Australian Museum — genuinely world-class natural history, with an Indigenous Australia collection that reframes a lot of what you think you understand about the country. Taronga Zoo sits on the north shore with a backdrop of the harbour that feels slightly unfair on every other zoo in the world. SEA LIFE Sydney Aquarium, down at Darling Harbour, has a shark tunnel that takes a moment to fully process.
 
@@ -364,38 +431,68 @@ Paddy's Markets in Haymarket is a good hour of browsing if you need to bring som
 
 :::
 
-<div class="media-block">
-  <!-- (image 5) Sydney Harbour Bridge from ferry -->
-  <img src="sydney-bridge.jpg" alt="Sydney Harbour Bridge from the ferry" />
-  <p class="media-caption">Sydney Harbour Bridge from the Manly Ferry — one of those views that earns its reputation.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="sydney_opera.jpg" alt="Sydney Opera House"
+         style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">The Opera House — unmistakable from the air, still somehow better in person.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="sydney_skyline.jpg" alt="Sydney skyline and skyscrapers"
+         style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Sydney from below — the city built on its own terms.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="sydney_parmi.jpg" alt="Chicken parmigiana at a Sydney pub"
+         style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">The chicken parmigiana. Essential. Non-negotiable.</figcaption>
+  </figure>
 </div>
+
 ::: {.prose}
 
 Bondi is exactly what it promises: busy, sun-drenched, and full of people who seem to have quietly figured something out. The coastal walk south to Coogee is one of the best urban walks anywhere — clifftops, sea pools, ocean in every direction. We also spent a day at Cronulla, which is quieter and worth the train south from the city for an afternoon that feels more local.
+
+:::
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="sydney-bridge.jpg" alt="Sydney Harbour Bridge from the ferry"
+         style="width: 100%; height: 440px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Sydney Harbour Bridge from the Manly Ferry.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="sydney_cronulla.jpg" alt="Sunset at Cronulla Beach"
+         style="width: 100%; height: 440px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Cronulla at sunset — quieter, more local, worth the train south.</figcaption>
+  </figure>
+</div>
+
+<div class="media-block" style="margin: 2rem 0;">
+  <video autoplay muted loop playsinline
+         style="width: 100%; max-height: 560px; object-fit: cover; border-radius: 6px; display: block;">
+    <source src="sydney_bondi.mp4" type="video/mp4" />
+  </video>
+  <p class="media-caption">Bondi — the waves on a different scale to anything I'd seen before.</p>
+</div>
+
+::: {.prose}
 
 The Blue Mountains are a couple of hours west and feel like a completely different world. The Three Sisters at Echo Point look like a screensaver until you're standing in front of them and realise they're just genuinely, absurdly real — a sandstone escarpment falling away into a valley that seems to have no floor. Go early before the tour buses arrive.
 
 :::
 
-<div class="media-grid">
-  <div class="media-block">
-    <!-- (image 6) Bondi Beach -->
-    <img src="bondi.jpg" alt="Bondi Beach, Sydney" />
-    <p class="media-caption">Bondi — exactly as advertised.</p>
-  </div>
-  <div class="media-block">
-    <!-- (image 7) Blue Mountains / Three Sisters -->
-    <img src="blue-mountains.jpg" alt="Three Sisters, Blue Mountains" />
-    <p class="media-caption">The Three Sisters, Blue Mountains National Park.</p>
-  </div>
-</div>
-
-<div class="media-block">
-  <!-- (video 2) Bondi coastal walk or Blue Mountains video -->
-  <video autoplay muted loop playsinline>
-    <source src="sydney-clip.mp4" type="video/mp4" />
-  </video>
-  <p class="media-caption">The Bondi to Coogee coastal walk.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="sydney_blue.jpg" alt="Three Sisters, Blue Mountains"
+         style="width: 100%; height: 440px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">The Three Sisters — a sandstone escarpment falling into a valley that seems to have no floor.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="sydney_sunset.jpg" alt="Purple sunset sky over Sydney"
+         style="width: 100%; height: 440px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">The sky on the way back from the mountains — the trip's last good light.</figcaption>
+  </figure>
 </div>
 
 <div class="pull-quote">
@@ -414,7 +511,7 @@ I'll go back. There's too much left: the Outback, Uluru, Queensland, Tasmania. A
 :::
 
 <div class="media-block">
-  <!-- (image 8) favourite shot from the trip — your pick -->
-  <img src="favourite.jpg" alt="Australia" />
+  <img src="busselton_sunset.jpg" alt="Sunset over Geographe Bay, Busselton"
+       style="width: 100%; max-height: 620px; object-fit: cover; border-radius: 6px;" />
   <p class="media-caption">Somewhere between Busselton and everything else.</p>
 </div>
