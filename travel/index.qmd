@@ -298,13 +298,14 @@
 }
 
 function makePolaroidPopup(name, img, url) {
+  var imgHtml = img
+    ? '<img src="' + img + '" style="width:130px;height:110px;object-fit:cover;display:block;margin:0 auto 10px;border-radius:2px;" />'
+    : '<div style="width:130px;height:110px;background:#f0ebe4;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;border-radius:1px;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg></div>';
   var linkHtml = url
     ? '<a href="' + url + '" style="display:inline-block;margin-top:8px;font-family:\'Plus Jakarta Sans\',sans-serif;font-size:0.75rem;font-weight:700;color:#1E4264;text-decoration:none;letter-spacing:0.05em;">Read more →</a>'
     : '';
   return '<div style="text-align:center;padding:8px 12px;font-family:Georgia,serif;">'
-       + '<div style="width:130px;height:110px;background:#f0ebe4;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;border-radius:1px;">'
-       + '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/>ircle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg>'
-       + '</div>'
+       + imgHtml
        + '<div style="font-style:italic;color:#3a3a3a;font-size:0.95rem;">' + name + '</div>'
        + linkHtml
        + '</div>';
@@ -422,7 +423,7 @@ function showSimpleRegion(region) {
   (simplePlaces[region] || []).forEach(function(p) {
     var m = L.marker(p.latlng, { icon: makePolaroidIcon(p.name, 40, p.img), zIndexOffset: 100 })
       .addTo(tmap)
-      .bindPopup(makePolaroidPopup(p.name, null, p.url), { maxWidth: 200 });
+      .bindPopup(makePolaroidPopup(p.name, p.img, p.url), { maxWidth: 200 });
     activeMarkers.push(m);
   });
 }
