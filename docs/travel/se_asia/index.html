@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-10-01">
 
-<title>Vietnam &amp; Taiwan – Martinas Jucys Brady</title>
+<title>Taiwan &amp; Vietnam – Martinas Jucys Brady</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -126,38 +125,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul class="collapse">
-  <li><a href="#taiwan" id="toc-taiwan" class="nav-link active" data-scroll-target="#taiwan">Taiwan — Taipei</a></li>
-  <li><a href="#vietnam" id="toc-vietnam" class="nav-link" data-scroll-target="#vietnam">Vietnam — Hanoi</a></li>
-  <li><a href="#ha-long-bay" id="toc-ha-long-bay" class="nav-link" data-scroll-target="#ha-long-bay">Ha Long Bay</a></li>
-  <li><a href="#on-vietnam-taiwan" id="toc-on-vietnam-taiwan" class="nav-link" data-scroll-target="#on-vietnam-taiwan">On Vietnam &amp; Taiwan</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Vietnam &amp; Taiwan</h1>
+<h1 class="title">Taiwan &amp; Vietnam</h1>
 <p class="subtitle lead">Taipei · Hanoi · Ha Long Bay</p>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta column-page">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">October 1, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -166,9 +150,6 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-
-//unpkg.com/leaflet@1.9.4/dist/leaflet.css"/&gt;
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <style>
   .trip-header {
@@ -208,7 +189,6 @@ ul.task-list li input[type="checkbox"] {
     letter-spacing: 0.06em;
     text-transform: uppercase;
     flex-wrap: wrap;
-    margin-bottom: 32px;
   }
   .section-divider {
     border: none;
@@ -231,7 +211,9 @@ ul.task-list li input[type="checkbox"] {
     margin-top: 56px;
     margin-bottom: 12px;
   }
-  .prose p { margin-bottom: 1.4rem; }
+  .prose p {
+    margin-bottom: 1.4rem;
+  }
   .media-block {
     max-width: 860px;
     margin: 32px auto;
@@ -239,7 +221,8 @@ ul.task-list li input[type="checkbox"] {
     overflow: hidden;
     box-shadow: 0 4px 24px rgba(0,0,0,0.10);
   }
-  .media-block img, .media-block video {
+  .media-block img,
+  .media-block video {
     width: 100%;
     display: block;
     object-fit: cover;
@@ -260,7 +243,9 @@ ul.task-list li input[type="checkbox"] {
     max-width: 860px;
     margin: 32px auto;
   }
-  .media-grid .media-block { margin: 0; }
+  .media-grid .media-block {
+    margin: 0;
+  }
   .pull-quote {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
@@ -275,232 +260,260 @@ ul.task-list li input[type="checkbox"] {
     border-left: 3px solid #c9aa96;
   }
 </style>
-
 <div class="trip-header">
-  <p class="trip-label">🌏 Travel</p>
-  <h1 class="trip-title">East by East</h1>
-  <p class="trip-subtitle">Temples, night markets, karst limestone, and street food that ruined all other food</p>
-</div>
-
-<div style="max-width:860px; margin: 0 auto 8px;">
-  <div id="route-map" style="width:100%; height:360px; border-radius:14px; box-shadow:0 4px 24px rgba(0,0,0,0.10);"></div>
-  <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.88rem; color:#9b8877; text-align:center; margin-top:10px;">
-    Dublin → Taipei → Hanoi → Ha Long Bay → Dublin
-  </p>
-</div>
-
+<p class="trip-label">
+🥢 Travel
+</p>
+<h1 class="trip-title">
+End of One Year, Start of Another
+</h1>
+<p class="trip-subtitle">
+Five days across Taiwan and Vietnam
+</p>
 <div class="trip-meta">
-  <span>🗓 2024</span>
-  <span>📍 Taiwan &amp; Vietnam</span>
-  <span>✈️ Two countries, one trip</span>
+<pre><code>&lt;span&gt;December 2025 – January 2026&lt;/span&gt;
+&lt;span&gt;📍 Taiwan &amp; Vietnam&lt;/span&gt;
+&lt;span&gt;✈️ 5 days&lt;/span&gt;</code></pre>
 </div>
-
-<script>
-(function() {
-  var rmap = L.map('route-map', {
-    center: ,
-    zoom: 4,
-    zoomControl: false,
-    scrollWheelZoom: false,
-    dragging: false,
-    doubleClickZoom: false,
-    boxZoom: false,
-    keyboard: false,
-    attributionControl: false
-  });
-
-  var cartoBase   = 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png';
-  var cartoLabels = 'https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png';
-  L.tileLayer(cartoBase,   {subdomains:'abcd', maxZoom:19}).addTo(rmap);
-  L.tileLayer(cartoLabels, {subdomains:'abcd', maxZoom:19, opacity:0.4}).addTo(rmap);
-
-  function makePin(emoji, label) {
-    return L.divIcon({
-      className: '',
-      html: '<div style="text-align:center;min-width:80px;transform:translateX(-50%);">'
-          + '<div style="font-size:16px;line-height:1;">' + emoji + '</div>'
-          + '<div style="font-family:\'Plus Jakarta Sans\',sans-serif;font-size:8px;font-weight:700;color:#1E4264;margin-top:2px;white-space:nowrap;">' + label + '</div>'
-          + '</div>',
-      iconSize: ,
-      iconAnchor: 
-    });
-  }
-
-  function arcPoints(from, to, steps) {
-    steps = steps || 50;
-    var pts = [];
-    var midLat = (from + to) / 2 - Math.abs(to - from) * 0.10; [instagram](https://www.instagram.com/stories/highlights/18063784441872087/)
-    var midLng = (from + to) / 2; [instagram](https://www.instagram.com/stories/highlights/18063784441872087/)
-    for (var i = 0; i <= steps; i++) {
-      var t = i / steps;
-      var lat = (1-t)*(1-t)*from + 2*(1-t)*t*midLat + t*t*to;
-      var lng = (1-t)*(1-t)*from + 2*(1-t)*t*midLng + t*t*to; [instagram](https://www.instagram.com/stories/highlights/18063784441872087/)
-      pts.push([lat, lng]);
-    }
-    return pts;
-  }
-
-  var stops = [
-    { latlng: [53.4,  -6.3],   label: 'Dublin',       icon: '🏠' },
-    { latlng: [25.05, 121.5],  label: 'Taipei',        icon: '📍' },
-    { latlng: [21.03, 105.85], label: 'Hanoi',         icon: '📍' },
-    { latlng: [20.91, 107.18], label: 'Ha Long Bay',   icon: '📍' },
-    { latlng: [21.03, 105.85], label: 'Hanoi Airport', icon: '✈️' },
-    { latlng: [53.4,  -6.3],   label: 'Dublin',        icon: '🏠' }
-  ];
-
-  var longHaul =; // Dublin→Taipei, Taipei→Hanoi, Hanoi→Dublin [instagram](https://www.instagram.com/stories/highlights/18063784441872087/)
-  var delays   = ;
-
-  stops.forEach(function(stop, i) {
-    setTimeout(function() {
-      if (i > 0) {
-        var from = stops[i-1].latlng;
-        var to   = stop.latlng;
-        var isLong = longHaul.indexOf(i-1) !== -1;
-        var pts  = isLong ? arcPoints(from, to, 60) : [from, to];
-        L.polyline(pts, {
-          color: isLong ? '#9ab8c9' : '#c9aa96',
-          weight: isLong ? 1.5 : 2,
-          dashArray: '5,5',
-          opacity: 0.85
-        }).addTo(rmap);
-      }
-      L.marker(stop.latlng, { icon: makePin(stop.icon, stop.label) }).addTo(rmap);
-    }, delays[i]);
-  });
-})();
-</script>
+</div>
 <hr class="section-divider">
-<section id="taiwan" class="level2 prose">
-<h2 class="anchored" data-anchor-id="taiwan">Taiwan — Taipei</h2>
-<p>Taiwan is not a place most people plan to go. It tends to happen to you — a stopover that becomes a destination, a recommendation from someone who went for three days and stayed for three weeks, a country that quietly overdelivers on everything. Taipei is one of the most liveable cities in Asia: clean, fast, inexpensive, and dense with things to look at and eat.</p>
-<p>The Chiang Kai-shek Memorial Hall is the kind of landmark that stops you mid-step. The plaza is enormous — white marble and open sky and the hall at the far end rising up with its blue octagonal roof. It is architecturally imposing but somehow still peaceful, especially in the early morning before the crowds arrive.</p>
-</section>
+<div class="prose">
+<p>Taipei — Dense, Layered, and Relentlessly Interesting {#taipei} Landing in Taipei on the 28th of December, the city wastes no time. It is one of those places that rewards wandering — each neighbourhood slightly different from the last, the streets dense with temples, street food stalls, and architecture that spans several different centuries without any apparent attempt to reconcile them.</p>
+<p>The Chiang Kai-shek Memorial Hall is the kind of place that stops you mid-step. The complex is enormous — a vast ceremonial plaza flanked by the National Theatre and Concert Hall, with the memorial itself rising at the far end in white marble and blue octagonal tile. Walking up to it, you understand why the proportions feel ceremonial: they were designed to. Inside, a bronze statue of Chiang Kai-shek sits surveying the hall from an elevated platform, and the changing of the guard — slow, precise, almost hypnotic — draws a crowd every hour.</p>
+<p>Lungshan Temple sits in the older western part of the city and operates on a completely different register: incense smoke, the sound of chanting, worshippers moving between shrines with practised ease. It has been rebuilt several times since the 18th century and still functions as an active place of worship rather than a heritage exhibit, which makes the whole experience feel grounded in something real rather than performed for visitors.</p>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+<figure style="margin: 0;" class="figure">
+<img src="taipei_chiang.jpg" alt="Chiang Kai-shek Memorial Hall complex from above" style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" class="figure-img">
+<figcaption class="media-caption">
+The memorial complex from above — a scale that only makes sense once you’re inside it.
+</figcaption>
+</figure>
+<figure style="margin: 0;" class="figure">
+<img src="taipei_chiang2.jpg" alt="Statue of Chiang Kai-shek inside the memorial" style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" class="figure-img">
+<figcaption class="media-caption">
+The bronze statue inside the memorial hall — surveying the room from on high.
+</figcaption>
+</figure>
+</div>
+<div class="media-block" style="margin: 2rem 0;">
+<video autoplay="" muted="" loop="" playsinline="" style="width: 100%; max-height: 560px; object-fit: cover; object-position: center; border-radius: 6px; display: block;"> <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/taipei_chiang.mp4" type="video/mp4"> </video>
+<p class="media-caption">
+The memorial hall — the scale of it only lands on video.
+</p>
+</div>
 <div class="media-block">
-  <!-- (image 1) Chiang Kai-shek Memorial Hall plaza wide shot -->
-  <img src="cksmh.jpg" alt="Chiang Kai-shek Memorial Hall, Taipei">
-  <p class="media-caption">Chiang Kai-shek Memorial Hall — the scale of it doesn't translate in photos.</p>
+<img src="taipei_temple.jpg" alt="Temple-like structure beside the museum in Taipei">
+<p class="media-caption">
+The city layers centuries without apology — traditional architecture holding its ground beside everything else.
+</p>
 </div>
 <div class="prose">
-<p>Longshan Temple is the opposite energy — old, incense-heavy, always busy with actual worshippers. Red lanterns, the smell of burning offerings, gold dragons wrapped around columns. It feels genuinely alive in a way that tourist temples often don’t.</p>
-<p>Taipei 101 is worth doing once, mostly for the view from the top — the city spread out in every direction, mountains visible in the haze behind the suburban sprawl, and the sunset turning the whole skyline copper.</p>
+<p>Taipei 101 anchors the skyline in the way only a few buildings in the world actually manage. At 508 metres and 101 floors, it held the title of the world’s tallest building from 2004 until 2010 — the first structure ever to break the half-kilometre mark. The observation deck on the 89th floor gives you the whole city spread out below: mountains at the edge, the grid of streets below, the haze sitting over everything in that particular way that Southeast Asian cities share. The view at night — Taipei lit up and stretching in every direction — is something else entirely.</p>
 </div>
-<div class="media-grid">
-  <div class="media-block">
-    <!-- (image 2) Longshan Temple -->
-    <img src="longshan.jpg" alt="Longshan Temple, Taipei">
-    <p class="media-caption">Longshan Temple.</p>
-  </div>
-  <div class="media-block">
-    <!-- (image 3) Taipei 101 night shot / lit up -->
-    <img src="taipei101-night.jpg" alt="Taipei 101 at night">
-    <p class="media-caption">Taipei 101 after dark.</p>
-  </div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+<figure style="margin: 0;" class="figure">
+<img src="taipei_101.jpg" alt="Taipei 101 during the day" style="width: 100%; height: 440px; object-fit: cover; border-radius: 6px;" class="figure-img">
+<figcaption class="media-caption">
+Taipei 101 by day — 508 metres, the former tallest building on earth.
+</figcaption>
+</figure>
+<figure style="margin: 0;" class="figure">
+<img src="taipei_101night.jpg" alt="Taipei 101 at night" style="width: 100%; height: 440px; object-fit: cover; border-radius: 6px;" class="figure-img">
+<figcaption class="media-caption">
+By night — the city lights up in every direction below it.
+</figcaption>
+</figure>
 </div>
-<div class="prose">
-<p>The day trip to Jiufen is one of those experiences that earns its reputation. The old tea house street clings to the hillside above the sea, red lanterns strung across the narrow lanes, the harbour far below catching the last light. At night it looks like it was designed by a film set decorator — slightly too beautiful to be real.</p>
-<p>Shifen, further along the same line, is where the sky lanterns go up. You write something on the paper, hold it while it fills with hot air, and let it go. Hundreds of them drift over the valley at any given time, catching the wind, slowly disappearing into the clouds above the gorge.</p>
-</div>
-<div class="media-block">
-  <!-- (image 4) Shifen sky lanterns -->
-  <img src="shifen-lanterns.jpg" alt="Sky lanterns at Shifen Old Street">
-  <p class="media-caption">Shifen Old Street — sky lanterns drifting up over the valley.</p>
-</div>
-
-<div class="media-block">
-  <!-- (image 5) Jiufen tea house street at night -->
-  <img src="jiufen-night.jpg" alt="Jiufen old street at night">
-  <p class="media-caption">Jiufen — the tea house lanterns after dark.</p>
-</div>
-
-<div class="pull-quote">
-  "A country that quietly overdelivers on everything."
-</div>
-
-<hr class="section-divider">
-<hr>
-<section id="vietnam" class="level2 prose">
-<h2 class="anchored" data-anchor-id="vietnam">Vietnam — Hanoi</h2>
-<p>Hanoi is louder, older, and considerably more chaotic than Taipei. The Old Quarter is a maze of narrow streets named after the trade they once specialised in — silk street, paper street, tin street — and crossing the road requires a specific kind of faith in the motorists. You just walk, steadily, and they flow around you.</p>
-<p>The city is saturated with history in a way that is hard to avoid even if you wanted to. The Ho Chi Minh Mausoleum sits at the edge of Ba Dinh Square — austere and serious, the kind of place that quiets you down. The Temple of Literature nearby is the opposite: calm, green, beautiful in a classical Vietnamese way, willow trees around still ponds and stone steles listing the names of scholars from dynasties long gone.</p>
-</section>
-<div class="media-grid">
-  <div class="media-block">
-    <!-- (image 6) Ho Chi Minh Mausoleum -->
-    <img src="hcm-mausoleum.jpg" alt="Ho Chi Minh Mausoleum, Hanoi">
-    <p class="media-caption">Ho Chi Minh Mausoleum, Ba Dinh Square.</p>
-  </div>
-  <div class="media-block">
-    <!-- (image 7) Temple of Literature -->
-    <img src="temple-literature.jpg" alt="Temple of Literature, Hanoi">
-    <p class="media-caption">Temple of Literature — Hanoi's oldest university.</p>
-  </div>
+<div class="media-block" style="margin: 2rem 0;">
+<video autoplay="" muted="" loop="" playsinline="" style="width: 100%; max-height: 560px; object-fit: cover; object-position: center; border-radius: 6px; display: block;"> <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/taipei_101.mp4" type="video/mp4"> </video>
+<p class="media-caption">
+The view from the top of Taipei 101 — the whole city, mountains at the edge.
+</p>
 </div>
 <div class="prose">
-<p>The street food in Hanoi is the best argument for going anywhere in Vietnam. Pho from a plastic stool at 7am, bun cha in the Old Quarter, banh mi from a cart on a corner. It is cheap, fast, and genuinely delicious in a way that makes you immediately recalibrate what you are willing to pay for food back home. The night market around Hoan Kiem Lake on weekends is the city at its most alive — families, tourists, street performers, and the lake itself lit up and calm in the middle of everything.</p>
+<p>The North Coast Tour — Yehliu, Shifen, Jiufen {#tour} The 30th was a full-day tour north of the city, and it covered three places that together felt like a compressed tour of what Taiwan does better than almost anywhere: strange geology, living tradition, and the kind of atmosphere that makes you want to stay until the lights come on.</p>
+<p>Yehliu Geopark sits on a peninsula on the north coast and contains one of the more genuinely surreal landscapes you can walk through. Wind and sea erosion have carved the sandstone into formations over millions of years — mushroom rocks, sea candles, honeycomb weathering — that look more like props than geology. The most famous is the Queen’s Head, a rock balanced on a narrowing pedestal that has been wearing thinner for decades. There is also, somewhere in that park, a rock that looks precisely like two dogs kissing. These things are real.</p>
 </div>
-<div class="media-block">
-  <!-- (image 8) Hanoi Old Quarter street food / night street scene -->
-  <img src="hanoi-oldquarter.jpg" alt="Hanoi Old Quarter at night">
-  <p class="media-caption">The Old Quarter after dark — every street corner is a restaurant.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+<figure style="margin: 0;" class="figure">
+<img src="taipei_yehliu.jpg" alt="Rock formations at Yehliu Geopark" style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" class="figure-img">
+<figcaption class="media-caption">
+Yehliu Geopark — millions of years of erosion, arranged into something that looks deliberate.
+</figcaption>
+</figure>
+<figure style="margin: 0;" class="figure">
+<img src="taipei_yehliu2.jpg" alt="Rock formation resembling two dogs kissing at Yehliu" style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" class="figure-img">
+<figcaption class="media-caption">
+The two dogs. Real. Unplanned. Completely convincing.
+</figcaption>
+</figure>
 </div>
-<p>:::</p>
+<div class="prose">
+<p>Shifen sits in a river valley along a stretch of old railway, and the town’s defining tradition is the release of sky lanterns over the tracks — paper lanterns written with wishes and let go into the air above the gorge. Watching a dozen of them drift upward at once, glowing orange against the grey sky before disappearing into the valley, is the kind of moment that would feel contrived anywhere else and somehow doesn’t here. The Shifen Waterfall is a short walk along the gorge trail — wide, powerful, and tucked into the valley in a way that makes it feel discovered rather than signposted.</p>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+<figure style="margin: 0;" class="figure">
+<video autoplay="" muted="" loop="" playsinline="" style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px; display: block;">
+<source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/taipei_shifen1.mp4" type="video/mp4">
+</video>
+<figcaption class="media-caption">
+Shifen Waterfall — wide, powerful, and entirely worth the walk along the gorge.
+</figcaption>
+</figure>
+<figure style="margin: 0;" class="figure">
+<video autoplay="" muted="" loop="" playsinline="" style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px; display: block;">
+<source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/taipei_shifen2.mp4" type="video/mp4">
+</video>
+<figcaption class="media-caption">
+Sky lanterns over the old street — wishes drifting up into the valley.
+</figcaption>
+</figure>
+</div>
+<div class="prose">
+<p>Jiufen closes the day in the right order. The old town climbs the hillside above the northeast coast, and the stone-stepped alleys, red lanterns, and tea houses stacked on the slope made it immediately recognisable — it’s widely cited as one of the inspirations for Spirited Away, though Studio Ghibli has never confirmed it. Whether or not the legend holds, the atmosphere earns it. By the time the lanterns were lit and the fog started coming in off the sea, it felt like being inside something that had been imagined before it existed.</p>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+<figure style="margin: 0;" class="figure">
+<img src="taipei_jiufen.jpg" alt="Lantern-lit alleyway in Jiufen old town" style="width: 100%; height: 440px; object-fit: cover; border-radius: 6px;" class="figure-img">
+<figcaption class="media-caption">
+The lantern-lit alleys of Jiufen — the fog came in off the sea just in time.
+</figcaption>
+</figure>
+<figure style="margin: 0;" class="figure">
+<img src="taipei_jiufen2.jpg" alt="The famous view over Jiufen" style="width: 100%; height: 440px; object-fit: cover; border-radius: 6px;" class="figure-img">
+<figcaption class="media-caption">
+The view Jiufen is known for — the kind that makes the legend feel earned.
+</figcaption>
+</figure>
+</div>
 <div class="pull-quote">
-  "Crossing the road requires a specific kind of faith in the motorists."
+<p>“It felt like being inside something that had been imagined before it existed.”</p>
 </div>
-
 <hr class="section-divider">
-<hr>
-<section id="ha-long-bay" class="level2 prose">
-<h2 class="anchored" data-anchor-id="ha-long-bay">Ha Long Bay</h2>
-<p>Ha Long Bay is one of those places where the photographs do not exaggerate. Nearly two thousand limestone karsts rising out of calm green water, mist sitting in the gaps between them in the early morning, fishing boats moving slowly through channels so narrow the stone walls rise on both sides. It is genuinely otherworldly.</p>
-<p>The best way to see it is overnight on a junk boat — you sail out in the afternoon, anchor somewhere deep in the bay as the sun drops behind the karsts, and wake up to the mist before it burns off. Kayaking through the caves at low tide, the ceiling inches above your head, is the kind of thing that would be impossible to explain to someone who hasn’t done it.</p>
-</section>
+<div class="prose">
+<p>Hanoi — New Year’s Eve and a City Very Much Alive {#hanoi} Flying into Hanoi on the 31st of December with the express purpose of being there at midnight is either perfect planning or an accident that worked out. It was the latter, and it delivered. The streets around Hoan Kiem Lake were already moving by the time we arrived — the kind of crowd that isn’t chaotic so much as inevitable, the city collectively deciding that this particular evening required everyone outdoors at once.</p>
+<p>Street food first, and street food often. Bánh mì from a cart on the pavement — pork, pâté, pickled vegetables, a chilli that operated in a different weight class from what I was expecting. Egg rolls that were better than most things eaten in more formal settings. And Vietnamese egg coffee, which sounds like a mistake and tastes like a revelation: a dense, sweet egg yolk foam sitting on top of strong Vietnamese coffee, served in a small ceramic cup in a dimly lit café that felt like it had been operating in that room for decades. Order two.</p>
+<p>Midnight arrived with fireworks over the lake and the kind of noise that makes you understand why people celebrate in public spaces rather than private ones. A crowd-sourced countdown, strangers on all sides, and then the year turned.</p>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+<figure style="margin: 0;" class="figure">
+<img src="hanoi_nye.jpg" alt="Happy New Year 2026 sign in Hanoi" style="width: 100%; height: 400px; object-fit: cover; border-radius: 6px;" class="figure-img">
+<figcaption class="media-caption">
+The year turns — Hanoi fully committed to the occasion.
+</figcaption>
+</figure>
+<figure style="margin: 0;" class="figure">
+<img src="hanoi_food.jpg" alt="Stir fry and egg rolls in Hanoi" style="width: 100%; height: 400px; object-fit: cover; border-radius: 6px;" class="figure-img">
+<figcaption class="media-caption">
+Stir fry and egg rolls — street food that didn’t need a table to justify itself.
+</figcaption>
+</figure>
+</div>
 <div class="media-block">
-  <!-- (image 9) Ha Long Bay karsts wide shot -->
-  <img src="halong-wide.jpg" alt="Ha Long Bay limestone karsts">
-  <p class="media-caption">Ha Long Bay — nearly two thousand karsts spread across 1,500 square kilometres.</p>
+<img src="hanoi_night.jpg" alt="Night view of Hoan Kiem Lake with Ngoc Son Temple and Hanoi skyline">
+<p class="media-caption">
+Hoan Kiem Lake at night — the temple on the water, the city lit up behind it.
+</p>
 </div>
-
-<div class="media-grid">
-  <div class="media-block">
-    <!-- (image 10) Ha Long Bay cave / kayaking -->
-    <img src="halong-cave.jpg" alt="Ha Long Bay cave kayaking">
-    <p class="media-caption">Kayaking through the sea caves at low tide.</p>
-  </div>
-  <div class="media-block">
-    <!-- (image 11) Ha Long Bay sunset / dusk from boat -->
-    <img src="halong-sunset.jpg" alt="Ha Long Bay sunset">
-    <p class="media-caption">Sunset from the boat, anchored deep in the bay.</p>
-  </div>
+<div class="prose">
+<p>Ha Long Bay — The One That Lives Up to It {#halong} The 1st of January was the tour to Ha Long Bay, a couple of hours east of Hanoi, and it is the kind of place that genuinely earns its UNESCO World Heritage status. Over 1,500 square kilometres of bay, dotted with thousands of limestone karst islands rising straight out of the water — geological formations tens of millions of years old, shaped by erosion into something that looks like it was composed rather than formed.</p>
+<p>The boat moved through it slowly, which was the right speed. Sung Sot Cave — the largest cave system in Ha Long Bay — required a steep hike up to reach, and the interior paid it off: a 10,000 square metre system of chambers, stalactites and stalagmites bent into shapes that people have been naming after animals and figures for centuries. Hang Luon is a different experience entirely — a flooded cave you pass through by kayak, the limestone ceiling low overhead, opening out into a hidden lagoon ringed by karst walls on all sides.</p>
+<p>Ti Top Island finishes the day with a climb. The beach at the base is small and quiet, and the view from the summit, after a few hundred steps up, is Ha Long Bay in every direction — islands fading into haze, the water impossibly still, the boat waiting far below. Vietnamese hospitality on the cruise was the kind that makes you feel genuinely welcomed rather than processed through an itinerary.</p>
 </div>
-
+<div class="media-block" style="margin: 2rem 0;">
+<video autoplay="" muted="" loop="" playsinline="" style="width: 100%; max-height: 560px; object-fit: cover; object-position: center; border-radius: 6px; display: block;"> <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/hanoi_halong1.mp4" type="video/mp4"> </video>
+<p class="media-caption">
+Moving through Ha Long Bay — limestone karsts on every side, the water flat and still.
+</p>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+<figure style="margin: 0;" class="figure">
+<video autoplay="" muted="" loop="" playsinline="" style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px; display: block;">
+<source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/hanoi_halong2.mp4" type="video/mp4">
+</video>
+<figcaption class="media-caption">
+The bay from the water — scale that doesn’t fully land in photographs.
+</figcaption>
+</figure>
+<figure style="margin: 0;" class="figure">
+<video autoplay="" muted="" loop="" playsinline="" style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px; display: block;">
+<source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/hanoi_halong3.mp4" type="video/mp4">
+</video>
+<figcaption class="media-caption">
+The summit of Ti Top Island — Ha Long Bay in every direction, fading into the haze.
+</figcaption>
+</figure>
+</div>
 <div class="media-block">
-  <!-- (video 1) Ha Long Bay video clip from boat -->
-  <video autoplay="" muted="" loop="" playsinline="">
-    <source src="halong-clip.mp4" type="video/mp4">
-  </video>
-  <p class="media-caption">The bay just after dawn — before the mist burns off.</p>
+<img src="hanoi_halong1.jpg" alt="View from Ti Top Island over Ha Long Bay">
+<p class="media-caption">
+From the top of Ti Top — the bay spread out below, islands disappearing into the distance.
+</p>
 </div>
-
+<div class="prose">
+<p>Hanoi — The City Itself {#hanoi-city} The 2nd of January was for the city. Ho Chi Minh’s Mausoleum is a formal, almost austere building on the western edge of Ba Dinh Square — the scale of the square itself is designed for ceremony, and the mausoleum sits at the end of it accordingly. The Ancient Citadel, a UNESCO-listed complex dating back to the 11th century, holds the layers of Vietnamese history in a way that the mausoleum’s 20th-century formality doesn’t — older walls, older gates, the sense of a city that existed long before the conflicts it’s most associated with abroad.</p>
+<p>Tran Quoc Pagoda sits on a small island in West Lake, the oldest Buddhist pagoda in Hanoi, and the late afternoon light on it — particularly the Vietnamese flag catching the air beside the tower — made it the kind of photograph that doesn’t require any editing to justify. The markets and shops around the Old Quarter were a different kind of browsing: fabrics, ceramics, clothing stalls that somehow managed to feel both chaotic and organised, the kind of energy that makes a city feel inhabited rather than curated.</p>
+<p>Train Street arrived at the end of the day in the best possible way. A narrow residential alley that a functioning railway line runs directly through — houses on both sides, metres from the tracks — and every few hours the train comes through slowly enough that everyone steps back against the walls and watches it pass. It is one of those things that should feel like a tourist gimmick and somehow, in the middle of it, entirely doesn’t.</p>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+<figure style="margin: 0;" class="figure">
+<img src="hanoi_hochi.jpg" alt="Ho Chi Minh Mausoleum" style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" class="figure-img">
+<figcaption class="media-caption">
+Ho Chi Minh’s Mausoleum — formal, austere, and anchored at the end of Ba Dinh Square.
+</figcaption>
+</figure>
+<figure style="margin: 0;" class="figure">
+<img src="hanoi_citadel.jpg" alt="Building in the Ancient Citadel of Hanoi with the Vietnamese flag" style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" class="figure-img">
+<figcaption class="media-caption">
+The Ancient Citadel — eleven centuries of Hanoi in one walled complex.
+</figcaption>
+</figure>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+<figure style="margin: 0;" class="figure">
+<img src="hanoi_pagoda.jpg" alt="Tran Quoc Pagoda at sunset with Vietnamese flag" style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" class="figure-img">
+<figcaption class="media-caption">
+Tran Quoc Pagoda at sunset — Hanoi’s oldest Buddhist pagoda, on an island in West Lake.
+</figcaption>
+</figure>
+<figure style="margin: 0;" class="figure">
+<video autoplay="" muted="" loop="" playsinline="" style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px; display: block;">
+<source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/hanoi_train.mp4" type="video/mp4">
+</video>
+<figcaption class="media-caption">
+Train Street — the train comes through slowly enough that you have time to press against the wall and think about it.
+</figcaption>
+</figure>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+<figure style="margin: 0;" class="figure">
+<img src="hanoi_shirts.jpg" alt="Market stall with many shirts in Hanoi" style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px;" class="figure-img">
+<figcaption class="media-caption">
+The Old Quarter markets — slightly chaotic, entirely satisfying.
+</figcaption>
+</figure>
+<figure style="margin: 0;" class="figure">
+<img src="hanoi_shrine.jpg" alt="Shrine with fruit and alcohol offerings in Hanoi" style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px;" class="figure-img">
+<figcaption class="media-caption">
+A street shrine — fruit, alcohol, and the kind of quiet devotion that the city carries everywhere.
+</figcaption>
+</figure>
+</div>
 <div class="pull-quote">
-  "You wake up to the mist before it burns off — limestone walls on every side."
+<p>“A crowd-sourced countdown, strangers on all sides, and then the year turned.”</p>
 </div>
-
 <hr class="section-divider">
-<hr>
-<section id="on-vietnam-taiwan" class="level2 prose">
-<h2 class="anchored" data-anchor-id="on-vietnam-taiwan">On Vietnam &amp; Taiwan</h2>
-<p>These are two countries that reward going in without too many expectations. Taiwan is efficient and gentle and full of surprises — the kind of place where you intended to spend a long weekend and find yourself genuinely sad to leave. Vietnam is rawer, louder, and more demanding, but it gives back more than it takes.</p>
-<p>What they share is food, temples, and a density of things worth looking at that most European cities can’t match. If you are building a first trip to East Asia, this combination — a few days in Taipei, fly to Hanoi, day trip to Ha Long — is close to perfect.</p>
-</section>
-<div class="media-block">
-  <!-- (image 12) best shot from the whole trip — your pick -->
-  <img src="favourite.jpg" alt="Vietnam and Taiwan">
-  <p class="media-caption">Somewhere between Jiufen and Ha Long Bay.</p>
+<div class="prose">
+<p>Five days is not enough for either of these places. Taiwan operates at a density — of history, of food, of things worth seeing — that rewards more time than a long weekend allows. Vietnam, particularly Hanoi and Ha Long Bay, is a place that keeps expanding the longer you’re inside it: more layers, more detail, more reasons to stay.</p>
+<p>What made the trip was the timing. Ending one year in Jiufen with lanterns drifting over a valley, and beginning the next in Hanoi in the middle of a crowd watching fireworks over a lake, is the kind of itinerary that sounds planned and was mostly accidental. Some trips work out in spite of themselves. This one did.</p>
 </div>
-<p>```</p>
+<div class="media-block">
+<img src="taipei_jiufen.jpg" alt="Jiufen old town lantern-lit alleys" style="width: 100%; max-height: 620px; object-fit: cover; border-radius: 6px;">
+<p class="media-caption">
+Somewhere between Jiufen and everything that came after.
+</p>
+</div>
 
 
 
