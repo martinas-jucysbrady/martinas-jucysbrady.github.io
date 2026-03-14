@@ -181,9 +181,9 @@
         {name:'Como',         latlng:[45.81,9.09],   url:'/travel/europe/milan_nice/#como', img:'/travel/europe/milan_nice/como_duomo.jpg'},
         {name:'Venice',       latlng:[45.44,12.33],  url:'/travel/europe/city_breaks/'},
         {name:'Rome/Vatican', latlng:[41.90,12.48],  url:'/travel/europe/city_breaks/'},
-        {name:'Split',        latlng:[43.51,16.44],  url:'/travel/europe/balkans/'},
-        {name:'Dubrovnik',    latlng:[42.65,18.09],  url:'/travel/europe/balkans/'},
-        {name:'Montenegro',   latlng:[42.44,19.26],  url:'/travel/europe/balkans/'}
+        {name:'Split',        latlng:[43.51,16.44],  url:'/travel/europe/balkans/#split', img:'/travel/europe/balkans/split_flag.jpg'},
+        {name:'Dubrovnik',    latlng:[42.65,18.09],  url:'/travel/europe/balkans/#dubrovnik', img:'/travel/europe/balkans/dubrovnik_beach.jpg'},
+        {name:'Montenegro',   latlng:[42.44,19.26],  url:'/travel/europe/balkans/#budva', img:'/travel/europe/balkans/perast_island.jpg'}
     ]
     },
     { id:'central', label:'Central Europe',
