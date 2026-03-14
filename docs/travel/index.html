@@ -256,8 +256,8 @@ ul.task-list li input[type="checkbox"] {
     });
     L.tileLayer(cartoBase,   {subdomains:'abcd', maxZoom:19}).addTo(mad_map);
     L.tileLayer(cartoLabels, {subdomains:'abcd', maxZoom:19, opacity:0.45}).addTo(mad_map);
-    L.marker([32.76,-16.96], {icon: makePolaroidIcon('Madeira', 26), zIndexOffset:500})
-      .addTo(mad_map).bindPopup(makePolaroidPopup('Madeira', null, '/travel/europe/madeira/'), {maxWidth:180});
+    L.marker([32.76,-16.96], {icon: makePolaroidIcon('Madeira', 26, '/travel/europe/madeira/tour_waterfall.jpg'), zIndexOffset:500})
+      .addTo(mad_map).bindPopup(makePolaroidPopup('Madeira', '/travel/europe/madeira/tour_waterfall.jpg', '/travel/europe/madeira/'), {maxWidth:180});
   }
 
 
