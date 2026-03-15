@@ -209,8 +209,8 @@
   var eaAreas = [
     { id:'hokkaido', label:'Hokkaido', center:[43.3,141.5], zoom:7,
   prefectures:[
-    {name:'Sapporo', latlng:[43.06,141.35], url:'/travel/e_asia/hokkaido/#sapporo',  img:'/travel/e_asia/sapporo_tower.jpg' },
-    {name:'Otaru',   latlng:[43.19,140.99], url:'/travel/e_asia/hokkaido/#otaru',  img:'/travel/e_asia/otaru_lights.jpg' }] },
+    {name:'Sapporo', latlng:[43.06,141.35], url:'/travel/e_asia/hokkaido/#sapporo',  img:'/travel/e_asia/hokkaido/sapporo_tower.jpg' },
+    {name:'Otaru',   latlng:[43.19,140.99], url:'/travel/e_asia/hokkaido/#otaru',  img:'/travel/e_asia/hokkaido/otaru_lights.jpg' }] },
     { id:'tohoku', label:'Tohoku', center:[39.5,141.0], zoom:7,
       prefectures:[{name:'Iwate',latlng:[39.70,141.13], url: '/travel/e_asia/tohoku/' },{name:'Miyagi',latlng:[38.27,140.87], url: '/travel/e_asia/tohoku/' },{name:'Akita',latlng:[39.72,140.10], url: '/travel/e_asia/tohoku/' },{name:'Yamagata',latlng:[38.24,140.36], url: '/travel/e_asia/tohoku/' },{name:'Fukushima',latlng:[37.75,140.47], url: '/travel/e_asia/tohoku/' }] },
     { id:'kanto', label:'Kanto', center:[35.6,139.4], zoom:8,
@@ -407,8 +407,8 @@ function makePolaroidPopup(name, img, url) {
     tmap.flyTo(area.center, area.zoom, {duration:1.0});
     setTimeout(function(){
       area.prefectures.forEach(function(p){
-        var m = L.marker(p.latlng, {icon: makePolaroidIcon(p.name, 38), zIndexOffset:300})
-          .addTo(tmap).bindPopup(makePolaroidPopup(p.name), {maxWidth:200});
+        var m = L.marker(p.latlng, {icon: makePolaroidIcon(p.name, 38, p.img), zIndexOffset:300})
+          .addTo(tmap).bindPopup(makePolaroidPopup(p.name, p.img, p.url), {maxWidth:200});
         activeMarkers.push(m);
       });
       showSidebar(area.label, area.prefectures);
