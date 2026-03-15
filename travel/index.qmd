@@ -143,10 +143,9 @@
       center:[54.5,-3.5], zoom:6,
       countries:[
         {name:'Dublin',           latlng:[53.33,-6.25],  url:'/travel/europe/city_breaks/'},
-        {name:'London',           latlng:[51.51,-0.13],  url:'/travel/europe/city_breaks/'},
-        {name:'Edinburgh',        latlng:[55.95,-3.19],  url:'/travel/europe/city_breaks/'},
-        {name:'Liverpool',        latlng:[53.41,-2.99],  url:'/travel/europe/city_breaks/'},
-        {name:'Manchester',       latlng:[53.48,-2.24],  url:'/travel/europe/city_breaks/'},
+        {name:'London',           latlng:[51.51,-0.13],  url:'/travel/europe/city_breaks/#london',  img:'/travel/europe/city_breaks/london_ben.jpg'},
+        {name:'Edinburgh',        latlng:[55.95,-3.19],  url:'/travel/europe/city_breaks/#edinburgh',  img:'/travel/europe/city_breaks/edinburgh_cow2.jpg'},
+        {name:'Liverpool',        latlng:[53.41,-2.99],  url:'/travel/europe/city_breaks/#liverpool',  img:'/travel/europe/city_breaks/goodison_in.jpg'},
         {name:'Wexford',          latlng:[52.33,-6.46],  url:'/travel/europe/ireland/'},
         {name:'Northern Ireland', latlng:[54.60,-5.93],  url:'/travel/europe/ireland/'},
         {name:'Sligo',            latlng:[54.27,-8.47],  url:'/travel/europe/ireland/'}
@@ -162,14 +161,14 @@
         {name:'Gibraltar', latlng:[36.14,-5.35],  url:'/travel/europe/alg_anda/#gibraltar',  img:'/travel/europe/alg_anda/gibraltar_monkey1.jpg'},
         {name:'Malaga',    latlng:[36.72,-4.42],  url:'/travel/europe/alg_anda/#malaga',  img:'/travel/europe/alg_anda/malaga_view.jpg'},
         {name:'Granada',   latlng:[37.18,-3.60],  url:'/travel/europe/alg_anda/#granada',  img:'/travel/europe/alg_anda/granada_scene.jpg'},
-        {name:'Madrid',    latlng:[40.42,-3.70],  url:'/travel/europe/city_breaks/'}
+        {name:'Madrid',    latlng:[40.42,-3.70],  url:'/travel/europe/city_breaks/#madrid',  img:'/travel/europe/city_breaks/madrid_toro.jpg'}
     ]
     },
     { id:'western', label:'Western Europe',
       center:[48.5,4.0], zoom:5,
       countries:[
-        {name:'Paris',       latlng:[48.86,2.35],  url:'/travel/europe/city_breaks/'},
-        {name:'Amsterdam',   latlng:[52.37,4.90],  url:'/travel/europe/city_breaks/'},
+        {name:'Paris',       latlng:[48.86,2.35],  url:'/travel/europe/city_breaks/#paris',  img:'/travel/europe/city_breaks/paris_eiffel.jpg'},
+        {name:'Amsterdam',   latlng:[52.37,4.90],  url:'/travel/europe/city_breaks/#amsterdam',  img:'/travel/europe/city_breaks/amsterdam_red.jpg'},
         {name:'Nice/Monaco',        latlng:[43.70,7.26],  url:'/travel/europe/milan_nice/#monaco',  img:'/travel/europe/milan_nice/monaco_port.jpg'}
     ]
     },
@@ -179,8 +178,8 @@
         {name:'Genoa',        latlng:[44.41,8.93],   url:'/travel/europe/milan_nice/#genoa', img:'/travel/europe/milan_nice/genoa_tiramisu.jpg'},
         {name:'Milan',        latlng:[45.46,9.19],   url:'/travel/europe/milan_nice/#milan', img:'/travel/europe/milan_nice/milan_duomo.jpg'},
         {name:'Como',         latlng:[45.81,9.09],   url:'/travel/europe/milan_nice/#como', img:'/travel/europe/milan_nice/como_duomo.jpg'},
-        {name:'Venice',       latlng:[45.44,12.33],  url:'/travel/europe/city_breaks/'},
-        {name:'Rome/Vatican', latlng:[41.90,12.48],  url:'/travel/europe/city_breaks/'},
+        {name:'Venice',       latlng:[45.44,12.33],  url:'/travel/europe/city_breaks/#venice',  img:'/travel/europe/city_breaks/venice_canal.jpg'},
+        {name:'Rome/Vatican', latlng:[41.90,12.48],  url:'/travel/europe/city_breaks/#rome',  img:'/travel/europe/city_breaks/rome_colosseum.jpg'},
         {name:'Split',        latlng:[43.51,16.44],  url:'/travel/europe/balkans/#split', img:'/travel/europe/balkans/split_flag.jpg'},
         {name:'Dubrovnik',    latlng:[42.65,18.09],  url:'/travel/europe/balkans/#dubrovnik', img:'/travel/europe/balkans/dubrovnik_beach.jpg'},
         {name:'Montenegro',   latlng:[42.44,19.26],  url:'/travel/europe/balkans/#budva', img:'/travel/europe/balkans/perast_island.jpg'}
@@ -189,7 +188,7 @@
     { id:'central', label:'Central Europe',
       center:[50.08,14.44], zoom:5,
       countries:[
-        {name:'Cologne',       latlng:[50.94,6.96],   url:'/travel/europe/city_breaks/'},
+        {name:'Cologne',       latlng:[50.94,6.96],   url:'/travel/europe/city_breaks/#cologne',  img:'/travel/europe/city_breaks/koln_cathedral.jpg'},
         {name:'Budapest',      latlng:[47.50,19.04],  url:'/travel/europe/c_europe/#budapest', img:'/travel/europe/c_europe/budapest_parliament1.jpg'},
         {name:'Vienna',        latlng:[48.21,16.37],  url:'/travel/europe/c_europe/#vienna', img:'/travel/europe/c_europe/vienna_schnitzel.jpg'},
         {name:'Bratislava',    latlng:[48.15,17.11],  url:'/travel/europe/c_europe/#bratislava', img:'/travel/europe/c_europe/bratislava_mecastle.jpg'},
