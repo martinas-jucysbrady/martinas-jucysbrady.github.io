@@ -107,8 +107,8 @@
     });
     L.tileLayer(cartoBase,   {subdomains:'abcd', maxZoom:19}).addTo(oki_map);
     L.tileLayer(cartoLabels, {subdomains:'abcd', maxZoom:19, opacity:0.45}).addTo(oki_map);
-    L.marker([26.33,127.80], {icon: makePolaroidIcon('Okinawa', 26), zIndexOffset:500})
-      .addTo(oki_map).bindPopup(makePolaroidPopup('Okinawa', null, '/travel/e_asia/okinawa/'), {maxWidth:180});
+    L.marker([26.33,127.80], {icon: makePolaroidIcon('Okinawa', 26, '/travel/e_asia/okinawa/okinawa_heart.jpg'), zIndexOffset:500})
+      .addTo(oki_map).bindPopup(makePolaroidPopup('Okinawa', '/travel/e_asia/okinawa/okinawa_heart.jpg', '/travel/e_asia/okinawa/'), {maxWidth:180});
   }
 
   function initMadeiraInset() {
