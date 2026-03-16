@@ -242,7 +242,7 @@
     { id:'kyushu', label:'Kyushu', center:[32.8,130.8], zoom:7,
       prefectures:[{name:'Fukuoka',latlng:[33.59,130.40], url: '/travel/e_asia/kyushu/#fukuoka' },{name:'Saga', latlng:[33.25,130.30], url:'/travel/e_asia/kyushu/#saga'},{name:'Nagasaki',latlng:[32.75,129.88], url: '/travel/e_asia/kyushu/#nagasaki' },{name:'Kumamoto',latlng:[32.80,130.70], url: '/travel/e_asia/kyushu/#kumamoto' },{name:'Kagoshima',latlng:[31.60,130.56], url: '/travel/e_asia/kyushu/#kagoshima' },{name:'Miyazaki',latlng:[31.91,131.42], url: '/travel/e_asia/kyushu/#miyazaki' },{name:'Oita',latlng:[33.23,131.61], url: '/travel/e_asia/kyushu/#oita' }] },
     { id:'korea', label:'Korea', center:[36.5,128.0], zoom:7,
-      prefectures:[{name:'Seoul',latlng:[37.57,126.98], url: '/travel/e_asia/s_korea/' },{name:'Busan',latlng:[35.10,129.04], url: '/travel/e_asia/s_korea/' },{name:'Gyeongju',latlng:[35.86,129.22], url: '/travel/e_asia/s_korea/' }] }
+      prefectures:[{name:'Seoul',latlng:[37.57,126.98], url: '/travel/e_asia/s_korea/#seoul',  img:'/travel/e_asia/korea/.jpg' },{name:'Busan',latlng:[35.10,129.04], url: '/travel/e_asia/s_korea/#busan',  img:'/travel/e_asia/korea/busan_culture1.jpg' },{name:'Gyeongju',latlng:[35.86,129.22], url: '/travel/e_asia/s_korea/#gyeongju',  img:'/travel/e_asia/korea/gyeongju_bridge2.jpg' }] }
   ];
 
   // ── Simple places ─────────────────────────────────────────────────────────
