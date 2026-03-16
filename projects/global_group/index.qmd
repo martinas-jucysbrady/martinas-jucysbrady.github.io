@@ -17,6 +17,7 @@ format:
     toc-location: right
     toc-title: "On this page"
     cite-method: citeproc
+    css: vw-fix.css
 
 about:
   template: solana
