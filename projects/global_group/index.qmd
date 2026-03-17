@@ -17,6 +17,7 @@ format:
     toc-location: right
     toc-title: "On this page"
     cite-method: citeproc
+    page-layout: article
 
 about:
   template: solana
