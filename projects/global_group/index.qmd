@@ -4,6 +4,7 @@ subtitle: "*Global Business Environment*"
 description: "A PESTEL analysis of Volkswagen AG covering industry environment, Indian market cultural considerations, competitive rivalry, and strategic recommendations."
 categories: [Management, Year 1]
 date: '2022-11-15'
+page-layout: article
 author: 
     - "Anne-Marie Adetunji"  
     - "Martinas Jucys Brady"  
@@ -16,7 +17,6 @@ format:
     toc: true
     toc-location: right
     toc-title: "On this page"
-    toc-depth: 1
     cite-method: citeproc
 
 about:
