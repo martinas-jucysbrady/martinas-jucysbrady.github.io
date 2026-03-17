@@ -1,19 +1,384 @@
+---
+title: "Kanto"
+subtitle: "Tokyo · Kanagawa · Chiba"
+page-layout: full
+toc: false
+sidebar: false
+---
+
 ```{=html}
-<div style="min-height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 60px 20px;">
+<style>
+  .trip-header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .trip-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #9b8877;
+    margin-bottom: 8px;
+  }
+  .trip-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: #1E4264;
+    margin: 0 0 12px;
+    line-height: 1.1;
+  }
+  .trip-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #6b7280;
+    margin-bottom: 24px;
+  }
+  .trip-meta {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: #9b8877;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    flex-wrap: wrap;
+  }
+  .section-divider {
+    border: none;
+    border-top: 1px solid #e0e0f0;
+    margin: 48px auto;
+    max-width: 600px;
+  }
+  .prose {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: #2d3748;
+  }
+  .prose h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: #1E4264;
+    margin-top: 56px;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .prose p {
+    margin-bottom: 1.4rem;
+  }
+  .media-block {
+    max-width: 860px;
+    margin: 32px auto;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  }
+  .media-block img,
+  .media-block video {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  .media-caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #9b8877;
+    text-align: center;
+    margin-top: 10px;
+    padding: 0 12px 4px;
+  }
+  .pull-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.55rem;
+    font-weight: 600;
+    color: #1E4264;
+    text-align: center;
+    max-width: 640px;
+    margin: 48px auto;
+    line-height: 1.5;
+    padding: 0 24px;
+    border-left: 3px solid #c9aa96;
+  }
 
-  <p style="font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: #9b8877; margin-bottom: 16px;">
-    Coming Soon
-  </p>
+  #quarto-document-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-  <h1 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.8rem; font-weight: 800; color: #1E4264; margin: 0 0 16px; line-height: 1.1;">
-    Still Writing This One
-  </h1>
+  #quarto-document-content > * {
+    width: 100%;
+    max-width: 860px;
+  }
+</style>
 
-  <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: #6b7280; max-width: 480px; line-height: 1.8; margin-bottom: 40px;">
-    The photos are sorted, the memories are intact — the words just need a little more time.
-  </p>
-
-  <div style="width: 48px; height: 2px; background: #c9aa96; margin: 0 auto;"></div>
-
+<div class="trip-header">
+  <p class="trip-label">🗼 Travel</p>
+  <h1 class="trip-title">Kanto</h1>
+  <p class="trip-subtitle">Tokyo and beyond — the city that has everything</p>
+  <div class="trip-meta">
+    <span>2024 – 2025</span>
+    <span>📍 Tokyo · Kanagawa · Chiba</span>
+  </div>
 </div>
+
+<hr class="section-divider">
 ```
+
+<div id="tokyo"></div>
+::: {.prose}
+
+## Tokyo — Everything You Can Think Of
+
+Tokyo is not a city that rewards a single visit. It is a city that rewards return visits, each one revealing a different layer of something that doesn't have an obvious bottom. The districts operate at different registers and take time to understand individually — Shibuya is kinetic and vertical, Shinjuku is dense and multilayered, Asakusa is historical and open, Roppongi is polished and elevated, Shin-Okubo is Korea transplanted into a Tokyo neighbourhood and entirely itself.
+
+The Shibuya crossing is the most famous pedestrian crossing in the world and is exactly as extraordinary in person as the footage suggests — the scale of it, the coordination of it, the sheer number of people moving in every direction at once and somehow not colliding. Shibuya Sky, the observation deck above it, gives the city from above in a way that makes the crossing below look like a circuit board.
+
+Shinjuku Gyoen in cherry blossom season is the reason to time a visit carefully. The blossoms in the park are the brightest pink, the crowds are large but the park is large enough, and the combination of the flowers and the skyscrapers visible over the treeline is the Tokyo image. The 3D cat billboard outside the building on the east side of Shinjuku station is better in person than in video. The Godzilla head above the Toho building is exactly as good as it should be.
+
+TeamLab Planets and TeamLab Borderless are two different experiences from the same organisation and both are worth doing separately. Planets is immersive in the physical sense — you walk through the exhibits, some of them ankle-deep in water, the reflections doubling and tripling the space. Borderless is more expansive, the boundaries between rooms dissolving, the art moving between spaces. Both reward going without expectations of what interactive digital art is supposed to feel like.
+
+Asakusa is the counterpoint to all of it — the Senso-ji temple complex, ancient and active, with the skyscrapers of modern Tokyo framed above the old gate in one of the more striking juxtapositions the city offers. The Tokyo Skytree rises above the neighbourhood and from the top at night the city extends in every direction to the horizon, the grid of light below making the scale of what Tokyo actually is finally apparent.
+
+The food deserves its own section. Omurice at the place with the thirty-minute queue is worth every minute — egg folded over rice in a way that the photographs do not explain and the eating does. Rice & Circus is exactly what the name doesn't explain: a restaurant in Shinjuku serving unusual proteins alongside goofy cocktails infused with ingredients that range from unexpected to genuinely alarming. The swallow, the camel, the bear, the whale, the crocodile tempura — all of it surprisingly edible. The Nepalese food in Shin-Okubo, specifically the honey cheese naan, is essential. The pig café is what it sounds like and better than expected.
+
+:::
+
+<div class="media-block" style="margin: 2rem 0;">
+  <video autoplay muted loop playsinline
+         style="width: 100%; max-height: 520px; object-fit: cover; object-position: center; border-radius: 6px; display: block;">
+    <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/tokyo_crossing.mp4" type="video/mp4" />
+  </video>
+  <p class="media-caption">Shibuya crossing — every direction at once, somehow nobody colliding.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="tokyo_shibuyasky.jpg" alt="View from Shibuya Sky observation deck in the day"
+         style="width: 100%; height: 480px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Shibuya Sky — the crossing below looking like a circuit board from up here.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="tokyo_asakusa.jpg" alt="Asakusa temple surrounded by Tokyo skyscrapers"
+         style="width: 100%; height: 480px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Asakusa — the ancient gate, the skyscrapers above it, the juxtaposition Tokyo does best.</figcaption>
+  </figure>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="tokyo_cherry1.jpg" alt="Cherry blossoms in Shinjuku Gyoen"
+         style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Shinjuku Gyoen — the brightest pink, the skyscrapers visible above the treeline.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="tokyo_cherry2.jpg" alt="Cherry blossoms in Tokyo"
+         style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Cherry blossom season — the reason to time a visit carefully.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="tokyo_cherry3.jpg" alt="Bright pink cherry blossoms in Shinjuku Gyoen"
+         style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">The blossoms up close — that particular shade of pink that photographs never quite capture.</figcaption>
+  </figure>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="tokyo_borderless.jpg" alt="TeamLab Borderless interactive art exhibit"
+         style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">TeamLab Borderless — art moving between rooms, the boundaries dissolving.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="tokyo_planets1.jpg" alt="TeamLab Planets interactive exhibit"
+         style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">TeamLab Planets — immersive in the physical sense, some of it ankle-deep in water.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="tokyo_planets2.jpg" alt="TeamLab Planets exhibit reflections"
+         style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">The reflections doubling and tripling the space — do both, separately.</figcaption>
+  </figure>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="tokyo_roppongi.jpg" alt="Evening view of Tokyo Tower from Roppongi Hills"
+         style="width: 100%; height: 480px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Roppongi Hills in the evening — Tokyo Tower lit up, the city below it.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="tokyo_tower.jpg" alt="Tokyo Tower"
+         style="width: 100%; height: 480px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Tokyo Tower — majestic, and better viewed from the city than from the top.</figcaption>
+  </figure>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="tokyo_treeout.jpg" alt="Tokyo Skytree towering overhead"
+         style="width: 100%; height: 480px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">The Skytree — towering overhead, the scale of it only apparent from below.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="tokyo_treein.jpg" alt="View from the top of Tokyo Skytree at night"
+         style="width: 100%; height: 480px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">From the top at night — the city extending to the horizon in every direction.</figcaption>
+  </figure>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="tokyo_odaiba.jpg" alt="Statue of Liberty replica in Odaiba Tokyo"
+         style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Odaiba — the Statue of Liberty, but in Tokyo. Of course there is one.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="tokyo_pig.jpg" alt="Pig cafe in Tokyo"
+         style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">The pig café — exactly what it sounds like, better than expected.</figcaption>
+  </figure>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="tokyo_omu.jpg" alt="Omurice in Tokyo"
+         style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Omurice — thirty-minute queue, worth every minute of it.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="tokyo_circus1.jpg" alt="Rice and Circus menu with unusual drinks"
+         style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Rice & Circus — the cocktail menu infused with anything you can think of.</figcaption>
+  </figure>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <video autoplay muted loop playsinline
+           style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px; display: block;">
+      <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/tokyo_circus2.mp4" type="video/mp4" />
+    </video>
+    <figcaption class="media-caption">The fried bird — surprisingly edible.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="tokyo_nepal.jpg" alt="Nepalese food in Shin-Okubo Tokyo"
+         style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Nepalese food in Shin-Okubo — the honey cheese naan is non-negotiable.</figcaption>
+  </figure>
+</div>
+
+<div class="pull-quote">
+  "Tokyo is not a city that rewards a single visit."
+</div>
+
+<hr class="section-divider">
+
+<div id="kanagawa"></div>
+::: {.prose}
+
+## Kanagawa — Islands, Buddhas, and Hakone
+
+Kanagawa is where Tokyo breathes out. Enoshima is a small island connected to the mainland by a causeway, full of history, temples, sea caves, and the kind of scenery that makes a day trip from the city feel like a different world. The sunset from the island with Fuji silhouetted on the horizon is the image — the mountain just visible, the sky doing everything.
+
+Kamakura is the historical anchor of the prefecture — the Great Buddha, one of the largest bronze statues in Japan, sitting in the open air at the end of a wooded approach, is as impressive in person as the scale of it promises. The shrine above the town gives views down over the rooftops and the sea beyond.
+
+Hakone is the day trip that delivers most consistently. Owakudani — the volcanic valley with hot springs venting from the hillside — produces the onsen eggs with the black shells from the sulphur, the taste of which is influenced, inevitably, by the smell of the whole place. The floating torii gate at Hakone Shrine, standing in the lake with the mountains behind it, is mesmerising. Odawara Castle on the way back is a well-restored castle worth stopping for. The sushi in this region is excellent throughout — proximity to the sea making itself apparent.
+
+:::
+
+<div class="media-block">
+  <img src="kanagawa_sunset.jpg" alt="Sunset from Enoshima with Fuji silhouette on the horizon"
+       style="width: 100%; max-height: 520px; object-fit: cover; border-radius: 6px;" />
+  <p class="media-caption">Enoshima at sunset — Fuji on the horizon, just visible, the sky doing everything.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="kanagawa_enoshima.jpg" alt="The street on Enoshima island"
+         style="width: 100%; height: 480px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Enoshima — the main street of the island, full of history and scenery.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="kanagawa_buddha.jpg" alt="Great Buddha in Kamakura"
+         style="width: 100%; height: 480px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">The Great Buddha at Kamakura — sitting in the open air, as impressive as the scale promises.</figcaption>
+  </figure>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="kanagawa_kamakura.jpg" alt="View down from Kamakura shrine over the town"
+         style="width: 100%; height: 480px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">From the top of the Kamakura shrine — the rooftops and sea below.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="kanagawa_hakone.jpg" alt="Hakone floating torii shrine on the lake"
+         style="width: 100%; height: 480px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Hakone Shrine — the floating torii in the lake, the mountains behind it, mesmerising.</figcaption>
+  </figure>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="kanagawa_owakudani.jpg" alt="Owakudani hot springs in the mountains near Hakone"
+         style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Owakudani — the volcanic valley, the sulphur, the black-shelled onsen eggs.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="kanagawa_sushi.jpg" alt="Sushi in Kanagawa"
+         style="width: 100%; height: 420px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">The sushi — proximity to the sea making itself apparent in every plate.</figcaption>
+  </figure>
+</div>
+
+<hr class="section-divider">
+
+<div id="chiba"></div>
+::: {.prose}
+
+## Chiba — Tokyo Disneyland
+
+Tokyo Disneyland is a different experience from its American counterparts — cleaner, more theatrical, the attention to detail at a level that makes the original parks look slightly less committed. The Baymax curry is the food to order. The castle is surreal in the specific way that Disney castles are when they exist in the middle of a Japanese city, visible from the train as you approach.
+
+:::
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+  <figure style="margin: 0;">
+    <img src="chiba_disney.jpg" alt="Disney castle at Tokyo Disneyland"
+         style="width: 100%; height: 480px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Tokyo Disneyland — the castle surreal in the specific way Disney castles always are.</figcaption>
+  </figure>
+  <figure style="margin: 0;">
+    <img src="chiba_food.jpg" alt="Baymax curry at Tokyo Disneyland"
+         style="width: 100%; height: 480px; object-fit: cover; border-radius: 6px;" />
+    <figcaption class="media-caption">Baymax curry — the food to order, no debate.</figcaption>
+  </figure>
+</div>
+
+<div class="pull-quote">
+  "Tokyo is a city that rewards return visits, each one revealing a different layer of something that doesn't have an obvious bottom."
+</div>
+
+<hr class="section-divider">
+
+::: {.prose}
+
+Kanto is anchored by Tokyo but defined by more than it. The city provides the base — inexhaustible, always different, endlessly layered — and the prefecture around it provides the counterpoint: the island at sunset with Fuji on the horizon, the Buddha in the forest, the volcanic valley, the floating shrine on the lake. Each weekend away from the city confirms that the region around it is as varied as the city itself.
+
+Come back. Keep coming back. There is always more.
+
+:::
+
+<div class="media-block">
+  <img src="kanagawa_sunset.jpg" alt="Fuji silhouette at sunset from Enoshima"
+       style="width: 100%; max-height: 620px; object-fit: cover; border-radius: 6px;" />
+  <p class="media-caption">Kanto — and always, somewhere on the horizon, Fuji.</p>
+</div>
