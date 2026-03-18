@@ -228,7 +228,7 @@
       ]
     },
     { id:'kansai', label:'Kansai', center:[34.8,135.5], zoom:8,
-      prefectures:[{name:'Osaka',latlng:[34.69,135.50], url: '/travel/e_asia/kansai/' },{name:'Kyoto',latlng:[35.01,135.77], url: '/travel/e_asia/kansai/' },{name:'Nara',latlng:[34.69,135.83], url: '/travel/e_asia/kansai/' },{name:'Hyogo',latlng:[34.69,135.19], url: '/travel/e_asia/kansai/' },{name:'Shiga', latlng:[35.27,136.26], url:'/travel/e_asia/kansai/' },{name:'Wakayama',latlng:[34.23,135.17], url: '/travel/e_asia/kansai/' }] },
+      prefectures:[{name:'Osaka',latlng:[34.69,135.50], url: '/travel/e_asia/kansai/#osaka',  img:'/travel/e_asia/kansai/osaka_dotonbori.jpg' },{name:'Kyoto',latlng:[35.01,135.77], url: '/travel/e_asia/kansai/#kyoto',  img:'/travel/e_asia/kansai/kyoto_jojakkoji3.jpg' },{name:'Nara',latlng:[34.69,135.83], url: '/travel/e_asia/kansai/#nara',  img:'/travel/e_asia/kansai/nara_deer1.jpg' },{name:'Hyogo',latlng:[34.69,135.19], url: '/travel/e_asia/kansai/#hyogo',  img:'/travel/e_asia/kansai/himeji_castle.jpg' },{name:'Shiga', latlng:[35.27,136.26], url:'/travel/e_asia/kansai/#shiga',  img:'/travel/e_asia/kansai/shiga_shaun.jpg' },{name:'Wakayama',latlng:[34.23,135.17], url: '/travel/e_asia/kansai/#wakayama',  img:'/travel/e_asia/kansai/wakayama_pagoda.jpg' }] },
     { id:'chugoku', label:'Chugoku / Shikoku', center:[34.3,133.5], zoom:7,
       prefectures:[
         {name:'Hiroshima',  latlng:[34.39,132.45], url:'/travel/e_asia/chugoku_shikoku/#hiroshima',  img:'/travel/e_asia/chugoku_shikoku/hiroshima_buddhas.jpg' },
