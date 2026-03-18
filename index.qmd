@@ -29,7 +29,7 @@ about:
       href: https://www.instagram.com/martinas.jb/
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com/in/martinas-jucysbrady
+      href: https://www.linkedin.com/in/martinasjucysbrady/
       target: _blank
 
 listing:
