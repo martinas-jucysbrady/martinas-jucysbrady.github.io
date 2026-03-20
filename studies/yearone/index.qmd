@@ -4,205 +4,467 @@ image: "/assets/mjb_favicon.png"
 location: "Dublin City University, Ireland"
 ---
 
-::: {style="text-align: justify;"}
-This page contains a summary of the work I have done during my first year in university. 
-:::
-
-## Introduction to Microeconomics
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Feducationleaves.com%2Fwp-content%2Fuploads%2F2024%2F08%2FMicroeconomics-1024x576.png&f=1&nofb=1&ipt=31a3d6024c05b4345071d5aa64e47f3d5f7bd57e412774157932b0469fdf95f5)
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-Developed foundational microeconomic analysis covering supply/demand, elasticity, consumer/producer surplus, market failure, perfect competition, monopoly pricing and welfare economics.
-
-Applied graphical and mathematical models to analyze market outcomes and policy interventions.
-
-Grading: 15% participation, 20% mid-term exam, 65% final exam.
-
-:::
-
-:::
-
-## The Global Business Environment
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fonline.york.ac.uk%2Fmedia%2Fmageplaza%2Fblog%2Fpost%2Fg%2Fl%2Fglobal-business-environment.jpg&f=1&nofb=1&ipt=f829e05b6887d66bf90673e0a216d643763fe113ead13c3f87cb9959ee6162a8)
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-[Group Assignment](https://martinas-jucysbrady.github.io/projects/global_group), &nbsp; [Individual Assignment](https://martinas-jucysbrady.github.io/assets/files/global_environment_reflection.pdf)
-
-Explored globalisation dynamics including trade patterns, multinational corporations, global value chains, cultural convergence/divergence, environmental impacts and geopolitical tensions.
-
-Analysed contemporary global challenges through case studies and theoretical frameworks.
-
-Grading: 30% group assignment, 70% final essay.
-
-:::
-
-:::
-
-## Introductory Accounting for Business
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.prod.website-files.com%2F62ff26d72ea5e01571feb3d8%2F65681f597a81949d42a10f12_How-to-do-accounting-for-a-small-business.webp&f=1&nofb=1&ipt=f4eb87a4b1ca29b680f55d8e1ba23a3e7db26953977dfd0f935c131cc5598796)
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-[Group Assignment](https://martinas-jucysbrady.github.io/assets/files/accounting_group.pdf), &nbsp; [Video Presentation](https://youtu.be/vkhTaE3tdjM)
-
-Mastered fundamental accounting principles including double-entry bookkeeping, financial statements preparation (balance sheet, income statement, cash flow), ratio analysis and basic managerial accounting.
-
-Developed skills in transaction recording, ledger management and financial reporting interpretation.
-
-Grading: 30% continuous assignments, 30% group assignment, 40% video presentation.
-
-:::
-
-:::
-
-## Introduction to Marketing
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-![](../../assets/module_image/marketing.jpg) 
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-[Group Assignment](https://martinas-jucysbrady.github.io/assets/files/marketing_group.pdf)
-
-Developed core marketing principles covering market segmentation, targeting, positioning, marketing mix (4Ps), consumer behavior, branding and digital marketing strategies.
-
-Analysed marketing case studies and applied frameworks to strategic decision-making.
-
-Grading: 15% assignments, 25% group assignment, 60% exam. 
-
-:::
-
-:::
-
-## Business Analytics 1
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdataanalysis.co.zw%2Fwp-content%2Fuploads%2F2022%2F09%2FBusiness-Analytics-Using-Excel.jpg&f=1&nofb=1&ipt=3a70ffe1b789983a3c6a25dd74e81eddb4386b2fe90783514a0654c063ae5550)
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-[Tableau Dashboard PDF overview](https://martinas-jucysbrady.github.io/assets/files/tableau_assignment.pdf), &nbsp; [Tableau Assignment TWBX](https://martinas-jucysbrady.github.io/assets/files/tableau_assignment.twbx)
-
-Gained introductory data analytics skills using Tableau for visualization, Excel for data manipulation, basic statistical analysis and dashboard creation for business insights.
-
-Applied analytical tools to real datasets through structured exercises and exam scenarios.
-
-Grading: 10% Tableau assignment, 30% weekly assignments, 50% Excel exam. 
-
-:::
-
-:::
-
-## Critical Thinking for Business
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcommunity.thriveglobal.com%2Fwp-content%2Fuploads%2F2020%2F02%2FCritical-Thinking.png&f=1&nofb=1&ipt=340686750e4e01fb5e2f92faa0735cf6baf1a5f96cab090eb81957a005a1ef63)
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-Built essential critical thinking foundations including argument identification, logical fallacies, evidence evaluation, reasoning patterns and structured problem-solving approaches.
-
-Practiced analytical skills through continuous exercises, discussions and written analysis.
-
-Grading: 100% continuous assignments. 
-
-:::
-
-:::
-
-## Learning Innovation for Enterprise
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%2Fid%2FOIP.WEKMZBVS3dCZ3PT9NU9UKAHaE3%3Fpid%3DApi&f=1&ipt=1a8f5f6baf363b63fcdd6dcc54551421607779cc2a15c0ac6cc440f09fc19752&ipo=images)
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-[Family Enterprise Video](https://www.youtube.com/watch?v=7DghnNaj6-4), &nbsp; [Applegreen Group Project](https://martinas-jucysbrady.github.io/projects/life)
-
-Developed personal/professional development skills through media literacy, teamwork, digital portfolio creation and self-reflection on learning experiences.
-
-Took part in a DCU Hackathon and got to use my critical thinking skills.
-
-Grading: 30% media project, 30% group project, 40% eportfolio. 
-
-:::
-
-:::
-
-## Japanese Language 1 
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-![](../../assets/module_image/japan_l1.png) 
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-Developed complete beginner Japanese proficiency through hiragana/katakana mastery, basic greetings, numbers, particles, simple present/past grammar, everyday vocabulary and introductory conversations.
-
-Built foundational listening, speaking, reading and writing skills for basic communication needs.
-
-Grading: continuous assignments, tests and exam. 
-
-:::
-
-:::
-
-## Japanese Language 2
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-![](../../assets/module_image/japan_l2.png)
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-Built on Japanese 1 foundations with expanded grammar (te-form, adjectives, transitive/intransitive verbs), additional kanji (50-100 characters), descriptive sentences and situational dialogues.
-
-Progressed to intermediate beginner level with increased focus on sentence patterns and practical usage.
-
-Grading: continuous assignments, tests and exam. 
-
-:::
-
-:::
+```{=html}
+<style>
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 480px), 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+.mod-card {
+  background: var(--bs-body-bg, #fff);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.mod-thumb {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+.mod-header {
+  padding: 1rem 1.25rem 0.75rem;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+.mod-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+.mod-title {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 5px;
+}
+.mod-desc {
+  font-size: 13px;
+  color: var(--bs-secondary-color, #666);
+  line-height: 1.6;
+  margin: 0;
+}
+.mod-body {
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+.mod-grade {
+  font-size: 12px;
+  color: var(--bs-secondary-color, #888);
+  padding-top: 8px;
+  border-top: 1px solid rgba(0,0,0,0.07);
+  margin-top: auto;
+}
+.mod-grade span {
+  color: var(--bs-body-color, #333);
+}
+
+/* Embed wrapper */
+.embed-wrap {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+.embed-wrap iframe {
+  display: block;
+  width: 100%;
+  border: none;
+}
+.embed-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background: rgba(0,0,0,0.03);
+  border-top: 1px solid rgba(0,0,0,0.07);
+  gap: 6px;
+}
+.embed-label {
+  font-size: 11px;
+  color: var(--bs-secondary-color, #888);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.embed-actions {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.embed-btn {
+  background: none;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 5px;
+  padding: 2px 7px;
+  font-size: 11px;
+  color: var(--bs-secondary-color, #666);
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.embed-btn:hover {
+  background: rgba(0,0,0,0.05);
+  color: var(--bs-body-color, #333);
+  text-decoration: none;
+}
+
+/* Project links */
+.proj-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 11px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: rgba(0,0,0,0.02);
+  text-decoration: none;
+  color: inherit;
+}
+.proj-link:hover {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.18);
+  text-decoration: none;
+  color: inherit;
+}
+.proj-icon {
+  width: 36px;
+  height: 28px;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.proj-name {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.proj-sub {
+  font-size: 11px;
+  color: var(--bs-secondary-color, #888);
+}
+.proj-arrow {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--bs-secondary-color, #aaa);
+  flex-shrink: 0;
+}
+
+/* Fullscreen modal */
+.fs-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+.fs-modal-overlay.open {
+  display: flex;
+}
+.fs-modal {
+  background: var(--bs-body-bg, #fff);
+  border-radius: 12px;
+  width: 92vw;
+  max-width: 960px;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.fs-modal-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  background: rgba(0,0,0,0.02);
+  gap: 10px;
+}
+.fs-modal-title {
+  font-size: 13px;
+  font-weight: 500;
+}
+.fs-modal-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.fs-modal-btn {
+  background: none;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--bs-secondary-color, #666);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.fs-modal-btn:hover {
+  background: rgba(0,0,0,0.05);
+  color: var(--bs-body-color, #333);
+  text-decoration: none;
+}
+.fs-modal-frame {
+  flex: 1;
+  overflow: hidden;
+}
+.fs-modal-frame iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 560px;
+  border: none;
+  display: block;
+}
+</style>
+
+<!-- Fullscreen modal -->
+<div class="fs-modal-overlay" id="yor-modal" onclick="if(event.target===this)yorCloseModal()">
+  <div class="fs-modal">
+    <div class="fs-modal-bar">
+      <span class="fs-modal-title" id="yor-modal-title">Preview</span>
+      <div class="fs-modal-actions">
+        <a class="fs-modal-btn" id="yor-modal-newtab" href="#" target="_blank">↗ Open in new tab</a>
+        <button class="fs-modal-btn" onclick="yorCloseModal()">✕ Close</button>
+      </div>
+    </div>
+    <div class="fs-modal-frame">
+      <iframe id="yor-modal-iframe" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="modules-grid" id="yor-grid"></div>
+
+<script>
+(function() {
+
+/*
+  Ordered by content weight so each row stays visually balanced:
+  Row 1-2  — no embeds or links  (Microeconomics, Critical Thinking, Japanese 1, Japanese 2)
+  Row 3    — 1 embed only        (Marketing PDF | Analytics PDF + download)
+  Row 4    — 1 embed + 1 tile    (Global Business | Enterprise)
+  Row 5    — 2 embeds            (Accounting — spans full width or pairs with future content)
+*/
+
+var modules = [
+
+  /* ── no embeds / no links ── */
+  {
+    tag: "Economics",
+    tagBg: "#E6F1FB", tagColor: "#0C447C",
+    img: "https://educationleaves.com/wp-content/uploads/2024/08/Microeconomics-1024x576.png",
+    title: "Introduction to Microeconomics",
+    desc: "Foundational microeconomic analysis covering supply/demand, elasticity, consumer/producer surplus, market failure, perfect competition, monopoly pricing and welfare economics.",
+    grading: "15% participation · 20% mid-term · 65% final exam",
+    embeds: [], links: []
+  },
+  {
+    tag: "Skills",
+    tagBg: "#EAF3DE", tagColor: "#27500A",
+    img: "https://community.thriveglobal.com/wp-content/uploads/2020/02/Critical-Thinking.png",
+    title: "Critical Thinking for Business",
+    desc: "Argument identification, logical fallacies, evidence evaluation, reasoning patterns and structured problem-solving approaches.",
+    grading: "100% continuous assignments",
+    embeds: [], links: []
+  },
+  {
+    tag: "Language",
+    tagBg: "#F1EFE8", tagColor: "#444441",
+    img: "../../assets/module_image/japan_l1.png",
+    title: "Japanese Language 1",
+    desc: "Hiragana/katakana mastery, basic greetings, numbers, particles, simple present/past grammar, everyday vocabulary and introductory conversations.",
+    grading: "Continuous assignments, tests and exam",
+    embeds: [], links: []
+  },
+  {
+    tag: "Language",
+    tagBg: "#F1EFE8", tagColor: "#444441",
+    img: "../../assets/module_image/japan_l2.png",
+    title: "Japanese Language 2",
+    desc: "Expanded grammar (te-form, adjectives, transitive/intransitive verbs), 50–100 kanji, descriptive sentences and situational dialogues.",
+    grading: "Continuous assignments, tests and exam",
+    embeds: [], links: []
+  },
+
+  /* ── 1 embed only ── */
+  {
+    tag: "Marketing",
+    tagBg: "#FBEAF0", tagColor: "#72243E",
+    img: "../../assets/module_image/marketing.jpg",
+    title: "Introduction to Marketing",
+    desc: "Market segmentation, targeting, positioning, marketing mix (4Ps), consumer behaviour, branding and digital marketing strategies.",
+    grading: "15% assignments · 25% group assignment · 60% exam",
+    embeds: [
+      { type: "pdf", label: "Group Assignment", pdfUrl: "https://martinas-jucysbrady.github.io/assets/files/marketing_group.pdf" }
+    ],
+    links: []
+  },
+  {
+    tag: "Analytics",
+    tagBg: "#EEEDFE", tagColor: "#3C3489",
+    img: "https://dataanalysis.co.zw/wp-content/uploads/2022/09/Business-Analytics-Using-Excel.jpg",
+    title: "Business Analytics 1",
+    desc: "Tableau for visualisation, Excel for data manipulation, basic statistical analysis and dashboard creation for business insights.",
+    grading: "10% Tableau assignment · 30% weekly assignments · 50% Excel exam",
+    embeds: [
+      { type: "pdf", label: "Tableau Dashboard PDF", pdfUrl: "https://martinas-jucysbrady.github.io/assets/files/tableau_assignment.pdf" }
+    ],
+    links: [
+      { name: "Tableau Workbook", sub: "Download .twbx file", href: "https://martinas-jucysbrady.github.io/assets/files/tableau_assignment.twbx", icon: "📊", download: true }
+    ]
+  },
+
+  /* ── 1 embed + 1 project tile ── */
+  {
+    tag: "Business",
+    tagBg: "#E1F5EE", tagColor: "#085041",
+    img: "https://online.york.ac.uk/media/mageplaza/blog/post/g/l/global-business-environment.jpg",
+    title: "The Global Business Environment",
+    desc: "Globalisation dynamics including trade patterns, multinational corporations, global value chains, cultural convergence/divergence, environmental impacts and geopolitical tensions.",
+    grading: "30% group assignment · 70% final essay",
+    embeds: [
+      { type: "pdf", label: "Individual Assignment", pdfUrl: "https://martinas-jucysbrady.github.io/assets/files/global_environment_reflection.pdf" }
+    ],
+    links: [
+      { name: "Group Assignment", sub: "Portfolio project", href: "https://martinas-jucysbrady.github.io/projects/global_group", icon: "🌍" }
+    ]
+  },
+  {
+    tag: "Enterprise",
+    tagBg: "#FAEEDA", tagColor: "#633806",
+    img: "https://tse4.mm.bing.net/th/id/OIP.WEKMZBVS3dCZ3PT9NU9UKAHaE3?pid=Api&f=1",
+    title: "Learning Innovation for Enterprise",
+    desc: "Media literacy, teamwork, digital portfolio creation and self-reflection. Participated in DCU Hackathon applying critical thinking skills.",
+    grading: "30% media project · 30% group project · 40% eportfolio",
+    embeds: [
+      { type: "youtube", label: "Family Enterprise Video", ytId: "7DghnNaj6-4" }
+    ],
+    links: [
+      { name: "Applegreen Group Project", sub: "Portfolio project", href: "https://martinas-jucysbrady.github.io/projects/life", icon: "🍏" }
+    ]
+  },
+
+  /* ── 2 embeds ── */
+  {
+    tag: "Accounting",
+    tagBg: "#FAECE7", tagColor: "#712B13",
+    img: "https://cdn.prod.website-files.com/62ff26d72ea5e01571feb3d8/65681f597a81949d42a10f12_How-to-do-accounting-for-a-small-business.webp",
+    title: "Introductory Accounting for Business",
+    desc: "Double-entry bookkeeping, financial statements (balance sheet, income statement, cash flow), ratio analysis and basic managerial accounting.",
+    grading: "30% continuous · 30% group assignment · 40% video presentation",
+    embeds: [
+      { type: "pdf", label: "Group Assignment", pdfUrl: "https://martinas-jucysbrady.github.io/assets/files/accounting_group.pdf" },
+      { type: "youtube", label: "Video Presentation", ytId: "vkhTaE3tdjM" }
+    ],
+    links: []
+  }
+
+];
+
+function yorOpenModal(iframeSrc, label, externalUrl) {
+  document.getElementById('yor-modal-iframe').src = iframeSrc;
+  document.getElementById('yor-modal-title').textContent = label;
+  document.getElementById('yor-modal-newtab').href = externalUrl;
+  document.getElementById('yor-modal').classList.add('open');
+}
+
+function yorCloseModal() {
+  document.getElementById('yor-modal').classList.remove('open');
+  document.getElementById('yor-modal-iframe').src = '';
+}
+
+window.yorOpenModal = yorOpenModal;
+window.yorCloseModal = yorCloseModal;
+
+function buildEmbed(e) {
+  if (e.type === 'youtube') {
+    var embedUrl = 'https://www.youtube.com/embed/' + e.ytId + '?rel=0';
+    var watchUrl = 'https://www.youtube.com/watch?v=' + e.ytId;
+    return '<div class="embed-wrap">' +
+      '<iframe src="' + embedUrl + '" height="185" allowfullscreen loading="lazy"></iframe>' +
+      '<div class="embed-toolbar">' +
+        '<span class="embed-label">' + e.label + '</span>' +
+        '<div class="embed-actions">' +
+          '<button class="embed-btn" onclick="yorOpenModal(\'' + embedUrl + '\',\'' + e.label + '\',\'' + watchUrl + '\')">⛶ Fullscreen</button>' +
+          '<a class="embed-btn" href="' + watchUrl + '" target="_blank">↗ New tab</a>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
+  if (e.type === 'pdf') {
+    var viewerUrl = 'https://docs.google.com/viewerng/viewer?url=' + encodeURIComponent(e.pdfUrl) + '&embedded=true';
+    return '<div class="embed-wrap">' +
+      '<iframe src="' + viewerUrl + '" height="200" loading="lazy"></iframe>' +
+      '<div class="embed-toolbar">' +
+        '<span class="embed-label">' + e.label + '</span>' +
+        '<div class="embed-actions">' +
+          '<button class="embed-btn" onclick="yorOpenModal(\'' + viewerUrl + '\',\'' + e.label + '\',\'' + e.pdfUrl + '\')">⛶ Fullscreen</button>' +
+          '<a class="embed-btn" href="' + e.pdfUrl + '" target="_blank">↗ New tab</a>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
+  return '';
+}
+
+function buildLink(l) {
+  var dlAttr = l.download ? ' download' : '';
+  return '<a class="proj-link" href="' + l.href + '" target="_blank"' + dlAttr + '>' +
+    '<div class="proj-icon">' + (l.icon || '📄') + '</div>' +
+    '<div>' +
+      '<div class="proj-name">' + l.name + '</div>' +
+      '<div class="proj-sub">' + l.sub + '</div>' +
+    '</div>' +
+    '<span class="proj-arrow">↗</span>' +
+  '</a>';
+}
+
+var grid = document.getElementById('yor-grid');
+modules.forEach(function(m) {
+  var embedsHtml = m.embeds.map(buildEmbed).join('');
+  var linksHtml  = m.links.map(buildLink).join('');
+  var card = document.createElement('div');
+  card.className = 'mod-card';
+  card.innerHTML =
+    (m.img ? '<img class="mod-thumb" src="' + m.img + '" alt="' + m.title + '" onerror="this.style.display=\'none\'">' : '') +
+    '<div class="mod-header">' +
+      '<div class="mod-tag" style="background:' + m.tagBg + ';color:' + m.tagColor + '">' + m.tag + '</div>' +
+      '<div class="mod-title">' + m.title + '</div>' +
+      '<p class="mod-desc">' + m.desc + '</p>' +
+    '</div>' +
+    '<div class="mod-body">' +
+      embedsHtml +
+      linksHtml +
+      '<div class="mod-grade">Grading — <span>' + m.grading + '</span></div>' +
+    '</div>';
+  grid.appendChild(card);
+});
+
+})();
+</script>
+```

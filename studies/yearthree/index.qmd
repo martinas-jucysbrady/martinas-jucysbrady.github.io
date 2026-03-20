@@ -4,228 +4,475 @@ image: "/assets/mjb_favicon.png"
 location: "Dublin City University, Ireland"
 ---
 
-::: {style="text-align: justify;"}
-This page contains a summary of the work I have done during my third year in university. 
-:::
-
-## KIMAP Introduction to Management
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fkimap.b.kobe-u.ac.jp%2Fwp-content%2Fuploads%2Fkimap_ogp_logo.png&f=1&nofb=1&ipt=6c96f821de68b4d050fe1450166e597f87622e1aadf907fc1e3ecbf037bf1a77)
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-[Consultancy Report](http://martinas-jucysbrady.github.io/projects/KIMAP)
-
-Developed critical understanding of management across for-profit/non-profit sectors, exploring strategic roles (scanning environments, coordination/control), organisational dynamics (differentiation/integration, leadership/diversity/conflict), and paradigms like international/cross-cultural/HR/marketing/supply chain management plus entrepreneurship.
-
-Fostered active collaborative learning through discussions, case studies and strategic mindset development.
-
-Grading: 30% exam, 30% participation, 40% group report.
-
-:::
-
-:::
-
-## Advanced European Economy
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffacts.net%2Fwp-content%2Fuploads%2F2025%2F05%2F34-facts-about-european-economic-community-formed-1746582511.jpeg&f=1&nofb=1&ipt=f3f89887213edb0465c95238ab7edf864aa09e42b9f6f0699e33eb919d439582) 
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-[Assignment 1](http://martinas-jucysbrady.github.io/assets/files/EU_economy_one.pdf), &nbsp; [Assignment 2](http://martinas-jucysbrady.github.io/assets/files/EU_economy_two.pdf), &nbsp; [Assignment 3](http://martinas-jucysbrady.github.io/assets/files/EU_economy_three.pdf), &nbsp; [Assignment 4](http://martinas-jucysbrady.github.io/assets/files/EU_economy_four.pdf)
-
-Developed expertise in EU economic integration, covering the EU Green Deal for sustainability, the EU's global role, policy competition, new Commission dynamics, monetary integration and crisis responses.
-
-Engaged with key materials like Bruegel memos 2024, leadership analyses, and lectures on economic integration.
-
-Grading: 50% assignments, 50% final exam.
-
-:::
-
-:::
-
-## Advanced Econometric Analysis
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%2Fid%2FOIP.J5L56wG7rar6KiGZ-zH0zQHaE8%3Fpid%3DApi&f=1&ipt=a5aff0311a107a379abd0a02a8eb843901448b45e7a204967a4f20dfc2197d76&ipo=images)
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-Developed skills for empirical economic research, starting with stats foundations and linear regression (OLS, inference via t-tests), then advancing to multivariate models, binary outcomes (logit/probit), panel data (fixed effects) and fixes for heteroskedasticity/serial correlation.
-
-Weekly RStudio assignments built hands-on comfort with running regressions, diagnostics, and interpretation.
-
-Grading: 20% assignments, 30% mid-term, 50% final exam.
-
-:::
-
-:::
-
-## Introduction to Chemistry
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsamikshadeore42.github.io%2FEduGamer%2Fimages%2Fchemistry.webp&f=1&nofb=1&ipt=d6c2421e792a5024f898523b7a7d0b25c91f26e93dbf48c51314c1cd1a8e52af)
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-Developed foundational chemistry knowledge, progressing from quantum basics (de Broglie wavelength, Bohr model atomic spectra) and molecular geometry/symmetry (VSEPR shapes like trigonal bipyramidal, square planar; rotational axes) to organic chemistry (IUPAC naming alkanes/alkenes, hydrogenation/HBr reactions), and physical chemistry (ideal gas law, partial pressures, kinetic theory speeds, thermodynamics: state functions, expansion work reversible/irreversible). 
-
-Completed weekly assignments applying these concepts with calculations and drawings.
-
-Grading: 90% assignments, 10% exam. 
-
-:::
-
-:::
-
-## International Economy and Finance
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fonline.york.ac.uk%2Fmedia%2Fmageplaza%2Fblog%2Fpost%2Fg%2Fl%2Fglobal-economy.jpg&f=1&nofb=1&ipt=947de6e751e2cab1ff207bf9ccadc83f5bd3dc488404afb5c616e776d059f14f)
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-[Mundell-Fleming Model](http://martinas-jucysbrady.github.io/projects/international_economy)
-
-Gained core understanding of international finance, spanning financial markets structure, exchange rate determination (fixed/flexible, PPP, money/interest rates), balance of payments (definitions, policy via elasticity/IS-LM/monetarist approaches), international systems (gold standard to Bretton Woods/flexible rates), monetary integration (Euro), offshore markets (Eurocurrency/bonds), derivatives (futures/options/swaps) and crises/policy coordination.
-​
-Explored open macro policy linkages and future currency system trends through weekly topics.
-
-Grading: 20% in-class contribution, 80% final assignment.
-
-:::
-
-:::
-
-## Japanese Legal System
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpix4free.org%2Fassets%2Flibrary%2F2021-07-08%2Foriginals%2Flegal-system.jpg&f=1&nofb=1&ipt=2fd60ac70efbd5e418bbab84b63fe13a247e5e99630de387aa77c31abff1c275)
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-[Criminal Justice System](http://martinas-jucysbrady.github.io/projects/legal_system)
-
-Developed foundational knowledge of the Japanese legal system, from general introduction and governmental structure to historical evolution, constitutional rights guarantees, and key areas like intellectual property, criminal/administrative procedure, environmental/tax law.
-
-Explored practical applications through video clips and a special lecture, culminating in a summing-up review.
-
-Grading: 20% attendance, 40% minute papers, 40% final essay. 
-
-:::
-
-:::
-
-## Advertising and Marketing Communications
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdeclaration.co.uk%2Fwp-content%2Fuploads%2F2021%2F04%2FBlog-007-Feature-image.png&f=1&nofb=1&ipt=b08151af7b7a2489e730f5c6179dd87f0b30685f6d591b11c7e8f4db6347491b)
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-[Video Presentation](https://youtu.be/aPNcRYueZzA)
-
-Developed foundational knowledge in advertising and marketing communications, covering strategy/planning, privacy in online environments, global advertising, sustainability/CSR, social well-being impacts, and new technologies in marketing.
-
-Fostered critical analysis by evaluating research from leading journals on current trends and issues.
-
-Grading: 50% group assessment, 50% individual video presentation. 
-
-:::
-
-:::
-
-## Advanced Portfolio Management - Theory and Practice
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.freepik.com%2Fpremium-photo%2Ffinancial-business-graph-chart-analysis-stock-market-graph-stock-market-forex-trading-graph-candlestick-chart-indicator-financial-investment_73523-3582.jpg%3Fw%3D2000&f=1&nofb=1&ipt=0a0f0b0b9e214ee49f88b974bf0b1fe829c972438cc412400affbbcced82e25e) 
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-[Portfolio](http://martinas-jucysbrady.github.io/projects/portfolio_management)
-
-Developed hands-on expertise in advanced portfolio management, blending theory (objectives, asset allocation, mean-variance optimisation, efficient frontiers, hedging, behavioral finance) with practical portfolio construction, security selection, risk/return analysis, and real-world cases.
-
-Managed an 8-week live asset investment portfolio, tracking performance impacts from market elements.
-
-Grading: 20% class participation, 10% homework, 30% mid-term exam, 40% final portfolio presentation.
-
-:::
-
-:::
-
-## Intermediate Japanese Language
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.innovativelanguage.com%2Fmembers%2Fjapanesepod101%2Fimages%2Flearning-paths%2Foriginal%2F205_597641a1282de.png&f=1&nofb=1&ipt=ddeddce3764b5c3d8c765cb399f2dc2b52c19fa3072c0ad207c42c2797726053) 
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-Developed Intermediate Japanese proficiency (JLPT N3 level equivalent) across 6 integrated modules: General Language, Reading, Kanji, Speaking, Writing and Specific Purposes.
-
-Built comprehensive skills through targeted practice in vocabulary, grammar, comprehension, character mastery, oral fluency, composition and practical applications.
-
-Grading: 50% mid-term exams, 50% final exams per module.
-
-:::
-
-:::
-
-## Upper Intermediate Japanese Language
-
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-2}
-![](https://cdn.innovativelanguage.com/members/japanesepod101/images/learning-paths/original/206_599599f43d2a6.png) 
-
-:::
-
-::: {.g-col-12 .g-col-md-10}
-
-Developed Upper Intermediate Japanese proficiency (JLPT N2 level equivalent) across 6 integrated modules: General Language, Reading, Kanji, Speaking, Writing and Specific Purposes.
-
-Built comprehensive skills through targeted practice in vocabulary, grammar, comprehension, character mastery, oral fluency, composition and practical applications.
-
-Grading: 50% mid-term exams, 50% final exams per module.
-
-:::
-
-:::
+```{=html}
+<style>
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 480px), 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+.mod-card {
+  background: var(--bs-body-bg, #fff);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.mod-thumb {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+.mod-header {
+  padding: 1rem 1.25rem 0.75rem;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+.mod-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+.mod-title {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 5px;
+}
+.mod-desc {
+  font-size: 13px;
+  color: var(--bs-secondary-color, #666);
+  line-height: 1.6;
+  margin: 0;
+}
+.mod-body {
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+.mod-grade {
+  font-size: 12px;
+  color: var(--bs-secondary-color, #888);
+  padding-top: 8px;
+  border-top: 1px solid rgba(0,0,0,0.07);
+  margin-top: auto;
+}
+.mod-grade span {
+  color: var(--bs-body-color, #333);
+}
+
+/* Embed wrapper */
+.embed-wrap {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+.embed-wrap iframe {
+  display: block;
+  width: 100%;
+  border: none;
+}
+.embed-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background: rgba(0,0,0,0.03);
+  border-top: 1px solid rgba(0,0,0,0.07);
+  gap: 6px;
+}
+.embed-label {
+  font-size: 11px;
+  color: var(--bs-secondary-color, #888);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.embed-actions {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.embed-btn {
+  background: none;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 5px;
+  padding: 2px 7px;
+  font-size: 11px;
+  color: var(--bs-secondary-color, #666);
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.embed-btn:hover {
+  background: rgba(0,0,0,0.05);
+  color: var(--bs-body-color, #333);
+  text-decoration: none;
+}
+
+/* Project links */
+.proj-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 11px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: rgba(0,0,0,0.02);
+  text-decoration: none;
+  color: inherit;
+}
+.proj-link:hover {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.18);
+  text-decoration: none;
+  color: inherit;
+}
+.proj-icon {
+  width: 36px;
+  height: 28px;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.proj-name {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.proj-sub {
+  font-size: 11px;
+  color: var(--bs-secondary-color, #888);
+}
+.proj-arrow {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--bs-secondary-color, #aaa);
+  flex-shrink: 0;
+}
+
+/* Fullscreen modal */
+.fs-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+.fs-modal-overlay.open {
+  display: flex;
+}
+.fs-modal {
+  background: var(--bs-body-bg, #fff);
+  border-radius: 12px;
+  width: 92vw;
+  max-width: 960px;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.fs-modal-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  background: rgba(0,0,0,0.02);
+  gap: 10px;
+}
+.fs-modal-title {
+  font-size: 13px;
+  font-weight: 500;
+}
+.fs-modal-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.fs-modal-btn {
+  background: none;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--bs-secondary-color, #666);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.fs-modal-btn:hover {
+  background: rgba(0,0,0,0.05);
+  color: var(--bs-body-color, #333);
+  text-decoration: none;
+}
+.fs-modal-frame {
+  flex: 1;
+  overflow: hidden;
+}
+.fs-modal-frame iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 560px;
+  border: none;
+  display: block;
+}
+</style>
+
+<!-- Fullscreen modal -->
+<div class="fs-modal-overlay" id="yth-modal" onclick="if(event.target===this)ythCloseModal()">
+  <div class="fs-modal">
+    <div class="fs-modal-bar">
+      <span class="fs-modal-title" id="yth-modal-title">Preview</span>
+      <div class="fs-modal-actions">
+        <a class="fs-modal-btn" id="yth-modal-newtab" href="#" target="_blank">↗ Open in new tab</a>
+        <button class="fs-modal-btn" onclick="ythCloseModal()">✕ Close</button>
+      </div>
+    </div>
+    <div class="fs-modal-frame">
+      <iframe id="yth-modal-iframe" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="modules-grid" id="yth-grid"></div>
+
+<script>
+(function() {
+
+/*
+  Ordered by content weight so each row stays visually balanced:
+  Row 1-2  — no embeds or links  (Advanced Econometrics, Introduction to Chemistry, Intermediate Japanese, Upper Intermediate Japanese)
+  Row 3    — 1 project tile only (KIMAP consultancy | International Economy | Japanese Legal System | Portfolio Management)
+  Row 4    — 1 YouTube embed     (Advertising video)  paired with Advanced Econometrics tile
+  Row 5+   — 2+ embeds           (Advanced European Economy — 4 PDFs)
+*/
+
+var modules = [
+
+  /* ── no embeds / no links ── */
+  {
+    tag: "Economics",
+    tagBg: "#E6F1FB", tagColor: "#0C447C",
+    img: "https://tse4.mm.bing.net/th/id/OIP.J5L56wG7rar6KiGZ-zH0zQHaE8?pid=Api",
+    title: "Advanced Econometric Analysis",
+    desc: "Empirical economic research covering OLS regression, multivariate models, binary outcomes (logit/probit), panel data with fixed effects, and fixes for heteroskedasticity and serial correlation using RStudio.",
+    grading: "20% assignments · 30% mid-term · 50% final exam",
+    embeds: [], links: []
+  },
+  {
+    tag: "Science",
+    tagBg: "#EAF3DE", tagColor: "#27500A",
+    img: "https://samikshadeore42.github.io/EduGamer/images/chemistry.webp",
+    title: "Introduction to Chemistry",
+    desc: "Foundational chemistry from quantum basics and molecular geometry to organic chemistry (IUPAC naming, reactions) and physical chemistry (ideal gas law, kinetic theory, thermodynamics).",
+    grading: "90% assignments · 10% exam",
+    embeds: [], links: []
+  },
+  {
+    tag: "Language",
+    tagBg: "#F1EFE8", tagColor: "#444441",
+    img: "https://cdn.innovativelanguage.com/members/japanesepod101/images/learning-paths/original/205_597641a1282de.png",
+    title: "Intermediate Japanese Language",
+    desc: "JLPT N3-level proficiency across 6 integrated modules: General Language, Reading, Kanji, Speaking, Writing and Specific Purposes.",
+    grading: "50% mid-term exams · 50% final exams per module",
+    embeds: [], links: []
+  },
+  {
+    tag: "Language",
+    tagBg: "#F1EFE8", tagColor: "#444441",
+    img: "https://cdn.innovativelanguage.com/members/japanesepod101/images/learning-paths/original/206_599599f43d2a6.png",
+    title: "Upper Intermediate Japanese Language",
+    desc: "JLPT N2-level proficiency across 6 integrated modules: General Language, Reading, Kanji, Speaking, Writing and Specific Purposes.",
+    grading: "50% mid-term exams · 50% final exams per module",
+    embeds: [], links: []
+  },
+
+  /* ── 1 project tile only ── */
+  {
+    tag: "Management",
+    tagBg: "#FAEEDA", tagColor: "#633806",
+    img: "https://kimap.b.kobe-u.ac.jp/wp-content/uploads/kimap_ogp_logo.png",
+    title: "KIMAP Introduction to Management",
+    desc: "Management across for-profit/non-profit sectors, covering strategic roles, organisational dynamics, leadership, diversity, and paradigms including international, cross-cultural, HR and supply chain management.",
+    grading: "30% exam · 30% participation · 40% group report",
+    embeds: [],
+    links: [
+      { name: "Consultancy Report", sub: "Portfolio project", href: "http://martinas-jucysbrady.github.io/projects/KIMAP", icon: "📋" }
+    ]
+  },
+  {
+    tag: "Finance",
+    tagBg: "#E1F5EE", tagColor: "#085041",
+    img: "https://img.freepik.com/premium-photo/financial-business-graph-chart-analysis-stock-market-graph-stock-market-forex-trading-graph-candlestick-chart-indicator-financial-investment_73523-3582.jpg?w=2000",
+    title: "Advanced Portfolio Management",
+    desc: "Portfolio theory, mean-variance optimisation, efficient frontiers, hedging and behavioral finance, plus an 8-week live asset investment portfolio with real-world performance tracking.",
+    grading: "20% participation · 10% homework · 30% mid-term · 40% final presentation",
+    embeds: [],
+    links: [
+      { name: "Portfolio", sub: "Portfolio project", href: "http://martinas-jucysbrady.github.io/projects/portfolio_management", icon: "📊" }
+    ]
+  },
+  {
+    tag: "Economics",
+    tagBg: "#E6F1FB", tagColor: "#0C447C",
+    img: "https://online.york.ac.uk/media/mageplaza/blog/post/g/l/global-economy.jpg",
+    title: "International Economy and Finance",
+    desc: "International finance spanning exchange rate determination, balance of payments, gold standard to Bretton Woods, monetary integration (Euro), offshore markets, derivatives and crises/policy coordination.",
+    grading: "20% in-class contribution · 80% final assignment",
+    embeds: [],
+    links: [
+      { name: "Mundell-Fleming Model", sub: "Portfolio project", href: "http://martinas-jucysbrady.github.io/projects/international_economy", icon: "🌐" }
+    ]
+  },
+  {
+    tag: "Language",
+    tagBg: "#F1EFE8", tagColor: "#444441",
+    img: "https://pix4free.org/assets/library/2021-07-08/originals/legal-system.jpg",
+    title: "Japanese Legal System",
+    desc: "Foundational knowledge of the Japanese legal system from governmental structure and constitutional rights to intellectual property, criminal procedure, environmental and tax law.",
+    grading: "20% attendance · 40% minute papers · 40% final essay",
+    embeds: [],
+    links: [
+      { name: "Criminal Justice System", sub: "Portfolio project", href: "http://martinas-jucysbrady.github.io/projects/legal_system", icon: "⚖️" }
+    ]
+  },
+
+  /* ── 1 YouTube embed ── */
+  {
+    tag: "Marketing",
+    tagBg: "#FBEAF0", tagColor: "#72243E",
+    img: "https://declaration.co.uk/wp-content/uploads/2021/04/Blog-007-Feature-image.png",
+    title: "Advertising and Marketing Communications",
+    desc: "Advertising strategy, privacy in online environments, global advertising, sustainability/CSR, social well-being impacts and new technologies in marketing communications.",
+    grading: "50% group assessment · 50% individual video presentation",
+    embeds: [
+      { type: "youtube", label: "Video Presentation", ytId: "aPNcRYueZzA" }
+    ],
+    links: []
+  },
+
+  /* ── 4 PDF embeds ── */
+  {
+    tag: "Economics",
+    tagBg: "#E6F1FB", tagColor: "#0C447C",
+    img: "https://facts.net/wp-content/uploads/2025/05/34-facts-about-european-economic-community-formed-1746582511.jpeg",
+    title: "Advanced European Economy",
+    desc: "EU economic integration covering the Green Deal, EU global role, policy competition, new Commission dynamics, monetary integration and crisis responses, engaging with Bruegel memos 2024.",
+    grading: "50% assignments · 50% final exam",
+    embeds: [
+      { type: "pdf", label: "Assignment 1", pdfUrl: "http://martinas-jucysbrady.github.io/assets/files/EU_economy_one.pdf" },
+      { type: "pdf", label: "Assignment 2", pdfUrl: "http://martinas-jucysbrady.github.io/assets/files/EU_economy_two.pdf" },
+      { type: "pdf", label: "Assignment 3", pdfUrl: "http://martinas-jucysbrady.github.io/assets/files/EU_economy_three.pdf" },
+      { type: "pdf", label: "Assignment 4", pdfUrl: "http://martinas-jucysbrady.github.io/assets/files/EU_economy_four.pdf" }
+    ],
+    links: []
+  }
+
+];
+
+function ythOpenModal(iframeSrc, label, externalUrl) {
+  document.getElementById('yth-modal-iframe').src = iframeSrc;
+  document.getElementById('yth-modal-title').textContent = label;
+  document.getElementById('yth-modal-newtab').href = externalUrl;
+  document.getElementById('yth-modal').classList.add('open');
+}
+
+function ythCloseModal() {
+  document.getElementById('yth-modal').classList.remove('open');
+  document.getElementById('yth-modal-iframe').src = '';
+}
+
+window.ythOpenModal = ythOpenModal;
+window.ythCloseModal = ythCloseModal;
+
+function buildEmbed(e) {
+  if (e.type === 'youtube') {
+    var embedUrl = 'https://www.youtube.com/embed/' + e.ytId + '?rel=0';
+    var watchUrl = 'https://www.youtube.com/watch?v=' + e.ytId;
+    return '<div class="embed-wrap">' +
+      '<iframe src="' + embedUrl + '" height="185" allowfullscreen loading="lazy"></iframe>' +
+      '<div class="embed-toolbar">' +
+        '<span class="embed-label">' + e.label + '</span>' +
+        '<div class="embed-actions">' +
+          '<button class="embed-btn" onclick="ythOpenModal(\'' + embedUrl + '\',\'' + e.label + '\',\'' + watchUrl + '\')">⛶ Fullscreen</button>' +
+          '<a class="embed-btn" href="' + watchUrl + '" target="_blank">↗ New tab</a>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
+  if (e.type === 'pdf') {
+    var viewerUrl = 'https://docs.google.com/viewerng/viewer?url=' + encodeURIComponent(e.pdfUrl) + '&embedded=true';
+    return '<div class="embed-wrap">' +
+      '<iframe src="' + viewerUrl + '" height="200" loading="lazy"></iframe>' +
+      '<div class="embed-toolbar">' +
+        '<span class="embed-label">' + e.label + '</span>' +
+        '<div class="embed-actions">' +
+          '<button class="embed-btn" onclick="ythOpenModal(\'' + viewerUrl + '\',\'' + e.label + '\',\'' + e.pdfUrl + '\')">⛶ Fullscreen</button>' +
+          '<a class="embed-btn" href="' + e.pdfUrl + '" target="_blank">↗ New tab</a>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
+  return '';
+}
+
+function buildLink(l) {
+  var dlAttr = l.download ? ' download' : '';
+  return '<a class="proj-link" href="' + l.href + '" target="_blank"' + dlAttr + '>' +
+    '<div class="proj-icon">' + (l.icon || '📄') + '</div>' +
+    '<div>' +
+      '<div class="proj-name">' + l.name + '</div>' +
+      '<div class="proj-sub">' + l.sub + '</div>' +
+    '</div>' +
+    '<span class="proj-arrow">↗</span>' +
+  '</a>';
+}
+
+var grid = document.getElementById('yth-grid');
+modules.forEach(function(m) {
+  var embedsHtml = m.embeds.map(buildEmbed).join('');
+  var linksHtml  = m.links.map(buildLink).join('');
+  var card = document.createElement('div');
+  card.className = 'mod-card';
+  card.innerHTML =
+    (m.img ? '<img class="mod-thumb" src="' + m.img + '" alt="' + m.title + '" onerror="this.style.display=\'none\'">' : '') +
+    '<div class="mod-header">' +
+      '<div class="mod-tag" style="background:' + m.tagBg + ';color:' + m.tagColor + '">' + m.tag + '</div>' +
+      '<div class="mod-title">' + m.title + '</div>' +
+      '<p class="mod-desc">' + m.desc + '</p>' +
+    '</div>' +
+    '<div class="mod-body">' +
+      embedsHtml +
+      linksHtml +
+      '<div class="mod-grade">Grading — <span>' + m.grading + '</span></div>' +
+    '</div>';
+  grid.appendChild(card);
+});
+
+})();
+</script>
+```
