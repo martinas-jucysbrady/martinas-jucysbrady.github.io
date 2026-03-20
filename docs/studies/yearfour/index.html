@@ -163,6 +163,13 @@ ul.task-list li input[type="checkbox"] {
   display: flex;
   flex-direction: column;
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  cursor: pointer;
+}
+.mod-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12), 0 0 0 2px var(--mod-accent, #e0e0f0), 0 0 16px var(--mod-accent, #e0e0f0);
+  border-color: var(--mod-accent, #e0e0f0);
 }
 .mod-thumb {
   width: 100%;
@@ -588,6 +595,7 @@ modules.forEach(function(m) {
   var linksHtml  = m.links.map(buildLink).join('');
   var card = document.createElement('div');
   card.className = 'mod-card';
+  card.style.setProperty('--mod-accent', m.tagColor);
   card.innerHTML =
     (m.img ? '<img class="mod-thumb" src="' + m.img + '" alt="' + m.title + '" onerror="this.style.display=\'none\'">' : '') +
     '<div class="mod-header">' +
