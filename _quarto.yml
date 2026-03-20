@@ -34,6 +34,7 @@ project:
    - projects/life/applegreen_group.pdf
    - assets/files/tableau_assignment.twbx
    - assets/files/tableau_assignment.pdf
+   - assets/module_image/
    
 website:
   title: "Martinas Jucys Brady"
