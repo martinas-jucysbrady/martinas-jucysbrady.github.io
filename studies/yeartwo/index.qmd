@@ -286,7 +286,7 @@ var modules = [
   {
     tag: "Skills",
     tagBg: "#EAF3DE", tagColor: "#27500A",
-    img: "../../assets/module_image/critical.png",
+    img: "/assets/module_image/critical.png",
     title: "Critical Thinking in Action",
     desc: "Argument analysis, evidence evaluation, logical reasoning, cognitive biases and decision-making frameworks applied to real-world problems via case studies and debates.",
     grading: "20% quizzes · 40% reflections · 40% research paper",
@@ -295,7 +295,7 @@ var modules = [
   {
     tag: "Language",
     tagBg: "#F1EFE8", tagColor: "#444441",
-    img: "../../assets/module_image/japan_l3.png",
+    img: "/assets/module_image/japan_l3.png",
     title: "Japanese Language 3",
     desc: "Core Japanese proficiency through integrated vocabulary, grammar, listening, speaking, reading and writing — foundational to intermediate level.",
     grading: "Continuous assignments, tests and exam",
@@ -315,7 +315,7 @@ var modules = [
   {
     tag: "Marketing",
     tagBg: "#FBEAF0", tagColor: "#72243E",
-    img: "../../assets/module_image/changingconsumer.jpg",
+    img: "/assets/module_image/changingconsumer.jpg",
     title: "The Changing Consumer",
     desc: "Evolving consumer behaviour driven by digital transformation, sustainability, personalisation and cultural shifts, with implications for omnichannel marketing strategies.",
     grading: "30% group assignment · 70% exams",
