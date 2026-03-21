@@ -1,0 +1,156 @@
+---
+title: "Certifications"
+toc: false
+page-layout: full
+format:
+  html:
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+        <style>
+          table.dataTable th:nth-child(1) { width: 20% !important; }
+          table.dataTable th:nth-child(2) { width: 52% !important; }
+          table.dataTable th:nth-child(3) { width: 18% !important; }
+          table.dataTable th:nth-child(4) { width: 10% !important; }
+        </style>
+    include-after-body:
+      text: |
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+        <script>
+          $(document).ready(function() {
+            $('table').DataTable({
+              paging: false,
+              info: false
+            });
+          });
+        </script>
+---
+
+::: {.panel-tabset}
+
+## ![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fconsumersiteimages.trustpilot.net%2Fbusiness-units%2F6248364a7f18033f07d1ce0e-198x149-1x.jpg&f=1&nofb=1&ipt=ec8a9d1809a98f70637e9451cfb557b8177dc7aa2bee498620d8c63fea790f29){style="height: 1em; vertical-align: middle; margin-right: 4px;"} Kubicle
+
+*90 certificates across 19 subject areas.*
+
+::: {.callout-note appearance="minimal"}
+**Total CPD/CPE Credits: 108.5**
+:::
+
+| **Subject** | **Course Name** | **Date Completed** | **CPD/CPE** |
+|---|---|---|---|
+| Adaptive Project Management | Scrum Methodology | March 2026 | 1.0 |
+| Adaptive Project Management | AGILE Project Management | February 2026 | 1.5 |
+| AI Fundamentals | Large Language Models | February 2026 | 1.0 |
+| AI Fundamentals | Understanding Natural Language | February 2026 | 1.0 |
+| AI Fundamentals | AI Ethics and the Workplace | February 2026 | 1.5 |
+| AI Fundamentals | Business Applications of AI | February 2026 | 1.0 |
+| AI Fundamentals | Introduction to The EU Artificial Intelligence Act | February 2026 | 1.5 |
+| AI Fundamentals | Introduction to Artificial Intelligence | February 2026 | 1.0 |
+| App Development Fundamentals | App Development Fundamentals | February 2026 | 1.0 |
+| Business Analysis | Stakeholder Analysis and Requirements Elicitation | February 2026 | 1.0 |
+| Business Analysis | Introduction to Business Analysis in Projects | February 2026 | 1.0 |
+| Data Ethics & Risk | Applying Ethical Thinking | August 2025 | 1.0 |
+| Data Ethics & Risk | Introduction to Data Ethics | August 2025 | 1.0 |
+| Data Literacy | Planning a Data Driven Project | January 2026 | 1.0 |
+| Data Literacy | Thinking and Communicating with Data | August 2025 | 1.5 |
+| Data Literacy | Introduction to Data Literacy | August 2025 | 0.5 |
+| Data Literacy | Introduction to Data Preparation | October 2022 | 1.0 |
+| Data Literacy | Introduction to Data and Databases | October 2022 | 1.0 |
+| Data Presentation Skills | Presenting Your Data | January 2026 | 1.0 |
+| Data Presentation Skills | Telling Stories with Data | January 2026 | 1.0 |
+| Data Presentation Skills | Communicating Data Effectively | January 2026 | 1.0 |
+| Data Regulation | Introduction to GDPR | February 2026 | 1.0 |
+| Data Regulation | International Data Regulations | February 2026 | 1.0 |
+| Data Security | Handling Data Securely and Responsibly | January 2026 | 1.5 |
+| Data Security | Keeping Your Information Safe | August 2025 | 1.0 |
+| Data Strategy & Governance | Building a Data-Driven Culture | August 2025 | 1.0 |
+| Data Strategy & Governance | Defining Your Data Strategy | August 2025 | 1.5 |
+| Excel | Control costs with frequently changing data (Project) | January 2026 | 1.5 |
+| Excel | Essential DAX Functions and Concepts | October 2025 | 1.5 |
+| Excel | Use data effectively with organized spreadsheets (Project) | October 2025 | 1.5 |
+| Excel | Identify high-yield locations for retail outlets (Project) | October 2025 | 1.5 |
+| Excel | Build Your First Dashboard | September 2025 | 1.5 |
+| Excel | Boost productivity by optimizing compensation (Project) | September 2025 | 1.5 |
+| Excel | Optimize company revenue with cost analysis (Project) | September 2025 | 1.5 |
+| Excel | Finance Functions | September 2025 | 1.0 |
+| Excel | Introducing Statistics | March 2023 | 1.0 |
+| Excel | Pivot Tables | February 2023 | 2.0 |
+| Excel | Text, Time, and Dates | February 2023 | 2.0 |
+| Excel | Lookups and Database Functions | January 2023 | 2.0 |
+| Excel | Charts in Depth | November 2022 | 1.0 |
+| Excel | Formulas and Functions | October 2022 | 3.0 |
+| Excel | Data Manipulation and Formatting | October 2022 | 2.0 |
+| Microsoft Teams | Getting Started with Microsoft Teams | January 2026 | 1.5 |
+| Outlook | Managing Contacts, Calendars, and Tasks | February 2026 | 1.0 |
+| Outlook | Sending and Organizing Emails | January 2026 | 1.5 |
+| PowerPoint | Design Charts to Illustrate Company Performance (Project) | January 2026 | 0.5 |
+| PowerPoint | Presentation Design | October 2025 | 1.0 |
+| PowerPoint | Template Customization | October 2025 | 1.5 |
+| PowerPoint | Chart Construction | October 2025 | 1.5 |
+| PowerPoint | Presenting | October 2025 | 1.0 |
+| PowerPoint | Adding Interactivity | October 2025 | 1.0 |
+| PowerPoint | Design charts to illustrate company performance (Project) | September 2025 | 0.5 |
+| PowerPoint | Chart Selection | September 2025 | 1.0 |
+| PowerPoint | Presentation Visuals | September 2025 | 1.0 |
+| PowerPoint | PowerPoint Fundamentals | September 2025 | 1.5 |
+| Project Management Fundamentals | Project Governance and Delivery | January 2026 | 1.0 |
+| Project Management Fundamentals | Helping a Tech Company with their Growth Initiative (Project) | January 2026 | 0.5 |
+| Project Management Fundamentals | Project Integration | January 2026 | 1.0 |
+| Project Management Fundamentals | Research in Business | January 2026 | 1.5 |
+| Project Management Fundamentals | Planning a Research Project | January 2026 | 1.5 |
+| Project Management Fundamentals | Report Writing | January 2026 | 1.0 |
+| Project Management Fundamentals | Schedule Management | January 2026 | 1.5 |
+| Project Management Fundamentals | Project managing the redesign of a busy front page (Project) | October 2025 | 1.5 |
+| Project Management Fundamentals | Project Planning | October 2025 | 1.0 |
+| Project Management Fundamentals | Project Management Approaches | October 2025 | 1.5 |
+| Project Management Fundamentals | Project Roles and Responsibilities | October 2025 | 1.5 |
+| Project Management Fundamentals | Getting Started with Projects | October 2025 | 1.5 |
+| Python Fundamentals | Python Fundamentals | March 2025 | 2.0 |
+| SharePoint | Getting Started with SharePoint | February 2026 | 1.5 |
+| SQL | Finance Functions in SQL | August 2025 | 1.5 |
+| SQL | Data Manipulation with SQL | August 2025 | 1.5 |
+| SQL | Aggregating Data with SQL | August 2025 | 1.5 |
+| SQL | Joining Data with SQL | August 2025 | 1.5 |
+| SQL | Selecting and Filtering Data with SQL | March 2025 | 2.0 |
+| SQL | Understanding SQL Databases | March 2025 | 1.5 |
+| Statistical Analysis | Probability Principles | January 2026 | 1.5 |
+| Statistical Analysis | Introduction to Predictive Modeling | January 2026 | 2.0 |
+| Statistical Analysis | Principles of Statistics | October 2022 | 1.5 |
+| Tableau | Creating Visualizations in Tableau | March 2023 | 2.0 |
+| Tableau | Introducing Tableau | March 2023 | 1.5 |
+| Visualization Fundamentals | Visualization in Practice | October 2025 | 0.5 |
+| Visualization Fundamentals | Visual Data Thinking | March 2023 | 1.0 |
+| Visualization Fundamentals | Applying Visual Data Skills | March 2023 | 1.0 |
+| Word | Macros, Add-ins, and Mail Merge | September 2025 | 1.0 |
+| Word | Adding References | September 2025 | 1.0 |
+| Word | Reviewing & Sharing | September 2025 | 1.0 |
+| Word | Adjusting the Layout of the Document | September 2025 | 1.0 |
+| Word | Adding Bullet Points and Tables | September 2025 | 1.5 |
+| Word | Designing with Shapes, Pictures, and Themes | September 2025 | 1.0 |
+| Word | Typing and Formatting Text | August 2025 | 1.5 |
+
+## 🏆 Other Certifications
+
+::: {style="display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1rem;"}
+
+::: {style="flex: 1; min-width: 280px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1.2rem;"}
+[![](https://lwfiles.mycourse.app/amplifyme-public/4cf51487c6fa92fd0bb1268bb6ff6f10.png){style="width: 100%; max-height: 120px; object-fit: contain; margin-bottom: 0.8rem;"}](#)
+
+### Amplify Me — Finance Accelerator
+- **Programme:** Finance Accelerator Simulation Experience
+- **Issued by:** Amplify Me *(in partnership with Morgan Stanley and UBS)*
+- **Date:** November 2025
+
+[📄 View Certificate](amplifyme.png){.btn .btn-outline-secondary style="margin-top: 0.5rem; font-size: 0.85rem;"}
+:::
+
+::: {style="flex: 1; min-width: 280px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1.2rem;"}
+[![](https://img.rasset.ie/000836f5-1200.jpg){style="width: 100%; max-height: 120px; object-fit: contain; margin-bottom: 0.8rem;"}](#)
+
+### Full Irish Driving Licence
+- **Issued by:** Road Safety Authority (RSA), Ireland
+- **Date:** September 2022
+:::
+
+:::

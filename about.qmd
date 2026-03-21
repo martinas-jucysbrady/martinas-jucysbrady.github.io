@@ -157,7 +157,7 @@ This is a breakdown of the modules I have taken during my time in DCU — rangin
 :::
 
 ::: {.g-col-6 .g-col-md-6}
-<a href="https://martinas-jucysbrady.github.io/" style="text-decoration:none;">
+<a href="https://martinas-jucysbrady.github.io/certificates.qmd" style="text-decoration:none;">
 <div style="background:white; border:1px solid #e0e0f0; border-radius:14px; padding:24px 16px; text-align:center; box-shadow:0 2px 12px rgba(0,0,0,0.07); transition:transform 0.2s ease, box-shadow 0.2s ease; cursor:pointer;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(30,66,100,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 12px rgba(0,0,0,0.07)'">
   <div style="font-size:2rem; margin-bottom:10px;">🏅</div>
   <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:0.95rem; color:#1E4264;">Certifications</div>
