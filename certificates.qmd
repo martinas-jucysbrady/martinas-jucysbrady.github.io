@@ -142,7 +142,7 @@ format:
 - **Issued by:** Amplify Me *(in partnership with Morgan Stanley and UBS)*
 - **Date:** November 2025
 
-[📄 View Certificate](amplifyme.png){.btn .btn-outline-secondary style="margin-top: 0.5rem; font-size: 0.85rem;"}
+[📄 View Certificate](assets/amplifyme.png){.btn .btn-outline-secondary style="margin-top: 0.5rem; font-size: 0.85rem;"}
 :::
 
 ::: {style="flex: 1; min-width: 280px; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1.2rem;"}
