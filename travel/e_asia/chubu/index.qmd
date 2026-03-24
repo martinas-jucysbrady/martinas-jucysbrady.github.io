@@ -145,7 +145,7 @@ The ramen in Katsuyama nearby rounds out a prefecture that most people drive pas
 
 <div class="media-block" style="margin: 2rem 0;">
   <video autoplay muted loop playsinline
-         style="width: 100%; max-height: 520px; object-fit: cover; object-position: center; border-radius: 6px; display: block;">
+         style="width: 100%; max-height: 580px; object-fit: cover; object-position: center; border-radius: 6px; display: block;">
     <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/fukui_buddha.mp4" type="video/mp4" />
   </video>
   <p class="media-caption">Echizen Daibutsu — a panorama inside the most impressive temple I've been to in Japan.</p>
@@ -222,7 +222,7 @@ Shirakawa-go is a UNESCO World Heritage village in a mountain valley, and in Jan
 
 <div class="media-block" style="margin: 2rem 0;">
   <video autoplay muted loop playsinline
-         style="width: 100%; max-height: 520px; object-fit: cover; object-position: center; border-radius: 6px; display: block;">
+         style="width: 100%; max-height: 580px; object-fit: cover; object-position: center; border-radius: 6px; display: block;">
     <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/gifu_snow.mp4" type="video/mp4" />
   </video>
   <p class="media-caption">Shirakawa-go — the mountains and forest under snow, a panorama from the valley.</p>
@@ -275,7 +275,7 @@ The Suzuka Formula 1 Grand Prix in April was another exceptional experience. Suz
 
 <div class="media-block" style="margin: 2rem 0;">
   <video autoplay muted loop playsinline
-         style="width: 100%; max-height: 480px; object-fit: cover; object-position: center; border-radius: 6px; display: block;">
+         style="width: 100%; max-height: 580px; object-fit: cover; object-position: center; border-radius: 6px; display: block;">
     <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/mie_lights3.mp4" type="video/mp4" />
   </video>
   <p class="media-caption">Mt. Fuji in lights — the Nabano no Sato centrepiece being illuminated.</p>
@@ -283,17 +283,30 @@ The Suzuka Formula 1 Grand Prix in April was another exceptional experience. Suz
 
 <div class="media-block">
   <img src="mie_seki.jpg" alt="Ancient streets of Seki post town in Mie"
-       style="width: 100%; max-height: 460px; object-fit: cover; border-radius: 6px;" />
+       style="width: 100%; max-height: 560px; object-fit: cover; border-radius: 6px;" />
   <p class="media-caption">Seki post town — Edo-era streets preserved and quiet, the Tokaido road still running through it.</p>
 </div>
 
-<div class="media-block" style="margin: 2rem 0;">
-  <video autoplay muted loop playsinline
-         style="width: 100%; max-height: 520px; object-fit: cover; object-position: center; border-radius: 6px; display: block;">
+<div class="media-block" style="margin: 2rem 0; position: relative; cursor: pointer;">
+  <video id="suzuka-video" loop playsinline
+         style="width: 100%; max-height: 560px; object-fit: cover; object-position: center; border-radius: 6px; display: block;">
     <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/mie_suzuka1.mp4" type="video/mp4" />
   </video>
+  <div id="suzuka-icon" style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.5); border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; pointer-events: none;">
+    🔊
+  </div>
   <p class="media-caption">Suzuka — the Formula 1 cars through the bend, the sound arriving before they do.</p>
 </div>
+
+<script>
+  const vid = document.getElementById('suzuka-video');
+  const icon = document.getElementById('suzuka-icon');
+  vid.play();
+  vid.addEventListener('click', () => {
+    vid.muted = !vid.muted;
+    icon.textContent = vid.muted ? '🔇' : '🔊';
+  });
+</script>
 
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
   <figure style="margin: 0;">
@@ -473,7 +486,7 @@ The Kawazu Loop Bridge descends in a spiral above the Kawazu Seven Waterfalls, a
 
 <div class="media-block">
   <img src="shizuoka_familymart.jpg" alt="Family Mart with Mt Fuji in the background"
-       style="width: 100%; max-height: 460px; object-fit: cover; border-radius: 6px;" />
+       style="width: 100%; max-height: 580px; object-fit: cover; border-radius: 6px;" />
   <p class="media-caption">The iconic Family Mart with Fuji behind it — the photograph that needed to be taken.</p>
 </div>
 

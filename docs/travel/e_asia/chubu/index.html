@@ -281,7 +281,7 @@ ul.task-list li input[type="checkbox"] {
 <p>The ramen in Katsuyama nearby rounds out a prefecture that most people drive past without stopping. Stop.</p>
 </section>
 <div class="media-block" style="margin: 2rem 0;">
-<video autoplay="" muted="" loop="" playsinline="" style="width: 100%; max-height: 520px; object-fit: cover; object-position: center; border-radius: 6px; display: block;"> <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/fukui_buddha.mp4" type="video/mp4"> </video>
+<video autoplay="" muted="" loop="" playsinline="" style="width: 100%; max-height: 580px; object-fit: cover; object-position: center; border-radius: 6px; display: block;"> <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/fukui_buddha.mp4" type="video/mp4"> </video>
 <p class="media-caption">
 Echizen Daibutsu — a panorama inside the most impressive temple I’ve been to in Japan.
 </p>
@@ -352,7 +352,7 @@ Kanazawa Castle — large, well-maintained, the city below it.
 <p>Shirakawa-go is a UNESCO World Heritage village in a mountain valley, and in January under heavy snow it looks like somewhere that was imagined before it was built. The gassho-zukuri farmhouses — steeply thatched roofs designed to shed the enormous snowfall this valley receives — have been standing for centuries, and the view from the hillside above the village takes in the whole preserved settlement against a backdrop of snow-covered mountains and forest. It is one of the better views in Japan and one that rewards arriving early before the tour buses.</p>
 </section>
 <div class="media-block" style="margin: 2rem 0;">
-<video autoplay="" muted="" loop="" playsinline="" style="width: 100%; max-height: 520px; object-fit: cover; object-position: center; border-radius: 6px; display: block;"> <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/gifu_snow.mp4" type="video/mp4"> </video>
+<video autoplay="" muted="" loop="" playsinline="" style="width: 100%; max-height: 580px; object-fit: cover; object-position: center; border-radius: 6px; display: block;"> <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/gifu_snow.mp4" type="video/mp4"> </video>
 <p class="media-caption">
 Shirakawa-go — the mountains and forest under snow, a panorama from the valley.
 </p>
@@ -399,23 +399,35 @@ The garden illuminations — scale and quality that earns the visit.
 </figure>
 </div>
 <div class="media-block" style="margin: 2rem 0;">
-<video autoplay="" muted="" loop="" playsinline="" style="width: 100%; max-height: 480px; object-fit: cover; object-position: center; border-radius: 6px; display: block;"> <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/mie_lights3.mp4" type="video/mp4"> </video>
+<video autoplay="" muted="" loop="" playsinline="" style="width: 100%; max-height: 580px; object-fit: cover; object-position: center; border-radius: 6px; display: block;"> <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/mie_lights3.mp4" type="video/mp4"> </video>
 <p class="media-caption">
 Mt. Fuji in lights — the Nabano no Sato centrepiece being illuminated.
 </p>
 </div>
 <div class="media-block">
-<img src="mie_seki.jpg" alt="Ancient streets of Seki post town in Mie" style="width: 100%; max-height: 460px; object-fit: cover; border-radius: 6px;">
+<img src="mie_seki.jpg" alt="Ancient streets of Seki post town in Mie" style="width: 100%; max-height: 560px; object-fit: cover; border-radius: 6px;">
 <p class="media-caption">
 Seki post town — Edo-era streets preserved and quiet, the Tokaido road still running through it.
 </p>
 </div>
-<div class="media-block" style="margin: 2rem 0;">
-<video autoplay="" muted="" loop="" playsinline="" style="width: 100%; max-height: 520px; object-fit: cover; object-position: center; border-radius: 6px; display: block;"> <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/mie_suzuka1.mp4" type="video/mp4"> </video>
+<div class="media-block" style="margin: 2rem 0; position: relative; cursor: pointer;">
+<video id="suzuka-video" loop="" playsinline="" style="width: 100%; max-height: 560px; object-fit: cover; object-position: center; border-radius: 6px; display: block;"> <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/mie_suzuka1.mp4" type="video/mp4"> </video>
+<div id="suzuka-icon" style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.5); border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; pointer-events: none;">
+<pre><code>🔊</code></pre>
+</div>
 <p class="media-caption">
 Suzuka — the Formula 1 cars through the bend, the sound arriving before they do.
 </p>
 </div>
+<script>
+  const vid = document.getElementById('suzuka-video');
+  const icon = document.getElementById('suzuka-icon');
+  vid.play();
+  vid.addEventListener('click', () => {
+    vid.muted = !vid.muted;
+    icon.textContent = vid.muted ? '🔇' : '🔊';
+  });
+</script>
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
 <figure style="margin: 0;" class="figure">
 <img src="mie_suzuka2.jpg" alt="Walking the Suzuka circuit track" style="width: 100%; height: 480px; object-fit: cover; border-radius: 6px;" class="figure-img">
@@ -584,7 +596,7 @@ Iwamoto Mountain Park — Fuji framed differently, just as good.
 </figure>
 </div>
 <div class="media-block">
-<img src="shizuoka_familymart.jpg" alt="Family Mart with Mt Fuji in the background" style="width: 100%; max-height: 460px; object-fit: cover; border-radius: 6px;">
+<img src="shizuoka_familymart.jpg" alt="Family Mart with Mt Fuji in the background" style="width: 100%; max-height: 580px; object-fit: cover; border-radius: 6px;">
 <p class="media-caption">
 The iconic Family Mart with Fuji behind it — the photograph that needed to be taken.
 </p>
