@@ -1,12 +1,25 @@
 ---
 title: "About"
-description: |
-    My name is Martinas and I am a fourth year student in DCU doing BA in Business Studies - International. My choice of language is Japanese, and I am specialising in data analytics.
 ---
+
+:::: {.columns}
+
+::: {.column width="35%"}
+![](images/myphoto_about.jpg){style="border-radius: 8px; width: 100%;"}
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="60%"}
+I'm Martinas Jucys Brady, a fourth-year Business Studies International student at Dublin City University, specialising in data analytics and studying Japanese. I'm interested in how data can support better business decisions and how international perspective shapes those decisions in practice. This page gives a quick overview of my studies, interests, and the skills I'm developing as I move towards data-focused roles with a global outlook.
+:::
+
+::::
 
 ## Undergraduate Studies
 
-This is a breakdown of the modules I have taken during my time in DCU — ranging from business and economics to languages and data analytics.
+During my studies at DCU and Kobe University, I completed modules across broad areas of business, economics, languages and data analytics. Each module highlights key projects, assignments, and presentations that best represent my work.
 
 :::: {.grid}
 
@@ -49,6 +62,8 @@ This is a breakdown of the modules I have taken during my time in DCU — rangin
 ::::
 
 ## Hobbies & Interests
+
+This section highlights some of the interests that shape my life outside of university. Travel brings together the countries and cities I’ve visited, while sport focuses on the games and teams I follow (rather than play). Food showcases dishes I enjoy cooking and improving over time, and Books collects what I’ve been reading, along with short reflections on each.
 
 :::: {.grid}
 
@@ -93,6 +108,8 @@ This is a breakdown of the modules I have taken during my time in DCU — rangin
 ---
 
 ## Skills & Qualifications
+
+This section outlines the skills and qualifications I’m actively developing alongside my degree. In Languages, I track the languages I use and am continuously working to improve. In Certificates, I highlight courses and credentials that support my professional growth, focusing on building strong foundations in analytical and business-related skills.
 
 :::: {.grid}
 
