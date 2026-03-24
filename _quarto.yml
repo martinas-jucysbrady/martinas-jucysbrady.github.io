@@ -45,6 +45,7 @@ website:
     title: false
     pinned: true
     logo: assets/mjb_favicon.png
+    search: false
     right:
       - href: projects.qmd
         icon: file-earmark-text

@@ -84,7 +84,6 @@ ul.task-list li input[type="checkbox"] {
     <img src="../../../assets/mjb_favicon.png" alt="" class="navbar-logo dark-content">
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -471,10 +470,13 @@ The aquarium toilet — surrounded by fish tanks on three sides. An experience.
 </figure>
 </div>
 <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 2rem 0;">
-<figure style="margin: 0;" class="figure">
-<video autoplay="" muted="" loop="" playsinline="" style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px; display: block;">
+<figure style="margin: 0; position: relative; cursor: pointer;" class="figure">
+<video id="vissel-gamba" autoplay="" muted="" loop="" playsinline="" style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px; display: block;">
 <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/vissel_gamba.mp4" type="video/mp4">
 </video>
+<div id="vissel-gamba-icon" style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.5); border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; pointer-events: none;">
+🔇
+</div>
 <figcaption class="media-caption">
 Vissel Kobe v Gamba Osaka — the derby, the atmosphere.
 </figcaption>
@@ -487,15 +489,28 @@ Vissel Kobe v Gamba Osaka — the derby, the atmosphere.
 Vissel Kobe v Barcelona — a preseason friendly that delivered.
 </figcaption>
 </figure>
-<figure style="margin: 0;" class="figure">
-<video autoplay="" muted="" loop="" playsinline="" style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px; display: block;">
+<figure style="margin: 0; position: relative; cursor: pointer;" class="figure">
+<video id="hanshin-orix" autoplay="" muted="" loop="" playsinline="" style="width: 100%; height: 380px; object-fit: cover; border-radius: 6px; display: block;">
 <source src="https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io/releases/download/v1.0-media/hanshin_orix.mp4" type="video/mp4">
 </video>
+<div id="hanshin-orix-icon" style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.5); border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; pointer-events: none;">
+🔇
+</div>
 <figcaption class="media-caption">
 Hanshin Tigers v Orix Buffaloes — Japanese baseball at full volume.
 </figcaption>
 </figure>
 </div>
+<script>
+  ['vissel-gamba', 'hanshin-orix'].forEach(id => {
+    const vid = document.getElementById(id);
+    const icon = document.getElementById(id + '-icon');
+    vid.addEventListener('click', () => {
+      vid.muted = !vid.muted;
+      icon.textContent = vid.muted ? '🔇' : '🔊';
+    });
+  });
+</script>
 <div class="pull-quote">
 <p>“Kobe was home for twelve months, and the city earned that designation without much effort.”</p>
 </div>
