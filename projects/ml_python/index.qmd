@@ -83,7 +83,7 @@ The classification of brain tumours from MRI images is heavily covered by existi
 
 ---
 
-## 3.Methodology
+## 3. Methodology
 
 ### *3.1 Dataset*
 
@@ -303,7 +303,7 @@ This study combined PCA-based dimensionality reduction with an ensemble of super
 
 ---
 
-## 7.Bibliography
+## 7. Bibliography
 
 ::: {#refs}
 :::
