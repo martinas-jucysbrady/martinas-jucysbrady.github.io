@@ -21,21 +21,39 @@ about:
   links:
     - icon: file-earmark-pdf
       text: Research Paper PDF
-      href: projects/ml_python/Martinas_JucysBrady_22330516_ResearchPaper.pdf
+      href: projects/ml_python/research_paper.pdf
     - icon: code-slash
       text: Source Code (.py)
-      href: projects/ml_python/Martinas_JucysBrady_22330516_Code.py
+      href: projects/ml_python/research_code.py
 ---
+```{=html}
+<style>
+#quarto-document-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-right: 50px;
+}
+#quarto-margin-sidebar {
+  position: fixed;
+  right: 1rem;
+  top: 70px;
+  width: 220px;
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
+}
+</style>
+```
+
+![Brain Tumour MRI](/projects/ml_python/MRI.jpg){width="40%"}
 
 ---
-
-## Abstract
+## 0. Abstract
 
 Brain tumours are among the most life-threatening diseases, and their accurate classification is essential for effective and timely treatment planning. This study presents a machine learning framework for the automated classification of brain tumours from MRI scans into four categories: glioma, meningioma, pituitary tumour and no tumour. The approach flattens raw MRI images into high-dimensional feature vectors, applies PCA for dimensionality reduction while retaining 95% of the explained variance, and classifies the reduced features using four machine learning algorithms — SVM, Random Forest, KNN and Naïve Bayes — further combined through an ensemble model. The framework is evaluated on a Brain Tumor Classification MRI dataset from Kaggle containing 3,264 MRI images. KNN achieved the highest individual accuracy of 76.4%, followed by a three-model ensemble (SVM, RF and KNN) at 75.4%. The findings confirm that PCA-based dimensionality reduction combined with ensemble classification provides an efficient and viable approach for brain tumour classification.
 
 ---
 
-## Introduction
+## 1. Introduction
 
 Brain tumours are one of the most life-threatening types of diseases, occurring through an abnormal growth of cells inside the brain or its surrounding bone and tissue. They can be broadly categorised as benign or malignant and graded on a scale of I to IV [@pichaivel2022]. Accurate classification is critical in determining the best treatment pathway and increasing the likelihood of patient survival.
 
@@ -47,7 +65,7 @@ This study proposes an alternative approach that relies on classical machine lea
 
 ---
 
-## Related Works
+## 2. Related Works
 
 The classification of brain tumours from MRI images is heavily covered by existing studies using both machine learning and deep learning approaches.
 
@@ -65,9 +83,9 @@ The classification of brain tumours from MRI images is heavily covered by existi
 
 ---
 
-## Methodology
+## 3.Methodology
 
-### Dataset
+### *3.1 Dataset*
 
 The dataset used is the Brain Tumor Classification (MRI) dataset from Kaggle [@bhuvaji2020], containing 3,264 contrast-enhanced MRI images split into four classes:
 
@@ -112,17 +130,17 @@ plt.tight_layout()
 plt.show()
 ```
 
-### Preprocessing
+### *3.2 Preprocessing*
 
 All images were resized to 128×128 pixels and converted to RGB format to ensure uniformity across the dataset. Pixel values were normalised to [0, 1] by dividing by 255, ensuring all features are on the same scale and preventing any single feature from dominating. Text labels such as `glioma_tumor` were converted to numerical encodings using scikit-learn's `LabelEncoder`.
 
-### Initial CNN and Overfitting Issue
+### *3.3 Initial CNN and Overfitting Issue*
 
 Initially, a Convolutional Neural Network (CNN) was built and trained on the dataset, containing three convolutional blocks with 32, 64 and 128 filters, batch normalisation, max pooling, dropout, and data augmentation. Despite these measures, the CNN persistently overfitted. Training accuracy reached ~75% while validation accuracy remained around 29%, with validation loss increasing each epoch — a clear indicator of overfitting on a dataset too small to train a CNN from scratch.
 
 This experience prompted a switch to a PCA-based approach. Rather than learning spatial features through convolutional layers, each image is treated as a flat pixel vector and PCA is used to extract the most important patterns. While this sacrifices spatial relationship capture, it avoids overfitting and allows classical machine learning algorithms better suited to smaller datasets.
 
-### Feature Extraction and Dimensionality Reduction
+### *3.4 Feature Extraction and Dimensionality Reduction*
 
 Each 128×128 RGB image was flattened into a vector of 49,152 dimensions. This high dimensionality increases computational cost, encourages overfitting, and causes the *curse of dimensionality* — particularly problematic for KNN, which relies on distance measurements.
 
@@ -154,7 +172,7 @@ plt.show()
 
 > **Note:** The curve above is a representative illustration of the PCA explained variance behaviour. The full dataset pipeline requires the Kaggle MRI dataset to be available locally at runtime. See [Source Code](#) for the complete executable version.
 
-### Classification Algorithms
+### *3.5 Classification Algorithms*
 
 Four algorithms were selected, each representing a distinct approach to classification, guided by the scikit-learn estimator selection guide [@sklearnmap]:
 
@@ -166,19 +184,18 @@ Four algorithms were selected, each representing a distinct approach to classifi
 
 **Naïve Bayes** was included deliberately as a control classifier expected to perform poorly. Its independence assumption does not hold for image data where neighbouring pixel values are highly correlated. If Naïve Bayes performed well unexpectedly, it would suggest data leakage or another issue with the data.
 
-### Ensemble Classification
+### *3.6 Ensemble Classification*
 
 The four classifiers were combined using scikit-learn's `VotingClassifier` with soft voting, leveraging SVM's boundary-finding ability, Random Forest's robustness, and KNN's pattern sensitivity. Two ensembles were evaluated: a four-model ensemble and a three-model ensemble excluding Naïve Bayes, to assess whether a weak classifier degrades overall ensemble performance.
 
-### Evaluation Metrics
+### *3.7 Evaluation Metrics*
 
 Models were evaluated using accuracy, precision, recall and F1 score with weighted averaging. In a medical context, precision (avoiding false positives) and recall (avoiding missed diagnoses) are both critically important — false positives can cause unnecessary patient stress and treatment, while false negatives lead to delayed diagnosis. F1 score provides a single combined metric. Confusion matrices were also generated for per-class performance analysis.
 
 ---
 
-## Results
-
-### Classification Results
+## 4. Results
+### *4.1 Classification Results*
 
 The table below summarises the performance of all six models across accuracy, precision, recall and F1 score.
 
@@ -207,7 +224,7 @@ df_styled = df.style\
 df_styled
 ```
 
-### Model Comparison Visualisation
+### *4.2 Model Comparison Visualisation*
 
 ```{python}
 #| label: fig-comparison
@@ -238,7 +255,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-### Three-Model Ensemble: Per-Class Breakdown
+### *4.3 Three-Model Ensemble: Per-Class Breakdown*
 
 ```{python}
 #| label: tbl-perclass
@@ -260,7 +277,7 @@ df_pc.style\
     .set_table_styles([{'selector': 'th', 'props': [('text-align', 'center')]}])
 ```
 
-### Discussion
+### *4.4 Discussion*
 
 These results reveal several important findings. KNN achieved the highest individual accuracy at 76.4%, closely followed by Random Forest at 75.1% and SVM at 72.8%. The three-model ensemble (SVM, RF and KNN) achieved 75.4%, improving on the individual SVM and Random Forest values. This supports the finding that ensemble methods consistently outperform single-model approaches by leveraging complementary classifier strengths [@alshomrani2025].
 
@@ -272,7 +289,7 @@ The overall accuracy of ~76% is lower than the 95%+ reported by deep learning mo
 
 ---
 
-## Limitations
+## 5. Limitations
 
 The dataset is relatively small (3,264 images) and exhibits a clear class imbalance, with the no tumour class underrepresented. The PCA-based approach discards spatial information critical for distinguishing visually similar tumour types. Future work could incorporate texture-based feature extraction methods such as Histogram of Oriented Gradients, or employ pretrained CNNs [@aamir2022].
 
@@ -280,13 +297,13 @@ This study only classifies four categories, representing a small subset of the m
 
 ---
 
-## Conclusion
+## 6. Conclusion
 
 This study combined PCA-based dimensionality reduction with an ensemble of supervised learning algorithms for brain tumour classification. PCA reduced the 49,152-dimensional image feature space to just 726 components while retaining 95% of the variance. KNN achieved the highest individual accuracy at 76.4%, and the three-model ensemble (SVM, RF, KNN) achieved 75.4%. Naïve Bayes, as expected, proved unsuitable for image classification due to its independence assumption, and its inclusion degraded the four-model ensemble. Per-class analysis confirmed that glioma tumours remain particularly difficult to classify, consistent with the broader literature. The findings confirm that PCA combined with ensemble learning is a viable and efficient approach for brain tumour classification, though accuracy remains well below deep learning methods. Future work should explore more complex feature extraction with larger datasets.
 
 ---
 
-## Bibliography
+## 7.Bibliography
 
 ::: {#refs}
 :::
