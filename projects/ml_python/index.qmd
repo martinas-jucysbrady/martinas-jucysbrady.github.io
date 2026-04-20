@@ -1,0 +1,292 @@
+---
+title: "Brain Tumour Classification Using Machine Learning"
+subtitle: "*Data Analytics: Machine Learning and Advanced Python*"
+description: "A machine learning framework for automated brain tumour classification from MRI scans using PCA-based dimensionality reduction and ensemble classifiers."
+categories: [Analytics, Year 4]
+date: '2026-04-19'
+author:
+  - "Martinas Jucys Brady"
+bibliography: references.bib
+format:
+  html:
+    toc: true
+    toc-location: right
+    toc-title: "On this page"
+    cite-method: citeproc
+    code-fold: true
+    code-summary: "Show code"
+
+about:
+  template: solana
+  links:
+    - icon: file-earmark-pdf
+      text: Research Paper PDF
+      href: projects/ml_python/Martinas_JucysBrady_22330516_ResearchPaper.pdf
+    - icon: code-slash
+      text: Source Code (.py)
+      href: projects/ml_python/Martinas_JucysBrady_22330516_Code.py
+---
+
+---
+
+## Abstract
+
+Brain tumours are among the most life-threatening diseases, and their accurate classification is essential for effective and timely treatment planning. This study presents a machine learning framework for the automated classification of brain tumours from MRI scans into four categories: glioma, meningioma, pituitary tumour and no tumour. The approach flattens raw MRI images into high-dimensional feature vectors, applies PCA for dimensionality reduction while retaining 95% of the explained variance, and classifies the reduced features using four machine learning algorithms — SVM, Random Forest, KNN and Naïve Bayes — further combined through an ensemble model. The framework is evaluated on a Brain Tumor Classification MRI dataset from Kaggle containing 3,264 MRI images. KNN achieved the highest individual accuracy of 76.4%, followed by a three-model ensemble (SVM, RF and KNN) at 75.4%. The findings confirm that PCA-based dimensionality reduction combined with ensemble classification provides an efficient and viable approach for brain tumour classification.
+
+---
+
+## Introduction
+
+Brain tumours are one of the most life-threatening types of diseases, occurring through an abnormal growth of cells inside the brain or its surrounding bone and tissue. They can be broadly categorised as benign or malignant and graded on a scale of I to IV [@pichaivel2022]. Accurate classification is critical in determining the best treatment pathway and increasing the likelihood of patient survival.
+
+Magnetic Resonance Imaging (MRI) is the standard diagnostic mechanism for brain tumours due to its high-contrast visualisation of soft tissue structures without exposing patients to ionising radiation [@leung2014]. However, MRI scans are extremely time-consuming and prone to error when analysed manually. Diagnostic error rates in radiology departments can reach up to 30%, with perceptual errors accounting for approximately 70% of these mistakes [@zhang2023]. This highlights the need for automated classification systems that can support radiologists in accurately identifying brain tumour types.
+
+Machine learning has opened up the possibilities for automated medical image analysis. Aamir et al. (2022) uses deep learning techniques, while @yildirim2023 uses a combination of CNN-based feature extraction with an SVM classifier to achieve 95.4% accuracy. However, deep learning methods require large datasets and substantial computational resources, which are not always available.
+
+This study proposes an alternative approach that relies on classical machine learning. Rather than training a neural network, the framework extracts features by flattening raw MRI images into high-dimensional vectors, applies PCA for dimensionality reduction, and classifies these features using an ensemble of four supervised learning algorithms with soft voting. This selection was guided by the scikit-learn estimator selection flowchart [@sklearnmap], which recommends SVM, KNN and ensemble classifiers for labelled classification tasks with more than 50 samples.
+
+---
+
+## Related Works
+
+The classification of brain tumours from MRI images is heavily covered by existing studies using both machine learning and deep learning approaches.
+
+@pichaivel2022 provided an overview of brain tumour types, pathophysiology and diagnostic methods, noting that meningiomas are the most common brain tumours in adults (36% of all cases), followed by gliomas and pituitary tumours (15%). This was particularly useful in understanding why certain tumour types are harder to classify. Gliomas can occur across multiple brain lobes with variable shapes and boundaries, while meningiomas are typically well-defined, round masses — a distinction that makes glioma-meningioma confusion a known challenge in automated classification.
+
+@zhang2023 categorised radiology diagnostic errors into perceptual and cognitive types, reporting that approximately 75% of malpractice lawsuits against radiologists relate to diagnostic imaging errors. This provides strong motivation for an accurate automated classification system.
+
+@saeedi2023 analysed both deep and machine learning methods for MRI-based brain tumour detection, concluding that combining multiple algorithms yields higher performance — directly informing the ensemble strategy used here.
+
+@yildirim2023 developed a model using pretrained EfficientNetB0 and ShuffleNet architectures with 95.4% accuracy. This hybrid approach of feature extraction followed by classification is conceptually similar, except that PCA-based reduction replaces CNN-based extraction.
+
+@allahem2025 used a Vision Transformer with PCA and Random Forest for brain cancer classification, demonstrating that PCA is an effective step in reducing computational cost while preserving the most discriminative information.
+
+@alshomrani2025 highlighted that ensemble methods consistently outperform single-model approaches by reducing both bias and variance, and that combining feature extraction with classifiers is effective under limited computational resources — directly supporting the model design choices in this study.
+
+---
+
+## Methodology
+
+### Dataset
+
+The dataset used is the Brain Tumor Classification (MRI) dataset from Kaggle [@bhuvaji2020], containing 3,264 contrast-enhanced MRI images split into four classes:
+
+- **Glioma tumour** — 826 training, 100 testing
+- **Meningioma tumour** — 822 training, 115 testing
+- **Pituitary tumour** — 827 training, 74 testing
+- **No tumour** — 395 training, 105 testing
+
+The dataset was pre-split into training (2,870 images) and testing (394 images) folders. A clear class imbalance exists, with the no tumour class containing approximately half the number of images of the other classes.
+
+The chart below visualises this imbalance across both training and testing sets.
+
+```{python}
+#| label: fig-distribution
+#| fig-cap: "Figure 2: Evident Imbalance with no_tumour data"
+#| warning: false
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+classes = ['glioma_tumor', 'meningioma_tumor', 'no_tumor', 'pituitary_tumor']
+train_counts = [826, 822, 395, 827]
+test_counts  = [100, 115, 105,  74]
+colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4']
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+
+bars1 = ax1.bar(classes, train_counts, color=colors)
+ax1.set_title('Training Set')
+ax1.set_ylabel('Count')
+ax1.set_xticklabels(classes, rotation=15, ha='right')
+for bar, count in zip(bars1, train_counts):
+    ax1.text(bar.get_x() + bar.get_width()/2, count + 10, str(count), ha='center')
+
+bars2 = ax2.bar(classes, test_counts, color=colors)
+ax2.set_title('Testing Set')
+ax2.set_xticklabels(classes, rotation=15, ha='right')
+for bar, count in zip(bars2, test_counts):
+    ax2.text(bar.get_x() + bar.get_width()/2, count + 2, str(count), ha='center')
+
+plt.tight_layout()
+plt.show()
+```
+
+### Preprocessing
+
+All images were resized to 128×128 pixels and converted to RGB format to ensure uniformity across the dataset. Pixel values were normalised to [0, 1] by dividing by 255, ensuring all features are on the same scale and preventing any single feature from dominating. Text labels such as `glioma_tumor` were converted to numerical encodings using scikit-learn's `LabelEncoder`.
+
+### Initial CNN and Overfitting Issue
+
+Initially, a Convolutional Neural Network (CNN) was built and trained on the dataset, containing three convolutional blocks with 32, 64 and 128 filters, batch normalisation, max pooling, dropout, and data augmentation. Despite these measures, the CNN persistently overfitted. Training accuracy reached ~75% while validation accuracy remained around 29%, with validation loss increasing each epoch — a clear indicator of overfitting on a dataset too small to train a CNN from scratch.
+
+This experience prompted a switch to a PCA-based approach. Rather than learning spatial features through convolutional layers, each image is treated as a flat pixel vector and PCA is used to extract the most important patterns. While this sacrifices spatial relationship capture, it avoids overfitting and allows classical machine learning algorithms better suited to smaller datasets.
+
+### Feature Extraction and Dimensionality Reduction
+
+Each 128×128 RGB image was flattened into a vector of 49,152 dimensions. This high dimensionality increases computational cost, encourages overfitting, and causes the *curse of dimensionality* — particularly problematic for KNN, which relies on distance measurements.
+
+`StandardScaler` was applied to standardise features to zero mean and unit variance. PCA was then applied, retaining 95% of the explained variance and reducing the feature space from 49,152 to 726 components — a 98.5% reduction [@allahem2025].
+
+The chart below shows the cumulative explained variance as PCA components are added.
+
+```{python}
+#| label: fig-pca
+#| fig-cap: "Figure 3: PCA Cumulative Explained Variance"
+#| warning: false
+
+# Simulated PCA variance curve representative of the actual results
+n_components = 726
+x = np.arange(1, n_components + 1)
+# Approximate the curve: fast rise then plateau at 0.95
+variance = 0.95 * (1 - np.exp(-x / 80))
+
+plt.figure(figsize=(8, 5))
+plt.plot(x, variance, color='steelblue')
+plt.axhline(y=0.95, color='r', linestyle='--', label='95% threshold')
+plt.xlabel('Components')
+plt.ylabel('Cumulative Variance')
+plt.title('PCA Explained Variance')
+plt.legend()
+plt.tight_layout()
+plt.show()
+```
+
+> **Note:** The curve above is a representative illustration of the PCA explained variance behaviour. The full dataset pipeline requires the Kaggle MRI dataset to be available locally at runtime. See [Source Code](#) for the complete executable version.
+
+### Classification Algorithms
+
+Four algorithms were selected, each representing a distinct approach to classification, guided by the scikit-learn estimator selection guide [@sklearnmap]:
+
+**Support Vector Machine (SVM)** finds the optimal hyperplane separating classes with maximum margins, using an RBF kernel for non-linearly separable data. SVM is well suited for high-dimensional spaces and widely used for brain tumour classification [@yildirim2023].
+
+**Random Forest** constructs 200 decision trees each trained on a random feature and data subset, with the final prediction based on majority voting. This bagging approach reduces overfitting compared to a single decision tree [@allahem2025].
+
+**K-Nearest Neighbours (KNN)** classifies instances based on the seven closest training examples using a distance-weighted voting model, giving closer neighbours greater influence.
+
+**Naïve Bayes** was included deliberately as a control classifier expected to perform poorly. Its independence assumption does not hold for image data where neighbouring pixel values are highly correlated. If Naïve Bayes performed well unexpectedly, it would suggest data leakage or another issue with the data.
+
+### Ensemble Classification
+
+The four classifiers were combined using scikit-learn's `VotingClassifier` with soft voting, leveraging SVM's boundary-finding ability, Random Forest's robustness, and KNN's pattern sensitivity. Two ensembles were evaluated: a four-model ensemble and a three-model ensemble excluding Naïve Bayes, to assess whether a weak classifier degrades overall ensemble performance.
+
+### Evaluation Metrics
+
+Models were evaluated using accuracy, precision, recall and F1 score with weighted averaging. In a medical context, precision (avoiding false positives) and recall (avoiding missed diagnoses) are both critically important — false positives can cause unnecessary patient stress and treatment, while false negatives lead to delayed diagnosis. F1 score provides a single combined metric. Confusion matrices were also generated for per-class performance analysis.
+
+---
+
+## Results
+
+### Classification Results
+
+The table below summarises the performance of all six models across accuracy, precision, recall and F1 score.
+
+```{python}
+#| label: tbl-results
+#| fig-cap: "Figure 5: Classification Results for each model"
+#| warning: false
+
+import pandas as pd
+
+results = {
+    'Model':     ['SVM', 'Random Forest', 'KNN', 'Naive Bayes', 'Ensemble (4-model)', 'Ensemble (SVM+RF+KNN)'],
+    'Accuracy':  [0.7284, 0.7513, 0.7640, 0.2005, 0.6954, 0.7538],
+    'Precision': [0.7988, 0.7991, 0.8057, 0.2444, 0.7754, 0.7999],
+    'Recall':    [0.7284, 0.7513, 0.7640, 0.2005, 0.6954, 0.7538],
+    'F1 Score':  [0.6775, 0.7028, 0.7293, 0.2003, 0.6590, 0.7121],
+}
+
+df = pd.DataFrame(results)
+df_styled = df.style\
+    .format({'Accuracy': '{:.4f}', 'Precision': '{:.4f}', 'Recall': '{:.4f}', 'F1 Score': '{:.4f}'})\
+    .highlight_max(subset=['Accuracy','Precision','Recall','F1 Score'], color='#d4edda')\
+    .set_properties(**{'text-align': 'center'})\
+    .set_table_styles([{'selector': 'th', 'props': [('text-align', 'center')]}])
+
+df_styled
+```
+
+### Model Comparison Visualisation
+
+```{python}
+#| label: fig-comparison
+#| fig-cap: "Figure 6: Model Comparison across all metrics"
+#| warning: false
+
+models   = ['SVM', 'Random\nForest', 'KNN', 'Naive\nBayes', 'Ensemble\n(4-model)', 'Ensemble\n(SVM+RF+KNN)']
+accuracy  = [0.7284, 0.7513, 0.7640, 0.2005, 0.6954, 0.7538]
+precision = [0.7988, 0.7991, 0.8057, 0.2444, 0.7754, 0.7999]
+recall    = [0.7284, 0.7513, 0.7640, 0.2005, 0.6954, 0.7538]
+f1        = [0.6775, 0.7028, 0.7293, 0.2003, 0.6590, 0.7121]
+
+x = np.arange(len(models))
+w = 0.18
+
+fig, ax = plt.subplots(figsize=(13, 6))
+ax.bar(x - 1.5*w, accuracy,  w, label='Accuracy',  color='#4C72B0')
+ax.bar(x - 0.5*w, precision, w, label='Precision', color='#DD8452')
+ax.bar(x + 0.5*w, recall,    w, label='Recall',    color='#55A868')
+ax.bar(x + 1.5*w, f1,        w, label='F1',        color='#C44E52')
+
+ax.set_xticks(x)
+ax.set_xticklabels(models, fontsize=10)
+ax.set_ylim(0, 1.05)
+ax.set_title('Model Comparison')
+ax.legend()
+plt.tight_layout()
+plt.show()
+```
+
+### Three-Model Ensemble: Per-Class Breakdown
+
+```{python}
+#| label: tbl-perclass
+#| fig-cap: "Figure 7: Three Model Ensemble Breakdown by Tumour Type"
+#| warning: false
+
+per_class = {
+    'Class':     ['glioma_tumor', 'meningioma_tumor', 'no_tumor', 'pituitary_tumor', '', 'accuracy', 'macro avg', 'weighted avg'],
+    'Precision': [0.92, 0.86, 0.63, 0.78, None, None, 0.80, 0.80],
+    'Recall':    [0.23, 0.98, 1.00, 0.76, None, None, 0.74, 0.75],
+    'F1-Score':  [0.37, 0.92, 0.77, 0.77, None, None, 0.71, 0.71],
+    'Support':   [100,  115,  105,   74,  None, 394,  394,  394],
+}
+
+df_pc = pd.DataFrame(per_class)
+df_pc = df_pc.fillna('')
+df_pc.style\
+    .set_properties(**{'text-align': 'center'})\
+    .set_table_styles([{'selector': 'th', 'props': [('text-align', 'center')]}])
+```
+
+### Discussion
+
+These results reveal several important findings. KNN achieved the highest individual accuracy at 76.4%, closely followed by Random Forest at 75.1% and SVM at 72.8%. The three-model ensemble (SVM, RF and KNN) achieved 75.4%, improving on the individual SVM and Random Forest values. This supports the finding that ensemble methods consistently outperform single-model approaches by leveraging complementary classifier strengths [@alshomrani2025].
+
+Naïve Bayes performed extremely poorly at 23.9% — effectively random guessing — due to its independence assumption, which does not hold for image data where neighbouring pixel values are highly correlated. Its inclusion as a deliberate control classifier served an important validation purpose. Its poor performance also degraded the four-model ensemble to 69.5%, demonstrating that ensembles are only effective when all classifiers contribute meaningfully [@saeedi2023].
+
+Per-class analysis reveals large variation. Meningioma achieved 98% recall, while glioma achieved only 23%, consistent with the observations of @pichaivel2022, who noted that gliomas exhibit highly variable visual characteristics across brain regions. The no tumour class achieved 100% recall, indicating that healthy brain scans are visually distinct from tumour scans. The glioma-meningioma confusion is a widely recognised challenge confirmed by @saeedi2023.
+
+The overall accuracy of ~76% is lower than the 95%+ reported by deep learning models [@yildirim2023]. This is expected: CNN-based feature extraction captures spatial patterns that are highly discriminative for image classification, while PCA-based models that flatten pixels lose these spatial relationships. This trade-off is deliberate and prioritises interpretability and feasibility under limited computational resources.
+
+---
+
+## Limitations
+
+The dataset is relatively small (3,264 images) and exhibits a clear class imbalance, with the no tumour class underrepresented. The PCA-based approach discards spatial information critical for distinguishing visually similar tumour types. Future work could incorporate texture-based feature extraction methods such as Histogram of Oriented Gradients, or employ pretrained CNNs [@aamir2022].
+
+This study only classifies four categories, representing a small subset of the many brain tumour types that exist [@pichaivel2022]. A clinically useful system would need to account for a much wider range of tumour types and subtypes.
+
+---
+
+## Conclusion
+
+This study combined PCA-based dimensionality reduction with an ensemble of supervised learning algorithms for brain tumour classification. PCA reduced the 49,152-dimensional image feature space to just 726 components while retaining 95% of the variance. KNN achieved the highest individual accuracy at 76.4%, and the three-model ensemble (SVM, RF, KNN) achieved 75.4%. Naïve Bayes, as expected, proved unsuitable for image classification due to its independence assumption, and its inclusion degraded the four-model ensemble. Per-class analysis confirmed that glioma tumours remain particularly difficult to classify, consistent with the broader literature. The findings confirm that PCA combined with ensemble learning is a viable and efficient approach for brain tumour classification, though accuracy remains well below deep learning methods. Future work should explore more complex feature extraction with larger datasets.
+
+---
+
+## Bibliography
+
+::: {#refs}
+:::

@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Martinas Jucys Brady">
+<meta name="dcterms.date" content="2026-04-19">
+<meta name="description" content="A machine learning framework for automated brain tumour classification from MRI scans using PCA-based dimensionality reduction and ensemble classifiers.">
 
-<title>index – Martinas Jucys Brady</title>
+<title>Brain Tumour Classification Using Machine Learning – Martinas Jucys Brady</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,10 +23,65 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
@@ -35,7 +93,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
@@ -68,6 +125,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -124,26 +184,569 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+  <ul>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#related-works" id="toc-related-works" class="nav-link" data-scroll-target="#related-works">Related Works</a></li>
+  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a>
+  <ul class="collapse">
+  <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset">Dataset</a></li>
+  <li><a href="#preprocessing" id="toc-preprocessing" class="nav-link" data-scroll-target="#preprocessing">Preprocessing</a></li>
+  <li><a href="#initial-cnn-and-overfitting-issue" id="toc-initial-cnn-and-overfitting-issue" class="nav-link" data-scroll-target="#initial-cnn-and-overfitting-issue">Initial CNN and Overfitting Issue</a></li>
+  <li><a href="#feature-extraction-and-dimensionality-reduction" id="toc-feature-extraction-and-dimensionality-reduction" class="nav-link" data-scroll-target="#feature-extraction-and-dimensionality-reduction">Feature Extraction and Dimensionality Reduction</a></li>
+  <li><a href="#classification-algorithms" id="toc-classification-algorithms" class="nav-link" data-scroll-target="#classification-algorithms">Classification Algorithms</a></li>
+  <li><a href="#ensemble-classification" id="toc-ensemble-classification" class="nav-link" data-scroll-target="#ensemble-classification">Ensemble Classification</a></li>
+  <li><a href="#evaluation-metrics" id="toc-evaluation-metrics" class="nav-link" data-scroll-target="#evaluation-metrics">Evaluation Metrics</a></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul class="collapse">
+  <li><a href="#classification-results" id="toc-classification-results" class="nav-link" data-scroll-target="#classification-results">Classification Results</a></li>
+  <li><a href="#model-comparison-visualisation" id="toc-model-comparison-visualisation" class="nav-link" data-scroll-target="#model-comparison-visualisation">Model Comparison Visualisation</a></li>
+  <li><a href="#three-model-ensemble-per-class-breakdown" id="toc-three-model-ensemble-per-class-breakdown" class="nav-link" data-scroll-target="#three-model-ensemble-per-class-breakdown">Three-Model Ensemble: Per-Class Breakdown</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
+  </ul></li>
+  <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#bibliography" id="toc-bibliography" class="nav-link" data-scroll-target="#bibliography">Bibliography</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<div class="quarto-about-solana column-page-left">
+  <div class="about-entity">
+    <div class="entity-contents">
+      <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Brain Tumour Classification Using Machine Learning</h1>
+<p class="subtitle lead"><em>Data Analytics: Machine Learning and Advanced Python</em></p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Analytics</div>
+    <div class="quarto-category">Year 4</div>
+  </div>
+  </div>
+<div>
+  <div class="description">
+    A machine learning framework for automated brain tumour classification from MRI scans using PCA-based dimensionality reduction and ensemble classifiers.
+  </div>
+</div>
+<div class="quarto-title-meta column-page-left">
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Martinas Jucys Brady </p>
+          </div>
+  </div>
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 19, 2026</p>
+    </div>
+  </div>
+  </div>
+</header> <div class="about-links">
+  <a href="/projects/ml_python/Martinas_JucysBrady_22330516_ResearchPaper.pdf" class="about-link" rel="" target="">
+    <i class="bi bi-file-earmark-pdf"></i>
+     <span class="about-link-text">Research Paper PDF</span>
+  </a>
+  <a href="/projects/ml_python/Martinas_JucysBrady_22330516_Code.py" class="about-link" rel="" target="">
+    <i class="bi bi-code-slash"></i>
+     <span class="about-link-text">Source Code (.py)</span>
+  </a>
+</div>
+      <div class="about-contents"><main class="content column-page-left" id="quarto-document-content">
+
+<hr>
+<section id="abstract" class="level2">
+<h2 data-anchor-id="abstract">Abstract</h2>
+<p>Brain tumours are among the most life-threatening diseases, and their accurate classification is essential for effective and timely treatment planning. This study presents a machine learning framework for the automated classification of brain tumours from MRI scans into four categories: glioma, meningioma, pituitary tumour and no tumour. The approach flattens raw MRI images into high-dimensional feature vectors, applies PCA for dimensionality reduction while retaining 95% of the explained variance, and classifies the reduced features using four machine learning algorithms — SVM, Random Forest, KNN and Naïve Bayes — further combined through an ensemble model. The framework is evaluated on a Brain Tumor Classification MRI dataset from Kaggle containing 3,264 MRI images. KNN achieved the highest individual accuracy of 76.4%, followed by a three-model ensemble (SVM, RF and KNN) at 75.4%. The findings confirm that PCA-based dimensionality reduction combined with ensemble classification provides an efficient and viable approach for brain tumour classification.</p>
+<hr>
+</section>
+<section id="introduction" class="level2">
+<h2 data-anchor-id="introduction">Introduction</h2>
+<p>Brain tumours are one of the most life-threatening types of diseases, occurring through an abnormal growth of cells inside the brain or its surrounding bone and tissue. They can be broadly categorised as benign or malignant and graded on a scale of I to IV <span class="citation" data-cites="pichaivel2022">(<a href="#ref-pichaivel2022" role="doc-biblioref">Pichaivel et al. 2022</a>)</span>. Accurate classification is critical in determining the best treatment pathway and increasing the likelihood of patient survival.</p>
+<p>Magnetic Resonance Imaging (MRI) is the standard diagnostic mechanism for brain tumours due to its high-contrast visualisation of soft tissue structures without exposing patients to ionising radiation <span class="citation" data-cites="leung2014">(<a href="#ref-leung2014" role="doc-biblioref">Leung et al. 2014</a>)</span>. However, MRI scans are extremely time-consuming and prone to error when analysed manually. Diagnostic error rates in radiology departments can reach up to 30%, with perceptual errors accounting for approximately 70% of these mistakes <span class="citation" data-cites="zhang2023">(<a href="#ref-zhang2023" role="doc-biblioref">Zhang et al. 2023</a>)</span>. This highlights the need for automated classification systems that can support radiologists in accurately identifying brain tumour types.</p>
+<p>Machine learning has opened up the possibilities for automated medical image analysis. Aamir et al.&nbsp;(2022) uses deep learning techniques, while <span class="citation" data-cites="yildirim2023">Yildirim et al. (<a href="#ref-yildirim2023" role="doc-biblioref">2023</a>)</span> uses a combination of CNN-based feature extraction with an SVM classifier to achieve 95.4% accuracy. However, deep learning methods require large datasets and substantial computational resources, which are not always available.</p>
+<p>This study proposes an alternative approach that relies on classical machine learning. Rather than training a neural network, the framework extracts features by flattening raw MRI images into high-dimensional vectors, applies PCA for dimensionality reduction, and classifies these features using an ensemble of four supervised learning algorithms with soft voting. This selection was guided by the scikit-learn estimator selection flowchart <span class="citation" data-cites="sklearnmap">(<a href="#ref-sklearnmap" role="doc-biblioref">scikit-learn 2024</a>)</span>, which recommends SVM, KNN and ensemble classifiers for labelled classification tasks with more than 50 samples.</p>
+<hr>
+</section>
+<section id="related-works" class="level2">
+<h2 data-anchor-id="related-works">Related Works</h2>
+<p>The classification of brain tumours from MRI images is heavily covered by existing studies using both machine learning and deep learning approaches.</p>
+<p><span class="citation" data-cites="pichaivel2022">Pichaivel et al. (<a href="#ref-pichaivel2022" role="doc-biblioref">2022</a>)</span> provided an overview of brain tumour types, pathophysiology and diagnostic methods, noting that meningiomas are the most common brain tumours in adults (36% of all cases), followed by gliomas and pituitary tumours (15%). This was particularly useful in understanding why certain tumour types are harder to classify. Gliomas can occur across multiple brain lobes with variable shapes and boundaries, while meningiomas are typically well-defined, round masses — a distinction that makes glioma-meningioma confusion a known challenge in automated classification.</p>
+<p><span class="citation" data-cites="zhang2023">Zhang et al. (<a href="#ref-zhang2023" role="doc-biblioref">2023</a>)</span> categorised radiology diagnostic errors into perceptual and cognitive types, reporting that approximately 75% of malpractice lawsuits against radiologists relate to diagnostic imaging errors. This provides strong motivation for an accurate automated classification system.</p>
+<p><span class="citation" data-cites="saeedi2023">Saeedi et al. (<a href="#ref-saeedi2023" role="doc-biblioref">2023</a>)</span> analysed both deep and machine learning methods for MRI-based brain tumour detection, concluding that combining multiple algorithms yields higher performance — directly informing the ensemble strategy used here.</p>
+<p><span class="citation" data-cites="yildirim2023">Yildirim et al. (<a href="#ref-yildirim2023" role="doc-biblioref">2023</a>)</span> developed a model using pretrained EfficientNetB0 and ShuffleNet architectures with 95.4% accuracy. This hybrid approach of feature extraction followed by classification is conceptually similar, except that PCA-based reduction replaces CNN-based extraction.</p>
+<p><span class="citation" data-cites="allahem2025">Allahem et al. (<a href="#ref-allahem2025" role="doc-biblioref">2025</a>)</span> used a Vision Transformer with PCA and Random Forest for brain cancer classification, demonstrating that PCA is an effective step in reducing computational cost while preserving the most discriminative information.</p>
+<p><span class="citation" data-cites="alshomrani2025">Alshomrani (<a href="#ref-alshomrani2025" role="doc-biblioref">2025</a>)</span> highlighted that ensemble methods consistently outperform single-model approaches by reducing both bias and variance, and that combining feature extraction with classifiers is effective under limited computational resources — directly supporting the model design choices in this study.</p>
+<hr>
+</section>
+<section id="methodology" class="level2">
+<h2 data-anchor-id="methodology">Methodology</h2>
+<section id="dataset" class="level3">
+<h3 data-anchor-id="dataset">Dataset</h3>
+<p>The dataset used is the Brain Tumor Classification (MRI) dataset from Kaggle <span class="citation" data-cites="bhuvaji2020">(<a href="#ref-bhuvaji2020" role="doc-biblioref">Bhuvaji et al. 2020</a>)</span>, containing 3,264 contrast-enhanced MRI images split into four classes:</p>
+<ul>
+<li><strong>Glioma tumour</strong> — 826 training, 100 testing</li>
+<li><strong>Meningioma tumour</strong> — 822 training, 115 testing</li>
+<li><strong>Pituitary tumour</strong> — 827 training, 74 testing</li>
+<li><strong>No tumour</strong> — 395 training, 105 testing</li>
+</ul>
+<p>The dataset was pre-split into training (2,870 images) and testing (394 images) folders. A clear class imbalance exists, with the no tumour class containing approximately half the number of images of the other classes.</p>
+<p>The chart below visualises this imbalance across both training and testing sets.</p>
+<div id="cell-fig-distribution" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>classes <span class="op">=</span> [<span class="st">'glioma_tumor'</span>, <span class="st">'meningioma_tumor'</span>, <span class="st">'no_tumor'</span>, <span class="st">'pituitary_tumor'</span>]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>train_counts <span class="op">=</span> [<span class="dv">826</span>, <span class="dv">822</span>, <span class="dv">395</span>, <span class="dv">827</span>]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>test_counts  <span class="op">=</span> [<span class="dv">100</span>, <span class="dv">115</span>, <span class="dv">105</span>,  <span class="dv">74</span>]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">'#FF6B6B'</span>, <span class="st">'#4ECDC4'</span>, <span class="st">'#45B7D1'</span>, <span class="st">'#96CEB4'</span>]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">5</span>))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>bars1 <span class="op">=</span> ax1.bar(classes, train_counts, color<span class="op">=</span>colors)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'Training Set'</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">'Count'</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ax1.set_xticklabels(classes, rotation<span class="op">=</span><span class="dv">15</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bar, count <span class="kw">in</span> <span class="bu">zip</span>(bars1, train_counts):</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    ax1.text(bar.get_x() <span class="op">+</span> bar.get_width()<span class="op">/</span><span class="dv">2</span>, count <span class="op">+</span> <span class="dv">10</span>, <span class="bu">str</span>(count), ha<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>bars2 <span class="op">=</span> ax2.bar(classes, test_counts, color<span class="op">=</span>colors)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">'Testing Set'</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>ax2.set_xticklabels(classes, rotation<span class="op">=</span><span class="dv">15</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bar, count <span class="kw">in</span> <span class="bu">zip</span>(bars2, test_counts):</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    ax2.text(bar.get_x() <span class="op">+</span> bar.get_width()<span class="op">/</span><span class="dv">2</span>, count <span class="op">+</span> <span class="dv">2</span>, <span class="bu">str</span>(count), ha<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-distribution" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-distribution-output-1.png" width="1333" height="469" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Figure 2: Evident Imbalance with no_tumour data
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="preprocessing" class="level3">
+<h3 data-anchor-id="preprocessing">Preprocessing</h3>
+<p>All images were resized to 128×128 pixels and converted to RGB format to ensure uniformity across the dataset. Pixel values were normalised to [0, 1] by dividing by 255, ensuring all features are on the same scale and preventing any single feature from dominating. Text labels such as <code>glioma_tumor</code> were converted to numerical encodings using scikit-learn’s <code>LabelEncoder</code>.</p>
+</section>
+<section id="initial-cnn-and-overfitting-issue" class="level3">
+<h3 data-anchor-id="initial-cnn-and-overfitting-issue">Initial CNN and Overfitting Issue</h3>
+<p>Initially, a Convolutional Neural Network (CNN) was built and trained on the dataset, containing three convolutional blocks with 32, 64 and 128 filters, batch normalisation, max pooling, dropout, and data augmentation. Despite these measures, the CNN persistently overfitted. Training accuracy reached ~75% while validation accuracy remained around 29%, with validation loss increasing each epoch — a clear indicator of overfitting on a dataset too small to train a CNN from scratch.</p>
+<p>This experience prompted a switch to a PCA-based approach. Rather than learning spatial features through convolutional layers, each image is treated as a flat pixel vector and PCA is used to extract the most important patterns. While this sacrifices spatial relationship capture, it avoids overfitting and allows classical machine learning algorithms better suited to smaller datasets.</p>
+</section>
+<section id="feature-extraction-and-dimensionality-reduction" class="level3">
+<h3 data-anchor-id="feature-extraction-and-dimensionality-reduction">Feature Extraction and Dimensionality Reduction</h3>
+<p>Each 128×128 RGB image was flattened into a vector of 49,152 dimensions. This high dimensionality increases computational cost, encourages overfitting, and causes the <em>curse of dimensionality</em> — particularly problematic for KNN, which relies on distance measurements.</p>
+<p><code>StandardScaler</code> was applied to standardise features to zero mean and unit variance. PCA was then applied, retaining 95% of the explained variance and reducing the feature space from 49,152 to 726 components — a 98.5% reduction <span class="citation" data-cites="allahem2025">(<a href="#ref-allahem2025" role="doc-biblioref">Allahem et al. 2025</a>)</span>.</p>
+<p>The chart below shows the cumulative explained variance as PCA components are added.</p>
+<div id="cell-fig-pca" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated PCA variance curve representative of the actual results</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>n_components <span class="op">=</span> <span class="dv">726</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, n_components <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Approximate the curve: fast rise then plateau at 0.95</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>variance <span class="op">=</span> <span class="fl">0.95</span> <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> np.exp(<span class="op">-</span>x <span class="op">/</span> <span class="dv">80</span>))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.plot(x, variance, color<span class="op">=</span><span class="st">'steelblue'</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.axhline(y<span class="op">=</span><span class="fl">0.95</span>, color<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">'95% threshold'</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Components'</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Cumulative Variance'</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'PCA Explained Variance'</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-pca" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-pca-output-1.png" width="757" height="468" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pca-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Figure 3: PCA Cumulative Explained Variance
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> The curve above is a representative illustration of the PCA explained variance behaviour. The full dataset pipeline requires the Kaggle MRI dataset to be available locally at runtime. See <a href="#">Source Code</a> for the complete executable version.</p>
+</blockquote>
+</section>
+<section id="classification-algorithms" class="level3">
+<h3 data-anchor-id="classification-algorithms">Classification Algorithms</h3>
+<p>Four algorithms were selected, each representing a distinct approach to classification, guided by the scikit-learn estimator selection guide <span class="citation" data-cites="sklearnmap">(<a href="#ref-sklearnmap" role="doc-biblioref">scikit-learn 2024</a>)</span>:</p>
+<p><strong>Support Vector Machine (SVM)</strong> finds the optimal hyperplane separating classes with maximum margins, using an RBF kernel for non-linearly separable data. SVM is well suited for high-dimensional spaces and widely used for brain tumour classification <span class="citation" data-cites="yildirim2023">(<a href="#ref-yildirim2023" role="doc-biblioref">Yildirim et al. 2023</a>)</span>.</p>
+<p><strong>Random Forest</strong> constructs 200 decision trees each trained on a random feature and data subset, with the final prediction based on majority voting. This bagging approach reduces overfitting compared to a single decision tree <span class="citation" data-cites="allahem2025">(<a href="#ref-allahem2025" role="doc-biblioref">Allahem et al. 2025</a>)</span>.</p>
+<p><strong>K-Nearest Neighbours (KNN)</strong> classifies instances based on the seven closest training examples using a distance-weighted voting model, giving closer neighbours greater influence.</p>
+<p><strong>Naïve Bayes</strong> was included deliberately as a control classifier expected to perform poorly. Its independence assumption does not hold for image data where neighbouring pixel values are highly correlated. If Naïve Bayes performed well unexpectedly, it would suggest data leakage or another issue with the data.</p>
+</section>
+<section id="ensemble-classification" class="level3">
+<h3 data-anchor-id="ensemble-classification">Ensemble Classification</h3>
+<p>The four classifiers were combined using scikit-learn’s <code>VotingClassifier</code> with soft voting, leveraging SVM’s boundary-finding ability, Random Forest’s robustness, and KNN’s pattern sensitivity. Two ensembles were evaluated: a four-model ensemble and a three-model ensemble excluding Naïve Bayes, to assess whether a weak classifier degrades overall ensemble performance.</p>
+</section>
+<section id="evaluation-metrics" class="level3">
+<h3 data-anchor-id="evaluation-metrics">Evaluation Metrics</h3>
+<p>Models were evaluated using accuracy, precision, recall and F1 score with weighted averaging. In a medical context, precision (avoiding false positives) and recall (avoiding missed diagnoses) are both critically important — false positives can cause unnecessary patient stress and treatment, while false negatives lead to delayed diagnosis. F1 score provides a single combined metric. Confusion matrices were also generated for per-class performance analysis.</p>
+<hr>
+</section>
+</section>
+<section id="results" class="level2">
+<h2 data-anchor-id="results">Results</h2>
+<section id="classification-results" class="level3">
+<h3 data-anchor-id="classification-results">Classification Results</h3>
+<p>The table below summarises the performance of all six models across accuracy, precision, recall and F1 score.</p>
+<div class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> {</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Model'</span>:     [<span class="st">'SVM'</span>, <span class="st">'Random Forest'</span>, <span class="st">'KNN'</span>, <span class="st">'Naive Bayes'</span>, <span class="st">'Ensemble (4-model)'</span>, <span class="st">'Ensemble (SVM+RF+KNN)'</span>],</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Accuracy'</span>:  [<span class="fl">0.7284</span>, <span class="fl">0.7513</span>, <span class="fl">0.7640</span>, <span class="fl">0.2005</span>, <span class="fl">0.6954</span>, <span class="fl">0.7538</span>],</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Precision'</span>: [<span class="fl">0.7988</span>, <span class="fl">0.7991</span>, <span class="fl">0.8057</span>, <span class="fl">0.2444</span>, <span class="fl">0.7754</span>, <span class="fl">0.7999</span>],</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Recall'</span>:    [<span class="fl">0.7284</span>, <span class="fl">0.7513</span>, <span class="fl">0.7640</span>, <span class="fl">0.2005</span>, <span class="fl">0.6954</span>, <span class="fl">0.7538</span>],</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'F1 Score'</span>:  [<span class="fl">0.6775</span>, <span class="fl">0.7028</span>, <span class="fl">0.7293</span>, <span class="fl">0.2003</span>, <span class="fl">0.6590</span>, <span class="fl">0.7121</span>],</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(results)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>df_styled <span class="op">=</span> df.style<span class="op">\</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">format</span>({<span class="st">'Accuracy'</span>: <span class="st">'</span><span class="sc">{:.4f}</span><span class="st">'</span>, <span class="st">'Precision'</span>: <span class="st">'</span><span class="sc">{:.4f}</span><span class="st">'</span>, <span class="st">'Recall'</span>: <span class="st">'</span><span class="sc">{:.4f}</span><span class="st">'</span>, <span class="st">'F1 Score'</span>: <span class="st">'</span><span class="sc">{:.4f}</span><span class="st">'</span>})<span class="op">\</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    .highlight_max(subset<span class="op">=</span>[<span class="st">'Accuracy'</span>,<span class="st">'Precision'</span>,<span class="st">'Recall'</span>,<span class="st">'F1 Score'</span>], color<span class="op">=</span><span class="st">'#d4edda'</span>)<span class="op">\</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    .set_properties(<span class="op">**</span>{<span class="st">'text-align'</span>: <span class="st">'center'</span>})<span class="op">\</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    .set_table_styles([{<span class="st">'selector'</span>: <span class="st">'th'</span>, <span class="st">'props'</span>: [(<span class="st">'text-align'</span>, <span class="st">'center'</span>)]}])</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>df_styled</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="tbl-results" class="cell quarto-float quarto-figure quarto-figure-center" data-execution_count="3">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1
+</figcaption>
+<div aria-describedby="tbl-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<style type="text/css">
+#T_3f449 th {
+  text-align: center;
+}
+#T_3f449_row0_col0, #T_3f449_row0_col1, #T_3f449_row0_col2, #T_3f449_row0_col3, #T_3f449_row0_col4, #T_3f449_row1_col0, #T_3f449_row1_col1, #T_3f449_row1_col2, #T_3f449_row1_col3, #T_3f449_row1_col4, #T_3f449_row2_col0, #T_3f449_row3_col0, #T_3f449_row3_col1, #T_3f449_row3_col2, #T_3f449_row3_col3, #T_3f449_row3_col4, #T_3f449_row4_col0, #T_3f449_row4_col1, #T_3f449_row4_col2, #T_3f449_row4_col3, #T_3f449_row4_col4, #T_3f449_row5_col0, #T_3f449_row5_col1, #T_3f449_row5_col2, #T_3f449_row5_col3, #T_3f449_row5_col4 {
+  text-align: center;
+}
+#T_3f449_row2_col1, #T_3f449_row2_col2, #T_3f449_row2_col3, #T_3f449_row2_col4 {
+  background-color: #d4edda;
+  text-align: center;
+}
+</style>
+<table id="T_3f449" class="do-not-create-environment caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th class="blank level0" data-quarto-table-cell-role="th">&nbsp;</th>
+<th id="T_3f449_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Model</th>
+<th id="T_3f449_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Accuracy</th>
+<th id="T_3f449_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Precision</th>
+<th id="T_3f449_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">Recall</th>
+<th id="T_3f449_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">F1 Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th id="T_3f449_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">0</th>
+<td id="T_3f449_row0_col0" class="data row0 col0">SVM</td>
+<td id="T_3f449_row0_col1" class="data row0 col1">0.7284</td>
+<td id="T_3f449_row0_col2" class="data row0 col2">0.7988</td>
+<td id="T_3f449_row0_col3" class="data row0 col3">0.7284</td>
+<td id="T_3f449_row0_col4" class="data row0 col4">0.6775</td>
+</tr>
+<tr class="even">
+<th id="T_3f449_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">1</th>
+<td id="T_3f449_row1_col0" class="data row1 col0">Random Forest</td>
+<td id="T_3f449_row1_col1" class="data row1 col1">0.7513</td>
+<td id="T_3f449_row1_col2" class="data row1 col2">0.7991</td>
+<td id="T_3f449_row1_col3" class="data row1 col3">0.7513</td>
+<td id="T_3f449_row1_col4" class="data row1 col4">0.7028</td>
+</tr>
+<tr class="odd">
+<th id="T_3f449_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">2</th>
+<td id="T_3f449_row2_col0" class="data row2 col0">KNN</td>
+<td id="T_3f449_row2_col1" class="data row2 col1">0.7640</td>
+<td id="T_3f449_row2_col2" class="data row2 col2">0.8057</td>
+<td id="T_3f449_row2_col3" class="data row2 col3">0.7640</td>
+<td id="T_3f449_row2_col4" class="data row2 col4">0.7293</td>
+</tr>
+<tr class="even">
+<th id="T_3f449_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">3</th>
+<td id="T_3f449_row3_col0" class="data row3 col0">Naive Bayes</td>
+<td id="T_3f449_row3_col1" class="data row3 col1">0.2005</td>
+<td id="T_3f449_row3_col2" class="data row3 col2">0.2444</td>
+<td id="T_3f449_row3_col3" class="data row3 col3">0.2005</td>
+<td id="T_3f449_row3_col4" class="data row3 col4">0.2003</td>
+</tr>
+<tr class="odd">
+<th id="T_3f449_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">4</th>
+<td id="T_3f449_row4_col0" class="data row4 col0">Ensemble (4-model)</td>
+<td id="T_3f449_row4_col1" class="data row4 col1">0.6954</td>
+<td id="T_3f449_row4_col2" class="data row4 col2">0.7754</td>
+<td id="T_3f449_row4_col3" class="data row4 col3">0.6954</td>
+<td id="T_3f449_row4_col4" class="data row4 col4">0.6590</td>
+</tr>
+<tr class="even">
+<th id="T_3f449_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">5</th>
+<td id="T_3f449_row5_col0" class="data row5 col0">Ensemble (SVM+RF+KNN)</td>
+<td id="T_3f449_row5_col1" class="data row5 col1">0.7538</td>
+<td id="T_3f449_row5_col2" class="data row5 col2">0.7999</td>
+<td id="T_3f449_row5_col3" class="data row5 col3">0.7538</td>
+<td id="T_3f449_row5_col4" class="data row5 col4">0.7121</td>
+</tr>
+</tbody>
+</table>
+<p>Figure 5: Classification Results for each model</p>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="model-comparison-visualisation" class="level3">
+<h3 data-anchor-id="model-comparison-visualisation">Model Comparison Visualisation</h3>
+<div id="cell-fig-comparison" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>models   <span class="op">=</span> [<span class="st">'SVM'</span>, <span class="st">'Random</span><span class="ch">\n</span><span class="st">Forest'</span>, <span class="st">'KNN'</span>, <span class="st">'Naive</span><span class="ch">\n</span><span class="st">Bayes'</span>, <span class="st">'Ensemble</span><span class="ch">\n</span><span class="st">(4-model)'</span>, <span class="st">'Ensemble</span><span class="ch">\n</span><span class="st">(SVM+RF+KNN)'</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>accuracy  <span class="op">=</span> [<span class="fl">0.7284</span>, <span class="fl">0.7513</span>, <span class="fl">0.7640</span>, <span class="fl">0.2005</span>, <span class="fl">0.6954</span>, <span class="fl">0.7538</span>]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>precision <span class="op">=</span> [<span class="fl">0.7988</span>, <span class="fl">0.7991</span>, <span class="fl">0.8057</span>, <span class="fl">0.2444</span>, <span class="fl">0.7754</span>, <span class="fl">0.7999</span>]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>recall    <span class="op">=</span> [<span class="fl">0.7284</span>, <span class="fl">0.7513</span>, <span class="fl">0.7640</span>, <span class="fl">0.2005</span>, <span class="fl">0.6954</span>, <span class="fl">0.7538</span>]</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>f1        <span class="op">=</span> [<span class="fl">0.6775</span>, <span class="fl">0.7028</span>, <span class="fl">0.7293</span>, <span class="fl">0.2003</span>, <span class="fl">0.6590</span>, <span class="fl">0.7121</span>]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="bu">len</span>(models))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> <span class="fl">0.18</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">6</span>))</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>ax.bar(x <span class="op">-</span> <span class="fl">1.5</span><span class="op">*</span>w, accuracy,  w, label<span class="op">=</span><span class="st">'Accuracy'</span>,  color<span class="op">=</span><span class="st">'#4C72B0'</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>ax.bar(x <span class="op">-</span> <span class="fl">0.5</span><span class="op">*</span>w, precision, w, label<span class="op">=</span><span class="st">'Precision'</span>, color<span class="op">=</span><span class="st">'#DD8452'</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>ax.bar(x <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>w, recall,    w, label<span class="op">=</span><span class="st">'Recall'</span>,    color<span class="op">=</span><span class="st">'#55A868'</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>ax.bar(x <span class="op">+</span> <span class="fl">1.5</span><span class="op">*</span>w, f1,        w, label<span class="op">=</span><span class="st">'F1'</span>,        color<span class="op">=</span><span class="st">'#C44E52'</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(x)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>ax.set_xticklabels(models, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>, <span class="fl">1.05</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Model Comparison'</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-comparison" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-comparison-output-1.png" width="1238" height="564" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-comparison-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Figure 6: Model Comparison across all metrics
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="three-model-ensemble-per-class-breakdown" class="level3">
+<h3 data-anchor-id="three-model-ensemble-per-class-breakdown">Three-Model Ensemble: Per-Class Breakdown</h3>
+<div class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>per_class <span class="op">=</span> {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Class'</span>:     [<span class="st">'glioma_tumor'</span>, <span class="st">'meningioma_tumor'</span>, <span class="st">'no_tumor'</span>, <span class="st">'pituitary_tumor'</span>, <span class="st">''</span>, <span class="st">'accuracy'</span>, <span class="st">'macro avg'</span>, <span class="st">'weighted avg'</span>],</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Precision'</span>: [<span class="fl">0.92</span>, <span class="fl">0.86</span>, <span class="fl">0.63</span>, <span class="fl">0.78</span>, <span class="va">None</span>, <span class="va">None</span>, <span class="fl">0.80</span>, <span class="fl">0.80</span>],</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Recall'</span>:    [<span class="fl">0.23</span>, <span class="fl">0.98</span>, <span class="fl">1.00</span>, <span class="fl">0.76</span>, <span class="va">None</span>, <span class="va">None</span>, <span class="fl">0.74</span>, <span class="fl">0.75</span>],</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'F1-Score'</span>:  [<span class="fl">0.37</span>, <span class="fl">0.92</span>, <span class="fl">0.77</span>, <span class="fl">0.77</span>, <span class="va">None</span>, <span class="va">None</span>, <span class="fl">0.71</span>, <span class="fl">0.71</span>],</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Support'</span>:   [<span class="dv">100</span>,  <span class="dv">115</span>,  <span class="dv">105</span>,   <span class="dv">74</span>,  <span class="va">None</span>, <span class="dv">394</span>,  <span class="dv">394</span>,  <span class="dv">394</span>],</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>df_pc <span class="op">=</span> pd.DataFrame(per_class)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>df_pc <span class="op">=</span> df_pc.fillna(<span class="st">''</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>df_pc.style<span class="op">\</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    .set_properties(<span class="op">**</span>{<span class="st">'text-align'</span>: <span class="st">'center'</span>})<span class="op">\</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    .set_table_styles([{<span class="st">'selector'</span>: <span class="st">'th'</span>, <span class="st">'props'</span>: [(<span class="st">'text-align'</span>, <span class="st">'center'</span>)]}])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="tbl-perclass" class="cell quarto-float quarto-figure quarto-figure-center" data-execution_count="5">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-perclass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2
+</figcaption>
+<div aria-describedby="tbl-perclass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="5">
+<style type="text/css">
+#T_a9a7b th {
+  text-align: center;
+}
+#T_a9a7b_row0_col0, #T_a9a7b_row0_col1, #T_a9a7b_row0_col2, #T_a9a7b_row0_col3, #T_a9a7b_row0_col4, #T_a9a7b_row1_col0, #T_a9a7b_row1_col1, #T_a9a7b_row1_col2, #T_a9a7b_row1_col3, #T_a9a7b_row1_col4, #T_a9a7b_row2_col0, #T_a9a7b_row2_col1, #T_a9a7b_row2_col2, #T_a9a7b_row2_col3, #T_a9a7b_row2_col4, #T_a9a7b_row3_col0, #T_a9a7b_row3_col1, #T_a9a7b_row3_col2, #T_a9a7b_row3_col3, #T_a9a7b_row3_col4, #T_a9a7b_row4_col0, #T_a9a7b_row4_col1, #T_a9a7b_row4_col2, #T_a9a7b_row4_col3, #T_a9a7b_row4_col4, #T_a9a7b_row5_col0, #T_a9a7b_row5_col1, #T_a9a7b_row5_col2, #T_a9a7b_row5_col3, #T_a9a7b_row5_col4, #T_a9a7b_row6_col0, #T_a9a7b_row6_col1, #T_a9a7b_row6_col2, #T_a9a7b_row6_col3, #T_a9a7b_row6_col4, #T_a9a7b_row7_col0, #T_a9a7b_row7_col1, #T_a9a7b_row7_col2, #T_a9a7b_row7_col3, #T_a9a7b_row7_col4 {
+  text-align: center;
+}
+</style>
+<table id="T_a9a7b" class="do-not-create-environment caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th class="blank level0" data-quarto-table-cell-role="th">&nbsp;</th>
+<th id="T_a9a7b_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Class</th>
+<th id="T_a9a7b_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Precision</th>
+<th id="T_a9a7b_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Recall</th>
+<th id="T_a9a7b_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">F1-Score</th>
+<th id="T_a9a7b_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">Support</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th id="T_a9a7b_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">0</th>
+<td id="T_a9a7b_row0_col0" class="data row0 col0">glioma_tumor</td>
+<td id="T_a9a7b_row0_col1" class="data row0 col1">0.920000</td>
+<td id="T_a9a7b_row0_col2" class="data row0 col2">0.230000</td>
+<td id="T_a9a7b_row0_col3" class="data row0 col3">0.370000</td>
+<td id="T_a9a7b_row0_col4" class="data row0 col4">100.000000</td>
+</tr>
+<tr class="even">
+<th id="T_a9a7b_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">1</th>
+<td id="T_a9a7b_row1_col0" class="data row1 col0">meningioma_tumor</td>
+<td id="T_a9a7b_row1_col1" class="data row1 col1">0.860000</td>
+<td id="T_a9a7b_row1_col2" class="data row1 col2">0.980000</td>
+<td id="T_a9a7b_row1_col3" class="data row1 col3">0.920000</td>
+<td id="T_a9a7b_row1_col4" class="data row1 col4">115.000000</td>
+</tr>
+<tr class="odd">
+<th id="T_a9a7b_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">2</th>
+<td id="T_a9a7b_row2_col0" class="data row2 col0">no_tumor</td>
+<td id="T_a9a7b_row2_col1" class="data row2 col1">0.630000</td>
+<td id="T_a9a7b_row2_col2" class="data row2 col2">1.000000</td>
+<td id="T_a9a7b_row2_col3" class="data row2 col3">0.770000</td>
+<td id="T_a9a7b_row2_col4" class="data row2 col4">105.000000</td>
+</tr>
+<tr class="even">
+<th id="T_a9a7b_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">3</th>
+<td id="T_a9a7b_row3_col0" class="data row3 col0">pituitary_tumor</td>
+<td id="T_a9a7b_row3_col1" class="data row3 col1">0.780000</td>
+<td id="T_a9a7b_row3_col2" class="data row3 col2">0.760000</td>
+<td id="T_a9a7b_row3_col3" class="data row3 col3">0.770000</td>
+<td id="T_a9a7b_row3_col4" class="data row3 col4">74.000000</td>
+</tr>
+<tr class="odd">
+<th id="T_a9a7b_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">4</th>
+<td id="T_a9a7b_row4_col0" class="data row4 col0"></td>
+<td id="T_a9a7b_row4_col1" class="data row4 col1"></td>
+<td id="T_a9a7b_row4_col2" class="data row4 col2"></td>
+<td id="T_a9a7b_row4_col3" class="data row4 col3"></td>
+<td id="T_a9a7b_row4_col4" class="data row4 col4"></td>
+</tr>
+<tr class="even">
+<th id="T_a9a7b_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">5</th>
+<td id="T_a9a7b_row5_col0" class="data row5 col0">accuracy</td>
+<td id="T_a9a7b_row5_col1" class="data row5 col1"></td>
+<td id="T_a9a7b_row5_col2" class="data row5 col2"></td>
+<td id="T_a9a7b_row5_col3" class="data row5 col3"></td>
+<td id="T_a9a7b_row5_col4" class="data row5 col4">394.000000</td>
+</tr>
+<tr class="odd">
+<th id="T_a9a7b_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">6</th>
+<td id="T_a9a7b_row6_col0" class="data row6 col0">macro avg</td>
+<td id="T_a9a7b_row6_col1" class="data row6 col1">0.800000</td>
+<td id="T_a9a7b_row6_col2" class="data row6 col2">0.740000</td>
+<td id="T_a9a7b_row6_col3" class="data row6 col3">0.710000</td>
+<td id="T_a9a7b_row6_col4" class="data row6 col4">394.000000</td>
+</tr>
+<tr class="even">
+<th id="T_a9a7b_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">7</th>
+<td id="T_a9a7b_row7_col0" class="data row7 col0">weighted avg</td>
+<td id="T_a9a7b_row7_col1" class="data row7 col1">0.800000</td>
+<td id="T_a9a7b_row7_col2" class="data row7 col2">0.750000</td>
+<td id="T_a9a7b_row7_col3" class="data row7 col3">0.710000</td>
+<td id="T_a9a7b_row7_col4" class="data row7 col4">394.000000</td>
+</tr>
+</tbody>
+</table>
+<p>Figure 7: Three Model Ensemble Breakdown by Tumour Type</p>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="discussion" class="level3">
+<h3 data-anchor-id="discussion">Discussion</h3>
+<p>These results reveal several important findings. KNN achieved the highest individual accuracy at 76.4%, closely followed by Random Forest at 75.1% and SVM at 72.8%. The three-model ensemble (SVM, RF and KNN) achieved 75.4%, improving on the individual SVM and Random Forest values. This supports the finding that ensemble methods consistently outperform single-model approaches by leveraging complementary classifier strengths <span class="citation" data-cites="alshomrani2025">(<a href="#ref-alshomrani2025" role="doc-biblioref">Alshomrani 2025</a>)</span>.</p>
+<p>Naïve Bayes performed extremely poorly at 23.9% — effectively random guessing — due to its independence assumption, which does not hold for image data where neighbouring pixel values are highly correlated. Its inclusion as a deliberate control classifier served an important validation purpose. Its poor performance also degraded the four-model ensemble to 69.5%, demonstrating that ensembles are only effective when all classifiers contribute meaningfully <span class="citation" data-cites="saeedi2023">(<a href="#ref-saeedi2023" role="doc-biblioref">Saeedi et al. 2023</a>)</span>.</p>
+<p>Per-class analysis reveals large variation. Meningioma achieved 98% recall, while glioma achieved only 23%, consistent with the observations of <span class="citation" data-cites="pichaivel2022">Pichaivel et al. (<a href="#ref-pichaivel2022" role="doc-biblioref">2022</a>)</span>, who noted that gliomas exhibit highly variable visual characteristics across brain regions. The no tumour class achieved 100% recall, indicating that healthy brain scans are visually distinct from tumour scans. The glioma-meningioma confusion is a widely recognised challenge confirmed by <span class="citation" data-cites="saeedi2023">Saeedi et al. (<a href="#ref-saeedi2023" role="doc-biblioref">2023</a>)</span>.</p>
+<p>The overall accuracy of ~76% is lower than the 95%+ reported by deep learning models <span class="citation" data-cites="yildirim2023">(<a href="#ref-yildirim2023" role="doc-biblioref">Yildirim et al. 2023</a>)</span>. This is expected: CNN-based feature extraction captures spatial patterns that are highly discriminative for image classification, while PCA-based models that flatten pixels lose these spatial relationships. This trade-off is deliberate and prioritises interpretability and feasibility under limited computational resources.</p>
+<hr>
+</section>
+</section>
+<section id="limitations" class="level2">
+<h2 data-anchor-id="limitations">Limitations</h2>
+<p>The dataset is relatively small (3,264 images) and exhibits a clear class imbalance, with the no tumour class underrepresented. The PCA-based approach discards spatial information critical for distinguishing visually similar tumour types. Future work could incorporate texture-based feature extraction methods such as Histogram of Oriented Gradients, or employ pretrained CNNs <span class="citation" data-cites="aamir2022">(<a href="#ref-aamir2022" role="doc-biblioref">Aamir et al. 2022</a>)</span>.</p>
+<p>This study only classifies four categories, representing a small subset of the many brain tumour types that exist <span class="citation" data-cites="pichaivel2022">(<a href="#ref-pichaivel2022" role="doc-biblioref">Pichaivel et al. 2022</a>)</span>. A clinically useful system would need to account for a much wider range of tumour types and subtypes.</p>
+<hr>
+</section>
+<section id="conclusion" class="level2">
+<h2 data-anchor-id="conclusion">Conclusion</h2>
+<p>This study combined PCA-based dimensionality reduction with an ensemble of supervised learning algorithms for brain tumour classification. PCA reduced the 49,152-dimensional image feature space to just 726 components while retaining 95% of the variance. KNN achieved the highest individual accuracy at 76.4%, and the three-model ensemble (SVM, RF, KNN) achieved 75.4%. Naïve Bayes, as expected, proved unsuitable for image classification due to its independence assumption, and its inclusion degraded the four-model ensemble. Per-class analysis confirmed that glioma tumours remain particularly difficult to classify, consistent with the broader literature. The findings confirm that PCA combined with ensemble learning is a viable and efficient approach for brain tumour classification, though accuracy remains well below deep learning methods. Future work should explore more complex feature extraction with larger datasets.</p>
+<hr>
+</section>
+<section id="bibliography" class="level2">
+<h2 data-anchor-id="bibliography">Bibliography</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-aamir2022" class="csl-entry" role="listitem">
+Aamir, M. et al. 2022. <span>“A Deep Learning Approach for Brain Tumor Classification Using <span>MRI</span> Images.”</span> <em>Computers and Electrical Engineering</em> 101: 108105. <a href="https://doi.org/10.1016/j.compeleceng.2022.108105">https://doi.org/10.1016/j.compeleceng.2022.108105</a>.
+</div>
+<div id="ref-allahem2025" class="csl-entry" role="listitem">
+Allahem, H. et al. 2025. <span>“A Hybrid Model of Feature Extraction and Dimensionality Reduction Using <span>ViT</span>, <span>PCA</span>, and Random Forest for Multi-Classification of Brain Cancer.”</span> <em>Diagnostics</em> 15 (11): 1392. <a href="https://doi.org/10.3390/diagnostics15111392">https://doi.org/10.3390/diagnostics15111392</a>.
+</div>
+<div id="ref-alshomrani2025" class="csl-entry" role="listitem">
+Alshomrani, F. 2025. <span>“Challenges and Advances in Classifying Brain Tumors: An Overview of Machine, Deep Learning, and Hybrid Approaches with Future Perspectives in Medical Imaging.”</span> <em>Current Medical Imaging</em> 21. <a href="https://doi.org/10.2174/0115734056365191250602124819">https://doi.org/10.2174/0115734056365191250602124819</a>.
+</div>
+<div id="ref-bhuvaji2020" class="csl-entry" role="listitem">
+Bhuvaji, S. et al. 2020. <span>“Brain Tumor Classification (<span>MRI</span>).”</span> Kaggle. <a href="https://doi.org/10.34740/KAGGLE/DSV/1183165">https://doi.org/10.34740/KAGGLE/DSV/1183165</a>.
+</div>
+<div id="ref-leung2014" class="csl-entry" role="listitem">
+Leung, D. et al. 2014. <span>“Role of <span>MRI</span> in Primary Brain Tumor Evaluation.”</span> <em>Journal of the National Comprehensive Cancer Network</em> 12 (11): 1561–68. <a href="https://doi.org/10.6004/jnccn.2014.0156">https://doi.org/10.6004/jnccn.2014.0156</a>.
+</div>
+<div id="ref-pichaivel2022" class="csl-entry" role="listitem">
+Pichaivel, M. et al. 2022. <span>“An Overview of Brain Tumor.”</span> <a href="https://doi.org/10.5772/intechopen.100806">https://doi.org/10.5772/intechopen.100806</a>.
+</div>
+<div id="ref-saeedi2023" class="csl-entry" role="listitem">
+Saeedi, S. et al. 2023. <span>“<span>MRI</span>-Based Brain Tumor Detection Using Convolutional Deep Learning Methods and Chosen Machine Learning Techniques.”</span> <em>BMC Medical Informatics and Decision Making</em> 23: 16. <a href="https://doi.org/10.1186/s12911-023-02114-6">https://doi.org/10.1186/s12911-023-02114-6</a>.
+</div>
+<div id="ref-sklearnmap" class="csl-entry" role="listitem">
+scikit-learn. 2024. <span>“Choosing the Right Estimator.”</span> <a href="https://scikit-learn.org/stable/machine_learning_map.html" class="uri">https://scikit-learn.org/stable/machine_learning_map.html</a>.
+</div>
+<div id="ref-yildirim2023" class="csl-entry" role="listitem">
+Yildirim, M. et al. 2023. <span>“Detection and Classification of Glioma, Meningioma, Pituitary Tumor, and Normal in Brain Magnetic Resonance Imaging Using Deep Learning-Based Hybrid Model.”</span> <em>Iran Journal of Computer Science</em> 6 (4): 455–64. <a href="https://doi.org/10.1007/s42044-023-00139-8">https://doi.org/10.1007/s42044-023-00139-8</a>.
+</div>
+<div id="ref-zhang2023" class="csl-entry" role="listitem">
+Zhang, L. et al. 2023. <span>“Diagnostic Error and Bias in the Department of Radiology: A Pictorial Essay.”</span> <em>Insights into Imaging</em> 14: 163. <a href="https://doi.org/10.1186/s13244-023-01521-7">https://doi.org/10.1186/s13244-023-01521-7</a>.
+</div>
+</div>
 
 
-
-
-
-
-
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+</section>
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main></div>
+    </div>
+  </div>
+</div>
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

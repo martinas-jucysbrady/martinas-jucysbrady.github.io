@@ -1,7 +1,15 @@
 ---
 title: "About"
 ---
-
+```{=html}
+<style>
+.circle {
+  border-radius: 50%;
+  height: 250px;
+  object-fit: cover;
+}
+</style>
+```
 :::: {.columns}
 
 ::: {.column width="31%"}
@@ -86,8 +94,6 @@ This section highlights some of the interests that shape my life outside of univ
 :::
 
 ::::
-
----
 
 ## Skills & Qualifications
 
