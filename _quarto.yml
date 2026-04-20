@@ -35,6 +35,9 @@ project:
    - assets/files/tableau_assignment.twbx
    - assets/files/tableau_assignment.pdf
    - assets/module_image/**
+   - assets/files/strategy_case.pdf
+   - assets/files/vlog_reflection.pdf
+   - assets/files/sustainability_diary.pdf
    
 website:
   title: "Martinas Jucys Brady"

@@ -5,7 +5,7 @@ title: "About"
 :::: {.columns}
 
 ::: {.column width="31%"}
-![](assets/myphoto_about.jpg){style="border-radius: 8px; width: 70%;"}
+<img src="assets/myphoto_about.jpg" class="circle" width="250px"/>
 :::
 
 ::: {.column width="6%"}
