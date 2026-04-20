@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/projects/ml_python/index.html",
       "/projects/business_strategy/index.html",
       "/projects/data_analytics_pv/index.html",
       "/projects/digital_transformation/index.html",
@@ -18,6 +19,7 @@
   {
     "listing": "/projects.html",
     "items": [
+      "/projects/ml_python/index.html",
       "/projects/business_strategy/index.html",
       "/projects/data_analytics_pv/index.html",
       "/projects/digital_transformation/index.html",

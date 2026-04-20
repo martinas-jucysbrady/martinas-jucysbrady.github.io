@@ -133,5 +133,8 @@
   },
   "sport.qmd": {
     "sport.html": "1f80cc5a"
+  },
+  "projects/ml_python/index.qmd": {
+    "index.html": "f47ab537"
   }
 }
