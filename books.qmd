@@ -1,1 +1,337 @@
-<p>This section is currently under development. Please check back soon for updates.</p>
+---
+title: "Books"
+---
+
+```{=html}
+<style>
+.book-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin-bottom: 2rem;
+  max-width: 800px;
+}
+.book-row.reverse {
+  flex-direction: row-reverse;
+}
+.book-cover {
+  width: 140px;
+  flex-shrink: 0;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 12px 0 0 12px;
+  overflow: hidden;
+  background: #f8f8f8;
+}
+.book-row.reverse .book-cover {
+  border-radius: 0 12px 12px 0;
+}
+.book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.book-info {
+  flex: 1;
+  background: white;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-left: none;
+  border-radius: 0 12px 12px 0;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+.book-row.reverse .book-info {
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: none;
+  border-radius: 12px 0 0 12px;
+}
+.book-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  color: #1E4264;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.book-author {
+  font-size: 13px;
+  color: #888;
+  margin: 0;
+  font-style: italic;
+}
+.book-review {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+  color: #333;
+}
+.stars {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+.star-full { color: #c8a84b; font-size: 16px; }
+.star-half { position: relative; display: inline-block; font-size: 16px; color: #ddd; }
+.star-half::before { content: '★'; position: absolute; left: 0; width: 50%; overflow: hidden; color: #c8a84b; }
+.star-empty { color: #ddd; font-size: 16px; }
+.rating-label { font-size: 12px; color: #888; margin-left: 4px; }
+</style>
+
+<!-- Row 1 — cover LEFT -->
+<div class="book-row">
+  <div class="book-cover" style="height:210px;">
+    <img src="https://covers.openlibrary.org/b/isbn/9780451524935-L.jpg" alt="1984 cover">
+  </div>
+  <div class="book-info">
+    <p class="book-title">1984</p>
+    <p class="book-author">George Orwell</p>
+    <p class="book-review">A scary and brilliant example of what society could become. Orwell's vision of surveillance, propaganda and the erosion of truth feels disturbingly relevant — the kind of book that stays with you long after you've finished it.</p>
+    <div class="stars">
+      <span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span>
+      <span class="rating-label">5 / 5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Row 2 — cover RIGHT -->
+<div class="book-row reverse">
+  <div class="book-cover" style="height:210px;">
+    <img src="https://covers.openlibrary.org/b/isbn/9780156027328-L.jpg" alt="Life of Pi cover">
+  </div>
+  <div class="book-info">
+    <p class="book-title">Life of Pi</p>
+    <p class="book-author">Yann Martel</p>
+    <p class="book-review">A gripping story with a fascinating premise, but one of those rare cases where the film was actually better. The book has its moments, but the visuals and pacing of the adaptation brought the story to life in a way the pages couldn't quite match.</p>
+    <div class="stars">
+      <span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-half">★</span><span class="star-empty">★</span>
+      <span class="rating-label">3.5 / 5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Row 3 — cover LEFT -->
+<div class="book-row">
+  <div class="book-cover" style="height:210px;">
+    <img src="https://covers.openlibrary.org/b/isbn/9780385533584-L.jpg" alt="Pet Sematary cover">
+  </div>
+  <div class="book-info">
+    <p class="book-title">Pet Sematary</p>
+    <p class="book-author">Stephen King</p>
+    <p class="book-review">Interesting writing and an unsettling premise, but not entirely my cup of tea. King clearly has a distinctive style and there is craft here — it just didn't fully connect with me personally.</p>
+    <div class="stars">
+      <span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-half">★</span><span class="star-empty">★</span>
+      <span class="rating-label">3.5 / 5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Row 4 — cover RIGHT -->
+<div class="book-row reverse">
+  <div class="book-cover" style="height:210px;">
+    <img src="https://covers.openlibrary.org/b/isbn/9780593357439-L.jpg" alt="Master and Apprentice cover">
+  </div>
+  <div class="book-info">
+    <p class="book-title">Master & Apprentice</p>
+    <p class="book-author">Claudia Gray — Star Wars</p>
+    <p class="book-review">Provides a brilliant look into the true story behind the relationship between Qui-Gon and Obi-Wan. For any Star Wars fan this is essential reading — it adds real depth to characters you thought you already knew well.</p>
+    <div class="stars">
+      <span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-half">★</span>
+      <span class="rating-label">4.5 / 5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Row 5 — cover LEFT -->
+<div class="book-row">
+  <div class="book-cover" style="height:210px;">
+    <img src="https://covers.openlibrary.org/b/isbn/9780307743657-L.jpg" alt="The Girl with the Dragon Tattoo cover">
+  </div>
+  <div class="book-info">
+    <p class="book-title">The Girl with the Dragon Tattoo / Played with Fire / Kicked the Hornet's Nest</p>
+    <p class="book-author">Stieg Larsson — Millennium Trilogy (Books 1–3)</p>
+    <p class="book-review">Absolutely amazing writing — emotional, gripping and brilliantly constructed. Larsson had a rare ability to pull you completely into his world, and Lisbeth Salander is one of the most compelling characters in modern fiction. The original three are as good as crime fiction gets.</p>
+    <div class="stars">
+      <span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span>
+      <span class="rating-label">5 / 5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Row 6 — cover RIGHT -->
+<div class="book-row reverse">
+  <div class="book-cover" style="height:210px;">
+    <img src="https://covers.openlibrary.org/b/isbn/9780857056429-L.jpg" alt="The Girl in the Spider's Web cover">
+  </div>
+  <div class="book-info">
+    <p class="book-title">The Girl in the Spider's Web / Takes an Eye for an Eye / Lived Twice</p>
+    <p class="book-author">David Lagercrantz — Millennium (Books 4–6)</p>
+    <p class="book-review">Nothing compares to Larsson, but Lagercrantz has done a respectable job of continuing the story. The essence of the series is mostly preserved and there is enough here to satisfy fans of the originals, even if some of the spark is inevitably missing.</p>
+    <div class="stars">
+      <span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-empty">★</span>
+      <span class="rating-label">4 / 5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Row 7 — cover LEFT -->
+<div class="book-row">
+  <div class="book-cover" style="height:210px;">
+    <img src="https://covers.openlibrary.org/b/isbn/9780593315712-L.jpg" alt="The Girl in the Eagle's Talons cover">
+  </div>
+  <div class="book-info">
+    <p class="book-title">The Girl in the Eagle's Talons</p>
+    <p class="book-author">Karin Smirnoff — Millennium (Book 7)</p>
+    <p class="book-review">Two stars is generous. A disappointing change in writing style compared to everything that came before it. When you pick up a book you want to escape the real world, but this author introduced a kind of real-world agenda into the story that pulled you straight back out of it. A shame.</p>
+    <div class="stars">
+      <span class="star-full">★</span><span class="star-full">★</span><span class="star-empty">★</span><span class="star-empty">★</span><span class="star-empty">★</span>
+      <span class="rating-label">2 / 5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Row 8 — cover RIGHT -->
+<div class="book-row reverse">
+  <div class="book-cover" style="height:210px;">
+    <img src="https://covers.openlibrary.org/b/isbn/9780143035008-L.jpg" alt="Anna Karenina cover">
+  </div>
+  <div class="book-info">
+    <p class="book-title">Anna Karenina</p>
+    <p class="book-author">Leo Tolstoy</p>
+    <p class="book-review">Very long and very in-depth, but beautifully written. Tolstoy takes his time with everything — the characters, the social world, the inner lives of his cast — and the patience it demands is repaid. A genuine classic that earns that label.</p>
+    <div class="stars">
+      <span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-empty">★</span>
+      <span class="rating-label">4 / 5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Row 9 — cover LEFT -->
+<div class="book-row">
+  <div class="book-cover" style="height:210px;">
+    <img src="https://covers.openlibrary.org/b/isbn/9780062024039-L.jpg" alt="Divergent cover">
+  </div>
+  <div class="book-info">
+    <p class="book-title">Divergent / Insurgent / Allegiant / Four</p>
+    <p class="book-author">Veronica Roth — Divergent Series</p>
+    <p class="book-review">Just a very good series of books. The faction system is a clever premise and the story maintains its momentum well across all four entries. Roth builds a world you genuinely invest in and the characters carry it through to the end.</p>
+    <div class="stars">
+      <span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-empty">★</span>
+      <span class="rating-label">4 / 5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Row 10 — cover RIGHT -->
+<div class="book-row reverse">
+  <div class="book-cover" style="height:210px;">
+    <img src="https://covers.openlibrary.org/b/isbn/9780571258093-L.jpg" alt="Never Let Me Go cover">
+  </div>
+  <div class="book-info">
+    <p class="book-title">Never Let Me Go</p>
+    <p class="book-author">Kazuo Ishiguro</p>
+    <p class="book-review">The first half was quite difficult to get through — nothing really hooked me in. But as the story grew and I had more of an understanding of the world, it became increasingly mysterious and interesting. In the end it is a very sad book. I would have rated it higher if the beginning had been written better.</p>
+    <div class="stars">
+      <span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-empty">★</span><span class="star-empty">★</span>
+      <span class="rating-label">3 / 5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Row 11 — cover LEFT -->
+<div class="book-row">
+  <div class="book-cover" style="height:210px;">
+    <img src="https://covers.openlibrary.org/b/isbn/9780439865999-L.jpg" alt="The Finisher cover">
+  </div>
+  <div class="book-info">
+    <p class="book-title">The Finisher / The Keeper / The Width of the World / The Stars Below</p>
+    <p class="book-author">David Baldacci — Vega Jane Series</p>
+    <p class="book-review">Honestly this series did surprise me with how good it actually was. Really well done by the author. The world Baldacci builds is imaginative and the story pulls you along in a way you don't quite expect going in. A genuinely impressive achievement.</p>
+    <div class="stars">
+      <span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-half">★</span>
+      <span class="rating-label">4.5 / 5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Row 12 — cover RIGHT -->
+<div class="book-row reverse">
+  <div class="book-cover" style="height:210px;">
+    <img src="https://covers.openlibrary.org/b/isbn/9780143039990-L.jpg" alt="Meditations cover">
+  </div>
+  <div class="book-info">
+    <p class="book-title">Meditations</p>
+    <p class="book-author">Marcus Aurelius</p>
+    <p class="book-review">An amazing look into the mind of such a significant historical figure. What strikes you most is how little has changed — the same anxieties, the same temptations, the same search for meaning. Reading it feels like a reminder that the fundamentals of being human are timeless.</p>
+    <div class="stars">
+      <span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-empty">★</span>
+      <span class="rating-label">4 / 5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Row 13 — cover LEFT -->
+<div class="book-row">
+  <div class="book-cover" style="height:210px;">
+    <img src="https://covers.openlibrary.org/b/isbn/9780439023481-L.jpg" alt="The Hunger Games cover">
+  </div>
+  <div class="book-info">
+    <p class="book-title">The Hunger Games / Catching Fire / Mockingjay</p>
+    <p class="book-author">Suzanne Collins — The Hunger Games Trilogy</p>
+    <p class="book-review">An amazing story from start to finish. Collins builds a brutal world that never feels gratuitous, and Katniss is a protagonist worth following through all three books. The series maintains its quality throughout and the ending earns its emotional weight.</p>
+    <div class="stars">
+      <span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-half">★</span>
+      <span class="rating-label">4.5 / 5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Row 14 — cover RIGHT -->
+<div class="book-row reverse">
+  <div class="book-cover" style="height:210px;">
+    <img src="https://covers.openlibrary.org/b/isbn/9781594631764-L.jpg" alt="A Thousand Splendid Suns cover">
+  </div>
+  <div class="book-info">
+    <p class="book-title">A Thousand Splendid Suns</p>
+    <p class="book-author">Khaled Hosseini</p>
+    <p class="book-review">An amazing and deeply sad story. Hosseini writes about suffering and endurance with extraordinary care, and the bond between the two central characters carries enormous emotional weight. Not an easy read, but a very rewarding one.</p>
+    <div class="stars">
+      <span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-empty">★</span>
+      <span class="rating-label">4 / 5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Row 15 — cover LEFT -->
+<div class="book-row">
+  <div class="book-cover" style="height:210px;">
+    <img src="https://covers.openlibrary.org/b/isbn/9780439708180-L.jpg" alt="Harry Potter cover">
+  </div>
+  <div class="book-info">
+    <p class="book-title">Harry Potter (Books 1–7)</p>
+    <p class="book-author">J.K. Rowling — Harry Potter Series</p>
+    <p class="book-review">Well worth the read, every single one of them. The world Rowling built is endlessly inventive and the series grows with you — the later books are darker and richer in a way that feels completely earned. One of those rare series where the whole is even greater than the sum of its parts.</p>
+    <div class="stars">
+      <span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span>
+      <span class="rating-label">5 / 5</span>
+    </div>
+  </div>
+</div>
+
+<!-- Row 16 — cover RIGHT -->
+<div class="book-row reverse">
+  <div class="book-cover" style="height:210px;">
+    <img src="https://covers.openlibrary.org/b/isbn/9780670026197-L.jpg" alt="A Gentleman in Moscow cover">
+  </div>
+  <div class="book-info">
+    <p class="book-title">A Gentleman in Moscow</p>
+    <p class="book-author">Amor Towles</p>
+    <p class="book-review">A well-written and elegantly constructed novel. Count Rostov's decades under hotel house arrest is a slow burn, but Towles writes with warmth and wit that you settle into comfortably. A pleasant and thoughtful read.</p>
+    <div class="stars">
+      <span class="star-full">★</span><span class="star-full">★</span><span class="star-full">★</span><span class="star-empty">★</span><span class="star-empty">★</span>
+      <span class="rating-label">3 / 5</span>
+    </div>
+  </div>
+</div>
+```
