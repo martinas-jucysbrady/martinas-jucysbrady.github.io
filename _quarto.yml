@@ -41,6 +41,7 @@ project:
    
 website:
   title: "Martinas Jucys Brady"
+  google-analytics: "G-GM90CNXZ5V"
   site-url: "https://martinas-jucysbrady.github.io"
   favicon: assets/mjb_favicon.png
   back-to-top-navigation: true
