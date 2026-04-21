@@ -136,5 +136,17 @@
   },
   "projects/ml_python/index.qmd": {
     "index.html": "f47ab537"
+  },
+  "software/excel_progress.qmd": {
+    "excel_progress.html": "83f42ca0"
+  },
+  "software/python_progress.qmd": {
+    "python_progress.html": "17ee1ecd"
+  },
+  "software/r_progress.qmd": {
+    "r_progress.html": "22defe6f"
+  },
+  "software/sql_progress.qmd": {
+    "sql_progress.html": "eb52cd8b"
   }
 }

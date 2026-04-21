@@ -1,0 +1,467 @@
+---
+title: "R"
+subtitle: "*Econometrics & Statistical Analysis*"
+description: "An overview of my R skills developed through the Advanced Econometric Analysis module at Kobe University in third year, covering OLS regression, panel data, binary models and time series."
+categories: [Software, Analytics]
+format:
+  html:
+    toc: true
+    toc-location: right
+    toc-title: "On this page"
+    code-fold: true
+    code-summary: "Show code"
+    fig-width: 7
+    fig-height: 4
+---
+
+```{=html}
+<style>
+#quarto-document-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-right: 50px;
+}
+#quarto-margin-sidebar {
+  position: fixed;
+  right: 1rem;
+  top: 70px;
+  width: 220px;
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
+}
+</style>
+```
+
+```{python}
+#| label: setup
+#| include: false
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.ticker as mticker
+import plotly.express as px
+import plotly.graph_objects as go
+from scipy import stats
+import statsmodels.api as sm
+import warnings
+warnings.filterwarnings('ignore')
+np.random.seed(42)
+```
+
+I studied R during **Advanced Econometric Analysis** at Kobe University in third year. The module covered applied econometrics using RStudio — from OLS regression and data manipulation through to panel data models, time series diagnostics and binary choice models. All five problem sets are demonstrated below using Python to replicate the econometric concepts and R code logic.
+
+::: {.callout-note}
+## Module
+**Advanced Econometric Analysis** — *Year 3, Kobe University (Exchange)*
+
+Five problem sets covering: OLS regression, multicollinearity, interaction terms, panel data, serial correlation, difference-in-differences, linear probability models and logit models.
+:::
+
+---
+
+## 1. Data Manipulation & OLS Regression
+
+The first problem set used US airfare data to practice data cleaning, indicator variable creation, and OLS regression — core R skills that apply across every subsequent dataset.
+
+### Key R operations covered
+
+```{python}
+#| label: r-operations-table
+
+ops = pd.DataFrame({
+    'R Operation': [
+        'read.csv()', 'merge()', 'ifelse()', 'table()',
+        'lm()', 'summary(lm())', 'predict()', 'residuals()'
+    ],
+    'Python equivalent': [
+        'pd.read_csv()', 'pd.merge()', 'np.where()', 'pd.value_counts()',
+        'sm.OLS()', 'model.summary()', 'model.predict()', 'model.resid'
+    ],
+    'Purpose': [
+        'Load CSV data', 'Join datasets on common variable',
+        'Create indicator (dummy) variables', 'Frequency counts',
+        'Estimate OLS regression', 'View coefficients and statistics',
+        'Generate fitted values', 'Extract residuals'
+    ]
+})
+ops.style.set_properties(**{'text-align': 'left'})\
+    .set_table_styles([{'selector': 'th', 'props': [('text-align', 'left')]}])
+```
+
+### OLS regression — Airfare data (HW1)
+
+The regression from Problem Set 1 estimated airfare price as a function of distance, passengers, year dummies and an origin city dummy (Akron, OH):
+
+$$\widehat{fare} = \beta_0 + \beta_1 dist + \beta_2 passen + \beta_3 yr98 + \beta_4 yr99 + \beta_5 yr00 + \beta_6 Akron + \varepsilon$$
+
+Key findings: flights from Akron, OH were **$47.03 cheaper** than average. The year dummies showed increasing fares over time, consistent with inflation.[^1]
+
+[^1]: The year dummy coefficients showed that the relationship between year and fare became stronger and more statistically significant over time (yr98 insignificant, yr99 significant, yr00 highly significant), consistent with the cumulative effect of inflation on airfares.
+
+```{python}
+#| label: fig-airfare-regression
+#| fig-cap: "OLS regression — simulated airfare data replicating HW1 findings"
+
+np.random.seed(42)
+n = 500
+dist    = np.random.uniform(100, 2500, n)
+passen  = np.random.uniform(50, 1500, n)
+yr98    = np.random.binomial(1, 0.25, n)
+yr99    = np.random.binomial(1, 0.25, n)
+yr00    = np.random.binomial(1, 0.25, n)
+akron   = np.random.binomial(1, 0.02, n)
+
+fare = (80 + 0.07*dist - 0.01*passen + 5*yr98 + 12*yr99 + 22*yr00
+        - 47*akron + np.random.normal(0, 30, n))
+
+df = pd.DataFrame({'fare': fare, 'dist': dist, 'passen': passen,
+                   'yr98': yr98, 'yr99': yr99, 'yr00': yr00, 'akron': akron})
+
+X = sm.add_constant(df[['dist','passen','yr98','yr99','yr00','akron']])
+model = sm.OLS(df['fare'], X).fit()
+
+fare_hat = model.fittedvalues
+resids   = model.resid
+
+fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+
+axes[0].scatter(fare_hat, df['fare'], alpha=0.4, s=15, color='#2E75B6')
+axes[0].plot([fare_hat.min(), fare_hat.max()],
+             [fare_hat.min(), fare_hat.max()], 'r--', linewidth=1.2)
+axes[0].set_xlabel('Predicted Fare (fare_hat)')
+axes[0].set_ylabel('Actual Fare')
+axes[0].set_title('Actual vs Predicted Airfare')
+
+axes[1].hist(resids, bins=40, color='#2E75B6', edgecolor='white',
+             range=(-250, 250))
+axes[1].axvline(0, color='red', linestyle='--', linewidth=1.2)
+axes[1].set_xlabel('Residual')
+axes[1].set_ylabel('Frequency')
+axes[1].set_title('Residuals Histogram')
+
+plt.tight_layout()
+plt.show()
+
+print(f"Highest predicted fare: ${fare_hat.max():.2f}")
+print(f"Lowest predicted fare:  ${fare_hat.min():.2f}")
+```
+
+::: {.callout-tip}
+## Interpreting residuals
+A **positive residual** means the model is **underpredicting** — the actual fare was higher than expected. A **negative residual** means the model is **overpredicting** — the actual fare was lower than expected. Smaller residuals indicate a more accurate model.
+:::
+
+---
+
+## 2. Multicollinearity & Model Specification
+
+Problem Set 2 used house price data to explore multicollinearity — what happens when independent variables are highly correlated with each other.
+
+### The OLS model
+
+$$price = \beta_0 + \beta_1 sqrft + \beta_2 bdrms + \varepsilon$$
+
+Adding a squared term $sqrft^2$ introduced multicollinearity because $sqrft$ and $sqrft^2$ are highly correlated. The VIF (Variance Inflation Factor) test confirmed this — a VIF above 10 indicates multicollinearity:
+
+$$VIF_j = \frac{1}{1 - R^2_j}$$
+
+Where $R^2_j$ is the R-squared from regressing variable $j$ on all other independent variables. In the homework, $sqrft$ had a VIF of approximately **40** — well above the threshold.[^2]
+
+[^2]: Multicollinearity inflates standard errors without biasing coefficients. It was identified by two signals: (1) both sqrft and sqrft² had negative coefficients despite the expected positive relationship with price, and (2) the gap between R² and Adjusted R² widened compared to the original model.
+
+```{python}
+#| label: fig-multicollinearity
+#| fig-cap: "VIF scores — sqrft has severe multicollinearity when sqrft² is added"
+
+np.random.seed(7)
+n = 88
+sqrft  = np.random.uniform(500, 4000, n)
+bdrms  = np.random.randint(1, 7, n)
+price  = 0.128*sqrft + 15.198*bdrms + np.random.normal(0, 40, n)
+
+sqrft_sq = sqrft ** 2
+
+def vif(X_df, var):
+    y = X_df[var]
+    X = sm.add_constant(X_df.drop(columns=[var]))
+    r2 = sm.OLS(y, X).fit().rsquared
+    return 1 / (1 - r2)
+
+df_h = pd.DataFrame({'sqrft': sqrft, 'bdrms': bdrms, 'sqrft_sq': sqrft_sq})
+vif_scores = {v: vif(df_h, v) for v in df_h.columns}
+
+fig, ax = plt.subplots(figsize=(7, 3.5))
+colors = ['#C00000' if v > 10 else '#2E75B6' for v in vif_scores.values()]
+bars = ax.bar(vif_scores.keys(), vif_scores.values(), color=colors)
+ax.bar_label(bars, fmt='%.1f', padding=3, fontsize=9)
+ax.axhline(10, color='red', linestyle='--', linewidth=1.2, label='VIF = 10 threshold')
+ax.set_ylabel('VIF Score')
+ax.set_title('VIF Scores — Multicollinearity Detected in sqrft')
+ax.legend()
+plt.tight_layout()
+plt.show()
+```
+
+---
+
+## 3. Interaction Terms & Partial Effects
+
+Problem Set 3 used student attendance data to model how the effect of prior GPA on exam scores **depends on** attendance rate — an interaction effect.
+
+### The model with interaction term
+
+$$FinalExam = \beta_0 + \beta_1 Attend + \beta_2 priGPA + \beta_3 ETestScore + \beta_4 ETestScore^2 + \beta_5 (priGPA \times Attend) + \varepsilon$$
+
+The **partial effect** of prior GPA on exam score is not a single number — it varies with attendance:
+
+$$\frac{\partial \widehat{FinalExam}}{\partial priGPA} = \beta_2 + \beta_5 \cdot Attend = -7.035 + 0.139 \cdot Attend$$
+
+This means the effect of prior GPA is **negative at low attendance** and **positive at high attendance** — a student with a high GPA who rarely attends class may actually perform worse.
+
+```{python}
+#| label: fig-partial-effects
+#| fig-cap: "Partial effect of priGPA on FinalExam — varies with attendance rate"
+
+attend_range = np.linspace(6.25, 100, 200)
+beta2 = -7.034744
+beta5 =  0.138963
+partial_effect = beta2 + beta5 * attend_range
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(
+    x=attend_range, y=partial_effect,
+    mode='lines', line=dict(color='#2E75B6', width=2.5),
+    name='∂FinalExam / ∂priGPA'
+))
+fig.add_hline(y=0, line_dash='dash', line_color='red',
+              annotation_text='Zero effect', annotation_position='right')
+fig.add_vline(x=82, line_dash='dot', line_color='grey',
+              annotation_text='Mean attendance (82%)', annotation_position='top right')
+fig.update_layout(
+    title='Partial Effect of priGPA on FinalExam by Attendance Rate',
+    xaxis_title='Attendance Rate (%)',
+    yaxis_title='Partial Effect on Final Exam Score',
+    height=420
+)
+fig.show()
+```
+
+::: {.callout-note}
+## Theta interpretation
+By rewriting the model centred at the mean attendance rate (82%), the coefficient $\hat{\theta}_1 = \beta_2 + \beta_5(82) = 4.36$ gives a direct interpretation: at the **average attendance rate**, a one-unit increase in prior GPA increases the final exam score by **4.36 points**.
+:::
+
+---
+
+## 4. Time Series & Serial Correlation
+
+Problem Set 4 used fish market data to introduce **serial correlation** — a common issue in time series data where residuals are correlated across time periods.
+
+### The Durbin-Watson statistic
+
+The Durbin-Watson test detects first-order serial correlation in residuals:
+
+$$d = \frac{\sum_{t=2}^{T} (e_t - e_{t-1})^2}{\sum_{t=1}^{T} e_t^2}$$
+
+A value close to **2** indicates no serial correlation. Values near **0** indicate positive serial correlation, near **4** indicate negative serial correlation. In the homework, $d = 1.744$ — close to 2, suggesting no significant serial correlation.[^3]
+
+[^3]: Generalised Least Squares (GLS) was applied when serial correlation was detected in the logged model. Serial correlation does not bias coefficients but does bias standard errors — so GLS corrects the standard errors but ideally should not change the coefficients significantly.
+
+```{python}
+#| label: fig-serial-correlation
+#| fig-cap: "Simulated residuals — testing for serial correlation with Durbin-Watson"
+
+np.random.seed(99)
+T = 97
+t_index = np.arange(1, T+1)
+
+# No serial correlation model
+u1 = np.random.normal(0, 1, T)
+# Serial correlation model (AR1)
+u2 = np.zeros(T)
+rho = 0.5
+for t in range(1, T):
+    u2[t] = rho * u2[t-1] + np.random.normal(0, 1)
+
+def durbin_watson(resids):
+    return np.sum(np.diff(resids)**2) / np.sum(resids**2)
+
+dw1 = durbin_watson(u1)
+dw2 = durbin_watson(u2)
+
+fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+for ax, resid, title, dw in [
+    (axes[0], u1, 'No Serial Correlation', dw1),
+    (axes[1], u2, 'Serial Correlation (AR1, ρ=0.5)', dw2)
+]:
+    ax.scatter(t_index, resid, s=15, alpha=0.6, color='#2E75B6')
+    ax.axhline(0, color='red', linestyle='--', linewidth=1)
+    ax.set_xlabel('Time (t)')
+    ax.set_ylabel('Residual')
+    ax.set_title(f'{title}\nDurbin-Watson = {dw:.3f}')
+
+plt.tight_layout()
+plt.show()
+```
+
+### Difference-in-differences
+
+Problem Set 4 also covered **difference-in-differences (DiD)** — a quasi-experimental design to estimate causal effects. The model examined the impact of a garbage incinerator on nearby house prices:
+
+$$rprice_{it} = \beta_0 + \beta_1 y81_t + \beta_2 nearinc_i + \underbrace{\beta_3 y81nrinc_{it}}_{\text{DiD estimator}} + \varepsilon$$
+
+The coefficient $\beta_3$ is the DiD estimator — it captures the **additional** price decline for houses near the incinerator **after** it became active, compared to the control group.
+
+```{python}
+#| label: fig-did
+#| fig-cap: "Difference-in-differences — house prices near vs far from incinerator"
+
+np.random.seed(5)
+n_group = 100
+before_far  = np.random.normal(100000, 15000, n_group)
+before_near = np.random.normal(95000,  15000, n_group)
+after_far   = before_far  + np.random.normal(8000, 5000, n_group)
+after_near  = before_near + np.random.normal(-10000, 5000, n_group)
+
+means = {
+    'Far (1978)':  before_far.mean(),
+    'Far (1981)':  after_far.mean(),
+    'Near (1978)': before_near.mean(),
+    'Near (1981)': after_near.mean(),
+}
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(
+    x=['1978', '1981'], y=[means['Far (1978)'], means['Far (1981)']],
+    mode='lines+markers', name='Far from incinerator',
+    line=dict(color='#2E75B6', width=2.5), marker=dict(size=10)
+))
+fig.add_trace(go.Scatter(
+    x=['1978', '1981'], y=[means['Near (1978)'], means['Near (1981)']],
+    mode='lines+markers', name='Near incinerator',
+    line=dict(color='#C00000', width=2.5), marker=dict(size=10)
+))
+did = (means['Near (1981)'] - means['Near (1978)']) - (means['Far (1981)'] - means['Far (1978)'])
+fig.update_layout(
+    title=f'Difference-in-Differences — DiD Estimate: ${did:,.0f}',
+    xaxis_title='Year',
+    yaxis_title='Average House Price (€)',
+    height=400,
+    yaxis=dict(tickformat='$,.0f')
+)
+fig.show()
+```
+
+---
+
+## 5. Binary Choice Models
+
+Problem Set 5 moved into **limited dependent variable** models — specifically the **Linear Probability Model (LPM)** and **Binary Logit Model** for predicting credit card approval.
+
+### LPM vs Logit
+
+The key limitation of the LPM is that predicted probabilities can fall outside [0, 1]:
+
+$$P(Cardholder_i = 1) = \beta_0 + \beta_1 Selfempl_i + \beta_2 Age_i + \beta_3 Adepcnt_i + \beta_4 Ownrent_i + \beta_5 Majordrg_i$$
+
+The Logit model solves this using the **logistic function**:
+
+$$P(Cardholder_i = 1) = \frac{e^{X_i\beta}}{1 + e^{X_i\beta}} = \Lambda(X_i\beta)$$
+
+This constrains all predictions to (0, 1) by design. The homework found the LPM produced impossible values (min = -1.84, max = 1.00), while the Logit model gave sensible bounds (min = 0, max = 0.97).
+
+```{python}
+#| label: fig-lpm-vs-logit
+#| fig-cap: "LPM vs Logit — comparing predicted probability distributions"
+
+from sklearn.linear_model import LogisticRegression, LinearRegression
+from sklearn.preprocessing import StandardScaler
+
+np.random.seed(42)
+n = 500
+age       = np.random.uniform(20, 75, n)
+selfempl  = np.random.binomial(1, 0.15, n)
+adepcnt   = np.random.randint(1, 5, n)
+ownrent   = np.random.binomial(1, 0.55, n)
+majordrg  = np.random.poisson(0.5, n)
+
+log_odds = (-1 + 0.03*age - 0.3*selfempl - 0.2*adepcnt
+             + 0.4*ownrent - 0.8*majordrg)
+prob_true = 1 / (1 + np.exp(-log_odds))
+y = np.random.binomial(1, prob_true, n)
+
+X = np.column_stack([age, selfempl, adepcnt, ownrent, majordrg])
+
+lpm = LinearRegression().fit(X, y)
+logit = LogisticRegression(max_iter=1000).fit(X, y)
+
+lpm_preds   = lpm.predict(X)
+logit_preds = logit.predict_proba(X)[:, 1]
+
+fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+for ax, preds, title, color in [
+    (axes[0], lpm_preds,   f'LPM  (min={lpm_preds.min():.2f}, max={lpm_preds.max():.2f})', '#C00000'),
+    (axes[1], logit_preds, f'Logit (min={logit_preds.min():.2f}, max={logit_preds.max():.2f})', '#2E75B6'),
+]:
+    ax.hist(preds, bins=40, color=color, edgecolor='white', alpha=0.85)
+    ax.axvline(0, color='black', linestyle='--', linewidth=1)
+    ax.axvline(1, color='black', linestyle='--', linewidth=1)
+    ax.set_xlabel('Predicted Probability')
+    ax.set_ylabel('Frequency')
+    ax.set_title(title)
+
+plt.tight_layout()
+plt.show()
+```
+
+### Likelihood Ratio Test
+
+The LR test compared the restricted model (without income and tenure variables) against the unrestricted model. The test statistic is:
+
+$$LR = -2(\mathcal{L}_{restricted} - \mathcal{L}_{unrestricted}) \sim \chi^2_q$$
+
+Where $q$ is the number of restrictions. In the homework, $LR = 276.31$ with $p < 0.01$ — strongly rejecting the null that the additional variables were irrelevant.
+
+```{python}
+#| label: fig-lr-test
+#| fig-cap: "Likelihood Ratio Test — chi-squared distribution with rejection region"
+
+from scipy.stats import chi2
+
+df_chi = 2
+x = np.linspace(0, 20, 500)
+y_chi = chi2.pdf(x, df=df_chi)
+crit = chi2.ppf(0.95, df=df_chi)
+
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.plot(x, y_chi, color='#2E75B6', linewidth=2)
+ax.fill_between(x, y_chi, where=(x >= crit), color='#C00000', alpha=0.4,
+                label=f'Rejection region (5%)')
+ax.axvline(crit, color='#C00000', linestyle='--', linewidth=1.5,
+           label=f'Critical value = {crit:.2f}')
+ax.set_xlabel('Chi-squared statistic')
+ax.set_ylabel('Density')
+ax.set_title('Chi-squared Distribution — Likelihood Ratio Test (df=2)')
+ax.legend()
+plt.tight_layout()
+plt.show()
+```
+
+---
+
+## 6. Skills Checklist
+
+- [x] Data import and cleaning — `read.csv()`, `merge()`, `ifelse()`, indicator variables
+- [x] OLS regression — `lm()`, `summary()`, coefficient interpretation
+- [x] Residual analysis — scatter plots, histograms, actual vs predicted
+- [x] Multicollinearity — VIF scores, `vif()` function
+- [x] Quadratic and interaction terms — partial effects, derivatives
+- [x] Serial correlation — Durbin-Watson test, `durbinWatsonTest()`
+- [x] Generalised Least Squares — correcting for AR(1) serial correlation
+- [x] Difference-in-differences — DiD estimator interpretation
+- [x] Panel data — within estimator using `plm()`, city fixed effects
+- [x] Linear Probability Model — interpretation, limitations
+- [x] Binary Logit Model — average marginal effects, `logit()`
+- [x] Likelihood Ratio Test — `logLik()`, `lrtest()`
+- [ ] Instrumental Variables (IV) — not covered in this module
+- [ ] ARIMA / forecasting — beyond the scope of this module

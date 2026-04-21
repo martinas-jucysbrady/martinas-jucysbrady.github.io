@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="An overview of my R skills developed through the Advanced Econometric Analysis module at Kobe University in third year, covering OLS regression, panel data, binary models and time series.">
+
+<title>R – Martinas Jucys Brady</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/mjb_favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-b21ff7c0af34b30ae757c621f1fb376d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-GM90CNXZ5V"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-GM90CNXZ5V', { 'anonymize_ip': true});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script type="text/javascript">
+window.PlotlyConfig = {MathJaxConfig: 'local'};
+if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+if (typeof require !== 'undefined') {
+require.undef("plotly");
+requirejs.config({
+    paths: {
+        'plotly': ['https://cdn.plot.ly/plotly-2.32.0.min']
+    }
+});
+require(['plotly'], function(Plotly) {
+    window._Plotly = Plotly;
+});
+}
+</script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../assets/mjb_favicon.png" alt="" class="navbar-logo light-content">
+    <img src="../assets/mjb_favicon.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../projects.html"> <i class="bi bi-file-earmark-text" role="img">
+</i> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-software" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Software</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-software">    
+        <li>
+    <a class="dropdown-item" href="../software/python_progress.html">
+ <span class="dropdown-text">Python</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/excel_progress.html">
+ <span class="dropdown-text">Excel</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/sql_progress.html">
+ <span class="dropdown-text">SQL</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/r_progress.html">
+ <span class="dropdown-text">R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> <i class="bi bi-person-circle" role="img">
+</i> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/martinas-jucysbrady" target="_blank"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/martinasjucysbrady/" target="_blank"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../assets/CV.pdf" target="_blank"> 
+<span class="menu-text"><strong>CV</strong></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-manipulation-ols-regression" id="toc-data-manipulation-ols-regression" class="nav-link active" data-scroll-target="#data-manipulation-ols-regression">1. Data Manipulation &amp; OLS Regression</a>
+  <ul class="collapse">
+  <li><a href="#key-r-operations-covered" id="toc-key-r-operations-covered" class="nav-link" data-scroll-target="#key-r-operations-covered">Key R operations covered</a></li>
+  <li><a href="#ols-regression-airfare-data-hw1" id="toc-ols-regression-airfare-data-hw1" class="nav-link" data-scroll-target="#ols-regression-airfare-data-hw1">OLS regression — Airfare data (HW1)</a></li>
+  </ul></li>
+  <li><a href="#multicollinearity-model-specification" id="toc-multicollinearity-model-specification" class="nav-link" data-scroll-target="#multicollinearity-model-specification">2. Multicollinearity &amp; Model Specification</a>
+  <ul class="collapse">
+  <li><a href="#the-ols-model" id="toc-the-ols-model" class="nav-link" data-scroll-target="#the-ols-model">The OLS model</a></li>
+  </ul></li>
+  <li><a href="#interaction-terms-partial-effects" id="toc-interaction-terms-partial-effects" class="nav-link" data-scroll-target="#interaction-terms-partial-effects">3. Interaction Terms &amp; Partial Effects</a>
+  <ul class="collapse">
+  <li><a href="#the-model-with-interaction-term" id="toc-the-model-with-interaction-term" class="nav-link" data-scroll-target="#the-model-with-interaction-term">The model with interaction term</a></li>
+  </ul></li>
+  <li><a href="#time-series-serial-correlation" id="toc-time-series-serial-correlation" class="nav-link" data-scroll-target="#time-series-serial-correlation">4. Time Series &amp; Serial Correlation</a>
+  <ul class="collapse">
+  <li><a href="#the-durbin-watson-statistic" id="toc-the-durbin-watson-statistic" class="nav-link" data-scroll-target="#the-durbin-watson-statistic">The Durbin-Watson statistic</a></li>
+  <li><a href="#difference-in-differences" id="toc-difference-in-differences" class="nav-link" data-scroll-target="#difference-in-differences">Difference-in-differences</a></li>
+  </ul></li>
+  <li><a href="#binary-choice-models" id="toc-binary-choice-models" class="nav-link" data-scroll-target="#binary-choice-models">5. Binary Choice Models</a>
+  <ul class="collapse">
+  <li><a href="#lpm-vs-logit" id="toc-lpm-vs-logit" class="nav-link" data-scroll-target="#lpm-vs-logit">LPM vs Logit</a></li>
+  <li><a href="#likelihood-ratio-test" id="toc-likelihood-ratio-test" class="nav-link" data-scroll-target="#likelihood-ratio-test">Likelihood Ratio Test</a></li>
+  </ul></li>
+  <li><a href="#skills-checklist" id="toc-skills-checklist" class="nav-link" data-scroll-target="#skills-checklist">6. Skills Checklist</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">R</h1>
+<p class="subtitle lead"><em>Econometrics &amp; Statistical Analysis</em></p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Software</div>
+    <div class="quarto-category">Analytics</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    An overview of my R skills developed through the Advanced Econometric Analysis module at Kobe University in third year, covering OLS regression, panel data, binary models and time series.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+#quarto-document-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-right: 50px;
+}
+#quarto-margin-sidebar {
+  position: fixed;
+  right: 1rem;
+  top: 70px;
+  width: 220px;
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
+}
+</style>
+<p>I studied R during <strong>Advanced Econometric Analysis</strong> at Kobe University in third year. The module covered applied econometrics using RStudio — from OLS regression and data manipulation through to panel data models, time series diagnostics and binary choice models. All five problem sets are demonstrated below using Python to replicate the econometric concepts and R code logic.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Module
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Advanced Econometric Analysis</strong> — <em>Year 3, Kobe University (Exchange)</em></p>
+<p>Five problem sets covering: OLS regression, multicollinearity, interaction terms, panel data, serial correlation, difference-in-differences, linear probability models and logit models.</p>
+</div>
+</div>
+<hr>
+<section id="data-manipulation-ols-regression" class="level2">
+<h2 class="anchored" data-anchor-id="data-manipulation-ols-regression">1. Data Manipulation &amp; OLS Regression</h2>
+<p>The first problem set used US airfare data to practice data cleaning, indicator variable creation, and OLS regression — core R skills that apply across every subsequent dataset.</p>
+<section id="key-r-operations-covered" class="level3">
+<h3 class="anchored" data-anchor-id="key-r-operations-covered">Key R operations covered</h3>
+<div id="cell-r-operations-table" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ops <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'R Operation'</span>: [</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">'read.csv()'</span>, <span class="st">'merge()'</span>, <span class="st">'ifelse()'</span>, <span class="st">'table()'</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">'lm()'</span>, <span class="st">'summary(lm())'</span>, <span class="st">'predict()'</span>, <span class="st">'residuals()'</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Python equivalent'</span>: [</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">'pd.read_csv()'</span>, <span class="st">'pd.merge()'</span>, <span class="st">'np.where()'</span>, <span class="st">'pd.value_counts()'</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">'sm.OLS()'</span>, <span class="st">'model.summary()'</span>, <span class="st">'model.predict()'</span>, <span class="st">'model.resid'</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Purpose'</span>: [</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Load CSV data'</span>, <span class="st">'Join datasets on common variable'</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Create indicator (dummy) variables'</span>, <span class="st">'Frequency counts'</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Estimate OLS regression'</span>, <span class="st">'View coefficients and statistics'</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Generate fitted values'</span>, <span class="st">'Extract residuals'</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>ops.style.set_properties(<span class="op">**</span>{<span class="st">'text-align'</span>: <span class="st">'left'</span>})<span class="op">\</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    .set_table_styles([{<span class="st">'selector'</span>: <span class="st">'th'</span>, <span class="st">'props'</span>: [(<span class="st">'text-align'</span>, <span class="st">'left'</span>)]}])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="r-operations-table" class="cell-output cell-output-display" data-execution_count="2">
+<style type="text/css">
+#T_587ed th {
+  text-align: left;
+}
+#T_587ed_row0_col0, #T_587ed_row0_col1, #T_587ed_row0_col2, #T_587ed_row1_col0, #T_587ed_row1_col1, #T_587ed_row1_col2, #T_587ed_row2_col0, #T_587ed_row2_col1, #T_587ed_row2_col2, #T_587ed_row3_col0, #T_587ed_row3_col1, #T_587ed_row3_col2, #T_587ed_row4_col0, #T_587ed_row4_col1, #T_587ed_row4_col2, #T_587ed_row5_col0, #T_587ed_row5_col1, #T_587ed_row5_col2, #T_587ed_row6_col0, #T_587ed_row6_col1, #T_587ed_row6_col2, #T_587ed_row7_col0, #T_587ed_row7_col1, #T_587ed_row7_col2 {
+  text-align: left;
+}
+</style>
+
+<table id="T_587ed" class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th class="blank level0" data-quarto-table-cell-role="th">&nbsp;</th>
+<th id="T_587ed_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">R Operation</th>
+<th id="T_587ed_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">Python equivalent</th>
+<th id="T_587ed_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th id="T_587ed_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">0</th>
+<td id="T_587ed_row0_col0" class="data row0 col0">read.csv()</td>
+<td id="T_587ed_row0_col1" class="data row0 col1">pd.read_csv()</td>
+<td id="T_587ed_row0_col2" class="data row0 col2">Load CSV data</td>
+</tr>
+<tr class="even">
+<th id="T_587ed_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">1</th>
+<td id="T_587ed_row1_col0" class="data row1 col0">merge()</td>
+<td id="T_587ed_row1_col1" class="data row1 col1">pd.merge()</td>
+<td id="T_587ed_row1_col2" class="data row1 col2">Join datasets on common variable</td>
+</tr>
+<tr class="odd">
+<th id="T_587ed_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">2</th>
+<td id="T_587ed_row2_col0" class="data row2 col0">ifelse()</td>
+<td id="T_587ed_row2_col1" class="data row2 col1">np.where()</td>
+<td id="T_587ed_row2_col2" class="data row2 col2">Create indicator (dummy) variables</td>
+</tr>
+<tr class="even">
+<th id="T_587ed_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">3</th>
+<td id="T_587ed_row3_col0" class="data row3 col0">table()</td>
+<td id="T_587ed_row3_col1" class="data row3 col1">pd.value_counts()</td>
+<td id="T_587ed_row3_col2" class="data row3 col2">Frequency counts</td>
+</tr>
+<tr class="odd">
+<th id="T_587ed_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">4</th>
+<td id="T_587ed_row4_col0" class="data row4 col0">lm()</td>
+<td id="T_587ed_row4_col1" class="data row4 col1">sm.OLS()</td>
+<td id="T_587ed_row4_col2" class="data row4 col2">Estimate OLS regression</td>
+</tr>
+<tr class="even">
+<th id="T_587ed_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">5</th>
+<td id="T_587ed_row5_col0" class="data row5 col0">summary(lm())</td>
+<td id="T_587ed_row5_col1" class="data row5 col1">model.summary()</td>
+<td id="T_587ed_row5_col2" class="data row5 col2">View coefficients and statistics</td>
+</tr>
+<tr class="odd">
+<th id="T_587ed_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">6</th>
+<td id="T_587ed_row6_col0" class="data row6 col0">predict()</td>
+<td id="T_587ed_row6_col1" class="data row6 col1">model.predict()</td>
+<td id="T_587ed_row6_col2" class="data row6 col2">Generate fitted values</td>
+</tr>
+<tr class="even">
+<th id="T_587ed_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">7</th>
+<td id="T_587ed_row7_col0" class="data row7 col0">residuals()</td>
+<td id="T_587ed_row7_col1" class="data row7 col1">model.resid</td>
+<td id="T_587ed_row7_col2" class="data row7 col2">Extract residuals</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="ols-regression-airfare-data-hw1" class="level3">
+<h3 class="anchored" data-anchor-id="ols-regression-airfare-data-hw1">OLS regression — Airfare data (HW1)</h3>
+<p>The regression from Problem Set 1 estimated airfare price as a function of distance, passengers, year dummies and an origin city dummy (Akron, OH):</p>
+<p><span class="math display">\[\widehat{fare} = \beta_0 + \beta_1 dist + \beta_2 passen + \beta_3 yr98 + \beta_4 yr99 + \beta_5 yr00 + \beta_6 Akron + \varepsilon\]</span></p>
+<p>Key findings: flights from Akron, OH were <strong>$47.03 cheaper</strong> than average. The year dummies showed increasing fares over time, consistent with inflation.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div id="cell-fig-airfare-regression" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dist    <span class="op">=</span> np.random.uniform(<span class="dv">100</span>, <span class="dv">2500</span>, n)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>passen  <span class="op">=</span> np.random.uniform(<span class="dv">50</span>, <span class="dv">1500</span>, n)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>yr98    <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, <span class="fl">0.25</span>, n)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>yr99    <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, <span class="fl">0.25</span>, n)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>yr00    <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, <span class="fl">0.25</span>, n)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>akron   <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, <span class="fl">0.02</span>, n)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>fare <span class="op">=</span> (<span class="dv">80</span> <span class="op">+</span> <span class="fl">0.07</span><span class="op">*</span>dist <span class="op">-</span> <span class="fl">0.01</span><span class="op">*</span>passen <span class="op">+</span> <span class="dv">5</span><span class="op">*</span>yr98 <span class="op">+</span> <span class="dv">12</span><span class="op">*</span>yr99 <span class="op">+</span> <span class="dv">22</span><span class="op">*</span>yr00</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">-</span> <span class="dv">47</span><span class="op">*</span>akron <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">30</span>, n))</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'fare'</span>: fare, <span class="st">'dist'</span>: dist, <span class="st">'passen'</span>: passen,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'yr98'</span>: yr98, <span class="st">'yr99'</span>: yr99, <span class="st">'yr00'</span>: yr00, <span class="st">'akron'</span>: akron})</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(df[[<span class="st">'dist'</span>,<span class="st">'passen'</span>,<span class="st">'yr98'</span>,<span class="st">'yr99'</span>,<span class="st">'yr00'</span>,<span class="st">'akron'</span>]])</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.OLS(df[<span class="st">'fare'</span>], X).fit()</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>fare_hat <span class="op">=</span> model.fittedvalues</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>resids   <span class="op">=</span> model.resid</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].scatter(fare_hat, df[<span class="st">'fare'</span>], alpha<span class="op">=</span><span class="fl">0.4</span>, s<span class="op">=</span><span class="dv">15</span>, color<span class="op">=</span><span class="st">'#2E75B6'</span>)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].plot([fare_hat.<span class="bu">min</span>(), fare_hat.<span class="bu">max</span>()],</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>             [fare_hat.<span class="bu">min</span>(), fare_hat.<span class="bu">max</span>()], <span class="st">'r--'</span>, linewidth<span class="op">=</span><span class="fl">1.2</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_xlabel(<span class="st">'Predicted Fare (fare_hat)'</span>)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_ylabel(<span class="st">'Actual Fare'</span>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">'Actual vs Predicted Airfare'</span>)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].hist(resids, bins<span class="op">=</span><span class="dv">40</span>, color<span class="op">=</span><span class="st">'#2E75B6'</span>, edgecolor<span class="op">=</span><span class="st">'white'</span>,</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>             <span class="bu">range</span><span class="op">=</span>(<span class="op">-</span><span class="dv">250</span>, <span class="dv">250</span>))</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'red'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">1.2</span>)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_xlabel(<span class="st">'Residual'</span>)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">'Residuals Histogram'</span>)</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Highest predicted fare: $</span><span class="sc">{</span>fare_hat<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Lowest predicted fare:  $</span><span class="sc">{</span>fare_hat<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-airfare-regression" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-airfare-regression-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="r_progress_files/figure-html/fig-airfare-regression-output-1.png" width="1141" height="372" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-airfare-regression-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: OLS regression — simulated airfare data replicating HW1 findings
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Highest predicted fare: $280.46
+Lowest predicted fare:  $36.66</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Interpreting residuals
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>positive residual</strong> means the model is <strong>underpredicting</strong> — the actual fare was higher than expected. A <strong>negative residual</strong> means the model is <strong>overpredicting</strong> — the actual fare was lower than expected. Smaller residuals indicate a more accurate model.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="multicollinearity-model-specification" class="level2">
+<h2 class="anchored" data-anchor-id="multicollinearity-model-specification">2. Multicollinearity &amp; Model Specification</h2>
+<p>Problem Set 2 used house price data to explore multicollinearity — what happens when independent variables are highly correlated with each other.</p>
+<section id="the-ols-model" class="level3">
+<h3 class="anchored" data-anchor-id="the-ols-model">The OLS model</h3>
+<p><span class="math display">\[price = \beta_0 + \beta_1 sqrft + \beta_2 bdrms + \varepsilon\]</span></p>
+<p>Adding a squared term <span class="math inline">\(sqrft^2\)</span> introduced multicollinearity because <span class="math inline">\(sqrft\)</span> and <span class="math inline">\(sqrft^2\)</span> are highly correlated. The VIF (Variance Inflation Factor) test confirmed this — a VIF above 10 indicates multicollinearity:</p>
+<p><span class="math display">\[VIF_j = \frac{1}{1 - R^2_j}\]</span></p>
+<p>Where <span class="math inline">\(R^2_j\)</span> is the R-squared from regressing variable <span class="math inline">\(j\)</span> on all other independent variables. In the homework, <span class="math inline">\(sqrft\)</span> had a VIF of approximately <strong>40</strong> — well above the threshold.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div id="cell-fig-multicollinearity" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">7</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">88</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>sqrft  <span class="op">=</span> np.random.uniform(<span class="dv">500</span>, <span class="dv">4000</span>, n)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>bdrms  <span class="op">=</span> np.random.randint(<span class="dv">1</span>, <span class="dv">7</span>, n)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>price  <span class="op">=</span> <span class="fl">0.128</span><span class="op">*</span>sqrft <span class="op">+</span> <span class="fl">15.198</span><span class="op">*</span>bdrms <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">40</span>, n)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>sqrft_sq <span class="op">=</span> sqrft <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> vif(X_df, var):</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> X_df[var]</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> sm.add_constant(X_df.drop(columns<span class="op">=</span>[var]))</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    r2 <span class="op">=</span> sm.OLS(y, X).fit().rsquared</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">-</span> r2)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>df_h <span class="op">=</span> pd.DataFrame({<span class="st">'sqrft'</span>: sqrft, <span class="st">'bdrms'</span>: bdrms, <span class="st">'sqrft_sq'</span>: sqrft_sq})</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>vif_scores <span class="op">=</span> {v: vif(df_h, v) <span class="cf">for</span> v <span class="kw">in</span> df_h.columns}</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="fl">3.5</span>))</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">'#C00000'</span> <span class="cf">if</span> v <span class="op">&gt;</span> <span class="dv">10</span> <span class="cf">else</span> <span class="st">'#2E75B6'</span> <span class="cf">for</span> v <span class="kw">in</span> vif_scores.values()]</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax.bar(vif_scores.keys(), vif_scores.values(), color<span class="op">=</span>colors)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>ax.bar_label(bars, fmt<span class="op">=</span><span class="st">'</span><span class="sc">%.1f</span><span class="st">'</span>, padding<span class="op">=</span><span class="dv">3</span>, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">10</span>, color<span class="op">=</span><span class="st">'red'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">1.2</span>, label<span class="op">=</span><span class="st">'VIF = 10 threshold'</span>)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'VIF Score'</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'VIF Scores — Multicollinearity Detected in sqrft'</span>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-multicollinearity" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-multicollinearity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="r_progress_files/figure-html/fig-multicollinearity-output-1.png" width="661" height="325" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-multicollinearity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: VIF scores — sqrft has severe multicollinearity when sqrft² is added
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="interaction-terms-partial-effects" class="level2">
+<h2 class="anchored" data-anchor-id="interaction-terms-partial-effects">3. Interaction Terms &amp; Partial Effects</h2>
+<p>Problem Set 3 used student attendance data to model how the effect of prior GPA on exam scores <strong>depends on</strong> attendance rate — an interaction effect.</p>
+<section id="the-model-with-interaction-term" class="level3">
+<h3 class="anchored" data-anchor-id="the-model-with-interaction-term">The model with interaction term</h3>
+<p><span class="math display">\[FinalExam = \beta_0 + \beta_1 Attend + \beta_2 priGPA + \beta_3 ETestScore + \beta_4 ETestScore^2 + \beta_5 (priGPA \times Attend) + \varepsilon\]</span></p>
+<p>The <strong>partial effect</strong> of prior GPA on exam score is not a single number — it varies with attendance:</p>
+<p><span class="math display">\[\frac{\partial \widehat{FinalExam}}{\partial priGPA} = \beta_2 + \beta_5 \cdot Attend = -7.035 + 0.139 \cdot Attend\]</span></p>
+<p>This means the effect of prior GPA is <strong>negative at low attendance</strong> and <strong>positive at high attendance</strong> — a student with a high GPA who rarely attends class may actually perform worse.</p>
+<div id="cell-fig-partial-effects" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>attend_range <span class="op">=</span> np.linspace(<span class="fl">6.25</span>, <span class="dv">100</span>, <span class="dv">200</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>beta2 <span class="op">=</span> <span class="op">-</span><span class="fl">7.034744</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>beta5 <span class="op">=</span>  <span class="fl">0.138963</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>partial_effect <span class="op">=</span> beta2 <span class="op">+</span> beta5 <span class="op">*</span> attend_range</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure()</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Scatter(</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>attend_range, y<span class="op">=</span>partial_effect,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    mode<span class="op">=</span><span class="st">'lines'</span>, line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">'#2E75B6'</span>, width<span class="op">=</span><span class="fl">2.5</span>),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="st">'∂FinalExam / ∂priGPA'</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>fig.add_hline(y<span class="op">=</span><span class="dv">0</span>, line_dash<span class="op">=</span><span class="st">'dash'</span>, line_color<span class="op">=</span><span class="st">'red'</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>              annotation_text<span class="op">=</span><span class="st">'Zero effect'</span>, annotation_position<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>fig.add_vline(x<span class="op">=</span><span class="dv">82</span>, line_dash<span class="op">=</span><span class="st">'dot'</span>, line_color<span class="op">=</span><span class="st">'grey'</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>              annotation_text<span class="op">=</span><span class="st">'Mean attendance (82%)'</span>, annotation_position<span class="op">=</span><span class="st">'top right'</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Partial Effect of priGPA on FinalExam by Attendance Rate'</span>,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    xaxis_title<span class="op">=</span><span class="st">'Attendance Rate (%)'</span>,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    yaxis_title<span class="op">=</span><span class="st">'Partial Effect on Final Exam Score'</span>,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">420</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="fig-partial-effects" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-partial-effects-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>                            <div id="9a3f04da-4822-4c5d-b968-0f2a57c01846" class="plotly-graph-div" style="height:420px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("9a3f04da-4822-4c5d-b968-0f2a57c01846")) {                    Plotly.newPlot(                        "9a3f04da-4822-4c5d-b968-0f2a57c01846",                        [{"line":{"color":"#2E75B6","width":2.5},"mode":"lines","name":"\u2202FinalExam \u002f \u2202priGPA","x":[6.25,6.721105527638191,7.192211055276382,7.663316582914573,8.134422110552764,8.605527638190955,9.076633165829145,9.547738693467338,10.018844221105528,10.489949748743719,10.96105527638191,11.4321608040201,11.90326633165829,12.374371859296483,12.845477386934673,13.316582914572866,13.787688442211056,14.258793969849247,14.729899497487438,15.201005025125628,15.672110552763819,16.143216080402013,16.6143216080402,17.085427135678394,17.55653266331658,18.027638190954775,18.498743718592966,18.969849246231156,19.440954773869347,19.912060301507537,20.38316582914573,20.85427135678392,21.325376884422113,21.7964824120603,22.267587939698494,22.738693467336685,23.209798994974875,23.680904522613066,24.152010050251256,24.623115577889447,25.094221105527637,25.565326633165828,26.036432160804022,26.507537688442213,26.978643216080403,27.449748743718594,27.920854271356784,28.391959798994975,28.863065326633166,29.334170854271356,29.805276381909547,30.27638190954774,30.74748743718593,31.218592964824122,31.689698492462313,32.1608040201005,32.631909547738694,33.10301507537689,33.574120603015075,34.04522613065326,34.51633165829146,34.98743718592965,35.45854271356784,35.92964824120603,36.400753768844226,36.87185929648241,37.3429648241206,37.814070351758794,38.28517587939699,38.756281407035175,39.22738693467337,39.698492462311556,40.16959798994975,40.64070351758794,41.11180904522613,41.582914572864325,42.05402010050251,42.52512562814071,42.996231155778894,43.46733668341709,43.938442211055275,44.40954773869347,44.880653266331656,45.35175879396985,45.822864321608044,46.29396984924623,46.765075376884425,47.23618090452261,47.70728643216081,48.178391959798994,48.64949748743719,49.120603015075375,49.59170854271357,50.06281407035176,50.53391959798995,51.005025125628144,51.47613065326633,51.947236180904525,52.41834170854271,52.88944723618091,53.36055276381909,53.83165829145729,54.30276381909548,54.77386934673367,55.24497487437186,55.71608040201005,56.187185929648244,56.65829145728643,57.129396984924625,57.60050251256281,58.071608040201006,58.5427135678392,59.01381909547739,59.48492462311558,59.95603015075377,60.42713567839196,60.89824120603015,61.369346733668344,61.84045226130653,62.311557788944725,62.78266331658292,63.253768844221106,63.7248743718593,64.19597989949749,64.66708542713567,65.13819095477388,65.60929648241206,66.08040201005025,66.55150753768845,67.02261306532664,67.49371859296483,67.96482412060303,68.4359296482412,68.9070351758794,69.37814070351759,69.84924623115577,70.32035175879398,70.79145728643216,71.26256281407035,71.73366834170855,72.20477386934674,72.67587939698493,73.14698492462311,73.61809045226131,74.0891959798995,74.56030150753769,75.03140703517587,75.50251256281408,75.97361809045226,76.44472361809045,76.91582914572865,77.38693467336684,77.85804020100502,78.32914572864321,78.80025125628141,79.2713567839196,79.74246231155779,80.21356783919599,80.68467336683418,81.15577889447236,81.62688442211055,82.09798994974875,82.56909547738694,83.04020100502512,83.51130653266331,83.98241206030151,84.4535175879397,84.92462311557789,85.39572864321609,85.86683417085428,86.33793969849246,86.80904522613065,87.28015075376885,87.75125628140704,88.22236180904522,88.69346733668343,89.16457286432161,89.6356783919598,90.10678391959799,90.57788944723619,91.04899497487438,91.52010050251256,91.99120603015075,92.46231155778895,92.93341708542714,93.40452261306532,93.87562814070353,94.34673366834171,94.8178391959799,95.28894472361809,95.76005025125629,96.23115577889448,96.70226130653266,97.17336683417086,97.64447236180905,98.11557788944724,98.58668341708542,99.05778894472363,99.52889447236181,100.0],"y":[-6.16622525,-6.100759012562814,-6.035292775125628,-5.9698265376884425,-5.904360300251256,-5.83889406281407,-5.773427825376884,-5.707961587939698,-5.642495350502513,-5.5770291130653264,-5.51156287562814,-5.446096638190955,-5.380630400753769,-5.315164163316583,-5.2496979258793965,-5.18423168844221,-5.118765451005025,-5.053299213567839,-4.987832976130653,-4.9223667386934675,-4.856900501256281,-4.791434263819095,-4.72596802638191,-4.660501788944723,-4.595035551507538,-4.5295693140703515,-4.464103076633165,-4.39863683919598,-4.333170601758794,-4.267704364321608,-4.2022381268844216,-4.136771889447236,-4.07130565201005,-4.005839414572865,-3.940373177135678,-3.874906939698492,-3.8094407022613064,-3.74397446482412,-3.6785082273869345,-3.613041989949749,-3.5475757525125626,-3.482109515075377,-3.4166432776381903,-3.3511770402010046,-3.285710802763819,-3.2202445653266327,-3.154778327889447,-3.0893120904522613,-3.023845853015075,-2.958379615577889,-2.8929133781407037,-2.8274471407035167,-2.7619809032663314,-2.6965146658291452,-2.631048428391959,-2.565582190954774,-2.5001159535175876,-2.4346497160804015,-2.369183478643216,-2.303717241206031,-2.238251003768843,-2.1727847663316577,-2.1073185288944725,-2.0418522914572863,-1.9763860540200993,-1.910919816582914,-1.8454535791457287,-1.7799873417085426,-1.7145211042713564,-1.6490548668341711,-1.583588629396984,-1.5181223919597988,-1.4526561545226127,-1.3871899170854274,-1.3217236796482412,-1.2562574422110542,-1.190791204773869,-1.1253249673366827,-1.0598587298994975,-0.9943924924623113,-0.9289262550251252,-0.863460017587939,-0.7979937801507537,-0.7325275427135676,-0.6670613052763814,-0.6015950678391961,-0.5361288304020091,-0.4706625929648238,-0.40519635552763766,-0.3397301180904524,-0.27426388065326623,-0.20879764321608008,-0.14333140577889392,-0.07786516834170776,-0.012398930904522487,0.05306730653266367,0.11853354396984983,0.183999781407036,0.24946601884422126,0.3149322562814074,0.3803984937185927,0.44586473115577974,0.5113309685929659,0.5767972060301512,0.6422634434673373,0.7077296809045226,0.7731959183417096,0.8386621557788949,0.9041283932160811,0.9695946306532672,1.0350608680904525,1.1005271055276395,1.1659933429648248,1.23145958040201,1.2969258178391971,1.3623920552763824,1.4278582927135677,1.4933245301507547,1.55879076758794,1.624257005025127,1.6897232424623123,1.7551894798994976,1.8206557173366846,1.88612195477387,1.9515881922110552,2.017054429648242,2.0825206670854275,2.1479869045226128,2.2134531419598,2.278919379396985,2.344385616834172,2.409851854271359,2.4753180917085427,2.5407843291457297,2.606250566582915,2.6717168040201003,2.7371830414572873,2.8026492788944726,2.868115516331658,2.933581753768845,2.999047991206032,3.064514228643217,3.1299804660804025,3.1954467035175895,3.260912940954775,3.32637917839196,3.3918454158291453,3.4573116532663324,3.5227778907035177,3.588244128140703,3.6537103655778917,3.719176603015077,3.7846428404522623,3.8501090778894476,3.9155753153266346,3.98104155276382,4.046507790201005,4.111974027638192,4.1774402650753775,4.242906502512563,4.308372739949748,4.373838977386937,4.439305214824122,4.504771452261307,4.570237689698493,4.63570392713568,4.701170164572865,4.76663640201005,4.832102639447237,4.8975688768844226,4.963035114321608,5.028501351758793,5.093967589195982,5.159433826633167,5.2249000640703525,5.2903663015075395,5.355832538944725,5.42129877638191,5.486765013819095,5.552231251256282,5.617697488693468,5.683163726130653,5.748629963567838,5.814096201005027,5.879562438442212,5.9450286758793975,6.010494913316585,6.07596115075377,6.141427388190955,6.20689362562814,6.2723598630653274,6.337826100502513,6.403292337939698,6.468758575376887,6.534224812814072,6.599691050251257,6.665157287688443,6.73062352512563,6.796089762562815,6.861556],"type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"shapes":[{"line":{"color":"red","dash":"dash"},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":0,"y1":0,"yref":"y"},{"line":{"color":"grey","dash":"dot"},"type":"line","x0":82,"x1":82,"xref":"x","y0":0,"y1":1,"yref":"y domain"}],"annotations":[{"showarrow":false,"text":"Zero effect","x":1,"xanchor":"left","xref":"x domain","y":0,"yanchor":"middle","yref":"y"},{"showarrow":false,"text":"Mean attendance (82%)","x":82,"xanchor":"left","xref":"x","y":1,"yanchor":"top","yref":"y domain"}],"title":{"text":"Partial Effect of priGPA on FinalExam by Attendance Rate"},"xaxis":{"title":{"text":"Attendance Rate (%)"}},"yaxis":{"title":{"text":"Partial Effect on Final Exam Score"}},"height":420},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('9a3f04da-4822-4c5d-b968-0f2a57c01846');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-partial-effects-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Partial effect of priGPA on FinalExam — varies with attendance rate
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Theta interpretation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>By rewriting the model centred at the mean attendance rate (82%), the coefficient <span class="math inline">\(\hat{\theta}_1 = \beta_2 + \beta_5(82) = 4.36\)</span> gives a direct interpretation: at the <strong>average attendance rate</strong>, a one-unit increase in prior GPA increases the final exam score by <strong>4.36 points</strong>.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="time-series-serial-correlation" class="level2">
+<h2 class="anchored" data-anchor-id="time-series-serial-correlation">4. Time Series &amp; Serial Correlation</h2>
+<p>Problem Set 4 used fish market data to introduce <strong>serial correlation</strong> — a common issue in time series data where residuals are correlated across time periods.</p>
+<section id="the-durbin-watson-statistic" class="level3">
+<h3 class="anchored" data-anchor-id="the-durbin-watson-statistic">The Durbin-Watson statistic</h3>
+<p>The Durbin-Watson test detects first-order serial correlation in residuals:</p>
+<p><span class="math display">\[d = \frac{\sum_{t=2}^{T} (e_t - e_{t-1})^2}{\sum_{t=1}^{T} e_t^2}\]</span></p>
+<p>A value close to <strong>2</strong> indicates no serial correlation. Values near <strong>0</strong> indicate positive serial correlation, near <strong>4</strong> indicate negative serial correlation. In the homework, <span class="math inline">\(d = 1.744\)</span> — close to 2, suggesting no significant serial correlation.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<div id="cell-fig-serial-correlation" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">99</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> <span class="dv">97</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>t_index <span class="op">=</span> np.arange(<span class="dv">1</span>, T<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># No serial correlation model</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>u1 <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="dv">1</span>, T)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Serial correlation model (AR1)</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>u2 <span class="op">=</span> np.zeros(T)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>rho <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, T):</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    u2[t] <span class="op">=</span> rho <span class="op">*</span> u2[t<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> durbin_watson(resids):</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(np.diff(resids)<span class="op">**</span><span class="dv">2</span>) <span class="op">/</span> np.<span class="bu">sum</span>(resids<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>dw1 <span class="op">=</span> durbin_watson(u1)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>dw2 <span class="op">=</span> durbin_watson(u2)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, resid, title, dw <span class="kw">in</span> [</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    (axes[<span class="dv">0</span>], u1, <span class="st">'No Serial Correlation'</span>, dw1),</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    (axes[<span class="dv">1</span>], u2, <span class="st">'Serial Correlation (AR1, ρ=0.5)'</span>, dw2)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>]:</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    ax.scatter(t_index, resid, s<span class="op">=</span><span class="dv">15</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, color<span class="op">=</span><span class="st">'#2E75B6'</span>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    ax.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'red'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'Time (t)'</span>)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'Residual'</span>)</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'</span><span class="sc">{</span>title<span class="sc">}</span><span class="ch">\n</span><span class="ss">Durbin-Watson = </span><span class="sc">{</span>dw<span class="sc">:.3f}</span><span class="ss">'</span>)</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-serial-correlation" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-serial-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="r_progress_files/figure-html/fig-serial-correlation-output-1.png" width="1140" height="373" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-serial-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Simulated residuals — testing for serial correlation with Durbin-Watson
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="difference-in-differences" class="level3">
+<h3 class="anchored" data-anchor-id="difference-in-differences">Difference-in-differences</h3>
+<p>Problem Set 4 also covered <strong>difference-in-differences (DiD)</strong> — a quasi-experimental design to estimate causal effects. The model examined the impact of a garbage incinerator on nearby house prices:</p>
+<p><span class="math display">\[rprice_{it} = \beta_0 + \beta_1 y81_t + \beta_2 nearinc_i + \underbrace{\beta_3 y81nrinc_{it}}_{\text{DiD estimator}} + \varepsilon\]</span></p>
+<p>The coefficient <span class="math inline">\(\beta_3\)</span> is the DiD estimator — it captures the <strong>additional</strong> price decline for houses near the incinerator <strong>after</strong> it became active, compared to the control group.</p>
+<div id="cell-fig-did" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">5</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>n_group <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>before_far  <span class="op">=</span> np.random.normal(<span class="dv">100000</span>, <span class="dv">15000</span>, n_group)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>before_near <span class="op">=</span> np.random.normal(<span class="dv">95000</span>,  <span class="dv">15000</span>, n_group)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>after_far   <span class="op">=</span> before_far  <span class="op">+</span> np.random.normal(<span class="dv">8000</span>, <span class="dv">5000</span>, n_group)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>after_near  <span class="op">=</span> before_near <span class="op">+</span> np.random.normal(<span class="op">-</span><span class="dv">10000</span>, <span class="dv">5000</span>, n_group)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>means <span class="op">=</span> {</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Far (1978)'</span>:  before_far.mean(),</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Far (1981)'</span>:  after_far.mean(),</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Near (1978)'</span>: before_near.mean(),</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Near (1981)'</span>: after_near.mean(),</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure()</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Scatter(</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>[<span class="st">'1978'</span>, <span class="st">'1981'</span>], y<span class="op">=</span>[means[<span class="st">'Far (1978)'</span>], means[<span class="st">'Far (1981)'</span>]],</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    mode<span class="op">=</span><span class="st">'lines+markers'</span>, name<span class="op">=</span><span class="st">'Far from incinerator'</span>,</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">'#2E75B6'</span>, width<span class="op">=</span><span class="fl">2.5</span>), marker<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Scatter(</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>[<span class="st">'1978'</span>, <span class="st">'1981'</span>], y<span class="op">=</span>[means[<span class="st">'Near (1978)'</span>], means[<span class="st">'Near (1981)'</span>]],</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    mode<span class="op">=</span><span class="st">'lines+markers'</span>, name<span class="op">=</span><span class="st">'Near incinerator'</span>,</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">'#C00000'</span>, width<span class="op">=</span><span class="fl">2.5</span>), marker<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>did <span class="op">=</span> (means[<span class="st">'Near (1981)'</span>] <span class="op">-</span> means[<span class="st">'Near (1978)'</span>]) <span class="op">-</span> (means[<span class="st">'Far (1981)'</span>] <span class="op">-</span> means[<span class="st">'Far (1978)'</span>])</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="ss">f'Difference-in-Differences — DiD Estimate: $</span><span class="sc">{</span>did<span class="sc">:,.0f}</span><span class="ss">'</span>,</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    xaxis_title<span class="op">=</span><span class="st">'Year'</span>,</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    yaxis_title<span class="op">=</span><span class="st">'Average House Price (€)'</span>,</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">400</span>,</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    yaxis<span class="op">=</span><span class="bu">dict</span>(tickformat<span class="op">=</span><span class="st">'$,.0f'</span>)</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div id="fig-did" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-did-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>                            <div id="3e196e3d-195f-42be-9df8-2da753e5451a" class="plotly-graph-div" style="height:400px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("3e196e3d-195f-42be-9df8-2da753e5451a")) {                    Plotly.newPlot(                        "3e196e3d-195f-42be-9df8-2da753e5451a",                        [{"line":{"color":"#2E75B6","width":2.5},"marker":{"size":10},"mode":"lines+markers","name":"Far from incinerator","x":["1978","1981"],"y":[101373.19965801667,108782.72969711524],"type":"scatter"},{"line":{"color":"#C00000","width":2.5},"marker":{"size":10},"mode":"lines+markers","name":"Near incinerator","x":["1978","1981"],"y":[95408.17597184813,86111.72781017961],"type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"yaxis":{"title":{"text":"Average House Price (\u20ac)"},"tickformat":"$,.0f"},"title":{"text":"Difference-in-Differences \u2014 DiD Estimate: $-16,706"},"xaxis":{"title":{"text":"Year"}},"height":400},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('3e196e3d-195f-42be-9df8-2da753e5451a');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-did-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Difference-in-differences — house prices near vs far from incinerator
+</figcaption>
+</figure>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="binary-choice-models" class="level2">
+<h2 class="anchored" data-anchor-id="binary-choice-models">5. Binary Choice Models</h2>
+<p>Problem Set 5 moved into <strong>limited dependent variable</strong> models — specifically the <strong>Linear Probability Model (LPM)</strong> and <strong>Binary Logit Model</strong> for predicting credit card approval.</p>
+<section id="lpm-vs-logit" class="level3">
+<h3 class="anchored" data-anchor-id="lpm-vs-logit">LPM vs Logit</h3>
+<p>The key limitation of the LPM is that predicted probabilities can fall outside [0, 1]:</p>
+<p><span class="math display">\[P(Cardholder_i = 1) = \beta_0 + \beta_1 Selfempl_i + \beta_2 Age_i + \beta_3 Adepcnt_i + \beta_4 Ownrent_i + \beta_5 Majordrg_i\]</span></p>
+<p>The Logit model solves this using the <strong>logistic function</strong>:</p>
+<p><span class="math display">\[P(Cardholder_i = 1) = \frac{e^{X_i\beta}}{1 + e^{X_i\beta}} = \Lambda(X_i\beta)\]</span></p>
+<p>This constrains all predictions to (0, 1) by design. The homework found the LPM produced impossible values (min = -1.84, max = 1.00), while the Logit model gave sensible bounds (min = 0, max = 0.97).</p>
+<div id="cell-fig-lpm-vs-logit" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression, LinearRegression</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>age       <span class="op">=</span> np.random.uniform(<span class="dv">20</span>, <span class="dv">75</span>, n)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>selfempl  <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, <span class="fl">0.15</span>, n)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>adepcnt   <span class="op">=</span> np.random.randint(<span class="dv">1</span>, <span class="dv">5</span>, n)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>ownrent   <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, <span class="fl">0.55</span>, n)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>majordrg  <span class="op">=</span> np.random.poisson(<span class="fl">0.5</span>, n)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>log_odds <span class="op">=</span> (<span class="op">-</span><span class="dv">1</span> <span class="op">+</span> <span class="fl">0.03</span><span class="op">*</span>age <span class="op">-</span> <span class="fl">0.3</span><span class="op">*</span>selfempl <span class="op">-</span> <span class="fl">0.2</span><span class="op">*</span>adepcnt</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>             <span class="op">+</span> <span class="fl">0.4</span><span class="op">*</span>ownrent <span class="op">-</span> <span class="fl">0.8</span><span class="op">*</span>majordrg)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>prob_true <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>log_odds))</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.random.binomial(<span class="dv">1</span>, prob_true, n)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.column_stack([age, selfempl, adepcnt, ownrent, majordrg])</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>lpm <span class="op">=</span> LinearRegression().fit(X, y)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>logit <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>).fit(X, y)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>lpm_preds   <span class="op">=</span> lpm.predict(X)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>logit_preds <span class="op">=</span> logit.predict_proba(X)[:, <span class="dv">1</span>]</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, preds, title, color <span class="kw">in</span> [</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    (axes[<span class="dv">0</span>], lpm_preds,   <span class="ss">f'LPM  (min=</span><span class="sc">{</span>lpm_preds<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:.2f}</span><span class="ss">, max=</span><span class="sc">{</span>lpm_preds<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.2f}</span><span class="ss">)'</span>, <span class="st">'#C00000'</span>),</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>    (axes[<span class="dv">1</span>], logit_preds, <span class="ss">f'Logit (min=</span><span class="sc">{</span>logit_preds<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:.2f}</span><span class="ss">, max=</span><span class="sc">{</span>logit_preds<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.2f}</span><span class="ss">)'</span>, <span class="st">'#2E75B6'</span>),</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>]:</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    ax.hist(preds, bins<span class="op">=</span><span class="dv">40</span>, color<span class="op">=</span>color, edgecolor<span class="op">=</span><span class="st">'white'</span>, alpha<span class="op">=</span><span class="fl">0.85</span>)</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    ax.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    ax.axvline(<span class="dv">1</span>, color<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'Predicted Probability'</span>)</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'Frequency'</span>)</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>    ax.set_title(title)</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-lpm-vs-logit" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lpm-vs-logit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="r_progress_files/figure-html/fig-lpm-vs-logit-output-1.png" width="1141" height="372" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lpm-vs-logit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: LPM vs Logit — comparing predicted probability distributions
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="likelihood-ratio-test" class="level3">
+<h3 class="anchored" data-anchor-id="likelihood-ratio-test">Likelihood Ratio Test</h3>
+<p>The LR test compared the restricted model (without income and tenure variables) against the unrestricted model. The test statistic is:</p>
+<p><span class="math display">\[LR = -2(\mathcal{L}_{restricted} - \mathcal{L}_{unrestricted}) \sim \chi^2_q\]</span></p>
+<p>Where <span class="math inline">\(q\)</span> is the number of restrictions. In the homework, <span class="math inline">\(LR = 276.31\)</span> with <span class="math inline">\(p &lt; 0.01\)</span> — strongly rejecting the null that the additional variables were irrelevant.</p>
+<div id="cell-fig-lr-test" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> chi2</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df_chi <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">20</span>, <span class="dv">500</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>y_chi <span class="op">=</span> chi2.pdf(x, df<span class="op">=</span>df_chi)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>crit <span class="op">=</span> chi2.ppf(<span class="fl">0.95</span>, df<span class="op">=</span>df_chi)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>ax.plot(x, y_chi, color<span class="op">=</span><span class="st">'#2E75B6'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>ax.fill_between(x, y_chi, where<span class="op">=</span>(x <span class="op">&gt;=</span> crit), color<span class="op">=</span><span class="st">'#C00000'</span>, alpha<span class="op">=</span><span class="fl">0.4</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="ss">f'Rejection region (5%)'</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>ax.axvline(crit, color<span class="op">=</span><span class="st">'#C00000'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>,</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>           label<span class="op">=</span><span class="ss">f'Critical value = </span><span class="sc">{</span>crit<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Chi-squared statistic'</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Density'</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Chi-squared Distribution — Likelihood Ratio Test (df=2)'</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-lr-test" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lr-test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="r_progress_files/figure-html/fig-lr-test-output-1.png" width="661" height="372" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lr-test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Likelihood Ratio Test — chi-squared distribution with rejection region
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="skills-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="skills-checklist">6. Skills Checklist</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Data import and cleaning — <code>read.csv()</code>, <code>merge()</code>, <code>ifelse()</code>, indicator variables</label></li>
+<li><label><input type="checkbox" checked="">OLS regression — <code>lm()</code>, <code>summary()</code>, coefficient interpretation</label></li>
+<li><label><input type="checkbox" checked="">Residual analysis — scatter plots, histograms, actual vs predicted</label></li>
+<li><label><input type="checkbox" checked="">Multicollinearity — VIF scores, <code>vif()</code> function</label></li>
+<li><label><input type="checkbox" checked="">Quadratic and interaction terms — partial effects, derivatives</label></li>
+<li><label><input type="checkbox" checked="">Serial correlation — Durbin-Watson test, <code>durbinWatsonTest()</code></label></li>
+<li><label><input type="checkbox" checked="">Generalised Least Squares — correcting for AR(1) serial correlation</label></li>
+<li><label><input type="checkbox" checked="">Difference-in-differences — DiD estimator interpretation</label></li>
+<li><label><input type="checkbox" checked="">Panel data — within estimator using <code>plm()</code>, city fixed effects</label></li>
+<li><label><input type="checkbox" checked="">Linear Probability Model — interpretation, limitations</label></li>
+<li><label><input type="checkbox" checked="">Binary Logit Model — average marginal effects, <code>logit()</code></label></li>
+<li><label><input type="checkbox" checked="">Likelihood Ratio Test — <code>logLik()</code>, <code>lrtest()</code></label></li>
+<li><label><input type="checkbox">Instrumental Variables (IV) — not covered in this module</label></li>
+<li><label><input type="checkbox">ARIMA / forecasting — beyond the scope of this module</label></li>
+</ul>
+
+
+</section>
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>The year dummy coefficients showed that the relationship between year and fare became stronger and more statistically significant over time (yr98 insignificant, yr99 significant, yr00 highly significant), consistent with the cumulative effect of inflation on airfares.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Multicollinearity inflates standard errors without biasing coefficients. It was identified by two signals: (1) both sqrft and sqrft² had negative coefficients despite the expected positive relationship with price, and (2) the gap between R² and Adjusted R² widened compared to the original model.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Generalised Least Squares (GLS) was applied when serial correlation was detected in the logged model. Serial correlation does not bias coefficients but does bias standard errors — so GLS corrects the standard errors but ideally should not change the coefficients significantly.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/martinas-jucysbrady\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Martinas Jucys Brady, 2026</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

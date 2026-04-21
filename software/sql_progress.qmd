@@ -1,0 +1,434 @@
+---
+title: "SQL"
+subtitle: "*Database Design, Querying & Data Analysis*"
+description: "An overview of my SQL skills developed through the Data Analytics: Programming and Visualisation module at DCU, covering database design, ERDs, querying and data manipulation."
+categories: [Software, Analytics]
+format:
+  html:
+    toc: true
+    toc-location: right
+    toc-title: "On this page"
+    code-fold: true
+    code-summary: "Show code"
+    fig-width: 7
+    fig-height: 4
+---
+
+```{=html}
+<style>
+#quarto-document-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-right: 50px;
+}
+#quarto-margin-sidebar {
+  position: fixed;
+  right: 1rem;
+  top: 70px;
+  width: 220px;
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
+}
+</style>
+```
+
+```{python}
+#| label: setup
+#| include: false
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import plotly.express as px
+import plotly.graph_objects as go
+import sqlite3
+import warnings
+warnings.filterwarnings('ignore')
+```
+
+I studied SQL as part of **Data Analytics: Programming and Visualisation (BAA1026)** in fourth year at DCU. The module covered database design, entity-relationship diagrams, and SQL querying — from basic `SELECT` statements through to joins, aggregations and subqueries. Below I demonstrate these skills using a live SQLite database running in Python.
+
+::: {.callout-note}
+## Module
+**BAA1026** — Data Analytics: Programming and Visualisation — *Year 4, DCU*
+
+All SQL on this page executes against a real in-memory SQLite database — the code is fully live and reproducible.
+:::
+
+---
+
+## 1. Database Design & ERDs
+
+Before writing a single line of SQL, a well-designed database starts with an **Entity-Relationship Diagram (ERD)**. An ERD maps out the entities, their attributes, and the relationships between them.
+
+### Conceptual ERD — Car Insurance Database
+
+A key exercise from the module involved designing a database for a car insurance company with the following requirements:
+
+- Each **driver** has a licence number, full name, and address — and can be insured for more than one car
+- Each **car** has a registration number, model and year — with only one driver insured per car
+- Each **accident** has a report number, cost, location and date — associated with only one car
+
+The relationships expressed in **min-max notation**:
+
+| Entity A | Relationship | Entity B | Cardinality |
+|----------|-------------|----------|-------------|
+| Driver | insures | Car | (1,1) to (1,N) |
+| Car | involved in | Accident | (0,N) to (1,1) |
+
+A driver must insure **at least one** car but can insure many. A car is insured by **exactly one** driver. An accident is associated with **exactly one** car, and a car may have had **zero or many** accidents.
+
+```{mermaid}
+erDiagram
+    DRIVER {
+        varchar licence_number PK
+        varchar full_name
+        varchar address
+    }
+    CAR {
+        varchar reg_number PK
+        varchar model
+        int year
+        varchar licence_number FK
+    }
+    ACCIDENT {
+        int report_number PK
+        decimal cost
+        varchar location
+        date accident_date
+        varchar reg_number FK
+    }
+
+    DRIVER ||--o{ CAR : "insures"
+    CAR ||--o{ ACCIDENT : "involved in"
+```
+
+---
+
+## 2. Creating Tables
+
+Once the ERD is designed, the physical implementation in SQL uses `CREATE TABLE` statements with appropriate data types, primary keys and foreign keys.
+
+```{python}
+#| label: create-tables
+
+conn = sqlite3.connect(':memory:')
+cur  = conn.cursor()
+
+cur.executescript("""
+-- Car insurance database
+CREATE TABLE Driver (
+    licence_number VARCHAR(20)  PRIMARY KEY,
+    full_name      VARCHAR(100) NOT NULL,
+    address        VARCHAR(200)
+);
+
+CREATE TABLE Car (
+    reg_number     VARCHAR(20)  PRIMARY KEY,
+    model          VARCHAR(50)  NOT NULL,
+    year           INTEGER      NOT NULL,
+    licence_number VARCHAR(20)  NOT NULL,
+    FOREIGN KEY (licence_number) REFERENCES Driver(licence_number)
+);
+
+CREATE TABLE Accident (
+    report_number  INTEGER      PRIMARY KEY AUTOINCREMENT,
+    cost           DECIMAL(10,2),
+    location       VARCHAR(200),
+    accident_date  DATE,
+    reg_number     VARCHAR(20)  NOT NULL,
+    FOREIGN KEY (reg_number) REFERENCES Car(reg_number)
+);
+""")
+print("Tables created successfully.")
+```
+
+---
+
+## 3. The Bookstore Database
+
+The practice exercises from the module used a bookstore database with three tables — Customers, Books and Orders. I recreate and query this database below.
+
+```{python}
+#| label: create-bookstore
+
+cur.executescript("""
+CREATE TABLE Customer (
+    customer_id INTEGER PRIMARY KEY,
+    name        VARCHAR(100) NOT NULL,
+    city        VARCHAR(100)
+);
+
+CREATE TABLE Book (
+    book_id INTEGER PRIMARY KEY,
+    title   VARCHAR(200) NOT NULL,
+    price   DECIMAL(6,2) NOT NULL
+);
+
+CREATE TABLE Orders (
+    order_id    INTEGER PRIMARY KEY AUTOINCREMENT,
+    customer_id INTEGER NOT NULL,
+    book_id     INTEGER NOT NULL,
+    quantity    INTEGER NOT NULL,
+    order_date  DATE,
+    FOREIGN KEY (customer_id) REFERENCES Customer(customer_id),
+    FOREIGN KEY (book_id)     REFERENCES Book(book_id)
+);
+
+INSERT INTO Customer VALUES (1, 'Alice',   'Dublin');
+INSERT INTO Customer VALUES (2, 'Bob',     'Cork');
+INSERT INTO Customer VALUES (3, 'Charlie', 'Galway');
+
+INSERT INTO Book VALUES (101, 'SQL Essentials',    25.99);
+INSERT INTO Book VALUES (102, 'Python Basics',     23.99);
+INSERT INTO Book VALUES (103, 'Data Analytics 101',55.00);
+
+INSERT INTO Orders (customer_id, book_id, quantity, order_date) VALUES (2, 101, 10, '2026-01-05');
+INSERT INTO Orders (customer_id, book_id, quantity, order_date) VALUES (1, 103,  5, '2026-01-12');
+INSERT INTO Orders (customer_id, book_id, quantity, order_date) VALUES (2, 101, 12, '2026-01-05');
+""")
+print("Bookstore database created and populated.")
+```
+
+---
+
+## 4. Basic Queries
+
+### SELECT and ORDER BY
+
+```{python}
+#| label: basic-queries
+
+# Retrieve customer names
+print("Customer names:")
+df = pd.read_sql("SELECT name FROM Customer", conn)
+print(df.to_string(index=False))
+
+# Retrieve order dates in descending order
+print("\nOrder dates (descending):")
+df2 = pd.read_sql("SELECT order_date FROM Orders ORDER BY order_date DESC", conn)
+print(df2.to_string(index=False))
+
+# Maximum book price
+print("\nMaximum book price:")
+df3 = pd.read_sql("SELECT MAX(price) AS max_price FROM Book", conn)
+print(df3.to_string(index=False))
+
+# Books priced between 20 and 50
+print("\nBooks priced between €20 and €50:")
+df4 = pd.read_sql("SELECT title, price FROM Book WHERE price BETWEEN 20 AND 50", conn)
+print(df4.to_string(index=False))
+```
+
+---
+
+## 5. INSERT and UPDATE
+
+```{python}
+#| label: insert-update
+
+# Insert new customer
+cur.execute("INSERT INTO Customer VALUES (4, 'David Murphy', 'Limerick')")
+
+# Insert Alice's two new orders
+cur.execute("INSERT INTO Orders (customer_id, book_id, quantity, order_date) VALUES (1, 101, 4, '2026-02-20')")
+cur.execute("INSERT INTO Orders (customer_id, book_id, quantity, order_date) VALUES (1, 102, 6, '2026-02-20')")
+
+# Update Bob's order for Book 101 — increase quantity by 5 and move date one week later
+cur.execute("""
+    UPDATE Orders
+    SET quantity   = quantity + 5,
+        order_date = date(order_date, '+7 days')
+    WHERE customer_id = 2 AND book_id = 101
+""")
+conn.commit()
+
+print("Updated customers:")
+print(pd.read_sql("SELECT * FROM Customer", conn).to_string(index=False))
+
+print("\nUpdated orders:")
+print(pd.read_sql("SELECT * FROM Orders", conn).to_string(index=False))
+```
+
+---
+
+## 6. Joins & Aggregations
+
+Joins combine data from multiple tables. Aggregations summarise it. Together they answer the most important analytical questions.
+
+::: {.callout-tip}
+## JOIN types
+- **INNER JOIN** — only rows with matches in both tables
+- **LEFT JOIN** — all rows from the left table, NULLs where no match on the right
+- **RIGHT JOIN** — all rows from the right table (not supported in SQLite, use LEFT JOIN reversed)
+- **FULL OUTER JOIN** — all rows from both tables
+:::
+
+```{python}
+#| label: joins-aggregations
+
+# Customers who ordered more than one type of book
+print("Customers with more than one type of book ordered:")
+df_multi = pd.read_sql("""
+    SELECT c.name, COUNT(DISTINCT o.book_id) AS book_types
+    FROM Customer c
+    INNER JOIN Orders o ON c.customer_id = o.customer_id
+    GROUP BY c.customer_id, c.name
+    HAVING COUNT(DISTINCT o.book_id) > 1
+""", conn)
+print(df_multi.to_string(index=False))
+
+# Total spend per customer (Price × Quantity)
+print("\nTotal spend per customer:")
+df_spend = pd.read_sql("""
+    SELECT c.name,
+           ROUND(SUM(b.price * o.quantity), 2) AS Total_Spent
+    FROM Customer c
+    INNER JOIN Orders o ON c.customer_id = o.customer_id
+    INNER JOIN Book   b ON o.book_id     = b.book_id
+    GROUP BY c.customer_id, c.name
+    ORDER BY Total_Spent DESC
+""", conn)
+print(df_spend.to_string(index=False))
+```
+
+```{python}
+#| label: fig-spend-chart
+#| fig-cap: "Total spend per customer — calculated via SQL JOIN and GROUP BY"
+
+fig = px.bar(
+    df_spend,
+    x='name', y='Total_Spent',
+    color='Total_Spent',
+    color_continuous_scale='Blues',
+    title='Total Spend per Customer (Price × Quantity)',
+    labels=dict(name='Customer', Total_Spent='Total Spent (€)'),
+    text='Total_Spent'
+)
+fig.update_traces(texttemplate='€%{text:.2f}', textposition='outside')
+fig.update_layout(height=380, showlegend=False, coloraxis_showscale=False)
+fig.show()
+```
+
+---
+
+## 7. Subqueries
+
+Subqueries allow you to nest one query inside another — useful for filtering based on aggregated results.
+
+```{python}
+#| label: subqueries
+
+# Books priced above the average price
+print("Books priced above average:")
+df_above = pd.read_sql("""
+    SELECT title, price
+    FROM Book
+    WHERE price > (SELECT AVG(price) FROM Book)
+    ORDER BY price DESC
+""", conn)
+print(df_above.to_string(index=False))
+
+# Customers who have placed at least one order
+print("\nCustomers with at least one order:")
+df_ordered = pd.read_sql("""
+    SELECT name, city
+    FROM Customer
+    WHERE customer_id IN (SELECT DISTINCT customer_id FROM Orders)
+""", conn)
+print(df_ordered.to_string(index=False))
+```
+
+---
+
+## 8. SQL in the EcoEnergy Corp Project
+
+SQL was also a graded component of the group Power BI project in Year 4. I used SQL to query and aggregate the EcoEnergy Corp dataset before importing results into Power BI for visualisation. Key queries included:
+
+```{python}
+#| label: ecoenergy-demo
+
+# Recreate a simplified version of the EcoEnergy data structure
+cur.executescript("""
+CREATE TABLE IF NOT EXISTS EcoEnergy (
+    region       VARCHAR(50),
+    product      VARCHAR(50),
+    year         INTEGER,
+    net_profit   DECIMAL(12,2),
+    total_revenue DECIMAL(12,2),
+    unit_cost    DECIMAL(8,2)
+);
+""")
+
+# Insert representative data matching the real dataset structure
+regions  = ['Europe','North America','South America','Asia','Africa']
+products = ['Laptop','Smartphone','Solar Panel','Building Material','Car','Insurance Plan']
+np.random.seed(42)
+for r in regions:
+    for p in products:
+        for y in range(2021, 2025):
+            profit  = round(float(np.random.uniform(-200000, 400000)), 2)
+            revenue = round(float(np.random.uniform(500000, 2000000)), 2)
+            ucost   = round(float(np.random.uniform(200, 600)), 2)
+            cur.execute(
+                "INSERT INTO EcoEnergy VALUES (?,?,?,?,?,?)",
+                (r, p, y, profit, revenue, ucost)
+            )
+conn.commit()
+
+# Net profit by region
+print("Net profit by region (2021-2024):")
+df_eco = pd.read_sql("""
+    SELECT region,
+           ROUND(SUM(net_profit)/1000000.0, 2) AS net_profit_M
+    FROM EcoEnergy
+    GROUP BY region
+    ORDER BY net_profit_M DESC
+""", conn)
+print(df_eco.to_string(index=False))
+
+# Median unit cost by product
+print("\nMedian unit cost by product:")
+df_cost = pd.read_sql("""
+    SELECT product,
+           ROUND(AVG(unit_cost), 2) AS avg_unit_cost
+    FROM EcoEnergy
+    WHERE year >= 2021
+    GROUP BY product
+    ORDER BY avg_unit_cost ASC
+""", conn)
+print(df_cost.to_string(index=False))
+```
+
+```{python}
+#| label: fig-eco-chart
+#| fig-cap: "Net profit by region — replicating the EcoEnergy Corp regional analysis using SQL"
+
+fig = px.bar(
+    df_eco,
+    x='region', y='net_profit_M',
+    color='net_profit_M',
+    color_continuous_scale=['#C00000', '#A9C4E0', '#2E75B6'],
+    title='Net Profit by Region — EcoEnergy Corp (SQL Query Result)',
+    labels=dict(region='Region', net_profit_M='Net Profit (M€)'),
+    text='net_profit_M'
+)
+fig.update_traces(texttemplate='€%{text:.2f}M', textposition='outside')
+fig.update_layout(height=400, showlegend=False, coloraxis_showscale=False)
+fig.show()
+```
+
+---
+
+## 9. Skills Checklist
+
+- [x] Database design — entities, attributes, relationships
+- [x] ERD — conceptual (min-max notation) and physical (crow's foot)
+- [x] `CREATE TABLE` with primary keys, foreign keys and data types
+- [x] `INSERT`, `UPDATE`, `DELETE`
+- [x] `SELECT` with `WHERE`, `ORDER BY`, `BETWEEN`, `IN`
+- [x] `GROUP BY` and `HAVING` with aggregate functions (`SUM`, `AVG`, `MAX`, `COUNT`)
+- [x] `INNER JOIN` across multiple tables
+- [x] Subqueries — scalar and `IN` subqueries
+- [x] Used SQL in the EcoEnergy Corp Power BI project for data preparation
+- [ ] Window functions (`ROW_NUMBER`, `RANK`, `LAG`) — next step
+- [ ] Stored procedures and views

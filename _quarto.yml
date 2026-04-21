@@ -54,6 +54,16 @@ website:
       - href: projects.qmd
         icon: file-earmark-text
         text: Projects
+      - text: Software
+        menu:
+        - text: Python
+          href: software/python_progress.qmd
+        - text: Excel
+          href: software/excel_progress.qmd
+        - text: SQL
+          href: software/sql_progress.qmd
+        - text: R
+          href: software/r_progress.qmd
       - href: about.qmd
         icon: person-circle        
         text: About

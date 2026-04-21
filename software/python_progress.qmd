@@ -1,0 +1,332 @@
+---
+title: "Python"
+subtitle: "*Data Analysis, Machine Learning & Visualisation*"
+description: "An overview of my Python skills developed through fourth-year modules in data analytics, machine learning, advanced Python and programming and visualisation."
+categories: [Software, Analytics]
+format:
+  html:
+    toc: true
+    toc-location: right
+    toc-title: "On this page"
+    code-fold: true
+    code-summary: "Show code"
+    fig-width: 7
+    fig-height: 4
+---
+
+```{=html}
+<style>
+#quarto-document-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-right: 50px;
+}
+#quarto-margin-sidebar {
+  position: fixed;
+  right: 1rem;
+  top: 70px;
+  width: 220px;
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
+}
+</style>
+```
+
+I studied Python across two fourth-year modules at DCU — **Data Analytics: Programming and Visualisation** and **Data Analytics: Machine Learning and Advanced Python**. The first covered Python fundamentals, NumPy, pandas, matplotlib and SQL. The second applied machine learning techniques to real datasets using scikit-learn. Below is an overview of the core skills I developed, with live demonstrations of each.
+
+::: {.callout-note}
+## Modules
+- **BAA1026** — Data Analytics: Programming and Visualisation — *Year 4, Semester 1*
+- **BAA1027** — Data Analytics: Machine Learning and Advanced Python — *Year 4, Semester 2*
+:::
+
+---
+
+## 1. NumPy
+
+NumPy is the foundation of scientific computing in Python. It provides fast, vectorised operations on arrays and is the basis for almost every data science library.
+
+### Core concepts
+
+The key advantage of NumPy over plain Python lists is **vectorisation** — operations apply to every element without writing a loop, making code both faster and more readable.
+
+```{python}
+#| label: numpy-basics
+
+import numpy as np
+
+# Array creation
+arr = np.arange(6).reshape(2, 3)
+print("Array:\n", arr)
+print("Shape:", arr.shape)
+print("Dimensions:", arr.ndim)
+print("Sum along axis 1:", arr.sum(axis=1))
+```
+
+### Slicing and filtering
+
+```{python}
+#| label: numpy-slicing
+
+arr2d = np.array([[1, 2, 3],
+                  [4, 5, 6],
+                  [7, 8, 9]])
+
+# Slice: rows 1 onwards, first 2 columns
+print("Slice [1:, :2]:\n", arr2d[1:, :2])
+
+# Boolean filter
+arr1d = np.array([2, 9, 1, 7, 3, 8])
+print("Values > 5:", arr1d[arr1d > 5])
+
+# Filter even numbers
+arr3 = np.array([11, 22, 33, 44])
+print("Even values:", arr3[arr3 % 2 == 0])
+```
+
+### Broadcasting
+
+Broadcasting allows NumPy to perform arithmetic on arrays of different shapes without copying data. The smaller array is "broadcast" across the larger one.
+
+$$\text{If shapes are compatible: } (m, n) + (1, n) \rightarrow (m, n)$$
+
+```{python}
+#| label: numpy-broadcasting
+
+# Broadcasting: add a row vector to each row of a 2D array
+matrix = np.array([[1, 2, 3],
+                   [4, 5, 6],
+                   [7, 8, 9]])
+row    = np.array([10, 20, 30])
+
+result = matrix + row   # row is broadcast across all 3 rows
+print("Matrix + row (broadcast):\n", result)
+
+# Practical example: normalise each column to [0, 1]
+col_min = matrix.min(axis=0)
+col_max = matrix.max(axis=0)
+normalised = (matrix - col_min) / (col_max - col_min)
+print("\nNormalised:\n", normalised.round(2))
+```
+
+::: {.callout-tip}
+## Broadcasting rules
+1. If arrays have different numbers of dimensions, the shape of the smaller one is padded with 1s on the left.
+2. Dimensions of size 1 are stretched to match the other array.
+3. If neither dimension is 1 and they don't match, NumPy raises an error.
+:::
+
+---
+
+## 2. Pandas
+
+Pandas provides the `DataFrame` — the core data structure for tabular data analysis in Python. It is the primary tool I used for data cleaning, transformation and aggregation across both modules.
+
+### Key operations
+
+```{python}
+#| label: pandas-basics
+
+import pandas as pd
+
+# Create a sample sales dataset
+np.random.seed(42)
+df = pd.DataFrame({
+    'Product':  np.random.choice(['Laptop', 'Monitor', 'Printer', 'Tablet'], 20),
+    'Region':   np.random.choice(['North', 'South', 'East', 'West'], 20),
+    'Units':    np.random.randint(1, 15, 20),
+    'Price':    np.random.choice([299, 149, 89, 399], 20),
+})
+df['Revenue'] = df['Units'] * df['Price']
+
+print("Shape:", df.shape)
+print("\nFirst 5 rows:")
+df.head()
+```
+
+```{python}
+#| label: pandas-groupby
+
+# GroupBy — total revenue by product
+summary = df.groupby('Product').agg(
+    Total_Revenue=('Revenue', 'sum'),
+    Avg_Units=('Units', 'mean'),
+    Orders=('Revenue', 'count')
+).round(2).sort_values('Total_Revenue', ascending=False)
+
+summary
+```
+
+```{python}
+#| label: pandas-pivot
+
+# Pivot table — revenue by product and region
+pivot = df.pivot_table(
+    values='Revenue',
+    index='Product',
+    columns='Region',
+    aggfunc='sum',
+    fill_value=0
+)
+pivot
+```
+
+---
+
+## 3. Matplotlib & Visualisation
+
+Data visualisation was a core part of the Programming and Visualisation module. The in-class test required plotting cumulative sums and overlaying multiple series on the same chart.
+
+```{python}
+#| label: fig-matplotlib
+#| fig-cap: "Cumulative sum of sales overlaid with raw sales — as practised in class"
+
+import matplotlib.pyplot as plt
+
+sales = np.array([3, 5, 2, 8, 6])
+cumulative = np.cumsum(sales)
+weeks = np.arange(1, len(sales) + 1)
+
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.bar(weeks, sales, color='#A9C4E0', label='Weekly Sales', alpha=0.8)
+ax.plot(weeks, cumulative, color='#2E75B6', marker='o',
+        linewidth=2, markersize=7, label='Cumulative Sales')
+for i, (s, c) in enumerate(zip(sales, cumulative)):
+    ax.text(weeks[i], c + 0.3, str(c), ha='center', fontsize=9, color='#2E75B6')
+ax.set_xlabel('Week')
+ax.set_ylabel('Sales')
+ax.set_title('Weekly Sales and Cumulative Sum')
+ax.legend()
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+#| label: fig-plotly-revenue
+#| fig-cap: "Interactive revenue breakdown by product and region"
+
+import plotly.express as px
+
+fig = px.bar(
+    df.groupby(['Product', 'Region'])['Revenue'].sum().reset_index(),
+    x='Product', y='Revenue', color='Region',
+    barmode='group',
+    title='Revenue by Product and Region',
+    color_discrete_sequence=px.colors.qualitative.Set2
+)
+fig.update_layout(height=400)
+fig.show()
+```
+
+---
+
+## 4. Machine Learning Pipeline
+
+The ML module built on the programming foundations to apply supervised learning to real datasets. The full pipeline I developed for the brain tumour classification project follows these steps:
+
+```{mermaid}
+flowchart LR
+    A[Raw MRI Images] --> B[Resize to 128x128]
+    B --> C[Normalise pixels 0-1]
+    C --> D[Flatten to vector\n49152 dims]
+    D --> E[StandardScaler]
+    E --> F[PCA\n726 components\n95% variance]
+    F --> G[Train classifiers\nSVM / RF / KNN / NB]
+    G --> H[VotingClassifier\nSoft voting ensemble]
+    H --> I[Evaluate\nAccuracy / F1 / Recall]
+```
+
+### Dimensionality reduction with PCA
+
+PCA reduces high-dimensional data by finding the directions of maximum variance. The number of components is chosen to retain a target proportion of the total variance:
+
+$$\text{Retain components where: } \sum_{i=1}^{k} \lambda_i \geq 0.95 \cdot \sum_{i=1}^{n} \lambda_i$$
+
+Where $\lambda_i$ are the eigenvalues of the covariance matrix, representing the variance explained by each component.[^1]
+
+[^1]: In the brain tumour project, PCA reduced the feature space from 49,152 dimensions to just 726 components — a 98.5% reduction — while retaining 95% of the explained variance. This made KNN and SVM computationally feasible on a standard laptop.
+
+```{python}
+#| label: fig-pca-demo
+#| fig-cap: "PCA explained variance — simulated to illustrate the 95% threshold"
+
+from sklearn.decomposition import PCA
+from sklearn.datasets import make_classification
+
+X, _ = make_classification(n_samples=500, n_features=50, random_state=42)
+pca = PCA()
+pca.fit(X)
+
+cumvar = np.cumsum(pca.explained_variance_ratio_)
+n_95   = np.argmax(cumvar >= 0.95) + 1
+
+fig, ax = plt.subplots(figsize=(7, 4))
+ax.plot(range(1, len(cumvar) + 1), cumvar, color='#2E75B6', linewidth=1.8)
+ax.axhline(0.95, color='red', linestyle='--', label='95% threshold')
+ax.axvline(n_95, color='grey', linestyle=':', label=f'{n_95} components needed')
+ax.set_xlabel('Number of Components')
+ax.set_ylabel('Cumulative Explained Variance')
+ax.set_title('PCA — Cumulative Explained Variance')
+ax.legend()
+plt.tight_layout()
+plt.show()
+```
+
+### Classifier comparison
+
+The four classifiers used in the brain tumour project each take a different approach to the decision boundary:
+
+| Classifier | Approach | Strengths |
+|------------|----------|-----------|
+| SVM | Maximum-margin hyperplane | High-dimensional spaces, robust |
+| Random Forest | Ensemble of 200 decision trees | Handles non-linearity, reduces overfitting |
+| KNN | Distance to k nearest neighbours | Simple, no training phase |
+| Naïve Bayes | Probabilistic, assumes independence | Fast, useful as control |
+
+The **F1 score** balances precision and recall into a single metric:
+
+$$F_1 = 2 \cdot \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}$$
+
+This is particularly important in medical classification where both false positives (unnecessary treatment) and false negatives (missed diagnosis) carry real consequences.
+
+```{python}
+#| label: fig-model-results
+#| fig-cap: "Model performance — accuracy and F1 score across all classifiers"
+
+import plotly.graph_objects as go
+
+models    = ['SVM', 'Random Forest', 'KNN', 'Naive Bayes', 'Ensemble (4)', 'Ensemble (3)']
+accuracy  = [0.7284, 0.7513, 0.7640, 0.2005, 0.6954, 0.7538]
+f1        = [0.6775, 0.7028, 0.7293, 0.2003, 0.6590, 0.7121]
+
+fig = go.Figure()
+fig.add_trace(go.Bar(name='Accuracy', x=models, y=accuracy, marker_color='#2E75B6'))
+fig.add_trace(go.Bar(name='F1 Score', x=models, y=f1,       marker_color='#70AD47'))
+fig.add_hline(y=0.75, line_dash='dot', line_color='grey',
+              annotation_text='0.75 threshold')
+fig.update_layout(
+    barmode='group',
+    title='Classifier Performance — Brain Tumour Classification Project',
+    yaxis=dict(title='Score', range=[0, 1]),
+    height=420,
+    legend=dict(orientation='h', yanchor='bottom', y=1.02)
+)
+fig.show()
+```
+
+---
+
+## 5. Skills Checklist
+
+Skills developed and demonstrated across both modules:
+
+- [x] NumPy arrays — creation, reshaping, slicing, filtering, broadcasting
+- [x] Pandas — DataFrames, groupby, pivot tables, merge, data cleaning
+- [x] Matplotlib — line, bar, scatter, subplots, annotations
+- [x] Plotly — interactive bar, scatter, line and heatmap charts
+- [x] scikit-learn — preprocessing, PCA, SVM, Random Forest, KNN, Naive Bayes
+- [x] Ensemble methods — VotingClassifier with soft voting
+- [x] Model evaluation — accuracy, precision, recall, F1, confusion matrix
+- [x] SQL — queries, joins, aggregations (covered in Programming & Visualisation)
+- [ ] Deep learning — CNN attempted but overfitting prevented success on small dataset
+- [ ] Plotly Dash — interactive dashboards (next step)
