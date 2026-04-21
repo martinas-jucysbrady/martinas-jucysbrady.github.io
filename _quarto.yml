@@ -84,6 +84,6 @@ website:
 
 format:
   html:
-    theme: assets/custom.scss
+    theme: [flatly, assets/custom.scss]
     toc: false
     page-layout: full
