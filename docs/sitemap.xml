@@ -50,79 +50,83 @@
   </url>
   <url>
     <loc>https://martinas-jucysbrady.github.io/software/sql_progress.html</loc>
-    <lastmod>2026-04-21T16:02:17.423Z</lastmod>
+    <lastmod>2026-04-21T16:35:13.586Z</lastmod>
   </url>
   <url>
     <loc>https://martinas-jucysbrady.github.io/software/python_progress.html</loc>
     <lastmod>2026-04-21T16:02:03.788Z</lastmod>
   </url>
   <url>
-    <loc>https://martinas-jucysbrady.github.io/projects.html</loc>
-    <lastmod>2026-03-11T11:33:24.869Z</lastmod>
+    <loc>https://martinas-jucysbrady.github.io/reflection.html</loc>
+    <lastmod>2026-04-21T16:35:25.623Z</lastmod>
   </url>
   <url>
-    <loc>https://martinas-jucysbrady.github.io/projects/portfolio_management/index.html</loc>
-    <lastmod>2026-03-10T16:48:08.246Z</lastmod>
-  </url>
-  <url>
-    <loc>https://martinas-jucysbrady.github.io/projects/life/index.html</loc>
-    <lastmod>2026-03-17T00:52:42.462Z</lastmod>
-  </url>
-  <url>
-    <loc>https://martinas-jucysbrady.github.io/projects/KIMAP/index.html</loc>
-    <lastmod>2026-03-07T15:14:52.937Z</lastmod>
-  </url>
-  <url>
-    <loc>https://martinas-jucysbrady.github.io/projects/global_group/index.html</loc>
-    <lastmod>2026-03-17T01:00:28.766Z</lastmod>
-  </url>
-  <url>
-    <loc>https://martinas-jucysbrady.github.io/projects/data_analytics_pv/index.html</loc>
-    <lastmod>2026-04-21T12:38:04.473Z</lastmod>
-  </url>
-  <url>
-    <loc>https://martinas-jucysbrady.github.io/projects/business_analytics/index.html</loc>
-    <lastmod>2026-04-21T12:36:04.204Z</lastmod>
-  </url>
-  <url>
-    <loc>https://martinas-jucysbrady.github.io/certificates.html</loc>
-    <lastmod>2026-03-22T00:01:13.604Z</lastmod>
-  </url>
-  <url>
-    <loc>https://martinas-jucysbrady.github.io/about.html</loc>
-    <lastmod>2026-04-20T14:41:04.674Z</lastmod>
-  </url>
-  <url>
-    <loc>https://martinas-jucysbrady.github.io/books.html</loc>
-    <lastmod>2026-04-20T16:59:07.707Z</lastmod>
-  </url>
-  <url>
-    <loc>https://martinas-jucysbrady.github.io/index.html</loc>
-    <lastmod>2026-03-24T12:13:53.421Z</lastmod>
-  </url>
-  <url>
-    <loc>https://martinas-jucysbrady.github.io/projects/business_strategy/index.html</loc>
-    <lastmod>2026-03-07T19:09:28.834Z</lastmod>
-  </url>
-  <url>
-    <loc>https://martinas-jucysbrady.github.io/projects/digital_transformation/index.html</loc>
-    <lastmod>2026-03-07T19:08:28.775Z</lastmod>
-  </url>
-  <url>
-    <loc>https://martinas-jucysbrady.github.io/projects/international_economy/index.html</loc>
-    <lastmod>2026-03-07T15:17:07.228Z</lastmod>
-  </url>
-  <url>
-    <loc>https://martinas-jucysbrady.github.io/projects/legal_system/index.html</loc>
-    <lastmod>2026-03-07T21:08:46.497Z</lastmod>
+    <loc>https://martinas-jucysbrady.github.io/projects/psychology/index.html</loc>
+    <lastmod>2026-03-07T21:07:27.372Z</lastmod>
   </url>
   <url>
     <loc>https://martinas-jucysbrady.github.io/projects/ml_python/index.html</loc>
     <lastmod>2026-04-20T16:48:12.984Z</lastmod>
   </url>
   <url>
-    <loc>https://martinas-jucysbrady.github.io/projects/psychology/index.html</loc>
-    <lastmod>2026-03-07T21:07:27.372Z</lastmod>
+    <loc>https://martinas-jucysbrady.github.io/projects/legal_system/index.html</loc>
+    <lastmod>2026-03-07T21:08:46.497Z</lastmod>
+  </url>
+  <url>
+    <loc>https://martinas-jucysbrady.github.io/projects/international_economy/index.html</loc>
+    <lastmod>2026-03-07T15:17:07.228Z</lastmod>
+  </url>
+  <url>
+    <loc>https://martinas-jucysbrady.github.io/projects/digital_transformation/index.html</loc>
+    <lastmod>2026-03-07T19:08:28.775Z</lastmod>
+  </url>
+  <url>
+    <loc>https://martinas-jucysbrady.github.io/projects/business_strategy/index.html</loc>
+    <lastmod>2026-03-07T19:09:28.834Z</lastmod>
+  </url>
+  <url>
+    <loc>https://martinas-jucysbrady.github.io/index.html</loc>
+    <lastmod>2026-03-24T12:13:53.421Z</lastmod>
+  </url>
+  <url>
+    <loc>https://martinas-jucysbrady.github.io/books.html</loc>
+    <lastmod>2026-04-20T16:59:07.707Z</lastmod>
+  </url>
+  <url>
+    <loc>https://martinas-jucysbrady.github.io/about.html</loc>
+    <lastmod>2026-04-20T14:41:04.674Z</lastmod>
+  </url>
+  <url>
+    <loc>https://martinas-jucysbrady.github.io/certificates.html</loc>
+    <lastmod>2026-03-22T00:01:13.604Z</lastmod>
+  </url>
+  <url>
+    <loc>https://martinas-jucysbrady.github.io/projects/business_analytics/index.html</loc>
+    <lastmod>2026-04-21T12:36:04.204Z</lastmod>
+  </url>
+  <url>
+    <loc>https://martinas-jucysbrady.github.io/projects/data_analytics_pv/index.html</loc>
+    <lastmod>2026-04-21T12:38:04.473Z</lastmod>
+  </url>
+  <url>
+    <loc>https://martinas-jucysbrady.github.io/projects/global_group/index.html</loc>
+    <lastmod>2026-03-17T01:00:28.766Z</lastmod>
+  </url>
+  <url>
+    <loc>https://martinas-jucysbrady.github.io/projects/KIMAP/index.html</loc>
+    <lastmod>2026-03-07T15:14:52.937Z</lastmod>
+  </url>
+  <url>
+    <loc>https://martinas-jucysbrady.github.io/projects/life/index.html</loc>
+    <lastmod>2026-03-17T00:52:42.462Z</lastmod>
+  </url>
+  <url>
+    <loc>https://martinas-jucysbrady.github.io/projects/portfolio_management/index.html</loc>
+    <lastmod>2026-03-10T16:48:08.246Z</lastmod>
+  </url>
+  <url>
+    <loc>https://martinas-jucysbrady.github.io/projects.html</loc>
+    <lastmod>2026-03-11T11:33:24.869Z</lastmod>
   </url>
   <url>
     <loc>https://martinas-jucysbrady.github.io/software/excel_progress.html</loc>
@@ -134,7 +138,7 @@
   </url>
   <url>
     <loc>https://martinas-jucysbrady.github.io/studies/yearfour/index.html</loc>
-    <lastmod>2026-04-20T14:26:44.185Z</lastmod>
+    <lastmod>2026-04-21T16:35:23.703Z</lastmod>
   </url>
   <url>
     <loc>https://martinas-jucysbrady.github.io/studies/yearthree/index.html</loc>

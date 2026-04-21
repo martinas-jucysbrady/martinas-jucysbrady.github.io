@@ -148,5 +148,8 @@
   },
   "software/sql_progress.qmd": {
     "sql_progress.html": "eb52cd8b"
+  },
+  "reflection.qmd": {
+    "reflection.html": "4b7da05f"
   }
 }

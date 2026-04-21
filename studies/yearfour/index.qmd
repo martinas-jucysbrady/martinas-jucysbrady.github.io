@@ -317,7 +317,8 @@ var modules = [
     grading: "10% online courses · 90% ePortfolio (this website)",
     embeds: [],
     links: [
-      { name: "ePortfolio — GitHub Repository", sub: "External link", href: "https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io", icon: "💻" }
+      { name: "ePortfolio — GitHub Repository", sub: "External link", href: "https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io", icon: "💻" },
+      { name: "ePortfolio Reflection", sub: "Portfolio page", href: "https://martinas-jucysbrady.github.io/reflection", icon: "📝" }
     ]
   },
   {
