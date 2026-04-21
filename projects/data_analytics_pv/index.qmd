@@ -17,6 +17,10 @@ format:
     toc-location: right
     toc-title: "On this page"
     cite-method: citeproc
+    code-fold: true
+    code-summary: "Show code"
+    fig-width: 9
+    fig-height: 5
 
 about:
   template: solana
@@ -32,72 +36,335 @@ about:
       href: projects/data_analytics_pv/powerbi_ecoenergy.pbix
 ---
 
+```{=html}
+<style>
+#quarto-document-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-right: 50px;
+}
+#quarto-margin-sidebar {
+  position: fixed;
+  right: 1rem;
+  top: 70px;
+  width: 220px;
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
+}
+</style>
+```
+
 ![EcoEnergy Corp; Image created by Martinas Jucys Brady](/projects/data_analytics_pv/ecoenergy.svg){width="40%"}
 
 ---
 
+```{python}
+#| label: setup
+#| include: false
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.ticker as mticker
+import warnings
+warnings.filterwarnings('ignore')
+
+df = pd.read_excel('datasheet.xlsx')
+
+cat_map = {
+    'Laptop': 'Technology', 'Monitor': 'Technology', 'Printer': 'Technology',
+    'Smartphone': 'Technology', 'Tablet': 'Technology',
+    'Car': 'Transport & Insurance', 'Flight Ticket': 'Transport & Insurance',
+    'Insurance Plan': 'Transport & Insurance',
+    'Solar Panel': 'Construction', 'Building Material': 'Construction'
+}
+df['Category'] = df['Product'].map(cat_map)
+df['Year'] = df['Date'].dt.year
+recent = df[df['Year'].isin([2021, 2022, 2023, 2024])]
+
+BLUE = '#2E75B6'
+RED  = '#C00000'
+```
+
 ## 0. Company Overview
 
-EcoEnergy Corp is a global sustainable infrastructure and technology company operating across five continents. It develops and sells eco-friendly construction materials, renewable energy solutions and energy-efficient consumer electronics through both online and offline channels. The company’s mission centers on integrating sustainability into every stage of its value chain, from materials sourcing to product recyclability.
+EcoEnergy Corp is a global sustainable infrastructure and technology company operating across five continents. It develops and sells eco-friendly construction materials, renewable energy solutions and energy-efficient consumer electronics through both online and offline channels. The company's mission centers on integrating sustainability into every stage of its value chain, from materials sourcing to product recyclability.
 
 ## 1. Approach & Executive Summary
 
-Upon analysing our data set we deemed some of the data redundant, for example our region and country fields didn’t match correctly so we decided to base our analysis off of regional data. We also saw no need for the use of sales reps as there were only 5 sales representatives globally with no clear jurisdiction of which regions they worked in. Because of this we decided to remove this column before we began our analysis.
+Upon analysing our data set we deemed some of the data redundant, for example our region and country fields didn't match correctly so we decided to base our analysis off of regional data. We also saw no need for the use of sales reps as there were only 5 sales representatives globally with no clear jurisdiction of which regions they worked in. Because of this we decided to remove this column before we began our analysis.
 
 EcoEnergy Corp faces profitability challenges across all sectors, with 39.4% of products sold at a loss and eight out of ten offerings unprofitable. Cost minimisation failures have resulted in a net loss of €8.46 million, highlighting the urgent need for large-scale restructuring.
 
 This report categorises products into Technology, Construction, and Transport & Insurance, analysing regional performance to identify products for discontinuation or outsourcing to restore profitability.
 
-![Figure 1: EcoEnergy Profitability, Revenue and Cost Statistics by Product](powerbi1.png){width="50%"}
+```{python}
+#| label: fig-fig1
+#| fig-cap: "EcoEnergy Profitability — Net Profit by Product (2015–2024)"
 
+fig, axes = plt.subplots(1, 2, figsize=(12, 5))
 
-![Figure 2: Breakdown of Product Categories](powerbi2.png){width="50%"}
+# Left: net profit by product
+ax1 = axes[0]
+prod_profit = df.groupby('Product')['Net_Profit'].sum().sort_values()
+colors = [RED if v < 0 else BLUE for v in prod_profit]
+bars = ax1.barh(prod_profit.index, prod_profit.values / 1e6, color=colors)
+ax1.axvline(0, color='black', linewidth=0.8)
+ax1.set_xlabel('Sum of Net Profit (M€)')
+ax1.set_title('Profit by Product', fontsize=11)
+ax1.xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f'{x:.0f}M'))
+
+# Right: category breakdown table
+ax2 = axes[1]
+ax2.axis('off')
+table_data = [
+    ['Technology', 'Laptop'], ['', 'Monitor'], ['', 'Printer'],
+    ['', 'Smartphone'], ['', 'Tablet'],
+    ['Transport & Insurance', 'Car'], ['', 'Flight Ticket'], ['', 'Insurance Plan'],
+    ['Construction', 'Solar Panel'], ['', 'Building Material'],
+]
+tbl = ax2.table(cellText=table_data, colLabels=['Category', 'Product'],
+                loc='center', cellLoc='left')
+tbl.auto_set_font_size(False)
+tbl.set_fontsize(9)
+tbl.auto_set_column_width([0, 1])
+for (r, c), cell in tbl.get_celld().items():
+    if r == 0:
+        cell.set_facecolor(BLUE)
+        cell.set_text_props(color='white', fontweight='bold')
+    elif r % 2 == 0:
+        cell.set_facecolor('#EBF3FB')
+ax2.set_title('Breakdown of Product Categories', fontsize=11)
+
+plt.suptitle('EcoEnergy Corp — Profitability Overview (2015–2024)',
+             fontsize=12, fontweight='bold', y=1.01)
+plt.tight_layout()
+plt.show()
+```
 
 ## 2. Regional Analysis
 
-The analysis began by reviewing each region’s performance to understand their specialisations and key weaknesses. Over the past 10 years, internal data has revealed trends and insights that EcoEnergy Corp should use to boost profitability. A region-by-region evaluation makes the necessary steps for EcoEnergy Corp clear.
+The analysis began by reviewing each region's performance to understand their specialisations and key weaknesses. Over the past 10 years, internal data has revealed trends and insights that EcoEnergy Corp should use to boost profitability. A region-by-region evaluation makes the necessary steps for EcoEnergy Corp clear.
+
+```{python}
+#| label: fig-regional-helper
+#| include: false
+
+def regional_dashboard(region, show_category=False):
+    r = df[df['Region'] == region].copy()
+    fig = plt.figure(figsize=(12, 7))
+    fig.suptitle(f'{region} — Sales & Profit Performance Dashboard',
+                 fontsize=13, fontweight='bold', y=1.0)
+
+    # Top-left: Net Profit by Year
+    ax1 = fig.add_subplot(2, 2, 1)
+    yearly = r.groupby('Year')['Net_Profit'].sum() / 1e6
+    ax1.plot(yearly.index, yearly.values, color=BLUE, marker='o',
+             markersize=4, linewidth=1.5)
+    ax1.axhline(0, color=RED, linewidth=0.6, linestyle='--')
+    ax1.set_title('Net Profit by Year', fontsize=10)
+    ax1.set_ylabel('Sum of Net Profit')
+    ax1.yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f'{x:.1f}M'))
+    ax1.set_xticks(yearly.index)
+    ax1.tick_params(axis='x', rotation=45, labelsize=8)
+
+    # Top-right: Revenue by Sales Channel pie
+    ax2 = fig.add_subplot(2, 2, 2)
+    ch = r.groupby('Sales_Channel')['Total_Revenue'].sum()
+    total_rev = ch.sum()
+    labels = [f'{v/1e6:.2f}M\n({v/total_rev*100:.2f}%)' for v in ch]
+    ax2.pie(ch.values, labels=labels, colors=[BLUE, '#A9C4E0'], startangle=90)
+    ax2.set_title('Total Revenue by Sales Channel', fontsize=10)
+    ax2.legend(ch.index, loc='lower right', fontsize=8)
+
+    # Bottom-left: Net Profit by Product or Category
+    ax3 = fig.add_subplot(2, 2, 3)
+    if show_category:
+        grp = r.groupby('Category')['Net_Profit'].sum().sort_values() / 1e6
+        ax3.set_title('Net Profit by Category', fontsize=10)
+        ax3.set_xlabel('Sum of Net Profit (M€)')
+    else:
+        grp = r.groupby('Product')['Net_Profit'].sum().sort_values() / 1e6
+        ax3.set_title('Sum of Net Profit by Product', fontsize=10)
+        ax3.set_xlabel('Sum of Net Profit (M€)')
+    cols = [RED if v < 0 else BLUE for v in grp]
+    ax3.barh(grp.index, grp.values, color=cols)
+    ax3.axvline(0, color='black', linewidth=0.6)
+    ax3.xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f'{x:.1f}M'))
+    ax3.tick_params(axis='y', labelsize=8)
+
+    # Bottom-right: Discount vs Net Profit scatter
+    ax4 = fig.add_subplot(2, 2, 4)
+    ax4.scatter(r['Discount'], r['Net_Profit'] / 1e6,
+                alpha=0.5, s=20, color=BLUE)
+    ax4.axhline(0, color=RED, linewidth=0.6, linestyle='--')
+    ax4.set_xlabel('Median of Discount')
+    ax4.set_ylabel('Sum of Net Profit')
+    ax4.set_title('Discount Rate and Net Profit', fontsize=10)
+    ax4.yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f'{x:.1f}M'))
+
+    plt.tight_layout()
+    plt.show()
+```
 
 ### *2.1 Europe*
 
-Europe’s 10-year outlook for EcoEnergy Corp shows volatility, with profit swings driven by market dynamics and cost challenges. The region was profitable from 2015–2018 but rising costs and declining revenues after 2019 led to recurring losses. Transport and Insurance products remained steady performers, while Technology and Construction faced irregular results. Offline channels dominated sales, with a brief online surge in 2020–2021 that temporarily boosted profits. Building materials, Insurance plans and flight tickets were the most reliable, whereas smartphones, tablets, printers and solar panels incurred ongoing losses. Margin compression from high discount rates in 2017 and 2023 also hurt results. To improve, EcoEnergy Corp should build a stable omnichannel presence, focus on strong product lines and reconsider or discontinue persistently unprofitable items.
+Europe's 10-year outlook for EcoEnergy Corp shows volatility, with profit swings driven by market dynamics and cost challenges. The region was profitable from 2015–2018 but rising costs and declining revenues after 2019 led to recurring losses. Transport and Insurance products remained steady performers, while Technology and Construction faced irregular results. Offline channels dominated sales, with a brief online surge in 2020–2021 that temporarily boosted profits. Building materials, Insurance plans and flight tickets were the most reliable, whereas smartphones, tablets, printers and solar panels incurred ongoing losses. Margin compression from high discount rates in 2017 and 2023 also hurt results. To improve, EcoEnergy Corp should build a stable omnichannel presence, focus on strong product lines and reconsider or discontinue persistently unprofitable items.
 
-![Figure 3: European Sales & Profit Performance Dashboard](powerbi3.png){width="80%"}
+```{python}
+#| label: fig-europe
+#| fig-cap: "European Sales & Profit Performance Dashboard"
+regional_dashboard('Europe')
+```
 
 ### *2.2 North America*
 
 North America has seen sharp profitability erosion for EcoEnergy Corp, with seven of ten products posting negative net profits. Technology, Transport and Insurance underperformed, with margins of -23% and -22%. Losses in key lines like printers, cars, smartphones and laptops were worsened by pricing below cost and average discounts of 16%, resulting in €4.15 million in total losses. Only the Construction category performed well, achieving a 13.62% margin. To improve, unprofitable Technology and Transport lines should be discontinued, discount policies tightened and pricing discipline enforced. Future efforts should prioritise reinvesting in Construction and refining the sales mix to balance online and offline channels while avoiding low-margin products.
 
-![Figure 4: North American Top Performing Products Chart](powerbi4.png){width="50%"}
+```{python}
+#| label: fig-na-top
+#| fig-cap: "North American Top Performing Products (2015–2024)"
 
+na = df[df['Region'] == 'North America']
+top = na.groupby('Product').agg(
+    Total_Profit=('Total_Profit', 'sum'),
+    Net_Profit=('Net_Profit', 'sum'),
+    Total_Revenue=('Total_Revenue', 'sum')
+).assign(
+    Profit_Margin=lambda x: x['Total_Profit'] / x['Total_Revenue'] * 100,
+    Net_Margin=lambda x: x['Net_Profit'] / x['Total_Revenue'] * 100
+).sort_values('Net_Profit', ascending=False).head(3)
 
-![Figure 5: North American Sales & Profit Performance Dashboard](powerbi5.png){width="80%"}
+fig, ax = plt.subplots(figsize=(9, 1.8))
+ax.axis('off')
+cols = ['Product', 'Total Profit', 'Net Profit', 'Profit Margin %', 'Net Margin %']
+data = [[idx,
+         f'€{row.Total_Profit:,.0f}',
+         f'€{row.Net_Profit:,.0f}',
+         f'{row.Profit_Margin:.2f}%',
+         f'{row.Net_Margin:.2f}%']
+        for idx, row in top.iterrows()]
+tbl = ax.table(cellText=data, colLabels=cols, loc='center', cellLoc='left')
+tbl.auto_set_font_size(False)
+tbl.set_fontsize(9)
+tbl.auto_set_column_width(col=list(range(len(cols))))
+for (r, c), cell in tbl.get_celld().items():
+    if r == 0:
+        cell.set_facecolor(BLUE)
+        cell.set_text_props(color='white', fontweight='bold')
+    elif r % 2 == 0:
+        cell.set_facecolor('#EBF3FB')
+ax.set_title('North America — Top Performing Products', fontsize=10, pad=12)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+#| label: fig-north-america
+#| fig-cap: "North American Sales & Profit Performance Dashboard"
+regional_dashboard('North America', show_category=True)
+```
 
 ### *2.3 South America*
 
-Over the past decade, South America has become EcoEnergy Corp’s most reliable hub for low-cost, high-quality technology and solar panel manufacturing. Median production costs are over 30% lower than in Asia or Europe, with Technology and Construction among the cheapest globally. The region’s shift toward online sales has improved margins and reflected stronger digital engagement. From 2021 to 2024, consistent profitability in Technology and Construction aligns with rising sustainability initiatives. However, losses in car and Insurance products and high offline operational costs reduce overall profit, worsened by discounts. To sustain performance, EcoEnergy Corp should prioritise profitable, sustainable lines, such as smartphones, printers, building materials and solar panels, while discontinuing weak Transport and Insurance products. Discount control, balanced channel management and ongoing cost monitoring will be essential to preserve the region’s advantage.
+Over the past decade, South America has become EcoEnergy Corp's most reliable hub for low-cost, high-quality technology and solar panel manufacturing. Median production costs are over 30% lower than in Asia or Europe, with Technology and Construction among the cheapest globally. The region's shift toward online sales has improved margins and reflected stronger digital engagement. From 2021 to 2024, consistent profitability in Technology and Construction aligns with rising sustainability initiatives. However, losses in car and Insurance products and high offline operational costs reduce overall profit, worsened by discounts. To sustain performance, EcoEnergy Corp should prioritise profitable, sustainable lines, such as smartphones, printers, building materials and solar panels, while discontinuing weak Transport and Insurance products. Discount control, balanced channel management and ongoing cost monitoring will be essential to preserve the region's advantage.
 
-![Figure 6: South American Sales & Profit Performance Dashboard](powerbi6.png){width="80%"}
+```{python}
+#| label: fig-south-america
+#| fig-cap: "South American Sales & Profit Performance Dashboard"
+regional_dashboard('South America')
+```
 
+```{python}
+#| label: fig-median-costs
+#| fig-cap: "Median Unit Costs by Product and Region (2021–2024)"
+#| fig-height: 3
 
-![Figure 7: Median Unit Costs by Product and Region](powerbi7.png){width="80%"}
+tech_prods  = ['Laptop', 'Monitor', 'Printer', 'Smartphone', 'Tablet']
+const_prods = ['Building Material', 'Solar Panel']
+trans_prods = ['Car', 'Flight Ticket', 'Insurance Plan']
+
+def cost_table_ax(ax, products, title):
+    sub = recent[recent['Product'].isin(products)]
+    pivot = sub.pivot_table(index='Region', columns='Product',
+                             values='Unit_Cost', aggfunc='median')
+    pivot['Total'] = sub.groupby('Region')['Unit_Cost'].median()
+    pivot = pivot.sort_values('Total', ascending=False).round(2).fillna('')
+    cols = ['Region'] + list(pivot.columns)
+    data = [[idx] + [f'{v:.2f}' if v != '' else '' for v in row]
+            for idx, row in pivot.iterrows()]
+    tbl = ax.table(cellText=data, colLabels=cols, loc='center', cellLoc='center')
+    tbl.auto_set_font_size(False)
+    tbl.set_fontsize(7.5)
+    tbl.auto_set_column_width(col=list(range(len(cols))))
+    for (r, c), cell in tbl.get_celld().items():
+        if r == 0:
+            cell.set_facecolor(BLUE)
+            cell.set_text_props(color='white', fontweight='bold')
+        elif r % 2 == 0:
+            cell.set_facecolor('#EBF3FB')
+    ax.set_title(title, fontsize=8, pad=8)
+    ax.axis('off')
+
+fig, axes = plt.subplots(1, 3, figsize=(14, 2.8))
+cost_table_ax(axes[0], tech_prods,  'Technology')
+cost_table_ax(axes[1], const_prods, 'Construction')
+cost_table_ax(axes[2], trans_prods, 'Transport & Insurance')
+plt.suptitle('Median Unit Costs by Product and Region (2021–2024)',
+             fontsize=11, fontweight='bold')
+plt.tight_layout()
+plt.show()
+```
 
 ### *2.4 Asia*
 
 Asia is a high-revenue but nearly break-even region for EcoEnergy Corp, generating €24.05 million in revenue and only €0.14 million in net profit over ten years. Despite the lowest production costs globally, weak portfolio choices and heavy online discounting have limited returns. Profitable periods (2015–2017, 2024) coincided with disciplined portfolio management, while losses stemmed from persisting with unprofitable products. Cars, solar panels, tablets, smartphones and laptops were consistent profit drivers, whereas flight tickets, Insurance, printers and monitors eroded margins. Online channels dominate, but deep discounts offset cost advantages. To ensure sustainable profits, EcoEnergy Corp should leverage cost efficiency into margin gains, enforce minimum margin thresholds, especially in tech and concentrate on profitable lines while phasing out chronic loss-makers.
 
-![Figure 8: Asian Sales & Profit Performance Dashboard](powerbi8.png){width="80%"}
+```{python}
+#| label: fig-asia
+#| fig-cap: "Asian Sales & Profit Performance Dashboard"
+regional_dashboard('Asia')
+```
 
+```{python}
+#| label: fig-asia-costs-revenue
+#| fig-cap: "Asia — Total Costs and Revenue by Year and Category"
+#| fig-height: 4
 
-![Figure 7: Median Unit Costs by Product and Region](powerbi7.png){width="80%"}
+asia = df[df['Region'] == 'Asia']
+fig, axes = plt.subplots(1, 3, figsize=(14, 4), sharey=False)
+for i, cat in enumerate(['Technology', 'Construction', 'Transport & Insurance']):
+    ax = axes[i]
+    sub = asia[asia['Category'] == cat].groupby('Year').agg(
+        Total_Cost=('Total_Cost', 'sum'),
+        Total_Revenue=('Total_Revenue', 'sum')
+    ) / 1e6
+    x = sub.index
+    w = 0.5
+    ax.bar(x, sub['Total_Cost'], w, color=BLUE, label='Total Cost')
+    ax.plot(x, sub['Total_Revenue'], color=RED, marker='o',
+            markersize=4, linewidth=1.5, label='Total Revenue')
+    ax.set_title(cat, fontsize=9)
+    ax.set_xlabel('Year')
+    ax.set_ylabel('M€')
+    ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f'{x:.0f}M'))
+    ax.tick_params(axis='x', rotation=45, labelsize=7)
+    if i == 0:
+        ax.legend(fontsize=7)
+fig.suptitle('Asia — Total Costs and Revenue by Year and Category',
+             fontsize=11, fontweight='bold')
+plt.tight_layout()
+plt.show()
+```
 
 ### *2.5 Africa*
 
-Africa remains EcoEnergy Corp’s most challenging region, recording continuous losses of €3.7 million. Over ten years, revenue totalled €25.17 million, but high production costs, especially in Technology, have driven persistent deficits. Online channels contribute 36.7% of sales, yet heavy losses stem from costly tech products. Printers and solar panels only recently turned profitable, while building materials continue to underperform due to weak, inelastic demand. To improve, EcoEnergy Corp should reduce technology production costs, discontinue unprofitable lines like building materials and prioritise solar panels amid rising sustainable demand. Further market research will be vital to align offerings with regional demand trends.
+Africa remains EcoEnergy Corp's most challenging region, recording continuous losses of €3.7 million. Over ten years, revenue totalled €25.17 million, but high production costs, especially in Technology, have driven persistent deficits. Online channels contribute 36.7% of sales, yet heavy losses stem from costly tech products. Printers and solar panels only recently turned profitable, while building materials continue to underperform due to weak, inelastic demand. To improve, EcoEnergy Corp should reduce technology production costs, discontinue unprofitable lines like building materials and prioritise solar panels amid rising sustainable demand. Further market research will be vital to align offerings with regional demand trends.
 
-![Figure 9: African Sales & Profit Performance Dashboard](powerbi9.png){width="80%"}
-
-
-![Figure 10: Asian Total Costs and Revenue by Year and Category](powerbi10.png){width="80%"}
+```{python}
+#| label: fig-africa
+#| fig-cap: "African Sales & Profit Performance Dashboard"
+regional_dashboard('Africa')
+```
 
 ## 3. Outsourcing Recommendations
 
@@ -107,38 +374,214 @@ Analysis of the past three years of operational and sales data reveals clear reg
 
 Data shows South America and Asia maintain the lowest median unit costs in technology, at €339.66 and €346.9 respectively. South America offers the cheapest production for monitors, tablets and printers, while Asia leads in laptops and smartphones. Africa produces printers at the lowest cost, whereas other regions spend over 25% more on technology production. It is recommended to consolidate tech manufacturing in South America and Asia to capitalise on their cost advantages and proven profitability.
 
-![Figure 11: Technology Median Unit Costs by Region (Breakdown by Product) (2021-2024)](powerbi11.png){width="50%"}
+```{python}
+#| label: fig-tech-table
+#| fig-cap: "Technology Median Unit Costs by Region and Product (2021–2024)"
+#| fig-height: 2.5
 
+sub = recent[recent['Product'].isin(tech_prods)]
+pivot = sub.pivot_table(index='Region', columns='Product',
+                         values='Unit_Cost', aggfunc='median')
+pivot['Total'] = sub.groupby('Region')['Unit_Cost'].median()
+pivot = pivot.sort_values('Total').round(2).fillna('')
 
-![Figure 12: Technology Median Unit Costs by Region (2021-2024)](powerbi12.png){width="40%"}
+fig, ax = plt.subplots(figsize=(11, 2.5))
+ax.axis('off')
+cols = ['Region'] + list(pivot.columns)
+data = [[idx] + [f'{v:.2f}' if v != '' else '' for v in row]
+        for idx, row in pivot.iterrows()]
+totals_row = ['Total'] + [f'{sub[sub["Product"]==p]["Unit_Cost"].median():.2f}'
+                           if p in tech_prods else f'{sub["Unit_Cost"].median():.2f}'
+                           for p in pivot.columns]
+data.append(totals_row)
+tbl = ax.table(cellText=data, colLabels=cols, loc='center', cellLoc='center')
+tbl.auto_set_font_size(False)
+tbl.set_fontsize(8.5)
+tbl.auto_set_column_width(col=list(range(len(cols))))
+for (r, c), cell in tbl.get_celld().items():
+    if r == 0:
+        cell.set_facecolor(BLUE); cell.set_text_props(color='white', fontweight='bold')
+    elif r == len(data):
+        cell.set_facecolor('#BDD7EE'); cell.set_text_props(fontweight='bold')
+    elif r % 2 == 0:
+        cell.set_facecolor('#EBF3FB')
+    # highlight min total
+    if c == len(cols)-1 and 0 < r < len(data):
+        vals = [float(data[i][-1]) for i in range(len(data)-1) if data[i][-1] != '']
+        try:
+            if float(data[r-1][-1]) == min(vals):
+                cell.set_facecolor('#C6EFCE')
+        except ValueError:
+            pass
+ax.set_title('Technology — Median Unit Cost by Region & Product (2021–2024)',
+             fontsize=10, pad=10)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+#| label: fig-tech-bar
+#| fig-cap: "Technology Median Unit Cost by Region (2021–2024)"
+#| fig-height: 3.5
+
+sub = recent[recent['Product'].isin(tech_prods)]
+med = sub.groupby('Region')['Unit_Cost'].median().sort_values(ascending=False)
+fig, ax = plt.subplots(figsize=(7, 3.5))
+bars = ax.barh(med.index, med.values, color=BLUE)
+ax.bar_label(bars, fmt='%.2f', padding=3, fontsize=9)
+ax.set_xlim(0, med.max() * 1.2)
+ax.set_title('Technology — Median Unit Cost by Region (2021–2024)', fontsize=10)
+ax.set_xlabel('Median Unit Cost (€)')
+ax.invert_yaxis()
+plt.tight_layout()
+plt.show()
+```
 
 ### *3.2 Construction*
 
-Construction analysis proved more complex. North America has the lowest median production cost at €373.25 but no single cheapest product and it recorded a €1.71 million loss in construction over the past three years. South America offers the lowest cost for solar panels at €273.42 per unit, while Europe produces building materials at €511.81 per unit. Though not the cheapest, Europe leads demand for building materials and was the only region to achieve profits in this category. Prioritising solar panel production in South America and building materials in Europe will sustain profitability. With Europe’s average unit price twice that of its nearest market, manufacturing there supports high-margin growth.
+Construction analysis proved more complex. North America has the lowest median production cost at €373.25 but no single cheapest product and it recorded a €1.71 million loss in construction over the past three years. South America offers the lowest cost for solar panels at €273.42 per unit, while Europe produces building materials at €511.81 per unit. Though not the cheapest, Europe leads demand for building materials and was the only region to achieve profits in this category. Prioritising solar panel production in South America and building materials in Europe will sustain profitability. With Europe's average unit price twice that of its nearest market, manufacturing there supports high-margin growth.
 
-![Figure 13: Construction Net Profits by Product and Region (2021-2024)](powerbi13.png){width="40%"}
+```{python}
+#| label: fig-const-profit
+#| fig-cap: "Construction Net Profits by Product and Region (2021–2024)"
+#| fig-height: 4
 
+const = recent[recent['Category'] == 'Construction']
+pivot = const.groupby(['Product', 'Region'])['Net_Profit'].sum().unstack() / 1e6
+fig, ax = plt.subplots(figsize=(7, 4))
+pivot.plot(kind='bar', ax=ax)
+ax.axhline(0, color='black', linewidth=0.6, linestyle='--')
+ax.set_title('Construction Net Profits by Product & Region (2021–2024)', fontsize=10)
+ax.set_xlabel('Product')
+ax.set_ylabel('Sum of Net Profit (M€)')
+ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f'{x:.1f}M'))
+ax.legend(title='Region', fontsize=8)
+plt.xticks(rotation=15)
+plt.tight_layout()
+plt.show()
+```
 
-![Figure 14: Construction Products Median Unit Costs by Region (2021-2024)](powerbi14.png){width="30%"}
+```{python}
+#| label: fig-const-table
+#| fig-cap: "Construction Products Median Unit Costs by Region (2021–2024)"
+#| fig-height: 2.5
 
+sub = recent[recent['Product'].isin(const_prods)]
+pivot = sub.pivot_table(index='Region', columns='Product',
+                         values='Unit_Cost', aggfunc='median')
+pivot['Total'] = sub.groupby('Region')['Unit_Cost'].median()
+pivot = pivot.sort_values('Total', ascending=False).round(2).fillna('')
 
-![Figure 15: Construction Median Unit Costs by Region (2021-2024)](powerbi15.png){width="30%"}
+fig, ax = plt.subplots(figsize=(8, 2.5))
+ax.axis('off')
+cols = ['Region'] + list(pivot.columns)
+data = [[idx] + [f'{v:.2f}' if v != '' else '' for v in row]
+        for idx, row in pivot.iterrows()]
+tbl = ax.table(cellText=data, colLabels=cols, loc='center', cellLoc='center')
+tbl.auto_set_font_size(False); tbl.set_fontsize(9)
+tbl.auto_set_column_width(col=list(range(len(cols))))
+for (r, c), cell in tbl.get_celld().items():
+    if r == 0:
+        cell.set_facecolor(BLUE); cell.set_text_props(color='white', fontweight='bold')
+    elif r % 2 == 0:
+        cell.set_facecolor('#EBF3FB')
+ax.set_title('Construction — Median Unit Cost by Region & Product (2021–2024)',
+             fontsize=10, pad=10)
+plt.tight_layout()
+plt.show()
+```
 
+```{python}
+#| label: fig-const-cost-bar
+#| fig-cap: "Construction Median Unit Cost by Region (2021–2024)"
+#| fig-height: 3.5
 
-![Figure 16: Construction Median Unit Cost by Region (2021-2024)](powerbi16.png){width="30%"}
+sub = recent[recent['Product'].isin(const_prods)]
+med = sub.groupby('Region')['Unit_Cost'].median().sort_values(ascending=False)
+fig, ax = plt.subplots(figsize=(7, 3.5))
+bars = ax.barh(med.index, med.values, color=BLUE)
+ax.bar_label(bars, fmt='%.2f', padding=3, fontsize=9)
+ax.set_xlim(0, med.max() * 1.2)
+ax.set_title('Construction — Median Unit Cost by Region (2021–2024)', fontsize=10)
+ax.set_xlabel('Median Unit Cost (€)')
+ax.invert_yaxis()
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+#| label: fig-const-price-bar
+#| fig-cap: "Construction Median Unit Price by Region (2021–2024)"
+#| fig-height: 3.5
+
+sub = recent[recent['Product'].isin(const_prods)]
+med_price = sub.groupby('Region')['Unit_Price'].median().sort_values(ascending=False)
+fig, ax = plt.subplots(figsize=(7, 3.5))
+bars = ax.barh(med_price.index, med_price.values, color=BLUE)
+ax.bar_label(bars, fmt='%.0f', padding=3, fontsize=9)
+ax.set_xlim(0, med_price.max() * 1.2)
+ax.set_title('Construction — Median Unit Price by Region (2021–2024)', fontsize=10)
+ax.set_xlabel('Median Unit Price (€)')
+ax.invert_yaxis()
+plt.tight_layout()
+plt.show()
+```
 
 ### *3.3 Transport & Insurance*
 
 Transport & Insurance analysis revealed mixed performance. North America reported the lowest median production cost at €351.83. yet no cost-leading product, alongside a €1.74 million loss in Transport & Insurance over three years. North America also achieved the lowest car and flight ticket cost at €206.84 and 252.73 per unit respectively, while Europe produced insurance plans at €380.49 per unit. Although not the cheapest, Europe led demand and was the only region to deliver profits in Transport & Insurance. Focusing car and flight ticket production in North America and Insurance plans in Europe will strengthen profitability.
 
-![Figure 17: Transport & Insurance Median Unit Cost by Region (2021-2024)](powerbi17.png){width="40%"}
+```{python}
+#| label: fig-trans-table
+#| fig-cap: "Transport & Insurance Median Unit Cost by Region (2021–2024)"
+#| fig-height: 2.5
 
+sub = recent[recent['Product'].isin(trans_prods)]
+pivot = sub.pivot_table(index='Region', columns='Product',
+                         values='Unit_Cost', aggfunc='median')
+pivot['Total'] = sub.groupby('Region')['Unit_Cost'].median()
+pivot = pivot.sort_values('Total').round(2).fillna('')
 
-![Figure 18: Construction Average Unit Cost by Region (2021-2024)](powerbi18.png){width="40%"}
+fig, ax = plt.subplots(figsize=(9, 2.5))
+ax.axis('off')
+cols = ['Region'] + list(pivot.columns)
+data = [[idx] + [f'{v:.2f}' if v != '' else '' for v in row]
+        for idx, row in pivot.iterrows()]
+tbl = ax.table(cellText=data, colLabels=cols, loc='center', cellLoc='center')
+tbl.auto_set_font_size(False); tbl.set_fontsize(9)
+tbl.auto_set_column_width(col=list(range(len(cols))))
+for (r, c), cell in tbl.get_celld().items():
+    if r == 0:
+        cell.set_facecolor(BLUE); cell.set_text_props(color='white', fontweight='bold')
+    elif r % 2 == 0:
+        cell.set_facecolor('#EBF3FB')
+ax.set_title('Transport & Insurance — Median Unit Cost by Region (2021–2024)',
+             fontsize=10, pad=10)
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+#| label: fig-trans-avg-bar
+#| fig-cap: "Transport & Insurance Average Unit Cost by Region (2021–2024)"
+#| fig-height: 3.5
+
+sub = recent[recent['Product'].isin(trans_prods)]
+avg = sub.groupby('Region')['Unit_Cost'].mean().sort_values(ascending=False)
+fig, ax = plt.subplots(figsize=(7, 3.5))
+bars = ax.barh(avg.index, avg.values, color=BLUE)
+ax.bar_label(bars, fmt='%.2f', padding=3, fontsize=9)
+ax.set_xlim(0, avg.max() * 1.2)
+ax.set_title('Transport & Insurance — Average Unit Cost by Region (2021–2024)', fontsize=10)
+ax.set_xlabel('Average Unit Cost (€)')
+ax.invert_yaxis()
+plt.tight_layout()
+plt.show()
+```
 
 ## 4. Next Steps
 
-The next steps apply strategic principles focused on leveraging leading production hubs through a “winner-takes-all” sourcing model [@jain2024], prioritising regions with the lowest unit costs and targeting markets with strong demand. Export efficiency should be improved by shipping from key hubs, South America for solar and technology products and Europe for construction materials, supported by a scalable supply chain responsive to changing global demand. The Transport and Insurance sectors require product rationalisation, as persistent losses mean they should be restructured or exited entirely.
+The next steps apply strategic principles focused on leveraging leading production hubs through a "winner-takes-all" sourcing model [@jain2024], prioritising regions with the lowest unit costs and targeting markets with strong demand. Export efficiency should be improved by shipping from key hubs, South America for solar and technology products and Europe for construction materials, supported by a scalable supply chain responsive to changing global demand. The Transport and Insurance sectors require product rationalisation, as persistent losses mean they should be restructured or exited entirely.
 
 ## 5. Predictive Analysis
 
@@ -154,15 +597,55 @@ We addressed key issues:
 
 ## 6. Findings
 
-Predictive analysis indicates steady net profit growth across all industries. In year one, we expect a €1.55 million profit even with capped production, reaching €3.09 million annually at full output with a 49.7% profit margin. Technology leads profitability, generating €7.75 million (49.72% of total revenue). Construction, while earning €2 million, suffers from high costs and weak margins, suggesting potential discontinuation unless market conditions improve. Overall, the proposed production hub strategy is projected to restore EcoEnergy Corp’s profitability and prevent further losses from poor cost management.
+Predictive analysis indicates steady net profit growth across all industries. In year one, we expect a €1.55 million profit even with capped production, reaching €3.09 million annually at full output with a 49.7% profit margin. Technology leads profitability, generating €7.75 million (49.72% of total revenue). Construction, while earning €2 million, suffers from high costs and weak margins, suggesting potential discontinuation unless market conditions improve. Overall, the proposed production hub strategy is projected to restore EcoEnergy Corp's profitability and prevent further losses from poor cost management.
 
-![Figure 19: Predicted Sales & Profit Performance Dashboard with the Implementation of Recommendations](powerbi19.png){width="60%"}
+```{python}
+#| label: fig-predictive
+#| fig-cap: "Predicted Sales & Profit Performance with Implementation of Recommendations"
+#| fig-height: 5
+
+fig = plt.figure(figsize=(12, 5))
+fig.suptitle('Predicted Sales & Profit Performance with Recommendations',
+             fontsize=12, fontweight='bold')
+
+# Left: grouped bar by category across 3 years
+ax1 = fig.add_subplot(1, 2, 1)
+cats = ['Technology', 'Transport & Insurance', 'Construction']
+y1 = [1.94, 0.58, 0.26]
+y2 = [2.90, 0.87, 0.39]
+y3 = [3.87, 1.16, 0.52]
+x = np.arange(len(cats))
+w = 0.25
+ax1.bar(x - w, y1, w, label='Year 1', color='#2E75B6')
+ax1.bar(x,     y2, w, label='Year 2', color='#70AD47')
+ax1.bar(x + w, y3, w, label='Year 3', color='#ED7D31')
+ax1.set_xticks(x)
+ax1.set_xticklabels(cats, rotation=10, fontsize=9)
+ax1.set_ylabel('Net Profit (M€)')
+ax1.set_title('NET Profit by Sector, Year on Year', fontsize=10)
+ax1.yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f'{x:.1f}M'))
+ax1.legend(fontsize=8)
+
+# Right: total net profit per year bar
+ax2 = fig.add_subplot(1, 2, 2)
+years = ['Year 1', 'Year 2', 'Year 3']
+profits = [1.55, 2.32, 3.09]
+bars = ax2.barh(years, profits, color=BLUE)
+ax2.bar_label(bars, labels=[f'{p:.2f}M' for p in profits], padding=3, fontsize=9)
+ax2.set_xlim(0, 4)
+ax2.set_title('Total NET Profit Year on Year', fontsize=10)
+ax2.set_xlabel('Net Profit (M€)')
+ax2.invert_yaxis()
+
+plt.tight_layout()
+plt.show()
+```
 
 ## 7. Industry Benchmarks
 
 In theory our global production hubs will turn a profit for EcoEnergy Corp, we have conducted the following industry benchmarking study to ground our hypothesis in real-world industry data.
 
-Maintaining a strong green identity is crucial for EcoEnergy Corp as it expands outsourcing. Apple, a leader in consumer technology, shows how large-scale outsourcing can align with sustainability. Apple enforces strict environmental controls and supplier audits in Asia, aiming for carbon neutrality. It commits to 100% renewable energy for manufacturing and increasing recycled, renewable materials in products, transparently reporting emissions progress [@apple2025]. This accountability strengthens Apple’s green brand and stakeholder trust while supporting growth.
+Maintaining a strong green identity is crucial for EcoEnergy Corp as it expands outsourcing. Apple, a leader in consumer technology, shows how large-scale outsourcing can align with sustainability. Apple enforces strict environmental controls and supplier audits in Asia, aiming for carbon neutrality. It commits to 100% renewable energy for manufacturing and increasing recycled, renewable materials in products, transparently reporting emissions progress [@apple2025]. This accountability strengthens Apple's green brand and stakeholder trust while supporting growth.
 
 Cool Planet shows that becoming sustainable can be straightforward and cost-effective. As an Irish company specialising in energy management and decarbonisation, Cool Planet provides easy-to-use digital dashboards and expert support that help businesses monitor, reduce and manage their carbon footprints [@coolplanet2025]. Their approach demonstrates that strong sustainability performance is achievable for companies of all sizes, offering a clear, practical blueprint for EcoEnergy Corp to follow. 
 
@@ -170,9 +653,9 @@ These examples highlight a vital principle for EcoEnergy Corp: sustainability mu
 
 ## 8. Conclusion
 
-EcoEnergy Corp faces a pivotal moment requiring decisive restructuring and targeted outsourcing to reverse losses and restore profitability. Ten years of regional data show South America as the low-cost, high-quality hub for technology and solar products, North America for construction materials and Asia’s pricing advantage in Transport and Insurance remains unrealised in profits. The company should consolidate manufacturing accordingly, discontinue unprofitable products, and recalibrate pricing and discounts to protect margins and enable sustainable growth.
+EcoEnergy Corp faces a pivotal moment requiring decisive restructuring and targeted outsourcing to reverse losses and restore profitability. Ten years of regional data show South America as the low-cost, high-quality hub for technology and solar products, North America for construction materials and Asia's pricing advantage in Transport and Insurance remains unrealised in profits. The company should consolidate manufacturing accordingly, discontinue unprofitable products, and recalibrate pricing and discounts to protect margins and enable sustainable growth.
 
-Maintaining EcoEnergy Corp’s green and ethical identity is essential. Leaders like Apple prove large-scale outsourcing can align with sustainability through strict audits, renewable energy use and transparent emissions reporting. Smaller firms like Ireland’s Cool Planet show sustainable outsourcing is feasible at any scale via low-carbon manufacturing and real-time environmental monitoring. By adopting these best practices, EcoEnergy Corp can combine operational excellence with a strong sustainability mission, safeguarding stakeholder trust while achieving commercial success.
+Maintaining EcoEnergy Corp's green and ethical identity is essential. Leaders like Apple prove large-scale outsourcing can align with sustainability through strict audits, renewable energy use and transparent emissions reporting. Smaller firms like Ireland's Cool Planet show sustainable outsourcing is feasible at any scale via low-carbon manufacturing and real-time environmental monitoring. By adopting these best practices, EcoEnergy Corp can combine operational excellence with a strong sustainability mission, safeguarding stakeholder trust while achieving commercial success.
 
 ## 9. Bibliography
 

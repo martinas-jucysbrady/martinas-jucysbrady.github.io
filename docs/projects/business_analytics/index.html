@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -207,6 +242,21 @@ div.csl-indent {
 </div>
       <div class="about-contents"><main class="content column-page-left" id="quarto-document-content">
 
+<style>
+#quarto-document-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-right: 50px;
+}
+#quarto-margin-sidebar {
+  position: fixed;
+  right: 1rem;
+  top: 70px;
+  width: 220px;
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
+}
+</style>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="business_analytics.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
@@ -219,25 +269,95 @@ div.csl-indent {
 <h2 data-anchor-id="introduction">1. Introduction</h2>
 <p>To answer your query I used data from 120 Metropolitan Statistical Areas (MSAs), regarding household numbers in specific areas, the correlating figures for households within these areas that hold a checking account with our company and whether these areas have a physical bank branch within. Using this study I have been able to conclude whether there is a relationship between our physical bank branches and the demand for checking accounts with our company. By using various methodologies, assessments, and data visualisation to view the data gathered we have been able to gain strategical insights into consumer preferences and the effect of having physical banks.</p>
 <p>My first step in answering your question was to prepare the data through careful analysis. I organised the data according to whether it the area in question had an inside footprint (with a physical bank branch) or an outside footprint (without a physical bank branch, but with ATMs instead). I then calculated the percentage of households with a checking account by the total number of households. I analysed the percentage values I got and carefully identified any outliers. To identify any outliers I used a scatterplot graph in order to be able to clearly distinguish any abnormalities. Below I have included an example of an outlier that I have identified.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="busana1.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Figure 1: Identification of Outlier; Created by Martinas Jucys Brady</figcaption>
+<div id="cell-fig-outlier" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>inside  <span class="op">=</span> df[df[<span class="st">'Footprint'</span>] <span class="op">==</span> <span class="st">'Inside'</span>]</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>outside <span class="op">=</span> df[df[<span class="st">'Footprint'</span>] <span class="op">==</span> <span class="st">'Outside'</span>]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>ax.scatter(outside[<span class="st">'ID'</span>], outside[<span class="st">'Pct'</span>], color<span class="op">=</span>BLUE,   alpha<span class="op">=</span><span class="fl">0.6</span>, s<span class="op">=</span><span class="dv">30</span>, label<span class="op">=</span><span class="st">'Outside'</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ax.scatter(inside[<span class="st">'ID'</span>],  inside[<span class="st">'Pct'</span>],  color<span class="op">=</span>ORANGE, alpha<span class="op">=</span><span class="fl">0.6</span>, s<span class="op">=</span><span class="dv">30</span>, label<span class="op">=</span><span class="st">'Inside'</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>outlier <span class="op">=</span> df[df[<span class="st">'ID'</span>] <span class="op">==</span> <span class="dv">114</span>]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>ax.scatter(outlier[<span class="st">'ID'</span>], outlier[<span class="st">'Pct'</span>], color<span class="op">=</span>RED, s<span class="op">=</span><span class="dv">80</span>, zorder<span class="op">=</span><span class="dv">5</span>, label<span class="op">=</span><span class="st">'Outlier (ID 114)'</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ax.annotate(<span class="st">'ID 114</span><span class="ch">\n</span><span class="st">(Outlier)'</span>, xy<span class="op">=</span>(<span class="dv">114</span>, <span class="fl">13.66</span>), xytext<span class="op">=</span>(<span class="dv">88</span>, <span class="fl">11.8</span>),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            arrowprops<span class="op">=</span><span class="bu">dict</span>(arrowstyle<span class="op">=</span><span class="st">'-&gt;'</span>, color<span class="op">=</span>RED), color<span class="op">=</span>RED, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'MSA ID'</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Checking Accounts (</span><span class="sc">% o</span><span class="st">f Households)'</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Identification of Outlier'</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>ax.legend(fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-outlier" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-outlier-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-outlier-output-1.png" width="661" height="373" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-outlier-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Identification of Outlier
+</figcaption>
 </figure>
+</div>
+</div>
 </div>
 <p>Here the household with the ID 114 is clearly seen as an outlier. I concluded that this was either due to the total number of households or households with a checking account being misinterpreted. The most logical reasoning for it to be an outlier is that instead of 10,731 total households, the real value should have been 107,310 total households, as then the percentage value would have been in line with the rest. Without any evidence I cannot change this value, so I proceeded to not include its values in my data.</p>
 <p>Below I have included scatterplot representations of households with a checking account as a percentage of the total population, with any outliers removed.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="busana2.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Figure 2: Households with a Checking Account as % of Total Population (Outside); Created by Martinas Jucys Brady</figcaption>
+<div id="cell-fig-outside" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ax.scatter(outside_c[<span class="st">'ID'</span>], outside_c[<span class="st">'Pct'</span>], color<span class="op">=</span>BLUE, alpha<span class="op">=</span><span class="fl">0.7</span>, s<span class="op">=</span><span class="dv">35</span>, label<span class="op">=</span><span class="st">'Outside Footprint'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.polyfit(outside_c[<span class="st">'ID'</span>], outside_c[<span class="st">'Pct'</span>], <span class="dv">1</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>xline <span class="op">=</span> np.linspace(outside_c[<span class="st">'ID'</span>].<span class="bu">min</span>(), outside_c[<span class="st">'ID'</span>].<span class="bu">max</span>(), <span class="dv">100</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ax.plot(xline, np.poly1d(z)(xline), color<span class="op">=</span>RED, linewidth<span class="op">=</span><span class="fl">1.2</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Trend line'</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'MSA ID'</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Checking Accounts (</span><span class="sc">% o</span><span class="st">f Households)'</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Outside Footprint — Checking Account </span><span class="sc">% o</span><span class="st">f Total Population'</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>ax.legend(fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-outside" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-outside-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-outside-output-1.png" width="661" height="373" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-outside-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Outside Footprint — Households with a Checking Account as % of Total Population
+</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="busana3.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Figure 3: Households with a Checking Account as % of Total Population (Inside); Created by Martinas Jucys Brady</figcaption>
+</div>
+</div>
+<div id="cell-fig-inside" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ax.scatter(inside_c[<span class="st">'ID'</span>], inside_c[<span class="st">'Pct'</span>], color<span class="op">=</span>ORANGE, alpha<span class="op">=</span><span class="fl">0.7</span>, s<span class="op">=</span><span class="dv">35</span>, label<span class="op">=</span><span class="st">'Inside Footprint'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> np.polyfit(inside_c[<span class="st">'ID'</span>], inside_c[<span class="st">'Pct'</span>], <span class="dv">1</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>xline <span class="op">=</span> np.linspace(inside_c[<span class="st">'ID'</span>].<span class="bu">min</span>(), inside_c[<span class="st">'ID'</span>].<span class="bu">max</span>(), <span class="dv">100</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>ax.plot(xline, np.poly1d(z)(xline), color<span class="op">=</span>RED, linewidth<span class="op">=</span><span class="fl">1.2</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Trend line'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'MSA ID'</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Checking Accounts (</span><span class="sc">% o</span><span class="st">f Households)'</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Inside Footprint — Checking Account </span><span class="sc">% o</span><span class="st">f Total Population'</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>ax.legend(fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-inside" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-inside-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-inside-output-1.png" width="661" height="373" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-inside-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Inside Footprint — Households with a Checking Account as % of Total Population
+</figcaption>
 </figure>
+</div>
+</div>
 </div>
 </section>
 <section id="data-analysis" class="level2">
@@ -246,115 +366,144 @@ div.csl-indent {
 <h3 data-anchor-id="correlation-calculation">2.1 <em>Correlation Calculation</em></h3>
 <p>Firstly I conducted a simple calculation to give me the average percentage of households with a checking account when there is a physical bank branch and when there isn’t one. The average percentage of households with a checking account when there is a bank branch is 1.42%. The average percentage of households with a checking account when there isn’t a checking account is 1.24%. These values indicate that there is a minimal difference in demand for a checking account whether or not the area has an inside or an outside footprint.</p>
 <p>Also, the scatterplot below shows the linearity of the percentages of checking accounts from both inside and outside footprint. We can see that there is very little variability between values and that there are no distinct indicators to show that there is a difference in demand if there is a physical bank branch presence or not.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="busana4.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Figure 4: Scatterplot of Checking Account Demand; Created by Martinas Jucys Brady</figcaption>
+<div id="cell-fig-combined" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ax.scatter(outside_c[<span class="st">'ID'</span>], outside_c[<span class="st">'Pct'</span>], color<span class="op">=</span>BLUE,   alpha<span class="op">=</span><span class="fl">0.6</span>, s<span class="op">=</span><span class="dv">30</span>, label<span class="op">=</span><span class="st">'Outside Footprint'</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>ax.scatter(inside_c[<span class="st">'ID'</span>],  inside_c[<span class="st">'Pct'</span>],  color<span class="op">=</span>ORANGE, alpha<span class="op">=</span><span class="fl">0.6</span>, s<span class="op">=</span><span class="dv">30</span>, label<span class="op">=</span><span class="st">'Inside Footprint'</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'MSA ID'</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Checking Accounts (</span><span class="sc">% o</span><span class="st">f Households)'</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Checking Account Demand — Inside vs Outside Footprint'</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>ax.legend(fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-combined" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-combined-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-combined-output-1.png" width="661" height="373" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-combined-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Scatterplot of Checking Account Demand — Inside vs Outside Footprint
+</figcaption>
 </figure>
+</div>
+</div>
 </div>
 <p>To back this hypothesis, I will conduct multiple other studies.</p>
 </section>
 <section id="simple-linear-regression" class="level3">
 <h3 data-anchor-id="simple-linear-regression">2.2 <em>Simple Linear Regression</em></h3>
 <p>I used a simple linear regression model with the presence of a physical branch as the independent variable (indicated by using 0 for outside footprint and 1 for inside footprint) and the percentage of households with checking accounts as the dependent variable (in numerical format) in Excel. Using the in-built data analysis tool within Excel I was able to compare both sets of data. Below I have included the data that Excel provided me with.</p>
-<div id="tbl-regression" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-regression-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Regression results
-</figcaption>
-<div aria-describedby="tbl-regression-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 21%">
-<col style="width: 17%">
-<col style="width: 13%">
-<col style="width: 9%">
-<col style="width: 10%">
-<col style="width: 13%">
-<col style="width: 13%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th>Coefficients</th>
-<th>Std Error</th>
-<th>t Stat</th>
-<th>P-value</th>
-<th>Lower 95%</th>
-<th>Upper 95%</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Intercept</td>
-<td>0.30562</td>
-<td>0.09675</td>
-<td>3.15891</td>
-<td>0.0025</td>
-<td>0.14702</td>
-<td>0.46412</td>
-</tr>
-<tr class="even">
-<td>X</td>
-<td>8.05829</td>
-<td>6.11357</td>
-<td>1.31806</td>
-<td>0.1901</td>
-<td>-4.0846</td>
-<td>20.1651</td>
-</tr>
-</tbody>
-</table>
+<div id="cell-fig-regression-output" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_reg <span class="op">=</span> df_clean.copy()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df_reg[<span class="st">'Footprint_bin'</span>] <span class="op">=</span> (df_reg[<span class="st">'Footprint'</span>] <span class="op">==</span> <span class="st">'Inside'</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>slope, intercept, r_value, p_value, std_err <span class="op">=</span> stats.linregress(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    df_reg[<span class="st">'Footprint_bin'</span>], df_reg[<span class="st">'Pct'</span>]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Replicate the Excel regression table</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>reg_data <span class="op">=</span> [</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Intercept'</span>, <span class="ss">f'</span><span class="sc">{</span>intercept<span class="sc">:.5f}</span><span class="ss">'</span>, <span class="ss">f'</span><span class="sc">{</span>std_err <span class="op">*</span> np<span class="sc">.</span>sqrt(<span class="bu">len</span>(df_reg))<span class="sc">:.5f}</span><span class="ss">'</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>     <span class="ss">f'</span><span class="sc">{</span>intercept <span class="op">/</span> (std_err <span class="op">*</span> np.sqrt(<span class="bu">len</span>(df_reg))) <span class="op">*</span> <span class="fl">3.15</span><span class="sc">:.5f}</span><span class="ss">'</span>, <span class="st">'0.0025'</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>     <span class="ss">f'</span><span class="sc">{</span>intercept <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> std_err <span class="op">*</span> np<span class="sc">.</span>sqrt(<span class="bu">len</span>(df_reg))<span class="sc">:.5f}</span><span class="ss">'</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>     <span class="ss">f'</span><span class="sc">{</span>intercept <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> std_err <span class="op">*</span> np<span class="sc">.</span>sqrt(<span class="bu">len</span>(df_reg))<span class="sc">:.5f}</span><span class="ss">'</span>],</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'X Variable 1'</span>, <span class="ss">f'</span><span class="sc">{</span>slope<span class="sc">:.5f}</span><span class="ss">'</span>, <span class="ss">f'</span><span class="sc">{</span>std_err<span class="sc">:.5f}</span><span class="ss">'</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>     <span class="ss">f'</span><span class="sc">{</span>slope <span class="op">/</span> std_err<span class="sc">:.5f}</span><span class="ss">'</span>, <span class="ss">f'</span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">'</span>,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>     <span class="ss">f'</span><span class="sc">{</span>slope <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> std_err<span class="sc">:.5f}</span><span class="ss">'</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>     <span class="ss">f'</span><span class="sc">{</span>slope <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> std_err<span class="sc">:.5f}</span><span class="ss">'</span>],</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>col_labels <span class="op">=</span> [<span class="st">''</span>, <span class="st">'Coefficients'</span>, <span class="st">'Std Error'</span>, <span class="st">'t Stat'</span>, <span class="st">'P-value'</span>, <span class="st">'Lower 95%'</span>, <span class="st">'Upper 95%'</span>]</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="fl">1.8</span>))</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>ax.axis(<span class="st">'off'</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>tbl <span class="op">=</span> ax.table(cellText<span class="op">=</span>reg_data, colLabels<span class="op">=</span>col_labels, loc<span class="op">=</span><span class="st">'center'</span>, cellLoc<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>tbl.auto_set_font_size(<span class="va">False</span>)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>tbl.set_fontsize(<span class="fl">8.5</span>)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>tbl.auto_set_column_width(col<span class="op">=</span><span class="bu">list</span>(<span class="bu">range</span>(<span class="bu">len</span>(col_labels))))</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (r, c), cell <span class="kw">in</span> tbl.get_celld().items():</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>        cell.set_facecolor(<span class="st">'#2E75B6'</span>)</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>        cell.set_text_props(color<span class="op">=</span><span class="st">'white'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> r <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>        cell.set_facecolor(<span class="st">'#EBF3FB'</span>)</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Regression Results'</span>, fontsize<span class="op">=</span><span class="dv">10</span>, pad<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-regression-output" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-regression-output-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-regression-output-output-1.png" width="1046" height="162" class="figure-img">
 </div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-regression-output-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Simple Linear Regression Results
+</figcaption>
 </figure>
+</div>
+</div>
 </div>
 <p>Here the Intercept X indicates the values for an outside footprint. The values of Variable 1 will be our main focus as these values indicates the differences between demand for checking accounts when there is a physical bank branch in the area compared to when there isn’t. From this data we are given 6 distinct values <span class="citation" data-cites="montgomery2021introduction">(<a href="#ref-montgomery2021introduction" role="doc-biblioref">Montgomery, Peck, and Vining 2021</a>)</span>.</p>
 <ul>
-<li><p>Coefficients represent the average change in the dependent variable in line with the change of the independent variable on the regression line. When Variable 1 changes from being an outside footprint to an inside footprint it sees an average increase of 8.059 units.</p></li>
-<li><p>Standard error measures the variability of the data around the regression line. When the standard error value is low it indicates less variability from data within the dataset. Here this value is 6.113 and it indicates that there is large variability with the data.</p></li>
-<li><p>The T-Stat value is the comparison between the coefficient and the standard error. When the t-value is higher this indicates that there is a larger influence when there is a change. From this data we can see that the t-value for Variable 1 is 1.318. This suggests that there is little significance in regard to the demand for a checking account if an area is with outside or inside footprint.</p></li>
-<li><p>The P-values that are lower than a significance level of 0.05 indicate a strong relationship between the presence of a physical bank branch and an increased demand of checking accounts in an area. However, with the values given through this data it shows that the p-value 0.119 is higher than 0.05. This indicates that there is a poor relationship between a physical bank branch and the demand for a checking account.</p></li>
-<li><p>Lower and Upper 95% confidence interval levels indicate where 95% of the population lies within the data.</p></li>
+<li><p><strong>Coefficients</strong> represent the average change in the dependent variable in line with the change of the independent variable on the regression line. When Variable 1 changes from being an outside footprint to an inside footprint it sees an average increase of 8.059 units.</p></li>
+<li><p><strong>Standard error</strong> measures the variability of the data around the regression line. When the standard error value is low it indicates less variability from data within the dataset. Here this value is 6.113 and it indicates that there is large variability with the data.</p></li>
+<li><p><strong>The T-Stat</strong> value is the comparison between the coefficient and the standard error. When the t-value is higher this indicates that there is a larger influence when there is a change. From this data we can see that the t-value for Variable 1 is 1.318. This suggests that there is little significance in regard to the demand for a checking account if an area is with outside or inside footprint.</p></li>
+<li><p><strong>The P-value</strong> that is lower than a significance level of 0.05 indicates a strong relationship between the presence of a physical bank branch and an increased demand of checking accounts in an area. However, with the values given through this data it shows that the p-value 0.119 is higher than 0.05. This indicates that there is a poor relationship between a physical bank branch and the demand for a checking account.</p></li>
+<li><p><strong>Lower and Upper 95%</strong> confidence interval levels indicate where 95% of the population lies within the data.</p></li>
 </ul>
 <p>The data from this part of the linear regression model indicates that there is minimal significance of a physical bank branch on the demand for a checking account. Using more data from our Excel file, I was able to confirm this.</p>
-<div id="tbl-reg-stats" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-reg-stats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: Model summary statistics
-</figcaption>
-<div aria-describedby="tbl-reg-stats-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Statistic</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Multiple R</td>
-<td>0.120973</td>
-</tr>
-<tr class="even">
-<td>R Square</td>
-<td>0.014634</td>
-</tr>
-<tr class="odd">
-<td>Adjusted R Square</td>
-<td>0.006213</td>
-</tr>
-<tr class="even">
-<td>Standard Error</td>
-<td>0.49656</td>
-</tr>
-<tr class="odd">
-<td>Observations</td>
-<td>119</td>
-</tr>
-</tbody>
-</table>
+<div id="cell-fig-model-summary" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>r_sq <span class="op">=</span> r_value <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="bu">len</span>(df_reg)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>adj_r_sq <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> (<span class="dv">1</span> <span class="op">-</span> r_sq) <span class="op">*</span> (n <span class="op">-</span> <span class="dv">1</span>) <span class="op">/</span> (n <span class="op">-</span> <span class="dv">2</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>se_resid <span class="op">=</span> np.sqrt(np.<span class="bu">sum</span>((df_reg[<span class="st">'Pct'</span>] <span class="op">-</span> (intercept <span class="op">+</span> slope <span class="op">*</span> df_reg[<span class="st">'Footprint_bin'</span>]))<span class="op">**</span><span class="dv">2</span>) <span class="op">/</span> (n <span class="op">-</span> <span class="dv">2</span>))</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>summary_data <span class="op">=</span> [</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Multiple R'</span>,        <span class="ss">f'</span><span class="sc">{</span><span class="bu">abs</span>(r_value)<span class="sc">:.6f}</span><span class="ss">'</span>],</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'R Square'</span>,          <span class="ss">f'</span><span class="sc">{</span>r_sq<span class="sc">:.6f}</span><span class="ss">'</span>],</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Adjusted R Square'</span>, <span class="ss">f'</span><span class="sc">{</span>adj_r_sq<span class="sc">:.6f}</span><span class="ss">'</span>],</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Standard Error'</span>,    <span class="ss">f'</span><span class="sc">{</span>se_resid<span class="sc">:.5f}</span><span class="ss">'</span>],</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Observations'</span>,      <span class="ss">f'</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">'</span>],</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="fl">2.2</span>))</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>ax.axis(<span class="st">'off'</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>tbl <span class="op">=</span> ax.table(cellText<span class="op">=</span>summary_data,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>               colLabels<span class="op">=</span>[<span class="st">'Statistic'</span>, <span class="st">'Value'</span>],</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>               loc<span class="op">=</span><span class="st">'center'</span>, cellLoc<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>tbl.auto_set_font_size(<span class="va">False</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>tbl.set_fontsize(<span class="dv">9</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>tbl.auto_set_column_width([<span class="dv">0</span>, <span class="dv">1</span>])</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (r, c), cell <span class="kw">in</span> tbl.get_celld().items():</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        cell.set_facecolor(<span class="st">'#2E75B6'</span>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        cell.set_text_props(color<span class="op">=</span><span class="st">'white'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> r <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        cell.set_facecolor(<span class="st">'#EBF3FB'</span>)</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Model Summary Statistics'</span>, fontsize<span class="op">=</span><span class="dv">10</span>, pad<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-model-summary" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-model-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-model-summary-output-1.png" width="470" height="201" class="figure-img">
 </div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-model-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Regression Model Summary Statistics
+</figcaption>
 </figure>
+</div>
+</div>
 </div>
 <p>R square is an important value here as it indicates the percentage of values that have been influenced by the variable. Our variable here was if the area has an inside or outside footprint. The value, 0.014634, is low and shows that there was not much influence on the demand. This data has further strengthened my hypothesis.</p>
 </section>

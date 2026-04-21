@@ -27,6 +27,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -231,6 +266,21 @@ div.csl-indent {
 </div>
       <div class="about-contents"><main class="content column-page-left" id="quarto-document-content">
 
+<style>
+#quarto-document-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-right: 50px;
+}
+#quarto-margin-sidebar {
+  position: fixed;
+  right: 1rem;
+  top: 70px;
+  width: 220px;
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
+}
+</style>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../..\projects/data_analytics_pv/ecoenergy.svg" class="img-fluid figure-img" style="width:40.0%"></p>
@@ -247,17 +297,60 @@ div.csl-indent {
 <p>Upon analysing our data set we deemed some of the data redundant, for example our region and country fields didn’t match correctly so we decided to base our analysis off of regional data. We also saw no need for the use of sales reps as there were only 5 sales representatives globally with no clear jurisdiction of which regions they worked in. Because of this we decided to remove this column before we began our analysis.</p>
 <p>EcoEnergy Corp faces profitability challenges across all sectors, with 39.4% of products sold at a loss and eight out of ten offerings unprofitable. Cost minimisation failures have resulted in a net loss of €8.46 million, highlighting the urgent need for large-scale restructuring.</p>
 <p>This report categorises products into Technology, Construction, and Transport &amp; Insurance, analysing regional performance to identify products for discontinuation or outsourcing to restore profitability.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi1.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Figure 1: EcoEnergy Profitability, Revenue and Cost Statistics by Product</figcaption>
+<div id="cell-fig-fig1" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Left: net profit by product</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> axes[<span class="dv">0</span>]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>prod_profit <span class="op">=</span> df.groupby(<span class="st">'Product'</span>)[<span class="st">'Net_Profit'</span>].<span class="bu">sum</span>().sort_values()</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [RED <span class="cf">if</span> v <span class="op">&lt;</span> <span class="dv">0</span> <span class="cf">else</span> BLUE <span class="cf">for</span> v <span class="kw">in</span> prod_profit]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax1.barh(prod_profit.index, prod_profit.values <span class="op">/</span> <span class="fl">1e6</span>, color<span class="op">=</span>colors)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ax1.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">'Sum of Net Profit (M€)'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'Profit by Product'</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>ax1.xaxis.set_major_formatter(mticker.FuncFormatter(<span class="kw">lambda</span> x, _: <span class="ss">f'</span><span class="sc">{</span>x<span class="sc">:.0f}</span><span class="ss">M'</span>))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Right: category breakdown table</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> axes[<span class="dv">1</span>]</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>ax2.axis(<span class="st">'off'</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>table_data <span class="op">=</span> [</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Technology'</span>, <span class="st">'Laptop'</span>], [<span class="st">''</span>, <span class="st">'Monitor'</span>], [<span class="st">''</span>, <span class="st">'Printer'</span>],</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    [<span class="st">''</span>, <span class="st">'Smartphone'</span>], [<span class="st">''</span>, <span class="st">'Tablet'</span>],</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Transport &amp; Insurance'</span>, <span class="st">'Car'</span>], [<span class="st">''</span>, <span class="st">'Flight Ticket'</span>], [<span class="st">''</span>, <span class="st">'Insurance Plan'</span>],</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'Construction'</span>, <span class="st">'Solar Panel'</span>], [<span class="st">''</span>, <span class="st">'Building Material'</span>],</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>tbl <span class="op">=</span> ax2.table(cellText<span class="op">=</span>table_data, colLabels<span class="op">=</span>[<span class="st">'Category'</span>, <span class="st">'Product'</span>],</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                loc<span class="op">=</span><span class="st">'center'</span>, cellLoc<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>tbl.auto_set_font_size(<span class="va">False</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>tbl.set_fontsize(<span class="dv">9</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>tbl.auto_set_column_width([<span class="dv">0</span>, <span class="dv">1</span>])</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (r, c), cell <span class="kw">in</span> tbl.get_celld().items():</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        cell.set_facecolor(BLUE)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        cell.set_text_props(color<span class="op">=</span><span class="st">'white'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> r <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        cell.set_facecolor(<span class="st">'#EBF3FB'</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">'Breakdown of Product Categories'</span>, fontsize<span class="op">=</span><span class="dv">11</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">'EcoEnergy Corp — Profitability Overview (2015–2024)'</span>,</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>             fontsize<span class="op">=</span><span class="dv">12</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>, y<span class="op">=</span><span class="fl">1.01</span>)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-fig1" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-fig1-output-1.png" width="1142" height="488" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: EcoEnergy Profitability — Net Profit by Product (2015–2024)
+</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi2.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Figure 2: Breakdown of Product Categories</figcaption>
-</figure>
+</div>
 </div>
 </section>
 <section id="regional-analysis" class="level2">
@@ -266,75 +359,252 @@ div.csl-indent {
 <section id="europe" class="level3">
 <h3 data-anchor-id="europe"><em>2.1 Europe</em></h3>
 <p>Europe’s 10-year outlook for EcoEnergy Corp shows volatility, with profit swings driven by market dynamics and cost challenges. The region was profitable from 2015–2018 but rising costs and declining revenues after 2019 led to recurring losses. Transport and Insurance products remained steady performers, while Technology and Construction faced irregular results. Offline channels dominated sales, with a brief online surge in 2020–2021 that temporarily boosted profits. Building materials, Insurance plans and flight tickets were the most reliable, whereas smartphones, tablets, printers and solar panels incurred ongoing losses. Margin compression from high discount rates in 2017 and 2023 also hurt results. To improve, EcoEnergy Corp should build a stable omnichannel presence, focus on strong product lines and reconsider or discontinue persistently unprofitable items.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi3.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>Figure 3: European Sales &amp; Profit Performance Dashboard</figcaption>
+<div id="cell-fig-europe" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>regional_dashboard(<span class="st">'Europe'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-europe" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-europe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-europe-output-1.png" width="1141" height="675" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-europe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: European Sales &amp; Profit Performance Dashboard
+</figcaption>
 </figure>
+</div>
+</div>
 </div>
 </section>
 <section id="north-america" class="level3">
 <h3 data-anchor-id="north-america"><em>2.2 North America</em></h3>
 <p>North America has seen sharp profitability erosion for EcoEnergy Corp, with seven of ten products posting negative net profits. Technology, Transport and Insurance underperformed, with margins of -23% and -22%. Losses in key lines like printers, cars, smartphones and laptops were worsened by pricing below cost and average discounts of 16%, resulting in €4.15 million in total losses. Only the Construction category performed well, achieving a 13.62% margin. To improve, unprofitable Technology and Transport lines should be discontinued, discount policies tightened and pricing discipline enforced. Future efforts should prioritise reinvesting in Construction and refining the sales mix to balance online and offline channels while avoiding low-margin products.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi4.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Figure 4: North American Top Performing Products Chart</figcaption>
+<div id="cell-fig-na-top" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>na <span class="op">=</span> df[df[<span class="st">'Region'</span>] <span class="op">==</span> <span class="st">'North America'</span>]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> na.groupby(<span class="st">'Product'</span>).agg(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    Total_Profit<span class="op">=</span>(<span class="st">'Total_Profit'</span>, <span class="st">'sum'</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    Net_Profit<span class="op">=</span>(<span class="st">'Net_Profit'</span>, <span class="st">'sum'</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    Total_Revenue<span class="op">=</span>(<span class="st">'Total_Revenue'</span>, <span class="st">'sum'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>).assign(</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    Profit_Margin<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="st">'Total_Profit'</span>] <span class="op">/</span> x[<span class="st">'Total_Revenue'</span>] <span class="op">*</span> <span class="dv">100</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    Net_Margin<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="st">'Net_Profit'</span>] <span class="op">/</span> x[<span class="st">'Total_Revenue'</span>] <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>).sort_values(<span class="st">'Net_Profit'</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">3</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="fl">1.8</span>))</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>ax.axis(<span class="st">'off'</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [<span class="st">'Product'</span>, <span class="st">'Total Profit'</span>, <span class="st">'Net Profit'</span>, <span class="st">'Profit Margin %'</span>, <span class="st">'Net Margin %'</span>]</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [[idx,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>         <span class="ss">f'€</span><span class="sc">{</span>row<span class="sc">.</span>Total_Profit<span class="sc">:,.0f}</span><span class="ss">'</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>         <span class="ss">f'€</span><span class="sc">{</span>row<span class="sc">.</span>Net_Profit<span class="sc">:,.0f}</span><span class="ss">'</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>         <span class="ss">f'</span><span class="sc">{</span>row<span class="sc">.</span>Profit_Margin<span class="sc">:.2f}</span><span class="ss">%'</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>         <span class="ss">f'</span><span class="sc">{</span>row<span class="sc">.</span>Net_Margin<span class="sc">:.2f}</span><span class="ss">%'</span>]</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> idx, row <span class="kw">in</span> top.iterrows()]</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>tbl <span class="op">=</span> ax.table(cellText<span class="op">=</span>data, colLabels<span class="op">=</span>cols, loc<span class="op">=</span><span class="st">'center'</span>, cellLoc<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>tbl.auto_set_font_size(<span class="va">False</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>tbl.set_fontsize(<span class="dv">9</span>)</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>tbl.auto_set_column_width(col<span class="op">=</span><span class="bu">list</span>(<span class="bu">range</span>(<span class="bu">len</span>(cols))))</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (r, c), cell <span class="kw">in</span> tbl.get_celld().items():</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>        cell.set_facecolor(BLUE)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>        cell.set_text_props(color<span class="op">=</span><span class="st">'white'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> r <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        cell.set_facecolor(<span class="st">'#EBF3FB'</span>)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'North America — Top Performing Products'</span>, fontsize<span class="op">=</span><span class="dv">10</span>, pad<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-na-top" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-na-top-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-na-top-output-1.png" width="854" height="162" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-na-top-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: North American Top Performing Products (2015–2024)
+</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi5.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>Figure 5: North American Sales &amp; Profit Performance Dashboard</figcaption>
+</div>
+</div>
+<div id="cell-fig-north-america" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>regional_dashboard(<span class="st">'North America'</span>, show_category<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-north-america" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-north-america-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-north-america-output-1.png" width="1142" height="675" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-north-america-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: North American Sales &amp; Profit Performance Dashboard
+</figcaption>
 </figure>
+</div>
+</div>
 </div>
 </section>
 <section id="south-america" class="level3">
 <h3 data-anchor-id="south-america"><em>2.3 South America</em></h3>
 <p>Over the past decade, South America has become EcoEnergy Corp’s most reliable hub for low-cost, high-quality technology and solar panel manufacturing. Median production costs are over 30% lower than in Asia or Europe, with Technology and Construction among the cheapest globally. The region’s shift toward online sales has improved margins and reflected stronger digital engagement. From 2021 to 2024, consistent profitability in Technology and Construction aligns with rising sustainability initiatives. However, losses in car and Insurance products and high offline operational costs reduce overall profit, worsened by discounts. To sustain performance, EcoEnergy Corp should prioritise profitable, sustainable lines, such as smartphones, printers, building materials and solar panels, while discontinuing weak Transport and Insurance products. Discount control, balanced channel management and ongoing cost monitoring will be essential to preserve the region’s advantage.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi6.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>Figure 6: South American Sales &amp; Profit Performance Dashboard</figcaption>
+<div id="cell-fig-south-america" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>regional_dashboard(<span class="st">'South America'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-south-america" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-south-america-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-south-america-output-1.png" width="1142" height="675" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-south-america-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: South American Sales &amp; Profit Performance Dashboard
+</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi7.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>Figure 7: Median Unit Costs by Product and Region</figcaption>
+</div>
+</div>
+<div id="cell-fig-median-costs" class="cell" data-fig-height="3" data-execution_count="8">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tech_prods  <span class="op">=</span> [<span class="st">'Laptop'</span>, <span class="st">'Monitor'</span>, <span class="st">'Printer'</span>, <span class="st">'Smartphone'</span>, <span class="st">'Tablet'</span>]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>const_prods <span class="op">=</span> [<span class="st">'Building Material'</span>, <span class="st">'Solar Panel'</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>trans_prods <span class="op">=</span> [<span class="st">'Car'</span>, <span class="st">'Flight Ticket'</span>, <span class="st">'Insurance Plan'</span>]</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cost_table_ax(ax, products, title):</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    sub <span class="op">=</span> recent[recent[<span class="st">'Product'</span>].isin(products)]</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    pivot <span class="op">=</span> sub.pivot_table(index<span class="op">=</span><span class="st">'Region'</span>, columns<span class="op">=</span><span class="st">'Product'</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                             values<span class="op">=</span><span class="st">'Unit_Cost'</span>, aggfunc<span class="op">=</span><span class="st">'median'</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    pivot[<span class="st">'Total'</span>] <span class="op">=</span> sub.groupby(<span class="st">'Region'</span>)[<span class="st">'Unit_Cost'</span>].median()</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    pivot <span class="op">=</span> pivot.sort_values(<span class="st">'Total'</span>, ascending<span class="op">=</span><span class="va">False</span>).<span class="bu">round</span>(<span class="dv">2</span>).fillna(<span class="st">''</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    cols <span class="op">=</span> [<span class="st">'Region'</span>] <span class="op">+</span> <span class="bu">list</span>(pivot.columns)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> [[idx] <span class="op">+</span> [<span class="ss">f'</span><span class="sc">{</span>v<span class="sc">:.2f}</span><span class="ss">'</span> <span class="cf">if</span> v <span class="op">!=</span> <span class="st">''</span> <span class="cf">else</span> <span class="st">''</span> <span class="cf">for</span> v <span class="kw">in</span> row]</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> idx, row <span class="kw">in</span> pivot.iterrows()]</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    tbl <span class="op">=</span> ax.table(cellText<span class="op">=</span>data, colLabels<span class="op">=</span>cols, loc<span class="op">=</span><span class="st">'center'</span>, cellLoc<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    tbl.auto_set_font_size(<span class="va">False</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    tbl.set_fontsize(<span class="fl">7.5</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    tbl.auto_set_column_width(col<span class="op">=</span><span class="bu">list</span>(<span class="bu">range</span>(<span class="bu">len</span>(cols))))</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (r, c), cell <span class="kw">in</span> tbl.get_celld().items():</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> r <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>            cell.set_facecolor(BLUE)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>            cell.set_text_props(color<span class="op">=</span><span class="st">'white'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> r <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>            cell.set_facecolor(<span class="st">'#EBF3FB'</span>)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    ax.set_title(title, fontsize<span class="op">=</span><span class="dv">8</span>, pad<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">'off'</span>)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="fl">2.8</span>))</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>cost_table_ax(axes[<span class="dv">0</span>], tech_prods,  <span class="st">'Technology'</span>)</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>cost_table_ax(axes[<span class="dv">1</span>], const_prods, <span class="st">'Construction'</span>)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>cost_table_ax(axes[<span class="dv">2</span>], trans_prods, <span class="st">'Transport &amp; Insurance'</span>)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">'Median Unit Costs by Product and Region (2021–2024)'</span>,</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>             fontsize<span class="op">=</span><span class="dv">11</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-median-costs" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-median-costs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-median-costs-output-1.png" width="1279" height="268" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-median-costs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Median Unit Costs by Product and Region (2021–2024)
+</figcaption>
 </figure>
+</div>
+</div>
 </div>
 </section>
 <section id="asia" class="level3">
 <h3 data-anchor-id="asia"><em>2.4 Asia</em></h3>
 <p>Asia is a high-revenue but nearly break-even region for EcoEnergy Corp, generating €24.05 million in revenue and only €0.14 million in net profit over ten years. Despite the lowest production costs globally, weak portfolio choices and heavy online discounting have limited returns. Profitable periods (2015–2017, 2024) coincided with disciplined portfolio management, while losses stemmed from persisting with unprofitable products. Cars, solar panels, tablets, smartphones and laptops were consistent profit drivers, whereas flight tickets, Insurance, printers and monitors eroded margins. Online channels dominate, but deep discounts offset cost advantages. To ensure sustainable profits, EcoEnergy Corp should leverage cost efficiency into margin gains, enforce minimum margin thresholds, especially in tech and concentrate on profitable lines while phasing out chronic loss-makers.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi8.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>Figure 8: Asian Sales &amp; Profit Performance Dashboard</figcaption>
+<div id="cell-fig-asia" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>regional_dashboard(<span class="st">'Asia'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-asia" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-asia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-asia-output-1.png" width="1141" height="675" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-asia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Asian Sales &amp; Profit Performance Dashboard
+</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi7.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>Figure 7: Median Unit Costs by Product and Region</figcaption>
+</div>
+</div>
+<div id="cell-fig-asia-costs-revenue" class="cell" data-fig-height="4" data-execution_count="10">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>asia <span class="op">=</span> df[df[<span class="st">'Region'</span>] <span class="op">==</span> <span class="st">'Asia'</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">4</span>), sharey<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, cat <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">'Technology'</span>, <span class="st">'Construction'</span>, <span class="st">'Transport &amp; Insurance'</span>]):</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> axes[i]</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    sub <span class="op">=</span> asia[asia[<span class="st">'Category'</span>] <span class="op">==</span> cat].groupby(<span class="st">'Year'</span>).agg(</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        Total_Cost<span class="op">=</span>(<span class="st">'Total_Cost'</span>, <span class="st">'sum'</span>),</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        Total_Revenue<span class="op">=</span>(<span class="st">'Total_Revenue'</span>, <span class="st">'sum'</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    ) <span class="op">/</span> <span class="fl">1e6</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> sub.index</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    w <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    ax.bar(x, sub[<span class="st">'Total_Cost'</span>], w, color<span class="op">=</span>BLUE, label<span class="op">=</span><span class="st">'Total Cost'</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    ax.plot(x, sub[<span class="st">'Total_Revenue'</span>], color<span class="op">=</span>RED, marker<span class="op">=</span><span class="st">'o'</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>            markersize<span class="op">=</span><span class="dv">4</span>, linewidth<span class="op">=</span><span class="fl">1.5</span>, label<span class="op">=</span><span class="st">'Total Revenue'</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    ax.set_title(cat, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'M€'</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    ax.yaxis.set_major_formatter(mticker.FuncFormatter(<span class="kw">lambda</span> x, _: <span class="ss">f'</span><span class="sc">{</span>x<span class="sc">:.0f}</span><span class="ss">M'</span>))</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, rotation<span class="op">=</span><span class="dv">45</span>, labelsize<span class="op">=</span><span class="dv">7</span>)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        ax.legend(fontsize<span class="op">=</span><span class="dv">7</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">'Asia — Total Costs and Revenue by Year and Category'</span>,</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>             fontsize<span class="op">=</span><span class="dv">11</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-asia-costs-revenue" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-asia-costs-revenue-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-asia-costs-revenue-output-1.png" width="1333" height="380" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-asia-costs-revenue-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Asia — Total Costs and Revenue by Year and Category
+</figcaption>
 </figure>
+</div>
+</div>
 </div>
 </section>
 <section id="africa" class="level3">
 <h3 data-anchor-id="africa"><em>2.5 Africa</em></h3>
 <p>Africa remains EcoEnergy Corp’s most challenging region, recording continuous losses of €3.7 million. Over ten years, revenue totalled €25.17 million, but high production costs, especially in Technology, have driven persistent deficits. Online channels contribute 36.7% of sales, yet heavy losses stem from costly tech products. Printers and solar panels only recently turned profitable, while building materials continue to underperform due to weak, inelastic demand. To improve, EcoEnergy Corp should reduce technology production costs, discontinue unprofitable lines like building materials and prioritise solar panels amid rising sustainable demand. Further market research will be vital to align offerings with regional demand trends.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi9.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>Figure 9: African Sales &amp; Profit Performance Dashboard</figcaption>
+<div id="cell-fig-africa" class="cell" data-execution_count="11">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>regional_dashboard(<span class="st">'Africa'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-africa" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-africa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-africa-output-1.png" width="1142" height="675" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-africa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: African Sales &amp; Profit Performance Dashboard
+</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi10.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption>Figure 10: Asian Total Costs and Revenue by Year and Category</figcaption>
-</figure>
+</div>
 </div>
 </section>
 </section>
@@ -344,61 +614,290 @@ div.csl-indent {
 <section id="technology" class="level3">
 <h3 data-anchor-id="technology"><em>3.1 Technology</em></h3>
 <p>Data shows South America and Asia maintain the lowest median unit costs in technology, at €339.66 and €346.9 respectively. South America offers the cheapest production for monitors, tablets and printers, while Asia leads in laptops and smartphones. Africa produces printers at the lowest cost, whereas other regions spend over 25% more on technology production. It is recommended to consolidate tech manufacturing in South America and Asia to capitalise on their cost advantages and proven profitability.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi11.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Figure 11: Technology Median Unit Costs by Region (Breakdown by Product) (2021-2024)</figcaption>
+<div id="cell-fig-tech-table" class="cell" data-fig-height="2.5" data-execution_count="12">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sub <span class="op">=</span> recent[recent[<span class="st">'Product'</span>].isin(tech_prods)]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>pivot <span class="op">=</span> sub.pivot_table(index<span class="op">=</span><span class="st">'Region'</span>, columns<span class="op">=</span><span class="st">'Product'</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                         values<span class="op">=</span><span class="st">'Unit_Cost'</span>, aggfunc<span class="op">=</span><span class="st">'median'</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>pivot[<span class="st">'Total'</span>] <span class="op">=</span> sub.groupby(<span class="st">'Region'</span>)[<span class="st">'Unit_Cost'</span>].median()</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>pivot <span class="op">=</span> pivot.sort_values(<span class="st">'Total'</span>).<span class="bu">round</span>(<span class="dv">2</span>).fillna(<span class="st">''</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="fl">2.5</span>))</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>ax.axis(<span class="st">'off'</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [<span class="st">'Region'</span>] <span class="op">+</span> <span class="bu">list</span>(pivot.columns)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [[idx] <span class="op">+</span> [<span class="ss">f'</span><span class="sc">{</span>v<span class="sc">:.2f}</span><span class="ss">'</span> <span class="cf">if</span> v <span class="op">!=</span> <span class="st">''</span> <span class="cf">else</span> <span class="st">''</span> <span class="cf">for</span> v <span class="kw">in</span> row]</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> idx, row <span class="kw">in</span> pivot.iterrows()]</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>totals_row <span class="op">=</span> [<span class="st">'Total'</span>] <span class="op">+</span> [<span class="ss">f'</span><span class="sc">{</span>sub[sub[<span class="st">"Product"</span>]<span class="op">==</span>p][<span class="st">"Unit_Cost"</span>]<span class="sc">.</span>median()<span class="sc">:.2f}</span><span class="ss">'</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>                           <span class="cf">if</span> p <span class="kw">in</span> tech_prods <span class="cf">else</span> <span class="ss">f'</span><span class="sc">{</span>sub[<span class="st">"Unit_Cost"</span>]<span class="sc">.</span>median()<span class="sc">:.2f}</span><span class="ss">'</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>                           <span class="cf">for</span> p <span class="kw">in</span> pivot.columns]</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>data.append(totals_row)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>tbl <span class="op">=</span> ax.table(cellText<span class="op">=</span>data, colLabels<span class="op">=</span>cols, loc<span class="op">=</span><span class="st">'center'</span>, cellLoc<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>tbl.auto_set_font_size(<span class="va">False</span>)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>tbl.set_fontsize(<span class="fl">8.5</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>tbl.auto_set_column_width(col<span class="op">=</span><span class="bu">list</span>(<span class="bu">range</span>(<span class="bu">len</span>(cols))))</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (r, c), cell <span class="kw">in</span> tbl.get_celld().items():</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>        cell.set_facecolor(BLUE)<span class="op">;</span> cell.set_text_props(color<span class="op">=</span><span class="st">'white'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> r <span class="op">==</span> <span class="bu">len</span>(data):</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>        cell.set_facecolor(<span class="st">'#BDD7EE'</span>)<span class="op">;</span> cell.set_text_props(fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> r <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>        cell.set_facecolor(<span class="st">'#EBF3FB'</span>)</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># highlight min total</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> c <span class="op">==</span> <span class="bu">len</span>(cols)<span class="op">-</span><span class="dv">1</span> <span class="kw">and</span> <span class="dv">0</span> <span class="op">&lt;</span> r <span class="op">&lt;</span> <span class="bu">len</span>(data):</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>        vals <span class="op">=</span> [<span class="bu">float</span>(data[i][<span class="op">-</span><span class="dv">1</span>]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(data)<span class="op">-</span><span class="dv">1</span>) <span class="cf">if</span> data[i][<span class="op">-</span><span class="dv">1</span>] <span class="op">!=</span> <span class="st">''</span>]</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="bu">float</span>(data[r<span class="op">-</span><span class="dv">1</span>][<span class="op">-</span><span class="dv">1</span>]) <span class="op">==</span> <span class="bu">min</span>(vals):</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>                cell.set_facecolor(<span class="st">'#C6EFCE'</span>)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">ValueError</span>:</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>            <span class="cf">pass</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Technology — Median Unit Cost by Region &amp; Product (2021–2024)'</span>,</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>             fontsize<span class="op">=</span><span class="dv">10</span>, pad<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-tech-table" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tech-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-tech-table-output-1.png" width="1046" height="229" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tech-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Technology Median Unit Costs by Region and Product (2021–2024)
+</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi12.png" class="img-fluid figure-img" style="width:40.0%"></p>
-<figcaption>Figure 12: Technology Median Unit Costs by Region (2021-2024)</figcaption>
+</div>
+</div>
+<div id="cell-fig-tech-bar" class="cell" data-fig-height="3.5" data-execution_count="13">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sub <span class="op">=</span> recent[recent[<span class="st">'Product'</span>].isin(tech_prods)]</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>med <span class="op">=</span> sub.groupby(<span class="st">'Region'</span>)[<span class="st">'Unit_Cost'</span>].median().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="fl">3.5</span>))</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax.barh(med.index, med.values, color<span class="op">=</span>BLUE)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>ax.bar_label(bars, fmt<span class="op">=</span><span class="st">'</span><span class="sc">%.2f</span><span class="st">'</span>, padding<span class="op">=</span><span class="dv">3</span>, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, med.<span class="bu">max</span>() <span class="op">*</span> <span class="fl">1.2</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Technology — Median Unit Cost by Region (2021–2024)'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Median Unit Cost (€)'</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>ax.invert_yaxis()</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-tech-bar" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tech-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-tech-bar-output-1.png" width="662" height="323" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tech-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: Technology Median Unit Cost by Region (2021–2024)
+</figcaption>
 </figure>
+</div>
+</div>
 </div>
 </section>
 <section id="construction" class="level3">
 <h3 data-anchor-id="construction"><em>3.2 Construction</em></h3>
 <p>Construction analysis proved more complex. North America has the lowest median production cost at €373.25 but no single cheapest product and it recorded a €1.71 million loss in construction over the past three years. South America offers the lowest cost for solar panels at €273.42 per unit, while Europe produces building materials at €511.81 per unit. Though not the cheapest, Europe leads demand for building materials and was the only region to achieve profits in this category. Prioritising solar panel production in South America and building materials in Europe will sustain profitability. With Europe’s average unit price twice that of its nearest market, manufacturing there supports high-margin growth.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi13.png" class="img-fluid figure-img" style="width:40.0%"></p>
-<figcaption>Figure 13: Construction Net Profits by Product and Region (2021-2024)</figcaption>
+<div id="cell-fig-const-profit" class="cell" data-fig-height="4" data-execution_count="14">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>const <span class="op">=</span> recent[recent[<span class="st">'Category'</span>] <span class="op">==</span> <span class="st">'Construction'</span>]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>pivot <span class="op">=</span> const.groupby([<span class="st">'Product'</span>, <span class="st">'Region'</span>])[<span class="st">'Net_Profit'</span>].<span class="bu">sum</span>().unstack() <span class="op">/</span> <span class="fl">1e6</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">4</span>))</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>pivot.plot(kind<span class="op">=</span><span class="st">'bar'</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="fl">0.6</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Construction Net Profits by Product &amp; Region (2021–2024)'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Product'</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Sum of Net Profit (M€)'</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>ax.yaxis.set_major_formatter(mticker.FuncFormatter(<span class="kw">lambda</span> x, _: <span class="ss">f'</span><span class="sc">{</span>x<span class="sc">:.1f}</span><span class="ss">M'</span>))</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>ax.legend(title<span class="op">=</span><span class="st">'Region'</span>, fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-const-profit" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-const-profit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-const-profit-output-1.png" width="661" height="371" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-const-profit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: Construction Net Profits by Product and Region (2021–2024)
+</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi14.png" class="img-fluid figure-img" style="width:30.0%"></p>
-<figcaption>Figure 14: Construction Products Median Unit Costs by Region (2021-2024)</figcaption>
+</div>
+</div>
+<div id="cell-fig-const-table" class="cell" data-fig-height="2.5" data-execution_count="15">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sub <span class="op">=</span> recent[recent[<span class="st">'Product'</span>].isin(const_prods)]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>pivot <span class="op">=</span> sub.pivot_table(index<span class="op">=</span><span class="st">'Region'</span>, columns<span class="op">=</span><span class="st">'Product'</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                         values<span class="op">=</span><span class="st">'Unit_Cost'</span>, aggfunc<span class="op">=</span><span class="st">'median'</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>pivot[<span class="st">'Total'</span>] <span class="op">=</span> sub.groupby(<span class="st">'Region'</span>)[<span class="st">'Unit_Cost'</span>].median()</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>pivot <span class="op">=</span> pivot.sort_values(<span class="st">'Total'</span>, ascending<span class="op">=</span><span class="va">False</span>).<span class="bu">round</span>(<span class="dv">2</span>).fillna(<span class="st">''</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="fl">2.5</span>))</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>ax.axis(<span class="st">'off'</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [<span class="st">'Region'</span>] <span class="op">+</span> <span class="bu">list</span>(pivot.columns)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [[idx] <span class="op">+</span> [<span class="ss">f'</span><span class="sc">{</span>v<span class="sc">:.2f}</span><span class="ss">'</span> <span class="cf">if</span> v <span class="op">!=</span> <span class="st">''</span> <span class="cf">else</span> <span class="st">''</span> <span class="cf">for</span> v <span class="kw">in</span> row]</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> idx, row <span class="kw">in</span> pivot.iterrows()]</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>tbl <span class="op">=</span> ax.table(cellText<span class="op">=</span>data, colLabels<span class="op">=</span>cols, loc<span class="op">=</span><span class="st">'center'</span>, cellLoc<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>tbl.auto_set_font_size(<span class="va">False</span>)<span class="op">;</span> tbl.set_fontsize(<span class="dv">9</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>tbl.auto_set_column_width(col<span class="op">=</span><span class="bu">list</span>(<span class="bu">range</span>(<span class="bu">len</span>(cols))))</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (r, c), cell <span class="kw">in</span> tbl.get_celld().items():</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>        cell.set_facecolor(BLUE)<span class="op">;</span> cell.set_text_props(color<span class="op">=</span><span class="st">'white'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> r <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>        cell.set_facecolor(<span class="st">'#EBF3FB'</span>)</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Construction — Median Unit Cost by Region &amp; Product (2021–2024)'</span>,</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>             fontsize<span class="op">=</span><span class="dv">10</span>, pad<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-const-table" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-const-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-const-table-output-1.png" width="758" height="229" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-const-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13: Construction Products Median Unit Costs by Region (2021–2024)
+</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi15.png" class="img-fluid figure-img" style="width:30.0%"></p>
-<figcaption>Figure 15: Construction Median Unit Costs by Region (2021-2024)</figcaption>
+</div>
+</div>
+<div id="cell-fig-const-cost-bar" class="cell" data-fig-height="3.5" data-execution_count="16">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sub <span class="op">=</span> recent[recent[<span class="st">'Product'</span>].isin(const_prods)]</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>med <span class="op">=</span> sub.groupby(<span class="st">'Region'</span>)[<span class="st">'Unit_Cost'</span>].median().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="fl">3.5</span>))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax.barh(med.index, med.values, color<span class="op">=</span>BLUE)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>ax.bar_label(bars, fmt<span class="op">=</span><span class="st">'</span><span class="sc">%.2f</span><span class="st">'</span>, padding<span class="op">=</span><span class="dv">3</span>, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, med.<span class="bu">max</span>() <span class="op">*</span> <span class="fl">1.2</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Construction — Median Unit Cost by Region (2021–2024)'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Median Unit Cost (€)'</span>)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>ax.invert_yaxis()</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-const-cost-bar" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-const-cost-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-const-cost-bar-output-1.png" width="662" height="323" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-const-cost-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14: Construction Median Unit Cost by Region (2021–2024)
+</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi16.png" class="img-fluid figure-img" style="width:30.0%"></p>
-<figcaption>Figure 16: Construction Median Unit Cost by Region (2021-2024)</figcaption>
+</div>
+</div>
+<div id="cell-fig-const-price-bar" class="cell" data-fig-height="3.5" data-execution_count="17">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sub <span class="op">=</span> recent[recent[<span class="st">'Product'</span>].isin(const_prods)]</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>med_price <span class="op">=</span> sub.groupby(<span class="st">'Region'</span>)[<span class="st">'Unit_Price'</span>].median().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="fl">3.5</span>))</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax.barh(med_price.index, med_price.values, color<span class="op">=</span>BLUE)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>ax.bar_label(bars, fmt<span class="op">=</span><span class="st">'%.0f'</span>, padding<span class="op">=</span><span class="dv">3</span>, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, med_price.<span class="bu">max</span>() <span class="op">*</span> <span class="fl">1.2</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Construction — Median Unit Price by Region (2021–2024)'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Median Unit Price (€)'</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>ax.invert_yaxis()</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-const-price-bar" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-const-price-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-const-price-bar-output-1.png" width="662" height="323" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-const-price-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15: Construction Median Unit Price by Region (2021–2024)
+</figcaption>
 </figure>
+</div>
+</div>
 </div>
 </section>
 <section id="transport-insurance" class="level3">
 <h3 data-anchor-id="transport-insurance"><em>3.3 Transport &amp; Insurance</em></h3>
 <p>Transport &amp; Insurance analysis revealed mixed performance. North America reported the lowest median production cost at €351.83. yet no cost-leading product, alongside a €1.74 million loss in Transport &amp; Insurance over three years. North America also achieved the lowest car and flight ticket cost at €206.84 and 252.73 per unit respectively, while Europe produced insurance plans at €380.49 per unit. Although not the cheapest, Europe led demand and was the only region to deliver profits in Transport &amp; Insurance. Focusing car and flight ticket production in North America and Insurance plans in Europe will strengthen profitability.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi17.png" class="img-fluid figure-img" style="width:40.0%"></p>
-<figcaption>Figure 17: Transport &amp; Insurance Median Unit Cost by Region (2021-2024)</figcaption>
+<div id="cell-fig-trans-table" class="cell" data-fig-height="2.5" data-execution_count="18">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sub <span class="op">=</span> recent[recent[<span class="st">'Product'</span>].isin(trans_prods)]</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>pivot <span class="op">=</span> sub.pivot_table(index<span class="op">=</span><span class="st">'Region'</span>, columns<span class="op">=</span><span class="st">'Product'</span>,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                         values<span class="op">=</span><span class="st">'Unit_Cost'</span>, aggfunc<span class="op">=</span><span class="st">'median'</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>pivot[<span class="st">'Total'</span>] <span class="op">=</span> sub.groupby(<span class="st">'Region'</span>)[<span class="st">'Unit_Cost'</span>].median()</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>pivot <span class="op">=</span> pivot.sort_values(<span class="st">'Total'</span>).<span class="bu">round</span>(<span class="dv">2</span>).fillna(<span class="st">''</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="fl">2.5</span>))</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>ax.axis(<span class="st">'off'</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [<span class="st">'Region'</span>] <span class="op">+</span> <span class="bu">list</span>(pivot.columns)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [[idx] <span class="op">+</span> [<span class="ss">f'</span><span class="sc">{</span>v<span class="sc">:.2f}</span><span class="ss">'</span> <span class="cf">if</span> v <span class="op">!=</span> <span class="st">''</span> <span class="cf">else</span> <span class="st">''</span> <span class="cf">for</span> v <span class="kw">in</span> row]</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> idx, row <span class="kw">in</span> pivot.iterrows()]</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>tbl <span class="op">=</span> ax.table(cellText<span class="op">=</span>data, colLabels<span class="op">=</span>cols, loc<span class="op">=</span><span class="st">'center'</span>, cellLoc<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>tbl.auto_set_font_size(<span class="va">False</span>)<span class="op">;</span> tbl.set_fontsize(<span class="dv">9</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>tbl.auto_set_column_width(col<span class="op">=</span><span class="bu">list</span>(<span class="bu">range</span>(<span class="bu">len</span>(cols))))</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (r, c), cell <span class="kw">in</span> tbl.get_celld().items():</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>        cell.set_facecolor(BLUE)<span class="op">;</span> cell.set_text_props(color<span class="op">=</span><span class="st">'white'</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> r <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>        cell.set_facecolor(<span class="st">'#EBF3FB'</span>)</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Transport &amp; Insurance — Median Unit Cost by Region (2021–2024)'</span>,</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>             fontsize<span class="op">=</span><span class="dv">10</span>, pad<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-trans-table" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-trans-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-trans-table-output-1.png" width="854" height="229" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-trans-table-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16: Transport &amp; Insurance Median Unit Cost by Region (2021–2024)
+</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi18.png" class="img-fluid figure-img" style="width:40.0%"></p>
-<figcaption>Figure 18: Construction Average Unit Cost by Region (2021-2024)</figcaption>
+</div>
+</div>
+<div id="cell-fig-trans-avg-bar" class="cell" data-fig-height="3.5" data-execution_count="19">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sub <span class="op">=</span> recent[recent[<span class="st">'Product'</span>].isin(trans_prods)]</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>avg <span class="op">=</span> sub.groupby(<span class="st">'Region'</span>)[<span class="st">'Unit_Cost'</span>].mean().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="fl">3.5</span>))</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax.barh(avg.index, avg.values, color<span class="op">=</span>BLUE)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>ax.bar_label(bars, fmt<span class="op">=</span><span class="st">'</span><span class="sc">%.2f</span><span class="st">'</span>, padding<span class="op">=</span><span class="dv">3</span>, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, avg.<span class="bu">max</span>() <span class="op">*</span> <span class="fl">1.2</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Transport &amp; Insurance — Average Unit Cost by Region (2021–2024)'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Average Unit Cost (€)'</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>ax.invert_yaxis()</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-trans-avg-bar" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-trans-avg-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-trans-avg-bar-output-1.png" width="662" height="323" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-trans-avg-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17: Transport &amp; Insurance Average Unit Cost by Region (2021–2024)
+</figcaption>
 </figure>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -419,11 +918,57 @@ div.csl-indent {
 <section id="findings" class="level2">
 <h2 data-anchor-id="findings">6. Findings</h2>
 <p>Predictive analysis indicates steady net profit growth across all industries. In year one, we expect a €1.55 million profit even with capped production, reaching €3.09 million annually at full output with a 49.7% profit margin. Technology leads profitability, generating €7.75 million (49.72% of total revenue). Construction, while earning €2 million, suffers from high costs and weak margins, suggesting potential discontinuation unless market conditions improve. Overall, the proposed production hub strategy is projected to restore EcoEnergy Corp’s profitability and prevent further losses from poor cost management.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="powerbi19.png" class="img-fluid figure-img" style="width:60.0%"></p>
-<figcaption>Figure 19: Predicted Sales &amp; Profit Performance Dashboard with the Implementation of Recommendations</figcaption>
+<div id="cell-fig-predictive" class="cell" data-fig-height="5" data-execution_count="20">
+<details class="code-fold">
+<summary>Show code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">'Predicted Sales &amp; Profit Performance with Recommendations'</span>,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>             fontsize<span class="op">=</span><span class="dv">12</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Left: grouped bar by category across 3 years</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>cats <span class="op">=</span> [<span class="st">'Technology'</span>, <span class="st">'Transport &amp; Insurance'</span>, <span class="st">'Construction'</span>]</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> [<span class="fl">1.94</span>, <span class="fl">0.58</span>, <span class="fl">0.26</span>]</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>y2 <span class="op">=</span> [<span class="fl">2.90</span>, <span class="fl">0.87</span>, <span class="fl">0.39</span>]</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>y3 <span class="op">=</span> [<span class="fl">3.87</span>, <span class="fl">1.16</span>, <span class="fl">0.52</span>]</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="bu">len</span>(cats))</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> <span class="fl">0.25</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>ax1.bar(x <span class="op">-</span> w, y1, w, label<span class="op">=</span><span class="st">'Year 1'</span>, color<span class="op">=</span><span class="st">'#2E75B6'</span>)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>ax1.bar(x,     y2, w, label<span class="op">=</span><span class="st">'Year 2'</span>, color<span class="op">=</span><span class="st">'#70AD47'</span>)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>ax1.bar(x <span class="op">+</span> w, y3, w, label<span class="op">=</span><span class="st">'Year 3'</span>, color<span class="op">=</span><span class="st">'#ED7D31'</span>)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>ax1.set_xticks(x)</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>ax1.set_xticklabels(cats, rotation<span class="op">=</span><span class="dv">10</span>, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">'Net Profit (M€)'</span>)</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'NET Profit by Sector, Year on Year'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>ax1.yaxis.set_major_formatter(mticker.FuncFormatter(<span class="kw">lambda</span> x, _: <span class="ss">f'</span><span class="sc">{</span>x<span class="sc">:.1f}</span><span class="ss">M'</span>))</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>ax1.legend(fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Right: total net profit per year bar</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>years <span class="op">=</span> [<span class="st">'Year 1'</span>, <span class="st">'Year 2'</span>, <span class="st">'Year 3'</span>]</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>profits <span class="op">=</span> [<span class="fl">1.55</span>, <span class="fl">2.32</span>, <span class="fl">3.09</span>]</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax2.barh(years, profits, color<span class="op">=</span>BLUE)</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>ax2.bar_label(bars, labels<span class="op">=</span>[<span class="ss">f'</span><span class="sc">{</span>p<span class="sc">:.2f}</span><span class="ss">M'</span> <span class="cf">for</span> p <span class="kw">in</span> profits], padding<span class="op">=</span><span class="dv">3</span>, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>ax2.set_xlim(<span class="dv">0</span>, <span class="dv">4</span>)</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">'Total NET Profit Year on Year'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">'Net Profit (M€)'</span>)</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>ax2.invert_yaxis()</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-predictive" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-predictive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-predictive-output-1.png" width="1141" height="474" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-predictive-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18: Predicted Sales &amp; Profit Performance with Implementation of Recommendations
+</figcaption>
 </figure>
+</div>
+</div>
 </div>
 </section>
 <section id="industry-benchmarks" class="level2">
