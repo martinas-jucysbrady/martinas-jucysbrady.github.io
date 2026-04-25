@@ -51,7 +51,7 @@ I picked up SQL in Year 4 as part of the **Programming and Visualisation** modul
 ## Module
 **BAA1026** — Data Analytics: Programming and Visualisation — *Year 4, DCU*
 
-All SQL on this page executes against a real in-memory SQLite database. Used most heavily in the [EcoEnergy Corp project](/projects/data_analytics_pv/ecoenergy.qmd).
+All SQL on this page executes against a real in-memory SQLite database. Used most heavily in the [EcoEnergy Corp project](/projects/data_analytics_pv/index.qmd).
 :::
 
 ---
@@ -344,7 +344,7 @@ print(df_ordered.to_string(index=False))
 
 ## 8. Applied — EcoEnergy Corp
 
-Where the bookstore database stops being abstract is when you point the same techniques at a real dataset. For the [EcoEnergy Corp project](/projects/data_analytics_pv/ecoenergy.qmd) I worked through ten years of sales and cost data across five regions and ten products — the kind of dataset where pivot tables in Excel start to slow down.
+Where the bookstore database stops being abstract is when you point the same techniques at a real dataset. For the [EcoEnergy Corp project](/projects/data_analytics_pv/index.qmd) I worked through ten years of sales and cost data across five regions and ten products — the kind of dataset where pivot tables in Excel start to slow down.
 
 The block below recreates a simplified version of that data in SQLite and runs the kind of aggregation queries that were the starting point of the analysis.
 

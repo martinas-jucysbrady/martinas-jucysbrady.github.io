@@ -51,7 +51,7 @@ Excel has been the one tool I've used in every year of my degree — from basic 
 ## Quick summary
 **15 Kubicle courses · 25.5 hours · 4 years of coursework · 2 major projects**
 
-Used in [Business Analytics](/projects/business_analytics/business_analytics.qmd) (Year 2), the [Investment Portfolio project](/projects/portfolio_management/investment_portfolio.qmd) (Year 3), and [EcoEnergy Corp](/projects/data_analytics_pv/ecoenergy.qmd) (Year 4).
+Used in [Business Analytics](/projects/business_analytics/index.qmd) (Year 2), the [Investment Portfolio project](/projects/portfolio_management/index.qmd) (Year 3), and [EcoEnergy Corp](/projects/data_analytics_pv/index.qmd) (Year 4).
 :::
 
 ---
@@ -113,7 +113,7 @@ plt.show()
 
 ## 2. Data Manipulation & Formatting
 
-Real datasets are messy. The Year 2 [Business Analytics case study](/projects/business_analytics/business_analytics.qmd) gave me my first proper taste of this — 120 metropolitan statistical areas, raw banking data, an outlier in row 114 that had to be identified and removed before any analysis would mean anything.
+Real datasets are messy. The Year 2 [Business Analytics case study](/projects/business_analytics/index.qmd) gave me my first proper taste of this — 120 metropolitan statistical areas, raw banking data, an outlier in row 114 that had to be identified and removed before any analysis would mean anything.
 
 ### Habits I've picked up
 
@@ -159,7 +159,7 @@ plt.show()
 
 ## 3. Pivot Tables
 
-Pivot tables are how I actually summarise large datasets. I've used them most heavily in the [EcoEnergy Corp project](/projects/data_analytics_pv/ecoenergy.qmd) to aggregate ten years of regional profitability, and in the [Investment Portfolio project](/projects/portfolio_management/investment_portfolio.qmd) to track asset class weights week by week.
+Pivot tables are how I actually summarise large datasets. I've used them most heavily in the [EcoEnergy Corp project](/projects/data_analytics_pv/index.qmd) to aggregate ten years of regional profitability, and in the [Investment Portfolio project](/projects/portfolio_management/index.qmd) to track asset class weights week by week.
 
 ### What I use them for
 
@@ -233,7 +233,7 @@ fig.show()
 
 ## 5. Finance Functions & Statistical Analysis
 
-Where I leaned on Excel hardest was the [Investment Portfolio project](/projects/portfolio_management/investment_portfolio.qmd) in Year 3. Six weeks, 32 assets, weekly trades, and a Sharpe ratio I was actively trying to keep above 1.0.
+Where I leaned on Excel hardest was the [Investment Portfolio project](/projects/portfolio_management/index.qmd) in Year 3. Six weeks, 32 assets, weekly trades, and a Sharpe ratio I was actively trying to keep above 1.0.
 
 ### Finance functions I used
 

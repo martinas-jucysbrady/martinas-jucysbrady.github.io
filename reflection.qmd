@@ -1,7 +1,7 @@
 ---
 title: "Reflection"
-subtitle: "*What I Built, What I Learned, and Where I'm Going*"
-description: "A reflection on building this ePortfolio — the skills developed, challenges overcome, and how this project connects to my goals beyond university."
+subtitle: "*What I built, what I learned, and what's next*"
+description: "A reflection on building this ePortfolio"
 format:
   html:
     toc: true
@@ -28,17 +28,17 @@ format:
 </style>
 ```
 
-This page reflects on what building this ePortfolio involved — the tools I learned, the process of putting it together, the challenges I ran into, and what this experience means for where I want to go next.
+This page is a quick look back at the portfolio itself (what went into building it, what I figured out along the way, and what I want to do once I've graduated).
 
 ---
 
 ## 1. What I Built
 
-This ePortfolio is a personal portfolio website built entirely with **Quarto**, managed with **Git** and published on **GitHub Pages**. It brings together four years of academic work, personal projects, and interests in a single, publicly accessible site.
+The whole site is built with **Quarto**, version-controlled with **Git**, and published on **GitHub Pages**. Four years of academic work, project pages, travel experiences, and software skills are all in one place.
 
-The site includes project pages with live executable Python code, a travel section with original writing and media, a books page, a software skills section, and this reflection. Everything is version-controlled and reproducible.
+The analytics project pages have live executable Python code, which means the charts on those pages aren't screenshots and they regenerate every time the site builds. If I ever fix a bug in an analysis or update a dataset, the page updates with it.
 
-The workflow from start to finish:
+The build flow:
 
 ```{mermaid}
 flowchart TD
@@ -46,7 +46,7 @@ flowchart TD
     B --> C[Output goes to /docs folder]
     C --> D[Git commit and push to GitHub]
     D --> E[GitHub Pages serves the live site]
-    E --> F[Iterate — update, improve, repeat]
+    E --> F[Iterate - update, improve, repeat]
     F --> A
 
     style A fill:#e9e9ff,stroke:#1E4264,color:#1E4264
@@ -59,107 +59,104 @@ flowchart TD
 
 ---
 
-## 2. Skills Developed
+## 2. What I Picked Up
 
-Building this site required learning and applying a wider range of skills than any single module had asked for. The four main areas were:
+Building the site needed a wider mix of skills than any single module had asked for. Four areas in particular:
 
-### Git & Version Control
+### Git
 
-Before this project, I had used Git only at a basic level. Building the portfolio over an extended period — adding pages, fixing bugs, updating content — made me use it properly for the first time. Committing incrementally with descriptive messages, understanding what goes in `.gitignore`, and having a clean repository structure all became habits rather than instructions.
+I've now used Git to clone, add, commit, push and repeat. Building this over months forced me to use it properly. Writing commit messages that actually describe what changed and going back through history to find when something broke, which happened more often than I wanted
 
 ::: {.callout-note}
-## What Git actually means in practice
-Version control is not just about backup. It is about being able to look back at what changed and why. Writing a commit message like `fix TOC overlap on ml_python page` rather than `update` makes the history genuinely useful — both to me and to anyone else reading the repository.
+## What Git is actually for
+Git isn't really about backup. It's about being able to look back at what changed and why. A commit message like `fix TOC overlap on ml_python page` is far more useful three weeks later than `update`.
 :::
 
 ### Quarto
 
-Quarto was entirely new to me. Learning to configure `_quarto.yml`, write in `.qmd` files, use YAML front matter, embed Python chunks, and deploy to GitHub Pages was a steep initial curve. The most valuable thing I learned was that Quarto is not just a document tool — it is a system for connecting writing, code, and publication into a single reproducible workflow.
+This was completely new territory for me too. The configuration in `_quarto.yml`, writing in `.qmd` files, YAML front matter, embedding Python chunks, deploying to GitHub Pages are all something I haven't touched before this project.
 
-The fact that every chart on this site is generated from live code means that if the underlying data or analysis changes, the visualisation updates automatically. That principle — reproducibility — is something I want to carry into professional work.
+The thing that took me longest to appreciate is that Quarto isn't just for documents. It's a system for tying writing, code, and publishing together so that each piece stays in sync with the others. That's why every chart on this site is live code rather than an image, the moment I update the underlying analysis, the chart updates with it. Once I got used to that, going back to static screenshots in a Word doc started to feel a bit primitive.
 
-### Python for Data Analysis and Visualisation
+### Python
 
-The projects on this site gave me the opportunity to apply Python beyond individual assignments — connecting analysis across different datasets, building consistent visual styles with matplotlib and Plotly, and structuring code so that it is readable and well-documented. The machine learning project in particular pushed me to think carefully about methodology rather than just producing output.
+The project pages let me use Python beyond individual assignments; across multiple datasets, with consistent visual styling, and with code that someone else could actually read. The brain tumour project in particular pushed me to think about methodology rather than just getting an answer out.
 
-### Web Design & SCSS
+### SCSS and a bit of design
 
-I had no prior experience with SCSS or CSS customisation before this project. Learning to write Sass variables, custom rules, and responsive layouts gave me an appreciation for how much design decisions affect user experience. The site has a consistent colour palette, custom fonts, hover animations, and a layout that works across screen sizes — none of which were there by default.
+I'd never written SCSS before this. Sass variables, custom rules, responsive layouts and hover animations were all new. The site's colour palette, the fonts, the way the grid cards animate when you hover them, the way the navbar looks: none of that came out of the Quarto theme by default. It got built piece by piece.
+
+What I didn't expect was how much front-end design changes the perceived quality of the work. Two pages with the same content but different layouts read very differently; one looks effortful, the other looks rushed. I used the SCSS to design lots of very small details throughout.
 
 ---
 
-## 3. The Biggest Challenge
+## 3. The Hardest Part
 
-The most demanding part of the project was not learning any single tool — it was the iterative process of **experimenting with different inputs to get the best outputs**.
+The hardest part wasn't learning any one tool. It was the slow, frustrating loop of *trying something, having it not work, figuring out why and then trying again*.
 
-Almost nothing worked exactly as expected on the first attempt. A layout that looked right in preview broke on the live site. A Python chunk that ran locally failed in a different environment. A YAML setting that should have overridden the global config did not. Each of these required reading documentation, trying different approaches, and making small incremental adjustments rather than large changes.
+Almost nothing worked first time. A layout that looked fine in preview broke once it deployed. A Python chunk that ran locally failed when GitHub built the site. A YAML setting I was sure should override the global config didn't, so I had to use the SCSS. Each one was its own small puzzle, and none of them had a clean Stack Overflow answer.
 
-What I learned from this is that the skill of getting good outputs is really the skill of being systematic about testing. Changing one thing at a time, understanding why something works rather than just that it works, and being willing to go back to first principles when something is not behaving as expected.
+What I got out of it is that the actual skill is being systematic about testing. Change one thing at a time. Understand *why* it works, not just that it does. When something keeps breaking, go back to basics instead of stacking more workarounds on top.
 
 ::: {.callout-tip}
-## The most useful habit I developed
-Keeping the Quarto preview running in one window while editing in another. Seeing changes render in real time made the feedback loop fast enough that I could experiment without losing momentum.
+## The most useful habit I picked up
+Keeping `quarto preview` running in one window while editing in another. The feedback loop is fast enough most of the time so that you can try something, see it fail, and fix it within a minute. That's the right pace for learning a new tool.
 :::
 
 ---
 
-## 4. What I Am Most Proud Of
+## 4. What I'm Proud Of
 
-What I am most proud of is the ability to **work on many things simultaneously and improve them continuously over a long period of time**.
+What I'm most proud of isn't any single page; it's that I kept improving the site for months after I could have stopped. But, the map is probably one of the cooler aspects of the website and was very interesting to build.
 
-The ePortfolio is not a project with a single deadline — it is a living document that has been updated, restructured, and improved across many months. Managing that kind of long-horizon work, where progress is gradual and sometimes invisible, is a different kind of challenge to a timed assignment. It requires staying motivated when the improvements are small, being willing to revisit and redo things that no longer meet the standard you have developed, and being honest about what is not working.
-
-Looking back at the earliest version of the site compared to where it is now, the difference is significant — not because of any single large change, but because of the accumulation of many small improvements made consistently over time.
+The earliest version of this site looks nothing like what's here now. Not because of any one big change but because of months of small ones.
 
 ---
 
-## 5. Connecting the Dots
+## 5. How It All Fits Together
 
-This project brought together almost everything I have studied across four years in a way that no individual module had. The table below maps the key skills from the ePortfolio back to the modules where they were first developed:
+This project is the first time I've genuinely seen everything from the degree pulling in the same direction. The technical skills feed the project work. The project work needs the writing. The writing benefits from the analytical training..
 
-| Skill | Where it started | How it appears here |
+| Skill | Where it started | How it shows up here |
 |-------|-----------------|---------------------|
 | Python & data analysis | BAA1026, BAA1027 | Project pages with live code |
 | Statistical modelling | Econometrics (Kobe) | R skills page |
 | SQL & databases | BAA1026 | SQL skills page |
 | Excel & financial modelling | All four years | Excel skills page |
 | Business strategy & analysis | BAA1023 | Siemens Healthineers project |
-| Data visualisation | BAA1026 | All project pages |
-| Academic writing | All modules | Project write-ups and reports |
-| Version control | BAA1026 | This entire site |
+| Data visualisation | BAA1026 | Most project pages |
+| Academic writing | All modules | Project reports and write-ups |
+| Version control | BAA1026 | The whole site |
 
-None of these skills exists in isolation. The data analytics work is stronger because of the business understanding. The writing is more precise because of the analytical training. The technical skills are more useful because they can be communicated clearly. The portfolio itself is the best demonstration of this — it only works because all of it came together.
+None of those skills do much on their own. The data analysis is stronger for the business context. The writing is sharper for the analytical training. The technical work matters more because someone else can actually follow it.
 
 ---
 
-## 6. What I Want to Do Next
+## 6. What's Next
 
-My immediate goal after graduating is a **Master's degree**. I want to take another year to go deeper into the areas I find most interesting, get a clearer sense of where I am most capable, and build the technical skills further before moving into industry. The combination of business understanding and data skills that defines my undergraduate degree is a strong foundation — but there is more to learn.
+The plan after graduating is a **Master's degree**. I want another year to go deeper on the parts of the degree I'm most drawn to and to get a clearer read on where I'm strongest before moving into industry. The mix of business and data skills my degree gave me is a solid base but there's just more I want to know.
 
-In terms of direction, I am most drawn to **data analyst** roles — work that involves turning complex data into clear, actionable insights for business decisions. The projects in this portfolio reflect that interest: the EcoEnergy Corp profitability analysis, the investment portfolio project, and the machine learning research paper all required combining technical analysis with clear communication of findings.
+In terms of direction, I'm most drawn to **data analyst** roles, where I would turn complex data into something a business can actually act on. The projects on this site reflect that: EcoEnergy's profitability analysis, the portfolio project, the brain tumour research paper. They're all variations on the same theme; getting an answer out of data, then making the answer make sense to someone else.
 
-The longer-term goal is to work in a role where the international perspective I have developed — studying in Japan, engaging with global datasets, analysing cross-regional business problems — is genuinely useful rather than just a line on a CV.
+Longer-term, I'd like to work somewhere the international perspective I've built up; studying in Japan, working with global datasets, comparing markets across regions, is doing real work, not just sitting on a CV.
 
 ::: {.callout-note}
-## Skills I want to develop next
-- Deeper machine learning — moving beyond classical methods to neural networks with sufficient data
-- Dashboard development — Plotly Dash or Streamlit for interactive business tools  
-- Cloud platforms — AWS or Azure for scalable data pipelines
-- Advanced SQL — window functions, stored procedures, query optimisation
+## What I want to learn next
+- **Deeper machine learning** - moving past classical methods to neural networks once I've got a dataset that can actually justify them
+- **Cloud platforms** - AWS or similar systems, to understand what scaling actually looks like
+- **Advanced SQL and Excel** - window functions, stored procedures, query optimisation
 :::
 
 ---
 
-## 7. Final Reflection
+## 7. One Last Thing
 
-Building this ePortfolio was the most complete single project I have done at university — not because it was the most technically demanding, but because it required the most sustained, self-directed effort across the longest period of time.
+This was the most complete project I worked on at university. Not the most technically difficult, but the one that asked the most of me over the longest stretch of time.
 
-The tools — Quarto, Git, Python, SCSS — were all learnable. The harder skill was knowing what good looked like and being willing to keep improving until the work reached that standard. That is the habit I want to carry forward — not just into a Master's programme or a first job, but as a permanent way of approaching work.
+The tools were all learnable. The harder bit was knowing what *good* looked like and being honest enough to keep going until the work hit that bar. That's the habit that I want to bring with me into a Master's, into whatever job comes after, and into anything else worth doing properly.
 
-The site is publicly available at [martinas-jucysbrady.github.io](https://martinas-jucysbrady.github.io). It will continue to be updated.
+The site is at [martinas-jucysbrady.github.io](https://martinas-jucysbrady.github.io). It'll keep changing.
 
 ---
 
-*Built with Quarto · Managed with Git · Published on GitHub Pages*[^1]
-
-[^1]: The full source code for this site is available at [github.com/martinas-jucysbrady/martinas-jucysbrady.github.io](https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io).
+[^1]: Full source code: [github.com/martinas-jucysbrady/martinas-jucysbrady.github.io](https://github.com/martinas-jucysbrady/martinas-jucysbrady.github.io).

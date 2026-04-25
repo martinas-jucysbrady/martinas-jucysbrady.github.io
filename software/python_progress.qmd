@@ -41,7 +41,7 @@ I picked up Python in Year 4 across two modules at DCU — one covering programm
 - **BAA1026** — Data Analytics: Programming and Visualisation — *Year 4, Semester 1*
 - **BAA1027** — Data Analytics: Machine Learning and Advanced Python — *Year 4, Semester 2*
 
-Most heavily used in the [Brain Tumour Classification project](/projects/ml_python/research_paper.qmd) and the [EcoEnergy Corp report](/projects/data_analytics_pv/ecoenergy.qmd).
+Most heavily used in the [Brain Tumour Classification project](/projects/ml_python/index.qmd) and the [EcoEnergy Corp report](/projects/data_analytics_pv/index.qmd).
 :::
 
 ---
@@ -161,7 +161,7 @@ summary
 
 ### Pivot tables
 
-Pivot tables in pandas work the same way they do in Excel — choose an index, columns, values, and an aggregation function. I used these heavily in the [EcoEnergy Corp report](/projects/data_analytics_pv/ecoenergy.qmd) to slice ten years of regional sales data multiple ways.
+Pivot tables in pandas work the same way they do in Excel — choose an index, columns, values, and an aggregation function. I used these heavily in the [EcoEnergy Corp report](/projects/data_analytics_pv/index.qmd) to slice ten years of regional sales data multiple ways.
 
 ```{python}
 #| label: pandas-pivot
@@ -230,7 +230,7 @@ fig.show()
 
 ## 4. Machine Learning Pipeline
 
-The full pipeline I built for the [Brain Tumour Classification project](/projects/ml_python/research_paper.qmd) sat across most of what I'd learned in the second-semester module. Four classifiers, PCA dimensionality reduction, an ensemble model, and four-class image classification on MRI scans.
+The full pipeline I built for the [Brain Tumour Classification project](/projects/ml_python/index.qmd) sat across most of what I'd learned in the second-semester module. Four classifiers, PCA dimensionality reduction, an ensemble model, and four-class image classification on MRI scans.
 
 ```{mermaid}
 flowchart LR
