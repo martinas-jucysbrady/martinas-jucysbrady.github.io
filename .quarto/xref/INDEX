@@ -151,5 +151,8 @@
   },
   "reflection.qmd": {
     "reflection.html": "4b7da05f"
+  },
+  "software/tableau_progress.qmd": {
+    "tableau_progress.html": "fd8092ef"
   }
 }

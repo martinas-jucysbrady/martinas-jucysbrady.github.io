@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="An overview of my SQL skills developed through the Data Analytics: Programming and Visualisation module at DCU, covering database design, ERDs, querying and data manipulation.">
+<meta name="description" content="SQL skills built through the Programming and Visualisation module at DCU — database design, ERDs, joins, aggregations and subqueries.">
 
 <title>SQL – Martinas Jucys Brady</title>
 <style>
@@ -162,25 +162,36 @@ require(['plotly'], function(Plotly) {
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-software" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Software</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tools" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-hammer" role="img">
+</i> 
+ <span class="menu-text">Tools</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-software">    
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tools">    
         <li>
-    <a class="dropdown-item" href="../software/python_progress.html">
+    <a class="dropdown-item" href="../software/python_progress.html"><i class="bi bi-code-slash" role="img">
+</i> 
  <span class="dropdown-text">Python</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../software/excel_progress.html">
+    <a class="dropdown-item" href="../software/excel_progress.html"><i class="bi bi-file-earmark-spreadsheet" role="img">
+</i> 
  <span class="dropdown-text">Excel</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../software/sql_progress.html">
+    <a class="dropdown-item" href="../software/sql_progress.html"><i class="bi bi-database" role="img">
+</i> 
  <span class="dropdown-text">SQL</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../software/r_progress.html">
+    <a class="dropdown-item" href="../software/r_progress.html"><i class="bi bi-bar-chart-line" role="img">
+</i> 
  <span class="dropdown-text">R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/tableau_progress.html"><i class="bi bi-graph-up" role="img">
+</i> 
+ <span class="dropdown-text">Tableau</span></a>
   </li>  
     </ul>
   </li>
@@ -225,14 +236,11 @@ require(['plotly'], function(Plotly) {
   </ul></li>
   <li><a href="#creating-tables" id="toc-creating-tables" class="nav-link" data-scroll-target="#creating-tables">2. Creating Tables</a></li>
   <li><a href="#the-bookstore-database" id="toc-the-bookstore-database" class="nav-link" data-scroll-target="#the-bookstore-database">3. The Bookstore Database</a></li>
-  <li><a href="#basic-queries" id="toc-basic-queries" class="nav-link" data-scroll-target="#basic-queries">4. Basic Queries</a>
-  <ul class="collapse">
-  <li><a href="#select-and-order-by" id="toc-select-and-order-by" class="nav-link" data-scroll-target="#select-and-order-by">SELECT and ORDER BY</a></li>
-  </ul></li>
+  <li><a href="#basic-queries" id="toc-basic-queries" class="nav-link" data-scroll-target="#basic-queries">4. Basic Queries</a></li>
   <li><a href="#insert-and-update" id="toc-insert-and-update" class="nav-link" data-scroll-target="#insert-and-update">5. INSERT and UPDATE</a></li>
   <li><a href="#joins-aggregations" id="toc-joins-aggregations" class="nav-link" data-scroll-target="#joins-aggregations">6. Joins &amp; Aggregations</a></li>
   <li><a href="#subqueries" id="toc-subqueries" class="nav-link" data-scroll-target="#subqueries">7. Subqueries</a></li>
-  <li><a href="#sql-in-the-ecoenergy-corp-project" id="toc-sql-in-the-ecoenergy-corp-project" class="nav-link" data-scroll-target="#sql-in-the-ecoenergy-corp-project">8. SQL in the EcoEnergy Corp Project</a></li>
+  <li><a href="#applied-ecoenergy-corp" id="toc-applied-ecoenergy-corp" class="nav-link" data-scroll-target="#applied-ecoenergy-corp">8. Applied — EcoEnergy Corp</a></li>
   <li><a href="#skills-checklist" id="toc-skills-checklist" class="nav-link" data-scroll-target="#skills-checklist">9. Skills Checklist</a></li>
   </ul>
 </nav>
@@ -243,7 +251,7 @@ require(['plotly'], function(Plotly) {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">SQL</h1>
-<p class="subtitle lead"><em>Database Design, Querying &amp; Data Analysis</em></p>
+<p class="subtitle lead"><em>Database design, querying &amp; data analysis</em></p>
   <div class="quarto-categories">
     <div class="quarto-category">Software</div>
     <div class="quarto-category">Analytics</div>
@@ -252,7 +260,7 @@ require(['plotly'], function(Plotly) {
 
 <div>
   <div class="description">
-    An overview of my SQL skills developed through the Data Analytics: Programming and Visualisation module at DCU, covering database design, ERDs, querying and data manipulation.
+    SQL skills built through the Programming and Visualisation module at DCU — database design, ERDs, joins, aggregations and subqueries.
   </div>
 </div>
 
@@ -284,7 +292,7 @@ require(['plotly'], function(Plotly) {
   max-height: calc(100vh - 80px);
 }
 </style>
-<p>I studied SQL as part of <strong>Data Analytics: Programming and Visualisation (BAA1026)</strong> in fourth year at DCU. The module covered database design, entity-relationship diagrams, and SQL querying — from basic <code>SELECT</code> statements through to joins, aggregations and subqueries. Below I demonstrate these skills using a live SQLite database running in Python.</p>
+<p>I picked up SQL in Year 4 as part of the <strong>Programming and Visualisation</strong> module at DCU. The module covered the full path from database design and entity-relationship diagrams through to the actual querying — joins, aggregations, subqueries. The examples below all run against a live SQLite database in this page, so the SQL is real, not pseudocode.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -296,22 +304,22 @@ require(['plotly'], function(Plotly) {
 </div>
 <div class="callout-body-container callout-body">
 <p><strong>BAA1026</strong> — Data Analytics: Programming and Visualisation — <em>Year 4, DCU</em></p>
-<p>All SQL on this page executes against a real in-memory SQLite database — the code is fully live and reproducible.</p>
+<p>All SQL on this page executes against a real in-memory SQLite database. Used most heavily in the <a href="..\projects/data_analytics_pv/ecoenergy.qmd">EcoEnergy Corp project</a>.</p>
 </div>
 </div>
 <hr>
 <section id="database-design-erds" class="level2">
 <h2 class="anchored" data-anchor-id="database-design-erds">1. Database Design &amp; ERDs</h2>
-<p>Before writing a single line of SQL, a well-designed database starts with an <strong>Entity-Relationship Diagram (ERD)</strong>. An ERD maps out the entities, their attributes, and the relationships between them.</p>
+<p>Before writing any SQL, the module spent time on database design — and specifically on building <strong>Entity-Relationship Diagrams (ERDs)</strong> to map out what tables you need, what’s in them, and how they connect. It’s not glamorous work, but a badly designed database makes every query that follows it harder.</p>
 <section id="conceptual-erd-car-insurance-database" class="level3">
 <h3 class="anchored" data-anchor-id="conceptual-erd-car-insurance-database">Conceptual ERD — Car Insurance Database</h3>
-<p>A key exercise from the module involved designing a database for a car insurance company with the following requirements:</p>
+<p>The exercise that landed best for me was designing a database for a fictional car insurance company. The brief:</p>
 <ul>
-<li>Each <strong>driver</strong> has a licence number, full name, and address — and can be insured for more than one car</li>
+<li>Each <strong>driver</strong> has a licence number, full name, and address — and can insure more than one car</li>
 <li>Each <strong>car</strong> has a registration number, model and year — with only one driver insured per car</li>
 <li>Each <strong>accident</strong> has a report number, cost, location and date — associated with only one car</li>
 </ul>
-<p>The relationships expressed in <strong>min-max notation</strong>:</p>
+<p>The relationships in <strong>min-max notation</strong>:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -336,7 +344,7 @@ require(['plotly'], function(Plotly) {
 </tr>
 </tbody>
 </table>
-<p>A driver must insure <strong>at least one</strong> car but can insure many. A car is insured by <strong>exactly one</strong> driver. An accident is associated with <strong>exactly one</strong> car, and a car may have had <strong>zero or many</strong> accidents.</p>
+<p>A driver insures <strong>at least one</strong> car but can have many. A car has <strong>exactly one</strong> driver. An accident is tied to <strong>exactly one</strong> car, and a car may have had <strong>zero or many</strong> accidents over time.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -375,7 +383,7 @@ require(['plotly'], function(Plotly) {
 </section>
 <section id="creating-tables" class="level2">
 <h2 class="anchored" data-anchor-id="creating-tables">2. Creating Tables</h2>
-<p>Once the ERD is designed, the physical implementation in SQL uses <code>CREATE TABLE</code> statements with appropriate data types, primary keys and foreign keys.</p>
+<p>Once the ERD is signed off, the SQL implementation is the easy part — <code>CREATE TABLE</code> statements with the right data types, primary keys, and foreign key references back to the parent tables.</p>
 <div id="create-tables" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show code</summary>
@@ -417,7 +425,7 @@ require(['plotly'], function(Plotly) {
 </section>
 <section id="the-bookstore-database" class="level2">
 <h2 class="anchored" data-anchor-id="the-bookstore-database">3. The Bookstore Database</h2>
-<p>The practice exercises from the module used a bookstore database with three tables — Customers, Books and Orders. I recreate and query this database below.</p>
+<p>Most of the practical exercises in the module ran on a small bookstore database — three tables, a few customers, a few books, a few orders. Simple enough to reason about, big enough to actually exercise the joins and aggregations later on.</p>
 <div id="create-bookstore" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show code</summary>
@@ -466,8 +474,7 @@ require(['plotly'], function(Plotly) {
 </section>
 <section id="basic-queries" class="level2">
 <h2 class="anchored" data-anchor-id="basic-queries">4. Basic Queries</h2>
-<section id="select-and-order-by" class="level3">
-<h3 class="anchored" data-anchor-id="select-and-order-by">SELECT and ORDER BY</h3>
+<p>The <code>SELECT</code> statement and its modifiers — <code>WHERE</code>, <code>ORDER BY</code>, <code>BETWEEN</code>, <code>MAX</code>, <code>MIN</code>. The first half of the module was essentially repetition on these until you stop having to think about syntax and start thinking about the question.</p>
 <div id="basic-queries" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show code</summary>
@@ -516,9 +523,9 @@ SQL Essentials  25.99
 </div>
 <hr>
 </section>
-</section>
 <section id="insert-and-update" class="level2">
 <h2 class="anchored" data-anchor-id="insert-and-update">5. INSERT and UPDATE</h2>
+<p><code>SELECT</code> reads the database — <code>INSERT</code>, <code>UPDATE</code> and <code>DELETE</code> change it. The risky ones. <code>UPDATE</code> without a <code>WHERE</code> clause is a classic way to ruin everyone’s afternoon.</p>
 <div id="insert-update" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show code</summary>
@@ -565,21 +572,21 @@ Updated orders:
 </section>
 <section id="joins-aggregations" class="level2">
 <h2 class="anchored" data-anchor-id="joins-aggregations">6. Joins &amp; Aggregations</h2>
-<p>Joins combine data from multiple tables. Aggregations summarise it. Together they answer the most important analytical questions.</p>
+<p>This is where SQL starts being interesting. Joins are how you stitch tables back together; aggregations are how you actually answer questions. Most of the queries that I ran for the EcoEnergy project sat right here.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>JOIN types
+<span class="screen-reader-only">Tip</span>Quick refresher — JOIN types
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
 <li><strong>INNER JOIN</strong> — only rows with matches in both tables</li>
-<li><strong>LEFT JOIN</strong> — all rows from the left table, NULLs where no match on the right</li>
-<li><strong>RIGHT JOIN</strong> — all rows from the right table (not supported in SQLite, use LEFT JOIN reversed)</li>
+<li><strong>LEFT JOIN</strong> — all rows from the left table, NULLs where there’s no match on the right</li>
+<li><strong>RIGHT JOIN</strong> — all rows from the right table (SQLite doesn’t support this; flip the LEFT JOIN around)</li>
 <li><strong>FULL OUTER JOIN</strong> — all rows from both tables</li>
 </ul>
 </div>
@@ -641,9 +648,9 @@ Alice       522.90</code></pre>
 <div id="fig-spend-chart" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-spend-chart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div>                            <div id="5899c122-74fa-4480-9d86-2e48bc17d772" class="plotly-graph-div" style="height:380px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("5899c122-74fa-4480-9d86-2e48bc17d772")) {                    Plotly.newPlot(                        "5899c122-74fa-4480-9d86-2e48bc17d772",                        [{"alignmentgroup":"True","hovertemplate":"Customer=%{x}\u003cbr\u003eTotal Spent (\u20ac)=%{marker.color}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":[831.68,522.9],"coloraxis":"coloraxis","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"v","showlegend":false,"text":[831.68,522.9],"textposition":"outside","x":["Bob","Alice"],"xaxis":"x","y":[831.68,522.9],"yaxis":"y","type":"bar","texttemplate":"\u20ac%{text:.2f}"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Customer"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Total Spent (\u20ac)"}},"coloraxis":{"colorbar":{"title":{"text":"Total Spent (\u20ac)"}},"colorscale":[[0.0,"rgb(247,251,255)"],[0.125,"rgb(222,235,247)"],[0.25,"rgb(198,219,239)"],[0.375,"rgb(158,202,225)"],[0.5,"rgb(107,174,214)"],[0.625,"rgb(66,146,198)"],[0.75,"rgb(33,113,181)"],[0.875,"rgb(8,81,156)"],[1.0,"rgb(8,48,107)"]],"showscale":false},"legend":{"tracegroupgap":0},"title":{"text":"Total Spend per Customer (Price \u00d7 Quantity)"},"barmode":"relative","height":380,"showlegend":false},                        {"responsive": true}                    ).then(function(){
+<div>                            <div id="f6498be4-6669-4151-bddf-02aded2cb9a3" class="plotly-graph-div" style="height:380px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("f6498be4-6669-4151-bddf-02aded2cb9a3")) {                    Plotly.newPlot(                        "f6498be4-6669-4151-bddf-02aded2cb9a3",                        [{"alignmentgroup":"True","hovertemplate":"Customer=%{x}\u003cbr\u003eTotal Spent (\u20ac)=%{marker.color}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":[831.68,522.9],"coloraxis":"coloraxis","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"v","showlegend":false,"text":[831.68,522.9],"textposition":"outside","x":["Bob","Alice"],"xaxis":"x","y":[831.68,522.9],"yaxis":"y","type":"bar","texttemplate":"\u20ac%{text:.2f}"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Customer"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Total Spent (\u20ac)"}},"coloraxis":{"colorbar":{"title":{"text":"Total Spent (\u20ac)"}},"colorscale":[[0.0,"rgb(247,251,255)"],[0.125,"rgb(222,235,247)"],[0.25,"rgb(198,219,239)"],[0.375,"rgb(158,202,225)"],[0.5,"rgb(107,174,214)"],[0.625,"rgb(66,146,198)"],[0.75,"rgb(33,113,181)"],[0.875,"rgb(8,81,156)"],[1.0,"rgb(8,48,107)"]],"showscale":false},"legend":{"tracegroupgap":0},"title":{"text":"Total Spend per Customer (Price \u00d7 Quantity)"},"barmode":"relative","height":380,"showlegend":false},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('5899c122-74fa-4480-9d86-2e48bc17d772');
+var gd = document.getElementById('f6498be4-6669-4151-bddf-02aded2cb9a3');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -677,7 +684,7 @@ Figure&nbsp;1: Total spend per customer — calculated via SQL JOIN and GROUP BY
 </section>
 <section id="subqueries" class="level2">
 <h2 class="anchored" data-anchor-id="subqueries">7. Subqueries</h2>
-<p>Subqueries allow you to nest one query inside another — useful for filtering based on aggregated results.</p>
+<p>Subqueries are queries inside queries — most useful when you want to filter on something that isn’t a fixed value, like “above the average price” or “in the list of customers who’ve ordered something.”</p>
 <div id="subqueries" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show code</summary>
@@ -713,9 +720,10 @@ Alice Dublin
 </div>
 <hr>
 </section>
-<section id="sql-in-the-ecoenergy-corp-project" class="level2">
-<h2 class="anchored" data-anchor-id="sql-in-the-ecoenergy-corp-project">8. SQL in the EcoEnergy Corp Project</h2>
-<p>SQL was also a graded component of the group Power BI project in Year 4. I used SQL to query and aggregate the EcoEnergy Corp dataset before importing results into Power BI for visualisation. Key queries included:</p>
+<section id="applied-ecoenergy-corp" class="level2">
+<h2 class="anchored" data-anchor-id="applied-ecoenergy-corp">8. Applied — EcoEnergy Corp</h2>
+<p>Where the bookstore database stops being abstract is when you point the same techniques at a real dataset. For the <a href="..\projects/data_analytics_pv/ecoenergy.qmd">EcoEnergy Corp project</a> I worked through ten years of sales and cost data across five regions and ten products — the kind of dataset where pivot tables in Excel start to slow down.</p>
+<p>The block below recreates a simplified version of that data in SQLite and runs the kind of aggregation queries that were the starting point of the analysis.</p>
 <div id="ecoenergy-demo" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show code</summary>
@@ -758,8 +766,8 @@ Alice Dublin
 <span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span>, conn)</span>
 <span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_eco.to_string(index<span class="op">=</span><span class="va">False</span>))</span>
 <span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Median unit cost by product</span></span>
-<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Median unit cost by product:"</span>)</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Average unit cost by product</span></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Average unit cost by product:"</span>)</span>
 <span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>df_cost <span class="op">=</span> pd.read_sql(<span class="st">"""</span></span>
 <span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a><span class="st">    SELECT product,</span></span>
 <span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a><span class="st">           ROUND(AVG(unit_cost), 2) AS avg_unit_cost</span></span>
@@ -779,7 +787,7 @@ South America          2.81
        Africa          0.84
 North America          0.63
 
-Median unit cost by product:
+Average unit cost by product:
           product  avg_unit_cost
            Laptop         371.28
    Insurance Plan         382.69
@@ -808,9 +816,9 @@ Building Material         405.33</code></pre>
 <div id="fig-eco-chart" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-eco-chart-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div>                            <div id="d5c6f518-bc66-4199-a5bc-3529c6a3fb25" class="plotly-graph-div" style="height:400px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("d5c6f518-bc66-4199-a5bc-3529c6a3fb25")) {                    Plotly.newPlot(                        "d5c6f518-bc66-4199-a5bc-3529c6a3fb25",                        [{"alignmentgroup":"True","hovertemplate":"Region=%{x}\u003cbr\u003eNet Profit (M\u20ac)=%{marker.color}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":[3.6,2.81,1.97,0.84,0.63],"coloraxis":"coloraxis","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"v","showlegend":false,"text":[3.6,2.81,1.97,0.84,0.63],"textposition":"outside","x":["Asia","South America","Europe","Africa","North America"],"xaxis":"x","y":[3.6,2.81,1.97,0.84,0.63],"yaxis":"y","type":"bar","texttemplate":"\u20ac%{text:.2f}M"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Region"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Net Profit (M\u20ac)"}},"coloraxis":{"colorbar":{"title":{"text":"Net Profit (M\u20ac)"}},"colorscale":[[0.0,"#C00000"],[0.5,"#A9C4E0"],[1.0,"#2E75B6"]],"showscale":false},"legend":{"tracegroupgap":0},"title":{"text":"Net Profit by Region \u2014 EcoEnergy Corp (SQL Query Result)"},"barmode":"relative","height":400,"showlegend":false},                        {"responsive": true}                    ).then(function(){
+<div>                            <div id="05ca6746-823f-491f-9e16-1ee6ad862acd" class="plotly-graph-div" style="height:400px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("05ca6746-823f-491f-9e16-1ee6ad862acd")) {                    Plotly.newPlot(                        "05ca6746-823f-491f-9e16-1ee6ad862acd",                        [{"alignmentgroup":"True","hovertemplate":"Region=%{x}\u003cbr\u003eNet Profit (M\u20ac)=%{marker.color}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":[3.6,2.81,1.97,0.84,0.63],"coloraxis":"coloraxis","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"v","showlegend":false,"text":[3.6,2.81,1.97,0.84,0.63],"textposition":"outside","x":["Asia","South America","Europe","Africa","North America"],"xaxis":"x","y":[3.6,2.81,1.97,0.84,0.63],"yaxis":"y","type":"bar","texttemplate":"\u20ac%{text:.2f}M"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Region"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Net Profit (M\u20ac)"}},"coloraxis":{"colorbar":{"title":{"text":"Net Profit (M\u20ac)"}},"colorscale":[[0.0,"#C00000"],[0.5,"#A9C4E0"],[1.0,"#2E75B6"]],"showscale":false},"legend":{"tracegroupgap":0},"title":{"text":"Net Profit by Region \u2014 EcoEnergy Corp (SQL Query Result)"},"barmode":"relative","height":400,"showlegend":false},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('d5c6f518-bc66-4199-a5bc-3529c6a3fb25');
+var gd = document.getElementById('05ca6746-823f-491f-9e16-1ee6ad862acd');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -844,6 +852,7 @@ Figure&nbsp;2: Net profit by region — replicating the EcoEnergy Corp regional 
 </section>
 <section id="skills-checklist" class="level2">
 <h2 class="anchored" data-anchor-id="skills-checklist">9. Skills Checklist</h2>
+<p>What’s solid, what’s next:</p>
 <ul class="task-list">
 <li><label><input type="checkbox" checked="">Database design — entities, attributes, relationships</label></li>
 <li><label><input type="checkbox" checked="">ERD — conceptual (min-max notation) and physical (crow’s foot)</label></li>
@@ -853,9 +862,9 @@ Figure&nbsp;2: Net profit by region — replicating the EcoEnergy Corp regional 
 <li><label><input type="checkbox" checked=""><code>GROUP BY</code> and <code>HAVING</code> with aggregate functions (<code>SUM</code>, <code>AVG</code>, <code>MAX</code>, <code>COUNT</code>)</label></li>
 <li><label><input type="checkbox" checked=""><code>INNER JOIN</code> across multiple tables</label></li>
 <li><label><input type="checkbox" checked="">Subqueries — scalar and <code>IN</code> subqueries</label></li>
-<li><label><input type="checkbox" checked="">Used SQL in the EcoEnergy Corp Power BI project for data preparation</label></li>
-<li><label><input type="checkbox">Window functions (<code>ROW_NUMBER</code>, <code>RANK</code>, <code>LAG</code>) — next step</label></li>
-<li><label><input type="checkbox">Stored procedures and views</label></li>
+<li><label><input type="checkbox" checked="">Used SQL queries as the data prep step for the EcoEnergy Corp project</label></li>
+<li><label><input type="checkbox">Window functions (<code>ROW_NUMBER</code>, <code>RANK</code>, <code>LAG</code>, <code>LEAD</code>) — the obvious next step</label></li>
+<li><label><input type="checkbox">Stored procedures and views — useful once a database starts being shared across reports</label></li>
 </ul>
 
 

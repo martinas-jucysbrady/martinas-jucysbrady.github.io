@@ -1,7 +1,7 @@
 ---
 title: "Microsoft Excel"
-subtitle: "*Data Analysis, Dashboards & Financial Modelling*"
-description: "An overview of my Excel skills built across all four years of university, from core formulas and data manipulation through to dashboards, financial functions and statistical analysis."
+subtitle: "*Data analysis, dashboards & financial modelling*"
+description: "Excel skills built across four years of university — formulas, pivot tables, dashboards, finance functions and Solver optimisation."
 categories: [Software, Analytics]
 format:
   html:
@@ -45,41 +45,43 @@ import warnings
 warnings.filterwarnings('ignore')
 ```
 
-I have been using Excel throughout all four years of my degree — from basic data manipulation in first year through to financial modelling, Solver optimisation and dashboard design in third and fourth year. Below is an overview of the core skills I have developed, with live demonstrations of each concept using Python to replicate the logic.
+Excel has been the one tool I've used in every year of my degree — from basic spreadsheets in Year 1 through to running Solver optimisation on a 32-asset portfolio in Year 3. This page covers the concepts I've worked with most, with examples replicated in Python so the logic is visible.
 
 ::: {.callout-note}
-## Kubicle Certifications
-I have completed **15 Excel courses** on Kubicle totalling over **25 hours**, covering everything from foundational formulas to DAX functions, pivot tables, dashboards and financial analysis. These are listed at the bottom of this page.
+## Quick summary
+**15 Kubicle courses · 25.5 hours · 4 years of coursework · 2 major projects**
+
+Used in [Business Analytics](/projects/business_analytics/business_analytics.qmd) (Year 2), the [Investment Portfolio project](/projects/portfolio_management/investment_portfolio.qmd) (Year 3), and [EcoEnergy Corp](/projects/data_analytics_pv/ecoenergy.qmd) (Year 4).
 :::
 
 ---
 
 ## 1. Formulas & Functions
 
-Excel formulas are the foundation of any spreadsheet analysis. The most important distinction is understanding when to use **relative** vs **absolute** references, and how to combine functions to build powerful, reusable logic.
+The basics of any Excel work. The distinction that matters most early on is **relative vs absolute references** — get that wrong and your formulas break the moment you copy them somewhere else.
 
-### Key functions
+### Functions I use most
 
 | Function | Purpose |
 |----------|---------|
 | `SUM`, `AVERAGE`, `COUNT` | Basic aggregation |
-| `IF`, `IFS`, `NESTED IF` | Conditional logic |
+| `IF`, `IFS`, nested `IF` | Conditional logic |
 | `VLOOKUP`, `HLOOKUP`, `INDEX/MATCH` | Data lookup |
 | `SUMIF`, `COUNTIF`, `AVERAGEIF` | Conditional aggregation |
 | `LEFT`, `RIGHT`, `MID`, `TEXT` | Text manipulation |
 | `TODAY`, `DATE`, `DATEDIF` | Date functions |
 
-A core formula pattern I use frequently is combining `INDEX` and `MATCH` as a more flexible alternative to `VLOOKUP`. The logic can be expressed as:
+The pattern I reach for most often is `INDEX/MATCH` rather than `VLOOKUP`:
 
 $$\text{Result} = \text{INDEX}(\text{return\_range},\ \text{MATCH}(\text{lookup\_value},\ \text{lookup\_range},\ 0))$$
 
-Unlike `VLOOKUP`, this works in any direction and does not break when columns are inserted.[^1]
+`VLOOKUP` only works left-to-right and breaks if columns get inserted. `INDEX/MATCH` doesn't have either problem.[^1]
 
-[^1]: `VLOOKUP` requires the lookup column to be the leftmost column in the range, which makes it fragile when the spreadsheet structure changes. `INDEX/MATCH` has no such restriction.
+[^1]: `VLOOKUP` requires the lookup column to be the leftmost column in the range. `INDEX/MATCH` has no such restriction.
 
 ```{python}
 #| label: fig-formulas
-#| fig-cap: "Demonstrating IF and conditional aggregation logic on a sample sales dataset"
+#| fig-cap: "SUMIF logic on a sample sales dataset"
 
 np.random.seed(42)
 products = ['Laptop', 'Monitor', 'Printer', 'Tablet', 'Smartphone']
@@ -101,7 +103,7 @@ colors = ['#2E75B6' if v == summary.max() else '#A9C4E0' for v in summary]
 bars = ax.bar(summary.index, summary.values, color=colors)
 ax.bar_label(bars, fmt='€%.0f', padding=3, fontsize=9)
 ax.set_ylabel('Total Revenue (€)')
-ax.set_title('SUMIF equivalent — Total Revenue by Product', fontsize=11)
+ax.set_title('Total Revenue by Product (SUMIF equivalent)', fontsize=11)
 ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f'€{x:,.0f}'))
 plt.tight_layout()
 plt.show()
@@ -111,21 +113,21 @@ plt.show()
 
 ## 2. Data Manipulation & Formatting
 
-Clean, well-structured data is a prerequisite for any meaningful analysis. Excel provides a range of tools for reshaping and cleaning data before analysis begins.
+Real datasets are messy. The Year 2 [Business Analytics case study](/projects/business_analytics/business_analytics.qmd) gave me my first proper taste of this — 120 metropolitan statistical areas, raw banking data, an outlier in row 114 that had to be identified and removed before any analysis would mean anything.
 
-### Key techniques
+### Habits I've picked up
 
 ::: {.callout-tip}
-## Best practices I follow
-- Always freeze the header row and use `Format as Table` to enable structured references
-- Use `Text to Columns` and `Flash Fill` for rapid data cleaning
-- Name key ranges to make formulas readable (`=SUM(Sales)` rather than `=SUM(B2:B200)`)
-- Use `TRIM` and `CLEAN` to remove invisible characters from imported data
+## What I do now by default
+- Freeze the header row and use `Format as Table` so I get structured references
+- Name important ranges (`=SUM(Sales)` reads better than `=SUM(B2:B200)`)
+- Run `TRIM` and `CLEAN` on anything imported from another system
+- Keep raw data, calculations and presentation on separate sheets
 :::
 
 ```{python}
 #| label: fig-data-manipulation
-#| fig-cap: "Data cleaning pipeline — handling missing values, duplicates and formatting"
+#| fig-cap: "Data cleaning pipeline — fewer issues at each step"
 
 raw = pd.DataFrame({
     'ID':      [1, 2, 2, 3, 4, 5, 5, 6],
@@ -147,7 +149,7 @@ colors = ['#C00000' if v > 0 else '#2E75B6' for v in issues]
 bars = ax.bar(steps, issues, color=colors)
 ax.bar_label(bars, fmt='%d issues', padding=3, fontsize=9)
 ax.set_ylabel('Remaining Issues')
-ax.set_title('Data Cleaning Pipeline — Issues Resolved at Each Step', fontsize=11)
+ax.set_title('Cleaning Pipeline — Issues Resolved at Each Step', fontsize=11)
 plt.xticks(rotation=10)
 plt.tight_layout()
 plt.show()
@@ -157,28 +159,19 @@ plt.show()
 
 ## 3. Pivot Tables
 
-Pivot tables are one of Excel's most powerful features for summarising large datasets quickly. I have used them extensively for analysing sales data, module grades, and financial summaries.
+Pivot tables are how I actually summarise large datasets. I've used them most heavily in the [EcoEnergy Corp project](/projects/data_analytics_pv/ecoenergy.qmd) to aggregate ten years of regional profitability, and in the [Investment Portfolio project](/projects/portfolio_management/investment_portfolio.qmd) to track asset class weights week by week.
 
-### What I use pivot tables for
+### What I use them for
 
-- [ ] Summarising sales or revenue by category, region or time period
+- [x] Aggregating regional profitability across the EcoEnergy Corp project
+- [x] Tracking asset class weights week-by-week in the investment portfolio
+- [ ] Cross-tabulations to spot patterns I wouldn't otherwise see
+- [ ] Feeding pivot charts for dashboards
 - [ ] Calculating averages, counts and percentages across groups
-- [ ] Creating cross-tabulations to spot patterns
-- [ ] Feeding pivot charts for dynamic dashboards
-- [x] Used in the EcoEnergy Corp group project to aggregate regional profitability
-- [x] Used in the investment portfolio project to summarise asset class weights
 
 ```{python}
 #| label: fig-pivot
-#| fig-cap: "Pivot table equivalent — revenue and units by product and region"
-
-pivot = data.pivot_table(
-    values=['Revenue', 'Units'],
-    index='Product',
-    columns='Region',
-    aggfunc='sum',
-    fill_value=0
-)
+#| fig-cap: "Pivot table equivalent — revenue by product and region"
 
 pivot_rev = data.pivot_table(values='Revenue', index='Product',
                               columns='Region', aggfunc='sum', fill_value=0)
@@ -187,7 +180,7 @@ fig = px.imshow(
     pivot_rev,
     text_auto=',.0f',
     color_continuous_scale='Blues',
-    title='Revenue by Product and Region (Pivot Table equivalent)',
+    title='Revenue by Product and Region',
     labels=dict(color='Revenue (€)'),
     aspect='auto'
 )
@@ -199,22 +192,21 @@ fig.show()
 
 ## 4. Charts & Dashboards
 
-A well-designed dashboard communicates the key message at a glance. In Excel, I build dashboards using a combination of pivot charts, slicers, dynamic named ranges, and careful layout design.
+A dashboard works when a reader gets the answer without asking a follow-up question. In Excel I build them with pivot charts, slicers, and named ranges — and lock down anything a user shouldn't accidentally edit.
 
-### Dashboard design principles I follow
+### How I lay one out
 
 ::: {.callout-tip}
-## What makes a good Excel dashboard
-- One clear message per chart — avoid chart overload
-- Consistent colour palette aligned with the brand or report theme
-- Slicers and dropdowns to let the reader filter without touching the data
-- Freeze panes and locked cells to protect the model
-- Separate data, calculations and presentation into distinct sheets
+## What I've learned makes a dashboard usable
+- One question per chart. If a chart needs a paragraph to explain, it's two charts.
+- Slicers go at the top so the reader filters before reading.
+- Data, calculations and presentation get separate sheets. Always.
+- Lock the cells the user shouldn't touch. Most "broken" dashboards are dashboards a colleague edited by accident.
 :::
 
 ```{python}
 #| label: fig-dashboard
-#| fig-cap: "Interactive dashboard — weekly revenue trend with category breakdown"
+#| fig-cap: "Dashboard layout — weekly revenue with category breakdown"
 
 np.random.seed(7)
 weeks = [f'Wk {i}' for i in range(1, 9)]
@@ -228,7 +220,7 @@ fig.add_trace(go.Bar(name='Finance',    x=weeks, y=finance, marker_color='#70AD4
 fig.add_trace(go.Bar(name='Retail',     x=weeks, y=retail,  marker_color='#ED7D31'))
 fig.update_layout(
     barmode='stack',
-    title='Weekly Revenue by Category — Dashboard View',
+    title='Weekly Revenue by Category',
     xaxis_title='Week',
     yaxis_title='Revenue (€)',
     legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='right', x=1),
@@ -241,29 +233,29 @@ fig.show()
 
 ## 5. Finance Functions & Statistical Analysis
 
-I applied Excel's financial and statistical functions most intensively during the investment portfolio project in third year, using them to calculate Sharpe ratios, expected returns and standard deviations across a 32-asset portfolio.
+Where I leaned on Excel hardest was the [Investment Portfolio project](/projects/portfolio_management/investment_portfolio.qmd) in Year 3. Six weeks, 32 assets, weekly trades, and a Sharpe ratio I was actively trying to keep above 1.0.
 
-### Key financial functions
+### Finance functions I used
 
 | Function | Formula | Use |
 |----------|---------|-----|
 | `NPV` | $NPV = \sum_{t=1}^{n} \frac{CF_t}{(1+r)^t}$ | Net present value |
 | `IRR` | Solve for $r$: $\sum \frac{CF_t}{(1+r)^t} = 0$ | Internal rate of return |
-| `PMT` | $PMT = \frac{P \cdot r}{1-(1+r)^{-n}}$ | Loan/annuity payment |
+| `PMT` | $PMT = \frac{P \cdot r}{1-(1+r)^{-n}}$ | Loan / annuity payment |
 | `FV` | $FV = PV \cdot (1+r)^n$ | Future value |
 | `STDEV` | $\sigma = \sqrt{\frac{\sum(x_i - \bar{x})^2}{n-1}}$ | Standard deviation |
 
-The **Sharpe ratio** is the key metric I used in the portfolio project to compare risk-adjusted returns:
+The **Sharpe ratio** was the metric I tracked every week:
 
 $$S = \frac{R_p - R_f}{\sigma_p}$$
 
-Where $R_p$ is the portfolio return, $R_f$ is the risk-free rate, and $\sigma_p$ is the portfolio standard deviation. A Sharpe ratio above 1.0 is generally considered good.[^2]
+Where $R_p$ is portfolio return, $R_f$ is the risk-free rate, and $\sigma_p$ is portfolio standard deviation. Anything above 1.0 is generally considered good — getting it right meant lining up the time horizons properly.[^2]
 
-[^2]: The risk-free rate used in the portfolio project was adjusted to match the quarterly data horizon before being annualised, as using the wrong time period significantly distorts the Sharpe ratio calculation.
+[^2]: Quarterly data needs a quarterly risk-free rate before annualising — using the wrong one distorts the Sharpe ratio significantly. This was one of the trickier setup steps in the project.
 
 ```{python}
 #| label: fig-sharpe
-#| fig-cap: "Sharpe ratio across portfolio rebalancing weeks — Investment Portfolio project"
+#| fig-cap: "Sharpe ratio across portfolio rebalancing weeks"
 
 weeks_label = ['Initial', 'Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6']
 sharpe      = [1.34, 1.37, 1.17, 1.10, 1.13, 1.08, 1.07]
@@ -297,14 +289,14 @@ fig.show()
 
 ## 6. Solver & Optimisation
 
-Excel's Solver add-in was central to my investment portfolio project. I used it to maximise the Sharpe ratio subject to constraints on individual asset weights, sector exposure and total portfolio weight.
+Solver was central to the portfolio project. The setup: maximise the Sharpe ratio across the 32 assets, subject to constraints on individual weights, sector exposure, and total portfolio weight.
 
 ::: {.callout-warning}
-## A key lesson from using Solver
-Unconstrained Solver optimisation almost always concentrates all weight in one or two high-volatility assets. In practice, you need to impose realistic upper bounds on each asset and sector, and combine the quantitative output with qualitative judgement about what a sensible portfolio actually looks like.
+## What Solver actually taught me
+The first time I ran Solver without constraints, it concentrated most of the weight in one or two high-volatility assets. Mathematically optimal. As an investment portfolio, reckless. Every Solver run after that had upper-bound constraints on individual assets and sectors — and combining the quantitative output with judgement about what a sensible portfolio actually looks like was the real skill.
 :::
 
-The optimisation problem I set up was:
+The optimisation problem:
 
 $$\max_{w} \quad S(w) = \frac{w^T \mu - R_f}{\sqrt{w^T \Sigma w}}$$
 
@@ -314,9 +306,11 @@ $$\sum_i w_i = 1, \quad 0 \leq w_i \leq w_{max}, \quad \sum_{i \in \text{sector}
 
 Where $w$ is the vector of portfolio weights, $\mu$ is the vector of expected returns, and $\Sigma$ is the covariance matrix.
 
+A useful sanity check is plotting where your portfolio sits against thousands of random alternatives — the efficient frontier. Anywhere on the upper-left edge is doing well for the risk you're taking; anything below the frontier is sub-optimal.
+
 ```{python}
 #| label: fig-efficient-frontier
-#| fig-cap: "Efficient frontier — risk vs return tradeoff for a simulated portfolio"
+#| fig-cap: "Efficient frontier — risk vs return for 3,000 random portfolios"
 
 np.random.seed(42)
 n_portfolios = 3000
@@ -346,7 +340,7 @@ fig = px.scatter(
     x=risks_range, y=returns_range, color=sharpes_range,
     color_continuous_scale='Blues',
     labels=dict(x='Risk (Std Dev)', y='Expected Return', color='Sharpe Ratio'),
-    title='Efficient Frontier — Risk vs Return (3,000 random portfolios)',
+    title='Efficient Frontier — Risk vs Return Trade-off',
 )
 fig.update_traces(marker=dict(size=4, opacity=0.6))
 fig.update_layout(height=420)
@@ -357,11 +351,10 @@ fig.show()
 
 ## 7. Kubicle Course Completions
 
-The table below lists all Excel courses I have completed on Kubicle, totalling over 25 hours of structured learning across four years.
+Fifteen Kubicle courses across four years, totalling 25.5 hours. The dates show roughly when each concept came up in the degree, with a longer block in late 2025 covering the more advanced material.
 
 ```{python}
 #| label: tbl-kubicle
-#| fig-cap: "Kubicle Excel course completions"
 
 courses = pd.DataFrame({
     'Course': [
@@ -400,8 +393,3 @@ styled = courses.style\
 
 styled
 ```
-
-::: {.callout-note}
-## Total learning
-**15 courses · 25.5 hours** completed across Excel on Kubicle between October 2022 and January 2026.
-:::

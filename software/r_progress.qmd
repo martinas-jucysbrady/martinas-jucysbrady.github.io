@@ -1,7 +1,7 @@
 ---
 title: "R"
-subtitle: "*Econometrics & Statistical Analysis*"
-description: "An overview of my R skills developed through the Advanced Econometric Analysis module at Kobe University in third year, covering OLS regression, panel data, binary models and time series."
+subtitle: "*Econometrics & statistical analysis*"
+description: "R skills built through the Advanced Econometric Analysis module at Kobe University in Year 3 — OLS regression, panel data, time series and binary choice models."
 categories: [Software, Analytics]
 format:
   html:
@@ -48,7 +48,7 @@ warnings.filterwarnings('ignore')
 np.random.seed(42)
 ```
 
-I studied R during **Advanced Econometric Analysis** at Kobe University in third year. The module covered applied econometrics using RStudio — from OLS regression and data manipulation through to panel data models, time series diagnostics and binary choice models. All five problem sets are demonstrated below using Python to replicate the econometric concepts and R code logic.
+R was the only language used in **Advanced Econometric Analysis** at Kobe University during my exchange in Year 3. The module ran across one semester with five problem sets, each one building on the last — by the end I'd worked through OLS, multicollinearity, interaction terms, panel data, time series diagnostics and binary choice models, all in RStudio. The examples below are reproduced in Python so the page runs live, but the original work was all in R.
 
 ::: {.callout-note}
 ## Module
@@ -61,9 +61,9 @@ Five problem sets covering: OLS regression, multicollinearity, interaction terms
 
 ## 1. Data Manipulation & OLS Regression
 
-The first problem set used US airfare data to practice data cleaning, indicator variable creation, and OLS regression — core R skills that apply across every subsequent dataset.
+The first problem set used US airfare data and was essentially a tour of the basic R toolkit — loading data, joining files, building dummy variables, fitting an OLS model, reading the output.
 
-### Key R operations covered
+### R operations I used most
 
 ```{python}
 #| label: r-operations-table
@@ -88,15 +88,15 @@ ops.style.set_properties(**{'text-align': 'left'})\
     .set_table_styles([{'selector': 'th', 'props': [('text-align', 'left')]}])
 ```
 
-### OLS regression — Airfare data (HW1)
+### OLS on airfare data
 
-The regression from Problem Set 1 estimated airfare price as a function of distance, passengers, year dummies and an origin city dummy (Akron, OH):
+The regression in Problem Set 1 modelled airfare price as a function of distance, passenger volume, year dummies, and an indicator for flights originating in Akron, Ohio:
 
 $$\widehat{fare} = \beta_0 + \beta_1 dist + \beta_2 passen + \beta_3 yr98 + \beta_4 yr99 + \beta_5 yr00 + \beta_6 Akron + \varepsilon$$
 
-Key findings: flights from Akron, OH were **$47.03 cheaper** than average. The year dummies showed increasing fares over time, consistent with inflation.[^1]
+The interesting result was the Akron coefficient — flights from Akron came out **$47.03 cheaper** on average. The year dummies told a separate story: yr98 wasn't significant, yr99 was, yr00 was strongly so. Inflation accumulating across the period.[^1]
 
-[^1]: The year dummy coefficients showed that the relationship between year and fare became stronger and more statistically significant over time (yr98 insignificant, yr99 significant, yr00 highly significant), consistent with the cumulative effect of inflation on airfares.
+[^1]: The pattern of year dummy significance — small and insignificant in 1998, larger and significant in 1999, even larger by 2000 — is consistent with airfares slowly catching up to inflation rather than adjusting all at once. This was one of those moments where the regression output told a story that wasn't obvious until you looked at the dummies in sequence.
 
 ```{python}
 #| label: fig-airfare-regression
@@ -147,27 +147,27 @@ print(f"Lowest predicted fare:  ${fare_hat.min():.2f}")
 ```
 
 ::: {.callout-tip}
-## Interpreting residuals
-A **positive residual** means the model is **underpredicting** — the actual fare was higher than expected. A **negative residual** means the model is **overpredicting** — the actual fare was lower than expected. Smaller residuals indicate a more accurate model.
+## Reading residuals
+A **positive residual** means the model is underpredicting — actual fare was higher than expected. **Negative** means overpredicting. Smaller residuals across the board mean the model's doing better.
 :::
 
 ---
 
 ## 2. Multicollinearity & Model Specification
 
-Problem Set 2 used house price data to explore multicollinearity — what happens when independent variables are highly correlated with each other.
+Problem Set 2 used house price data to introduce multicollinearity — what goes wrong when your independent variables are too closely related to each other.
 
-### The OLS model
+### The setup
 
 $$price = \beta_0 + \beta_1 sqrft + \beta_2 bdrms + \varepsilon$$
 
-Adding a squared term $sqrft^2$ introduced multicollinearity because $sqrft$ and $sqrft^2$ are highly correlated. The VIF (Variance Inflation Factor) test confirmed this — a VIF above 10 indicates multicollinearity:
+The trap came when adding a quadratic term, $sqrft^2$. Square footage and its square are heavily correlated by definition, which inflates standard errors and makes coefficients hard to trust. The VIF (Variance Inflation Factor) test quantifies it:
 
 $$VIF_j = \frac{1}{1 - R^2_j}$$
 
-Where $R^2_j$ is the R-squared from regressing variable $j$ on all other independent variables. In the homework, $sqrft$ had a VIF of approximately **40** — well above the threshold.[^2]
+A VIF above 10 is the conventional warning line. In the homework, $sqrft$ came out at around **40** once the squared term was included.[^2]
 
-[^2]: Multicollinearity inflates standard errors without biasing coefficients. It was identified by two signals: (1) both sqrft and sqrft² had negative coefficients despite the expected positive relationship with price, and (2) the gap between R² and Adjusted R² widened compared to the original model.
+[^2]: Two things tipped me off before running the VIF test. First, both `sqrft` and `sqrft²` came out with negative coefficients, which makes no economic sense — bigger houses should cost more. Second, the gap between R² and Adjusted R² widened compared to the simpler model, which is a classic sign that you've added redundant information.
 
 ```{python}
 #| label: fig-multicollinearity
@@ -206,17 +206,17 @@ plt.show()
 
 ## 3. Interaction Terms & Partial Effects
 
-Problem Set 3 used student attendance data to model how the effect of prior GPA on exam scores **depends on** attendance rate — an interaction effect.
+Problem Set 3 looked at student exam performance — the interesting twist being that the effect of prior GPA on final exam score depended on attendance. That's an interaction effect, and the maths gets a bit more careful.
 
-### The model with interaction term
+### The model
 
 $$FinalExam = \beta_0 + \beta_1 Attend + \beta_2 priGPA + \beta_3 ETestScore + \beta_4 ETestScore^2 + \beta_5 (priGPA \times Attend) + \varepsilon$$
 
-The **partial effect** of prior GPA on exam score is not a single number — it varies with attendance:
+The partial effect of prior GPA is no longer a single number — it changes with attendance:
 
 $$\frac{\partial \widehat{FinalExam}}{\partial priGPA} = \beta_2 + \beta_5 \cdot Attend = -7.035 + 0.139 \cdot Attend$$
 
-This means the effect of prior GPA is **negative at low attendance** and **positive at high attendance** — a student with a high GPA who rarely attends class may actually perform worse.
+In plain English: at low attendance, having a high prior GPA actually predicts a *lower* exam score. At high attendance, it predicts a higher one. A high-GPA student who skips class is in trouble.
 
 ```{python}
 #| label: fig-partial-effects
@@ -247,25 +247,25 @@ fig.show()
 ```
 
 ::: {.callout-note}
-## Theta interpretation
-By rewriting the model centred at the mean attendance rate (82%), the coefficient $\hat{\theta}_1 = \beta_2 + \beta_5(82) = 4.36$ gives a direct interpretation: at the **average attendance rate**, a one-unit increase in prior GPA increases the final exam score by **4.36 points**.
+## Centring the model
+A useful trick taught in this module: rewrite the model centred at the mean of the interacting variable. Once attendance is centred at 82%, the coefficient $\hat{\theta}_1 = \beta_2 + \beta_5(82) = 4.36$ has a clean interpretation — at the average attendance rate, a one-unit increase in prior GPA increases the final exam score by 4.36 points.
 :::
 
 ---
 
 ## 4. Time Series & Serial Correlation
 
-Problem Set 4 used fish market data to introduce **serial correlation** — a common issue in time series data where residuals are correlated across time periods.
+Problem Set 4 introduced time series — fish market data over almost a hundred trading days — and the issue that comes with it: residuals that are correlated across time periods rather than independent.
 
-### The Durbin-Watson statistic
+### Durbin-Watson
 
-The Durbin-Watson test detects first-order serial correlation in residuals:
+The Durbin-Watson test is the standard check for first-order serial correlation:
 
 $$d = \frac{\sum_{t=2}^{T} (e_t - e_{t-1})^2}{\sum_{t=1}^{T} e_t^2}$$
 
-A value close to **2** indicates no serial correlation. Values near **0** indicate positive serial correlation, near **4** indicate negative serial correlation. In the homework, $d = 1.744$ — close to 2, suggesting no significant serial correlation.[^3]
+A value near 2 means no serial correlation. Near 0 means positive correlation; near 4 means negative. The homework came out at $d = 1.744$ — close enough to 2 that we couldn't reject the null of no serial correlation.[^3]
 
-[^3]: Generalised Least Squares (GLS) was applied when serial correlation was detected in the logged model. Serial correlation does not bias coefficients but does bias standard errors — so GLS corrects the standard errors but ideally should not change the coefficients significantly.
+[^3]: In the logged version of the model, serial correlation *was* detected — and the fix is Generalised Least Squares (GLS). GLS doesn't change the coefficients meaningfully if the model is right; it just corrects the standard errors. If GLS shifts the coefficients dramatically, that's a sign there's something else wrong with the model specification.
 
 ```{python}
 #| label: fig-serial-correlation
@@ -306,11 +306,11 @@ plt.show()
 
 ### Difference-in-differences
 
-Problem Set 4 also covered **difference-in-differences (DiD)** — a quasi-experimental design to estimate causal effects. The model examined the impact of a garbage incinerator on nearby house prices:
+The same problem set covered difference-in-differences — a quasi-experimental method for estimating causal effects when you can't run a real experiment. The example was the impact of a garbage incinerator on nearby house prices:
 
 $$rprice_{it} = \beta_0 + \beta_1 y81_t + \beta_2 nearinc_i + \underbrace{\beta_3 y81nrinc_{it}}_{\text{DiD estimator}} + \varepsilon$$
 
-The coefficient $\beta_3$ is the DiD estimator — it captures the **additional** price decline for houses near the incinerator **after** it became active, compared to the control group.
+The DiD estimator $\beta_3$ is the interaction term. It captures the price drop for houses near the incinerator that's *over and above* whatever was happening to house prices in general. That's the bit you actually want to know.
 
 ```{python}
 #| label: fig-did
@@ -356,19 +356,21 @@ fig.show()
 
 ## 5. Binary Choice Models
 
-Problem Set 5 moved into **limited dependent variable** models — specifically the **Linear Probability Model (LPM)** and **Binary Logit Model** for predicting credit card approval.
+The final problem set moved from continuous outcomes to binary ones — predicting whether someone gets approved for a credit card, where the outcome is just yes or no. That breaks OLS in a specific way.
 
-### LPM vs Logit
+### Why LPM fails, and how Logit fixes it
 
-The key limitation of the LPM is that predicted probabilities can fall outside [0, 1]:
+The Linear Probability Model is what you get if you just use OLS on a binary outcome:
 
 $$P(Cardholder_i = 1) = \beta_0 + \beta_1 Selfempl_i + \beta_2 Age_i + \beta_3 Adepcnt_i + \beta_4 Ownrent_i + \beta_5 Majordrg_i$$
 
-The Logit model solves this using the **logistic function**:
+The problem is obvious as soon as you predict on it — there's nothing stopping the model from giving you probabilities below 0 or above 1, which are nonsense. The homework dataset gave LPM predictions ranging from −1.84 to 1.00.
+
+The Logit model wraps the linear part in a logistic function, which constrains output to (0, 1) by design:
 
 $$P(Cardholder_i = 1) = \frac{e^{X_i\beta}}{1 + e^{X_i\beta}} = \Lambda(X_i\beta)$$
 
-This constrains all predictions to (0, 1) by design. The homework found the LPM produced impossible values (min = -1.84, max = 1.00), while the Logit model gave sensible bounds (min = 0, max = 0.97).
+Same dataset, Logit predictions: 0 to 0.97. Sensible.
 
 ```{python}
 #| label: fig-lpm-vs-logit
@@ -416,11 +418,11 @@ plt.show()
 
 ### Likelihood Ratio Test
 
-The LR test compared the restricted model (without income and tenure variables) against the unrestricted model. The test statistic is:
+The LR test is what you use to decide whether a set of variables in a Logit model is doing real work or not. You fit two models — one with all the variables, one without the ones you're testing — and compare their log-likelihoods:
 
 $$LR = -2(\mathcal{L}_{restricted} - \mathcal{L}_{unrestricted}) \sim \chi^2_q$$
 
-Where $q$ is the number of restrictions. In the homework, $LR = 276.31$ with $p < 0.01$ — strongly rejecting the null that the additional variables were irrelevant.
+In the homework, the test came back at $LR = 276.31$ with $p < 0.01$ — so the additional variables (income and tenure) were definitely contributing. You couldn't drop them.
 
 ```{python}
 #| label: fig-lr-test
@@ -451,6 +453,8 @@ plt.show()
 
 ## 6. Skills Checklist
 
+What I've used and what I'd still want to cover:
+
 - [x] Data import and cleaning — `read.csv()`, `merge()`, `ifelse()`, indicator variables
 - [x] OLS regression — `lm()`, `summary()`, coefficient interpretation
 - [x] Residual analysis — scatter plots, histograms, actual vs predicted
@@ -463,5 +467,5 @@ plt.show()
 - [x] Linear Probability Model — interpretation, limitations
 - [x] Binary Logit Model — average marginal effects, `logit()`
 - [x] Likelihood Ratio Test — `logLik()`, `lrtest()`
-- [ ] Instrumental Variables (IV) — not covered in this module
-- [ ] ARIMA / forecasting — beyond the scope of this module
+- [ ] Instrumental Variables (IV) — would round out the causal toolkit
+- [ ] ARIMA / forecasting — was beyond the scope of this module

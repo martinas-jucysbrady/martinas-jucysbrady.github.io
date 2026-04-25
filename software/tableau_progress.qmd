@@ -1,0 +1,143 @@
+---
+title: "Tableau"
+subtitle: "*Dashboards & data visualisation*"
+description: "Tableau skills built in Year 1 through Business Analytics 1 at DCU, building a dashboard on COVID-19 data."
+categories: [Software, Analytics]
+format:
+  html:
+    toc: true
+    toc-location: right
+    toc-title: "On this page"
+---
+
+```{=html}
+<style>
+#quarto-document-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-right: 50px;
+}
+#quarto-margin-sidebar {
+  position: fixed;
+  right: 1rem;
+  top: 70px;
+  width: 220px;
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
+}
+</style>
+```
+
+Tableau was the first proper visualisation tool I used in the degree. It came up early — Year 1, **Business Analytics 1** at DCU — and the assignment was to build a dashboard on COVID-19 data. At the time the world was still figuring out how to read pandemic charts every day, so it was an oddly fitting introduction to the idea that visualisation isn't decoration; it's how people actually understand what's happening.
+
+::: {.callout-note}
+## Module
+**Business Analytics 1** — *Year 1, DCU*
+
+Single project: a Tableau dashboard analysing COVID-19 case and death data across countries and time.
+:::
+
+::: {.callout-tip}
+## Project files
+[{{< fa file-pdf >}} Dashboard PDF](/assets/files/tableau_assignment.pdf) · [{{< fa download >}} Tableau workbook (.twbx)](/assets/files/tableau_assignment.twbx)
+:::
+
+---
+
+## 1. Connecting to Data
+
+Every Tableau project starts with connecting to a data source. The COVID dataset I worked with came as a CSV — country, date, daily new cases, daily deaths, and a few cumulative counters — which Tableau loads into its Data Source view.
+
+The bit that took me a while to understand wasn't the connection itself; it was **how Tableau interprets the data**. Each column gets categorised as either a **dimension** (categorical — country, date) or a **measure** (numerical — case counts). Get that wrong and your charts come out looking weird. Tableau guesses, but you check.
+
+---
+
+## 2. Dimensions vs Measures
+
+This is the distinction that runs through everything in Tableau:
+
+- **Dimensions** — categorical fields you slice *by*. Country, date, region.
+- **Measures** — numerical fields you aggregate. Cases, deaths, population.
+
+A bar chart of "cases by country" makes sense because country is a dimension and cases is a measure. A bar chart of "country by cases" doesn't — you'd be trying to aggregate something that's already a label.
+
+Once that clicked, the rest of the tool started making sense. Drag a dimension to the rows shelf, a measure to the columns shelf, pick a chart type, and the chart builds itself.
+
+---
+
+## 3. Building the Charts
+
+The COVID dashboard ended up with a few different views, each answering a different question:
+
+- **Cases over time per country** — a line chart with date on the columns shelf and cases on the rows shelf, with country on the colour mark.
+- **Total cases by country** — a horizontal bar chart, sorted descending, to show which countries had the highest total impact.
+- **Deaths as a percentage of cases** — a calculated field (`SUM(Deaths) / SUM(Cases)`) shown as a bar chart to compare mortality rates across countries.
+- **Geographic view** — a filled map showing case counts by country, using Tableau's built-in geographic role for the Country field.
+
+The thing that surprised me was how quickly a chart can mislead. Plotting raw case counts makes large countries look catastrophic compared to small ones — but per-capita, the picture changes completely. That kind of decision (raw vs normalised, log vs linear scale) ended up being more important than any feature Tableau actually had.
+
+---
+
+## 4. Calculated Fields
+
+Calculated fields are how you go beyond what's already in the dataset. The dataset gave me cases and deaths separately, but the interesting question was the ratio — and that's a calculated field:
+
+```
+Mortality_Rate = SUM([Deaths]) / SUM([Cases])
+```
+
+Once that field exists, you can drop it onto any view as if it were native to the data. I also used calculated fields to build:
+
+- **Rolling 7-day averages** — to smooth out the weekend reporting dips that made the raw lines look like sawteeth
+- **Cases per 100,000 population** — for the per-capita comparisons
+- **Date-based flags** — splitting the data into "first wave" and "second wave" for separate analyses
+
+---
+
+## 5. Filters & Interactivity
+
+A static dashboard tells one story. A dashboard with filters lets the reader find their own. The COVID dashboard had a few interactive elements:
+
+- **Country filter** — a checklist letting the reader narrow the view to specific countries
+- **Date range slider** — to focus on a particular wave of the pandemic
+- **Top N filter** — to show only the top 10 worst-affected countries instead of all of them at once
+
+The filter was the moment Tableau started feeling more useful than Excel. In Excel I'd have built three separate pivot tables and three separate charts. In Tableau, one view that responds to user input.
+
+---
+
+## 6. Dashboard Assembly
+
+The final step was pulling the individual sheets together into a dashboard. Tableau's dashboard view is a layout canvas — you drag sheets onto it and arrange them however you want.
+
+What I learned from doing it the wrong way first:
+
+- **Filters need to apply across all sheets**, not just the one you built them on. Tableau makes you opt in to that, which is easy to forget.
+- **Title and context matter as much as the charts.** The first version had no narrative. The reader had to figure out the story for themselves.
+- **Less is more.** My first dashboard had six charts on it. The final version had four. The two I removed weren't adding anything the others didn't already say.
+
+---
+
+## 7. Reflection
+
+Going back to the dashboard now, the chart design choices look obviously Year 1 — colour palettes a bit busy, axes not always labelled cleanly, some charts trying to do two things at once. But the project did its job: it taught me that visualisation is a tool for thinking, not just for reporting. By the time I got to the [EcoEnergy Corp project](/projects/data_analytics_pv/ecoenergy.qmd) in Year 4, that lesson was already baked in — I just had Power BI in my hand instead of Tableau.
+
+I'd happily come back to Tableau for a project that suited it. The interactivity model is genuinely good, and the geographic features are still some of the cleanest available in any visualisation tool.
+
+---
+
+## 8. Skills Checklist
+
+What I covered in the module, and what I'd want to come back to:
+
+- [x] Connecting to CSV data sources
+- [x] Dimensions vs measures
+- [x] Bar, line, and map charts
+- [x] Calculated fields — ratios, rolling averages, flags
+- [x] Filters and interactivity — country, date range, Top N
+- [x] Dashboard assembly with cross-filtering
+- [x] Sorting, formatting, and chart titles
+- [ ] Parameters and parameter actions
+- [ ] LOD (Level of Detail) expressions — `FIXED`, `INCLUDE`, `EXCLUDE`
+- [ ] Tableau Server / Tableau Public publishing
+- [ ] Story points for guided narratives

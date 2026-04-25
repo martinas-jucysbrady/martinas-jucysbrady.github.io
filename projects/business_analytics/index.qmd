@@ -78,6 +78,10 @@ inside_c  = df_clean[df_clean['Footprint'] == 'Inside']
 outside_c = df_clean[df_clean['Footprint'] == 'Outside']
 ```
 
+::: {.callout-note appearance="simple"}
+This was written as a memo to a fictional VP for this Business Analytics module.
+:::
+
 Hello Vice President Nils Bakker,
 I hope all is good with you. I have taken your question onboard and researched it appropriately to answer the question. Is the presence of a physical bank branch creating demand for checking accounts, was truly an intriguing question to answer, and I hope that my conclusion will aid you with sufficient data for the upcoming PAS meeting.
 

@@ -1,6 +1,6 @@
 [
   {
-    "listing": "/index.html",
+    "listing": "/projects.html",
     "items": [
       "/projects/ml_python/index.html",
       "/projects/business_strategy/index.html",
@@ -17,7 +17,7 @@
     ]
   },
   {
-    "listing": "/projects.html",
+    "listing": "/index.html",
     "items": [
       "/projects/ml_python/index.html",
       "/projects/business_strategy/index.html",

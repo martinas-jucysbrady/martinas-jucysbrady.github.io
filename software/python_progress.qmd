@@ -1,7 +1,7 @@
 ---
 title: "Python"
-subtitle: "*Data Analysis, Machine Learning & Visualisation*"
-description: "An overview of my Python skills developed through fourth-year modules in data analytics, machine learning, advanced Python and programming and visualisation."
+subtitle: "*Data analysis, machine learning & visualisation*"
+description: "Python skills developed through Year 4 modules in data analytics, machine learning, advanced Python, and programming and visualisation."
 categories: [Software, Analytics]
 format:
   html:
@@ -32,30 +32,30 @@ format:
 </style>
 ```
 
-I studied Python across two fourth-year modules at DCU — **Data Analytics: Programming and Visualisation** and **Data Analytics: Machine Learning and Advanced Python**. The first covered Python fundamentals, NumPy, pandas, matplotlib and SQL. The second applied machine learning techniques to real datasets using scikit-learn. Below is an overview of the core skills I developed, with live demonstrations of each.
+I picked up Python in Year 4 across two modules at DCU — one covering programming and visualisation (NumPy, pandas, matplotlib, SQL), the other applying machine learning to real datasets with scikit-learn. This page covers the concepts I worked with most, with examples that run live in the page so the logic is visible.
 
 ::: {.callout-note}
-## Modules
+## Quick summary
+**2 modules · Year 4 · 1 major project**
+
 - **BAA1026** — Data Analytics: Programming and Visualisation — *Year 4, Semester 1*
 - **BAA1027** — Data Analytics: Machine Learning and Advanced Python — *Year 4, Semester 2*
+
+Most heavily used in the [Brain Tumour Classification project](/projects/ml_python/research_paper.qmd) and the [EcoEnergy Corp report](/projects/data_analytics_pv/ecoenergy.qmd).
 :::
 
 ---
 
 ## 1. NumPy
 
-NumPy is the foundation of scientific computing in Python. It provides fast, vectorised operations on arrays and is the basis for almost every data science library.
-
-### Core concepts
-
-The key advantage of NumPy over plain Python lists is **vectorisation** — operations apply to every element without writing a loop, making code both faster and more readable.
+NumPy is the layer everything else sits on. The thing that makes it useful — once you actually understand it — is **vectorisation**: doing arithmetic on whole arrays at once instead of looping through them. Faster, shorter, and (after a bit of practice) easier to read.
 
 ```{python}
 #| label: numpy-basics
 
 import numpy as np
 
-# Array creation
+# Array creation and basic info
 arr = np.arange(6).reshape(2, 3)
 print("Array:\n", arr)
 print("Shape:", arr.shape)
@@ -86,7 +86,7 @@ print("Even values:", arr3[arr3 % 2 == 0])
 
 ### Broadcasting
 
-Broadcasting allows NumPy to perform arithmetic on arrays of different shapes without copying data. The smaller array is "broadcast" across the larger one.
+Broadcasting is the part of NumPy that took me a while to actually trust. It lets you do arithmetic between arrays of different shapes without manually copying data — the smaller array gets stretched across the larger one. Once it clicks, you stop writing loops for things like normalising a matrix column-by-column.
 
 $$\text{If shapes are compatible: } (m, n) + (1, n) \rightarrow (m, n)$$
 
@@ -120,9 +120,7 @@ print("\nNormalised:\n", normalised.round(2))
 
 ## 2. Pandas
 
-Pandas provides the `DataFrame` — the core data structure for tabular data analysis in Python. It is the primary tool I used for data cleaning, transformation and aggregation across both modules.
-
-### Key operations
+Pandas is the one I reach for most often. The `DataFrame` is essentially Excel as a Python object — rows, columns, indexing, the works — but with operations like groupby and pivot that scale to datasets way past what Excel comfortably handles.
 
 ```{python}
 #| label: pandas-basics
@@ -144,6 +142,10 @@ print("\nFirst 5 rows:")
 df.head()
 ```
 
+### GroupBy and aggregation
+
+GroupBy is where pandas actually beats Excel for me. The same logic that takes three pivot tables and a lookup formula in Excel is one chained line in pandas:
+
 ```{python}
 #| label: pandas-groupby
 
@@ -156,6 +158,10 @@ summary = df.groupby('Product').agg(
 
 summary
 ```
+
+### Pivot tables
+
+Pivot tables in pandas work the same way they do in Excel — choose an index, columns, values, and an aggregation function. I used these heavily in the [EcoEnergy Corp report](/projects/data_analytics_pv/ecoenergy.qmd) to slice ten years of regional sales data multiple ways.
 
 ```{python}
 #| label: pandas-pivot
@@ -173,13 +179,13 @@ pivot
 
 ---
 
-## 3. Matplotlib & Visualisation
+## 3. Matplotlib & Plotly
 
-Data visualisation was a core part of the Programming and Visualisation module. The in-class test required plotting cumulative sums and overlaying multiple series on the same chart.
+Visualisation came up across both modules — matplotlib for publication-style static charts, Plotly for interactive ones. The in-class test in Programming and Visualisation involved overlaying cumulative sums on a bar chart, which is the kind of thing that's three clicks in Excel but a few lines of code in matplotlib.
 
 ```{python}
 #| label: fig-matplotlib
-#| fig-cap: "Cumulative sum of sales overlaid with raw sales — as practised in class"
+#| fig-cap: "Cumulative sum of sales overlaid with raw sales"
 
 import matplotlib.pyplot as plt
 
@@ -200,6 +206,8 @@ ax.legend()
 plt.tight_layout()
 plt.show()
 ```
+
+Plotly is what I use for anything interactive — hover labels, zooming, filtering. Most of the charts on my project pages are Plotly.
 
 ```{python}
 #| label: fig-plotly-revenue
@@ -222,7 +230,7 @@ fig.show()
 
 ## 4. Machine Learning Pipeline
 
-The ML module built on the programming foundations to apply supervised learning to real datasets. The full pipeline I developed for the brain tumour classification project follows these steps:
+The full pipeline I built for the [Brain Tumour Classification project](/projects/ml_python/research_paper.qmd) sat across most of what I'd learned in the second-semester module. Four classifiers, PCA dimensionality reduction, an ensemble model, and four-class image classification on MRI scans.
 
 ```{mermaid}
 flowchart LR
@@ -238,13 +246,13 @@ flowchart LR
 
 ### Dimensionality reduction with PCA
 
-PCA reduces high-dimensional data by finding the directions of maximum variance. The number of components is chosen to retain a target proportion of the total variance:
+PCA finds the directions in your data with the most variance and projects everything onto those. You pick how much variance to keep — usually 95% — and PCA tells you how many components you need to hit that.
 
 $$\text{Retain components where: } \sum_{i=1}^{k} \lambda_i \geq 0.95 \cdot \sum_{i=1}^{n} \lambda_i$$
 
-Where $\lambda_i$ are the eigenvalues of the covariance matrix, representing the variance explained by each component.[^1]
+Where $\lambda_i$ are the eigenvalues of the covariance matrix.[^1]
 
-[^1]: In the brain tumour project, PCA reduced the feature space from 49,152 dimensions to just 726 components — a 98.5% reduction — while retaining 95% of the explained variance. This made KNN and SVM computationally feasible on a standard laptop.
+[^1]: In the brain tumour project, PCA reduced the feature space from 49,152 dimensions down to 726 components — a 98.5% reduction — while still keeping 95% of the variance. That's what made KNN and SVM actually feasible on a laptop. The original CNN approach kept overfitting on a dataset that was too small for it.
 
 ```{python}
 #| label: fig-pca-demo
@@ -274,20 +282,18 @@ plt.show()
 
 ### Classifier comparison
 
-The four classifiers used in the brain tumour project each take a different approach to the decision boundary:
+Each of the four classifiers I used takes a different approach to drawing the decision boundary, which is also why combining them in an ensemble can sometimes outperform any one of them alone:
 
-| Classifier | Approach | Strengths |
-|------------|----------|-----------|
-| SVM | Maximum-margin hyperplane | High-dimensional spaces, robust |
+| Classifier | Approach | Why I included it |
+|------------|----------|-------------------|
+| SVM | Maximum-margin hyperplane | Strong in high-dimensional spaces |
 | Random Forest | Ensemble of 200 decision trees | Handles non-linearity, reduces overfitting |
-| KNN | Distance to k nearest neighbours | Simple, no training phase |
-| Naïve Bayes | Probabilistic, assumes independence | Fast, useful as control |
+| KNN | Distance to k nearest neighbours | Simple, no training phase, sensitive to local patterns |
+| Naïve Bayes | Probabilistic, assumes independence | Deliberately included as a control — pixel data violates the independence assumption, so it should fail |
 
-The **F1 score** balances precision and recall into a single metric:
+The **F1 score** is the metric that mattered most. In a medical classification task, both false positives (unnecessary treatment) and false negatives (missed diagnosis) carry real consequences, and F1 balances them:
 
 $$F_1 = 2 \cdot \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}$$
-
-This is particularly important in medical classification where both false positives (unnecessary treatment) and false negatives (missed diagnosis) carry real consequences.
 
 ```{python}
 #| label: fig-model-results
@@ -314,19 +320,21 @@ fig.update_layout(
 fig.show()
 ```
 
+The Naïve Bayes result confirmed what I expected: pixel values in an image are very much not independent of their neighbours, so the assumption Naïve Bayes makes falls apart and accuracy collapses to near-random. It's worth including as a control because if it had performed well, that would have been a sign something else was wrong with the data pipeline.
+
 ---
 
 ## 5. Skills Checklist
 
-Skills developed and demonstrated across both modules:
+What I've actually used vs what's on my list to learn next:
 
-- [x] NumPy arrays — creation, reshaping, slicing, filtering, broadcasting
+- [x] NumPy — arrays, reshaping, slicing, filtering, broadcasting
 - [x] Pandas — DataFrames, groupby, pivot tables, merge, data cleaning
 - [x] Matplotlib — line, bar, scatter, subplots, annotations
 - [x] Plotly — interactive bar, scatter, line and heatmap charts
-- [x] scikit-learn — preprocessing, PCA, SVM, Random Forest, KNN, Naive Bayes
+- [x] scikit-learn — preprocessing, PCA, SVM, Random Forest, KNN, Naïve Bayes
 - [x] Ensemble methods — VotingClassifier with soft voting
 - [x] Model evaluation — accuracy, precision, recall, F1, confusion matrix
-- [x] SQL — queries, joins, aggregations (covered in Programming & Visualisation)
-- [ ] Deep learning — CNN attempted but overfitting prevented success on small dataset
-- [ ] Plotly Dash — interactive dashboards (next step)
+- [x] SQL through Python — queries, joins, aggregations (covered in Programming & Visualisation)
+- [ ] Deep learning — attempted a CNN for the brain tumour project but overfitting on a small dataset pushed me to PCA-based classical ML instead. Worth coming back to with a larger dataset.
+- [ ] Plotly Dash — building interactive dashboards rather than just charts

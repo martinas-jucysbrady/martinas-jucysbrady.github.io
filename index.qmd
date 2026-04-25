@@ -48,31 +48,30 @@ listing:
 
 :::{#hero-heading}
 
-## Hi, I’m Martinas Jucys Brady
+## Hi, I’m Martinas 
 
-Welcome to my ePortfolio!
+Welcome to my ePortfolio.
 
-I’m a fourth-year Business Studies International student at Dublin City University, specialising in Data Analytics and studying Japanese. Over the past few years, I’ve been exploring how business understanding, data-driven thinking, and global perspectives can come together to solve real problems and uncover meaningful insights.
+I’m in my final year of Business Studies International at DCU, specialising in Data Analytics with Japanese as my language. Most of what I’ve worked on during the degree has sat somewhere between business, data and language, and this portfolio is where I’ve put it all in one place.
 
-This portfolio brings together work that reflects both my academic learning and personal growth; from data analysis projects and visualisations to research papers, reflections and creative presentations. Each piece represents a step in how I’ve learned to connect analytical skills with communication and cross-cultural awareness.
+You’ll find a mix of things here: data projects, written assignments, presentations, and a few reflections on how my thinking has changed along the way. Some of it is technical, some of it isn’t, but it all says something about what I’ve been learning.
 
-## What This Portfolio Represents
+## {{< fa regular folder >}} What’s in the Portfolio 
 
-This portfolio is a snapshot of where I am now as a student and where I want to go next. It highlights the combination of skills that define my degree and my interests:
+This is a snapshot of where I am now and the kind of work I want to keep doing. The areas it covers are:
 
-- Business understanding
-- Analytical thinking
-- Data visualisation
-- International perspective
-- Japanese language and intercultural learning
+- Academic assignments from various modules taken during the four year degree.
+- My hobbies and interests
+- Tools that I've used throughout my studies (e.g. Tableau, Power BI, Python, R, Excel)
+- Certifications and courses I have completed 
 
-## Explore
+## {{< fa regular compass >}} Have a Look Around
 
-Here you can browse selected academic work and personal experiences that showcase my development throughout university. Together, they tell the story of a student interested in not only understanding ideas, but also presenting them clearly, creatively, and with purpose.
+Feel free to click through whatever interests you. Each project has a bit of context about what it was, what I did, and what I took from it. 
 
 :::
 
-## Recent Posts
+## Recent Posts {{< fa regular clock >}}
 Check out the latest projects.....
 
 :::{#recent-posts}

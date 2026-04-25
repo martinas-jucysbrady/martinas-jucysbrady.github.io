@@ -23,7 +23,7 @@ about:
       text: Research Paper PDF
       href: projects/ml_python/research_paper.pdf
     - icon: code-slash
-      text: Source Code (.py)
+      text: Source Code
       href: projects/ml_python/research_code.py
 ---
 ```{=html}

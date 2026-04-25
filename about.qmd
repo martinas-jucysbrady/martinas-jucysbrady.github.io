@@ -20,14 +20,14 @@ title: "About"
 :::
 
 ::: {.column width="63%"}
-I'm Martinas Jucys Brady, a fourth-year Business Studies International student at Dublin City University, specialising in data analytics and studying Japanese. I'm interested in how data can support better business decisions and how international perspective shapes those decisions in practice. This page gives a quick overview of my studies, interests, and the skills I'm developing as I move towards data-focused roles with a global outlook.
+I'm Martinas Jucys Brady, a final-year Business Studies International student at DCU specialising in data analytics and studying Japanese. Most of what I've worked on during the degree has sat between business, data, and language. This page is a quick rundown of the modules I've taken, the things I do outside of university, and the skills I've picked up along the way.
 :::
 
 ::::
 
 ## Undergraduate Studies
 
-During my studies at DCU and Kobe University, I completed modules across broad areas of business, economics, languages and data analytics. Each module highlights key projects, assignments, and presentations that best represent my work.
+I studied at DCU for three years and spent my third year at Kobe University in Japan. The cards below break the degree down by year, with the projects and assignments that best represent the work from each.
 
 :::: {.grid}
 
@@ -71,14 +71,14 @@ During my studies at DCU and Kobe University, I completed modules across broad a
 
 ## Hobbies & Interests
 
-This section highlights some of the interests that shape my life outside of university. Travel brings together the countries and cities I’ve visited and Books collects what I’ve been reading, along with short reflections on each.
+A couple of things I do outside of college. Travel covers the places I've been and what stood out about each. Books is what I've been reading, with short notes on each one.
 
 :::: {.grid}
 
 ::: {.g-col-6}
 <a href="https://martinas-jucysbrady.github.io/travel" style="text-decoration:none;">
 <div style="background:white; border:1px solid #e0e0f0; border-radius:14px; padding:24px 16px; text-align:center; box-shadow:0 2px 12px rgba(0,0,0,0.07); transition:transform 0.2s ease, box-shadow 0.2s ease; cursor:pointer;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(30,66,100,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 12px rgba(0,0,0,0.07)'">
-  <div style="font-size:2rem; margin-bottom:10px;">✈️</div>
+  <div style="font-size:2rem; margin-bottom:10px;"><i class="bi bi-airplane" style="font-size: 2rem; color: #1E4264;"></i></div>
   <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:0.95rem; color:#1E4264;">Travel</div>
 </div>
 </a>
@@ -87,7 +87,7 @@ This section highlights some of the interests that shape my life outside of univ
 ::: {.g-col-6}
 <a href="https://martinas-jucysbrady.github.io/books" style="text-decoration:none;">
 <div style="background:white; border:1px solid #e0e0f0; border-radius:14px; padding:24px 16px; text-align:center; box-shadow:0 2px 12px rgba(0,0,0,0.07); transition:transform 0.2s ease, box-shadow 0.2s ease; cursor:pointer;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(30,66,100,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 12px rgba(0,0,0,0.07)'">
-  <div style="font-size:2rem; margin-bottom:10px;">📚</div>
+  <div style="font-size:2rem; margin-bottom:10px;"><i class="bi bi-book" style="font-size: 2rem; color: #1E4264;"></i> </div>
   <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:0.95rem; color:#1E4264;">Books</div>
 </div>
 </a>
@@ -97,14 +97,14 @@ This section highlights some of the interests that shape my life outside of univ
 
 ## Skills & Qualifications
 
-This section outlines the skills and qualifications I’m actively developing alongside my degree. In Languages, I track the languages I use and am continuously working to improve. In Certificates, I highlight courses and credentials that support my professional growth, focusing on building strong foundations in analytical and business-related skills.
+Two things I've been building alongside the degree. Languages tracks what I speak and how well. Certificates lists the courses I've completed, mostly around data and analytics..
 
 :::: {.grid}
 
 ::: {.g-col-6 .g-col-md-6}
 ```{=html}
 <div onclick="document.getElementById('lang-modal').style.display='flex'" style="background:white; border:1px solid #e0e0f0; border-radius:14px; padding:24px 16px; text-align:center; box-shadow:0 2px 12px rgba(0,0,0,0.07); transition:transform 0.2s ease, box-shadow 0.2s ease; cursor:pointer;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(30,66,100,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 12px rgba(0,0,0,0.07)'">
-  <div style="font-size:2rem; margin-bottom:10px;">🗣️</div>
+  <div style="font-size:2rem; margin-bottom:10px;"><i class="bi bi-translate" style="font-size: 2rem; color: #1E4264;"></i></div>
   <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:0.95rem; color:#1E4264;">Languages</div>
 </div>
 
@@ -164,7 +164,7 @@ This section outlines the skills and qualifications I’m actively developing al
 ::: {.g-col-6 .g-col-md-6}
 <a href="https://martinas-jucysbrady.github.io/certificates.html" style="text-decoration:none;">
 <div style="background:white; border:1px solid #e0e0f0; border-radius:14px; padding:24px 16px; text-align:center; box-shadow:0 2px 12px rgba(0,0,0,0.07); transition:transform 0.2s ease, box-shadow 0.2s ease; cursor:pointer;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(30,66,100,0.15)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 12px rgba(0,0,0,0.07)'">
-  <div style="font-size:2rem; margin-bottom:10px;">🏅</div>
+  <div style="font-size:2rem; margin-bottom:10px;"><i class="bi bi-award" style="font-size: 2rem; color: #1E4264;"></i></div>
   <div style="font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:0.95rem; color:#1E4264;">Certifications</div>
 </div>
 </a>

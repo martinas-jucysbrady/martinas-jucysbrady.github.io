@@ -1,7 +1,7 @@
 ---
 title: "SQL"
-subtitle: "*Database Design, Querying & Data Analysis*"
-description: "An overview of my SQL skills developed through the Data Analytics: Programming and Visualisation module at DCU, covering database design, ERDs, querying and data manipulation."
+subtitle: "*Database design, querying & data analysis*"
+description: "SQL skills built through the Programming and Visualisation module at DCU — database design, ERDs, joins, aggregations and subqueries."
 categories: [Software, Analytics]
 format:
   html:
@@ -45,37 +45,37 @@ import warnings
 warnings.filterwarnings('ignore')
 ```
 
-I studied SQL as part of **Data Analytics: Programming and Visualisation (BAA1026)** in fourth year at DCU. The module covered database design, entity-relationship diagrams, and SQL querying — from basic `SELECT` statements through to joins, aggregations and subqueries. Below I demonstrate these skills using a live SQLite database running in Python.
+I picked up SQL in Year 4 as part of the **Programming and Visualisation** module at DCU. The module covered the full path from database design and entity-relationship diagrams through to the actual querying — joins, aggregations, subqueries. The examples below all run against a live SQLite database in this page, so the SQL is real, not pseudocode.
 
 ::: {.callout-note}
 ## Module
 **BAA1026** — Data Analytics: Programming and Visualisation — *Year 4, DCU*
 
-All SQL on this page executes against a real in-memory SQLite database — the code is fully live and reproducible.
+All SQL on this page executes against a real in-memory SQLite database. Used most heavily in the [EcoEnergy Corp project](/projects/data_analytics_pv/ecoenergy.qmd).
 :::
 
 ---
 
 ## 1. Database Design & ERDs
 
-Before writing a single line of SQL, a well-designed database starts with an **Entity-Relationship Diagram (ERD)**. An ERD maps out the entities, their attributes, and the relationships between them.
+Before writing any SQL, the module spent time on database design — and specifically on building **Entity-Relationship Diagrams (ERDs)** to map out what tables you need, what's in them, and how they connect. It's not glamorous work, but a badly designed database makes every query that follows it harder.
 
 ### Conceptual ERD — Car Insurance Database
 
-A key exercise from the module involved designing a database for a car insurance company with the following requirements:
+The exercise that landed best for me was designing a database for a fictional car insurance company. The brief:
 
-- Each **driver** has a licence number, full name, and address — and can be insured for more than one car
+- Each **driver** has a licence number, full name, and address — and can insure more than one car
 - Each **car** has a registration number, model and year — with only one driver insured per car
 - Each **accident** has a report number, cost, location and date — associated with only one car
 
-The relationships expressed in **min-max notation**:
+The relationships in **min-max notation**:
 
 | Entity A | Relationship | Entity B | Cardinality |
 |----------|-------------|----------|-------------|
 | Driver | insures | Car | (1,1) to (1,N) |
 | Car | involved in | Accident | (0,N) to (1,1) |
 
-A driver must insure **at least one** car but can insure many. A car is insured by **exactly one** driver. An accident is associated with **exactly one** car, and a car may have had **zero or many** accidents.
+A driver insures **at least one** car but can have many. A car has **exactly one** driver. An accident is tied to **exactly one** car, and a car may have had **zero or many** accidents over time.
 
 ```{mermaid}
 erDiagram
@@ -106,7 +106,7 @@ erDiagram
 
 ## 2. Creating Tables
 
-Once the ERD is designed, the physical implementation in SQL uses `CREATE TABLE` statements with appropriate data types, primary keys and foreign keys.
+Once the ERD is signed off, the SQL implementation is the easy part — `CREATE TABLE` statements with the right data types, primary keys, and foreign key references back to the parent tables.
 
 ```{python}
 #| label: create-tables
@@ -146,7 +146,7 @@ print("Tables created successfully.")
 
 ## 3. The Bookstore Database
 
-The practice exercises from the module used a bookstore database with three tables — Customers, Books and Orders. I recreate and query this database below.
+Most of the practical exercises in the module ran on a small bookstore database — three tables, a few customers, a few books, a few orders. Simple enough to reason about, big enough to actually exercise the joins and aggregations later on.
 
 ```{python}
 #| label: create-bookstore
@@ -193,7 +193,7 @@ print("Bookstore database created and populated.")
 
 ## 4. Basic Queries
 
-### SELECT and ORDER BY
+The `SELECT` statement and its modifiers — `WHERE`, `ORDER BY`, `BETWEEN`, `MAX`, `MIN`. The first half of the module was essentially repetition on these until you stop having to think about syntax and start thinking about the question.
 
 ```{python}
 #| label: basic-queries
@@ -222,6 +222,8 @@ print(df4.to_string(index=False))
 ---
 
 ## 5. INSERT and UPDATE
+
+`SELECT` reads the database — `INSERT`, `UPDATE` and `DELETE` change it. The risky ones. `UPDATE` without a `WHERE` clause is a classic way to ruin everyone's afternoon.
 
 ```{python}
 #| label: insert-update
@@ -253,13 +255,13 @@ print(pd.read_sql("SELECT * FROM Orders", conn).to_string(index=False))
 
 ## 6. Joins & Aggregations
 
-Joins combine data from multiple tables. Aggregations summarise it. Together they answer the most important analytical questions.
+This is where SQL starts being interesting. Joins are how you stitch tables back together; aggregations are how you actually answer questions. Most of the queries that I ran for the EcoEnergy project sat right here.
 
 ::: {.callout-tip}
-## JOIN types
+## Quick refresher — JOIN types
 - **INNER JOIN** — only rows with matches in both tables
-- **LEFT JOIN** — all rows from the left table, NULLs where no match on the right
-- **RIGHT JOIN** — all rows from the right table (not supported in SQLite, use LEFT JOIN reversed)
+- **LEFT JOIN** — all rows from the left table, NULLs where there's no match on the right
+- **RIGHT JOIN** — all rows from the right table (SQLite doesn't support this; flip the LEFT JOIN around)
 - **FULL OUTER JOIN** — all rows from both tables
 :::
 
@@ -313,7 +315,7 @@ fig.show()
 
 ## 7. Subqueries
 
-Subqueries allow you to nest one query inside another — useful for filtering based on aggregated results.
+Subqueries are queries inside queries — most useful when you want to filter on something that isn't a fixed value, like "above the average price" or "in the list of customers who've ordered something."
 
 ```{python}
 #| label: subqueries
@@ -340,9 +342,11 @@ print(df_ordered.to_string(index=False))
 
 ---
 
-## 8. SQL in the EcoEnergy Corp Project
+## 8. Applied — EcoEnergy Corp
 
-SQL was also a graded component of the group Power BI project in Year 4. I used SQL to query and aggregate the EcoEnergy Corp dataset before importing results into Power BI for visualisation. Key queries included:
+Where the bookstore database stops being abstract is when you point the same techniques at a real dataset. For the [EcoEnergy Corp project](/projects/data_analytics_pv/ecoenergy.qmd) I worked through ten years of sales and cost data across five regions and ten products — the kind of dataset where pivot tables in Excel start to slow down.
+
+The block below recreates a simplified version of that data in SQLite and runs the kind of aggregation queries that were the starting point of the analysis.
 
 ```{python}
 #| label: ecoenergy-demo
@@ -386,8 +390,8 @@ df_eco = pd.read_sql("""
 """, conn)
 print(df_eco.to_string(index=False))
 
-# Median unit cost by product
-print("\nMedian unit cost by product:")
+# Average unit cost by product
+print("\nAverage unit cost by product:")
 df_cost = pd.read_sql("""
     SELECT product,
            ROUND(AVG(unit_cost), 2) AS avg_unit_cost
@@ -421,6 +425,8 @@ fig.show()
 
 ## 9. Skills Checklist
 
+What's solid, what's next:
+
 - [x] Database design — entities, attributes, relationships
 - [x] ERD — conceptual (min-max notation) and physical (crow's foot)
 - [x] `CREATE TABLE` with primary keys, foreign keys and data types
@@ -429,6 +435,6 @@ fig.show()
 - [x] `GROUP BY` and `HAVING` with aggregate functions (`SUM`, `AVG`, `MAX`, `COUNT`)
 - [x] `INNER JOIN` across multiple tables
 - [x] Subqueries — scalar and `IN` subqueries
-- [x] Used SQL in the EcoEnergy Corp Power BI project for data preparation
-- [ ] Window functions (`ROW_NUMBER`, `RANK`, `LAG`) — next step
-- [ ] Stored procedures and views
+- [x] Used SQL queries as the data prep step for the EcoEnergy Corp project
+- [ ] Window functions (`ROW_NUMBER`, `RANK`, `LAG`, `LEAD`) — the obvious next step
+- [ ] Stored procedures and views — useful once a database starts being shared across reports

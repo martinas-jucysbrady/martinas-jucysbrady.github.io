@@ -10,3 +10,7 @@ listing:
   categories: true
   fields: [image, date, title, subtitle, categories, description, author]
 ---
+
+A collection of academic work, group projects and personal pieces from across my degree. 
+
+Use the filters {{< fa arrow-right >}} to browse by category.

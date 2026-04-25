@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Tableau skills built in Year 1 through Business Analytics 1 at DCU, building a dashboard on COVID-19 data.">
+
+<title>Tableau – Martinas Jucys Brady</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/mjb_favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-1d18208323edc4c9a0c8368532e25b0d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-GM90CNXZ5V"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-GM90CNXZ5V', { 'anonymize_ip': true});
+</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../assets/mjb_favicon.png" alt="" class="navbar-logo light-content">
+    <img src="../assets/mjb_favicon.png" alt="" class="navbar-logo dark-content">
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../projects.html"> <i class="bi bi-file-earmark-text" role="img">
+</i> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tools" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-hammer" role="img">
+</i> 
+ <span class="menu-text">Tools</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-tools">    
+        <li>
+    <a class="dropdown-item" href="../software/python_progress.html"><i class="bi bi-code-slash" role="img">
+</i> 
+ <span class="dropdown-text">Python</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/excel_progress.html"><i class="bi bi-file-earmark-spreadsheet" role="img">
+</i> 
+ <span class="dropdown-text">Excel</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/sql_progress.html"><i class="bi bi-database" role="img">
+</i> 
+ <span class="dropdown-text">SQL</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/r_progress.html"><i class="bi bi-bar-chart-line" role="img">
+</i> 
+ <span class="dropdown-text">R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../software/tableau_progress.html"><i class="bi bi-graph-up" role="img">
+</i> 
+ <span class="dropdown-text">Tableau</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> <i class="bi bi-person-circle" role="img">
+</i> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/martinas-jucysbrady" target="_blank"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/martinasjucysbrady/" target="_blank"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../assets/CV.pdf" target="_blank"> 
+<span class="menu-text"><strong>CV</strong></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#connecting-to-data" id="toc-connecting-to-data" class="nav-link active" data-scroll-target="#connecting-to-data">1. Connecting to Data</a></li>
+  <li><a href="#dimensions-vs-measures" id="toc-dimensions-vs-measures" class="nav-link" data-scroll-target="#dimensions-vs-measures">2. Dimensions vs Measures</a></li>
+  <li><a href="#building-the-charts" id="toc-building-the-charts" class="nav-link" data-scroll-target="#building-the-charts">3. Building the Charts</a></li>
+  <li><a href="#calculated-fields" id="toc-calculated-fields" class="nav-link" data-scroll-target="#calculated-fields">4. Calculated Fields</a></li>
+  <li><a href="#filters-interactivity" id="toc-filters-interactivity" class="nav-link" data-scroll-target="#filters-interactivity">5. Filters &amp; Interactivity</a></li>
+  <li><a href="#dashboard-assembly" id="toc-dashboard-assembly" class="nav-link" data-scroll-target="#dashboard-assembly">6. Dashboard Assembly</a></li>
+  <li><a href="#reflection" id="toc-reflection" class="nav-link" data-scroll-target="#reflection">7. Reflection</a></li>
+  <li><a href="#skills-checklist" id="toc-skills-checklist" class="nav-link" data-scroll-target="#skills-checklist">8. Skills Checklist</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Tableau</h1>
+<p class="subtitle lead"><em>Dashboards &amp; data visualisation</em></p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Software</div>
+    <div class="quarto-category">Analytics</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Tableau skills built in Year 1 through Business Analytics 1 at DCU, building a dashboard on COVID-19 data.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+#quarto-document-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-right: 50px;
+}
+#quarto-margin-sidebar {
+  position: fixed;
+  right: 1rem;
+  top: 70px;
+  width: 220px;
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
+}
+</style>
+<p>Tableau was the first proper visualisation tool I used in the degree. It came up early — Year 1, <strong>Business Analytics 1</strong> at DCU — and the assignment was to build a dashboard on COVID-19 data. At the time the world was still figuring out how to read pandemic charts every day, so it was an oddly fitting introduction to the idea that visualisation isn’t decoration; it’s how people actually understand what’s happening.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Module
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Business Analytics 1</strong> — <em>Year 1, DCU</em></p>
+<p>Single project: a Tableau dashboard analysing COVID-19 case and death data across countries and time.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Project files
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="..\assets/files/tableau_assignment.pdf"><i class="fa-solid fa-file-pdf" aria-label="file-pdf"></i> Dashboard PDF</a> · <a href="..\assets/files/tableau_assignment.twbx"><i class="fa-solid fa-download" aria-label="download"></i> Tableau workbook (.twbx)</a></p>
+</div>
+</div>
+<hr>
+<section id="connecting-to-data" class="level2">
+<h2 class="anchored" data-anchor-id="connecting-to-data">1. Connecting to Data</h2>
+<p>Every Tableau project starts with connecting to a data source. The COVID dataset I worked with came as a CSV — country, date, daily new cases, daily deaths, and a few cumulative counters — which Tableau loads into its Data Source view.</p>
+<p>The bit that took me a while to understand wasn’t the connection itself; it was <strong>how Tableau interprets the data</strong>. Each column gets categorised as either a <strong>dimension</strong> (categorical — country, date) or a <strong>measure</strong> (numerical — case counts). Get that wrong and your charts come out looking weird. Tableau guesses, but you check.</p>
+<hr>
+</section>
+<section id="dimensions-vs-measures" class="level2">
+<h2 class="anchored" data-anchor-id="dimensions-vs-measures">2. Dimensions vs Measures</h2>
+<p>This is the distinction that runs through everything in Tableau:</p>
+<ul>
+<li><strong>Dimensions</strong> — categorical fields you slice <em>by</em>. Country, date, region.</li>
+<li><strong>Measures</strong> — numerical fields you aggregate. Cases, deaths, population.</li>
+</ul>
+<p>A bar chart of “cases by country” makes sense because country is a dimension and cases is a measure. A bar chart of “country by cases” doesn’t — you’d be trying to aggregate something that’s already a label.</p>
+<p>Once that clicked, the rest of the tool started making sense. Drag a dimension to the rows shelf, a measure to the columns shelf, pick a chart type, and the chart builds itself.</p>
+<hr>
+</section>
+<section id="building-the-charts" class="level2">
+<h2 class="anchored" data-anchor-id="building-the-charts">3. Building the Charts</h2>
+<p>The COVID dashboard ended up with a few different views, each answering a different question:</p>
+<ul>
+<li><strong>Cases over time per country</strong> — a line chart with date on the columns shelf and cases on the rows shelf, with country on the colour mark.</li>
+<li><strong>Total cases by country</strong> — a horizontal bar chart, sorted descending, to show which countries had the highest total impact.</li>
+<li><strong>Deaths as a percentage of cases</strong> — a calculated field (<code>SUM(Deaths) / SUM(Cases)</code>) shown as a bar chart to compare mortality rates across countries.</li>
+<li><strong>Geographic view</strong> — a filled map showing case counts by country, using Tableau’s built-in geographic role for the Country field.</li>
+</ul>
+<p>The thing that surprised me was how quickly a chart can mislead. Plotting raw case counts makes large countries look catastrophic compared to small ones — but per-capita, the picture changes completely. That kind of decision (raw vs normalised, log vs linear scale) ended up being more important than any feature Tableau actually had.</p>
+<hr>
+</section>
+<section id="calculated-fields" class="level2">
+<h2 class="anchored" data-anchor-id="calculated-fields">4. Calculated Fields</h2>
+<p>Calculated fields are how you go beyond what’s already in the dataset. The dataset gave me cases and deaths separately, but the interesting question was the ratio — and that’s a calculated field:</p>
+<pre><code>Mortality_Rate = SUM([Deaths]) / SUM([Cases])</code></pre>
+<p>Once that field exists, you can drop it onto any view as if it were native to the data. I also used calculated fields to build:</p>
+<ul>
+<li><strong>Rolling 7-day averages</strong> — to smooth out the weekend reporting dips that made the raw lines look like sawteeth</li>
+<li><strong>Cases per 100,000 population</strong> — for the per-capita comparisons</li>
+<li><strong>Date-based flags</strong> — splitting the data into “first wave” and “second wave” for separate analyses</li>
+</ul>
+<hr>
+</section>
+<section id="filters-interactivity" class="level2">
+<h2 class="anchored" data-anchor-id="filters-interactivity">5. Filters &amp; Interactivity</h2>
+<p>A static dashboard tells one story. A dashboard with filters lets the reader find their own. The COVID dashboard had a few interactive elements:</p>
+<ul>
+<li><strong>Country filter</strong> — a checklist letting the reader narrow the view to specific countries</li>
+<li><strong>Date range slider</strong> — to focus on a particular wave of the pandemic</li>
+<li><strong>Top N filter</strong> — to show only the top 10 worst-affected countries instead of all of them at once</li>
+</ul>
+<p>The filter was the moment Tableau started feeling more useful than Excel. In Excel I’d have built three separate pivot tables and three separate charts. In Tableau, one view that responds to user input.</p>
+<hr>
+</section>
+<section id="dashboard-assembly" class="level2">
+<h2 class="anchored" data-anchor-id="dashboard-assembly">6. Dashboard Assembly</h2>
+<p>The final step was pulling the individual sheets together into a dashboard. Tableau’s dashboard view is a layout canvas — you drag sheets onto it and arrange them however you want.</p>
+<p>What I learned from doing it the wrong way first:</p>
+<ul>
+<li><strong>Filters need to apply across all sheets</strong>, not just the one you built them on. Tableau makes you opt in to that, which is easy to forget.</li>
+<li><strong>Title and context matter as much as the charts.</strong> The first version had no narrative. The reader had to figure out the story for themselves.</li>
+<li><strong>Less is more.</strong> My first dashboard had six charts on it. The final version had four. The two I removed weren’t adding anything the others didn’t already say.</li>
+</ul>
+<hr>
+</section>
+<section id="reflection" class="level2">
+<h2 class="anchored" data-anchor-id="reflection">7. Reflection</h2>
+<p>Going back to the dashboard now, the chart design choices look obviously Year 1 — colour palettes a bit busy, axes not always labelled cleanly, some charts trying to do two things at once. But the project did its job: it taught me that visualisation is a tool for thinking, not just for reporting. By the time I got to the <a href="..\projects/data_analytics_pv/ecoenergy.qmd">EcoEnergy Corp project</a> in Year 4, that lesson was already baked in — I just had Power BI in my hand instead of Tableau.</p>
+<p>I’d happily come back to Tableau for a project that suited it. The interactivity model is genuinely good, and the geographic features are still some of the cleanest available in any visualisation tool.</p>
+<hr>
+</section>
+<section id="skills-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="skills-checklist">8. Skills Checklist</h2>
+<p>What I covered in the module, and what I’d want to come back to:</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Connecting to CSV data sources</label></li>
+<li><label><input type="checkbox" checked="">Dimensions vs measures</label></li>
+<li><label><input type="checkbox" checked="">Bar, line, and map charts</label></li>
+<li><label><input type="checkbox" checked="">Calculated fields — ratios, rolling averages, flags</label></li>
+<li><label><input type="checkbox" checked="">Filters and interactivity — country, date range, Top N</label></li>
+<li><label><input type="checkbox" checked="">Dashboard assembly with cross-filtering</label></li>
+<li><label><input type="checkbox" checked="">Sorting, formatting, and chart titles</label></li>
+<li><label><input type="checkbox">Parameters and parameter actions</label></li>
+<li><label><input type="checkbox">LOD (Level of Detail) expressions — <code>FIXED</code>, <code>INCLUDE</code>, <code>EXCLUDE</code></label></li>
+<li><label><input type="checkbox">Tableau Server / Tableau Public publishing</label></li>
+<li><label><input type="checkbox">Story points for guided narratives</label></li>
+</ul>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/martinas-jucysbrady\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Martinas Jucys Brady, 2026</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with <a href="https://quarto.org/">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

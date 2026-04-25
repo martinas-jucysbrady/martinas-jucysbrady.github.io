@@ -38,9 +38,12 @@ project:
    - assets/files/strategy_case.pdf
    - assets/files/vlog_reflection.pdf
    - assets/files/sustainability_diary.pdf
+   - projects/ml_python/research_code.py
+   - projects/ml_python/research_paper.pdf
    
 website:
   title: "Martinas Jucys Brady"
+  description: "ePortfolio of Martinas Jucys Brady: Business Studies International student at DCU."
   google-analytics: "G-GM90CNXZ5V"
   site-url: "https://martinas-jucysbrady.github.io"
   favicon: assets/mjb_favicon.png
@@ -54,16 +57,24 @@ website:
       - href: projects.qmd
         icon: file-earmark-text
         text: Projects
-      - text: Software
+      - text: Tools
+        icon: hammer
         menu:
         - text: Python
+          icon: code-slash
           href: software/python_progress.qmd
         - text: Excel
+          icon: file-earmark-spreadsheet
           href: software/excel_progress.qmd
         - text: SQL
+          icon: database
           href: software/sql_progress.qmd
         - text: R
+          icon: bar-chart-line
           href: software/r_progress.qmd
+        - text: Tableau
+          icon: graph-up
+          href: software/tableau_progress.qmd
       - href: about.qmd
         icon: person-circle        
         text: About
