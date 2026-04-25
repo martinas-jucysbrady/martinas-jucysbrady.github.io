@@ -39,7 +39,7 @@ The site is fully reproducible; most charts on the project pages is generated fr
 ├── projects.qmd                 # Project listing with filterable categories
 ├── books.qmd                    # Book reviews with star ratings
 ├── certificates.qmd             # Tabbed cert list with sortable Kubicle table
-├── reflection.qmd               # Final reflection on the portfolio itself
+├── reflection.qmd               # Final reflection on the portfolio itself (In module tab in Year 4)
 ├── 404.qmd                      # Custom 404 page
 ├── .gitignore
 ├── .nojekyll
